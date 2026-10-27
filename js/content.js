@@ -1,0 +1,78 @@
+/* Pickr: site texts. Edit here, not in app.js. No dashes as punctuation in new texts. */
+window.PICKR = {
+  version: "v0.1",
+  name: "Pickr",
+  tagline: "A mischievous little robot, a scrambled poem",
+  lede: "Pickr loves poems so much it can't stop picking them up. Unfortunately it also drops them. Put the lines back in order, and Pickr will tell you which poem it is, what metre it is written in, and how that metre works.",
+  play: "Play",
+  continueBtn: "Continue",
+  choose: "Choose a poem",
+  howTitle: "How to play",
+  steps: [
+    { t: "Pickr drops a poem", d: "The lines land in the wrong order. Short poems come whole; long ones come a few stanzas at a time." },
+    { t: "Put the lines back", d: "Drag a line by its handle, or tap two lines to swap them. Rhyme, rhythm and sense are your clues." },
+    { t: "Check and discover", d: "Lines in the right place light up. Get them all and you learn the poem's title, its form and how the metre works." }
+  ],
+  hintNote: "Stuck? The first hint shows which lines rhyme or share a sound. After that, every hint makes Pickr put one line in its right place.",
+  aboutTitle: "About the poems",
+  about: [
+    "Every line in Pickr was written by Dan Engström, a poet who writes in English and Swedish. The twenty poems come from two collections.",
+    "<em>Echoes of Life</em> (2025) gathers short poems about noticing, connection, doubt and resistance, with a sequence of four sonnets, <em>The Edge of Perception</em>, at its heart.",
+    "<em>Hearts Around the Fire</em> (Piratpensionat, 2026) is set in Bælwythe, an imagined town at a river's bend, and is told through the voices of the people who live there: the brewer, the merchant, the bard, the wizard nobody talks about, and the jester who says what everyone else is thinking.",
+    "The game was vibe-coded with Claude. The poems were not. Pickr only moves the lines around; it never writes or changes a word."
+  ],
+  licence: "Poems © Dan Engström, licensed CC BY-NC-SA.",
+  licenceUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  copyright: "© Engströms Mickla AB 2026",
+  levels: { easy: "Warm up", medium: "Getting tricky", hard: "Sonnets and other beasts" },
+  ui: {
+    allPoems: "All poems",
+    home: "Home",
+    poem: "Poem",
+    of: "of",
+    lines: "lines",
+    part: "Part",
+    check: "Check",
+    hint: "Hint",
+    hintMarks: { rhyme: "Letters show which lines rhyme.", sound: "Letters show the sound each line repeats.", ending: "Soft lines end on an unstressed syllable, hard lines on a stress. They take turns." },
+    solved: "Solved",
+    next: "Next poem",
+    again: "Play again",
+    reshuffle: "Let Pickr shuffle again",
+    sound: "Sound",
+    on: "on",
+    off: "off",
+    form: "The form",
+    scheme: "Rhyme scheme",
+    metre: "Metre",
+    scansion: "Hear the beat",
+    scansionNote: "Stressed syllables in capitals.",
+    how: "How it works",
+    character: "Its character",
+    use: "Where you meet it",
+    inPoem: "In this poem",
+    from: "from",
+    hintsUsed: function (n) { return n === 0 ? "Solved without hints. Pickr is impressed." : n === 1 ? "Solved with one hint." : "Solved with " + n + " hints."; },
+    progress: function (n, N) { return n + " of " + N + " poems solved"; },
+    dragHelp: "Drag the handle, or tap two lines to swap them.",
+    allDone: "You have put all twenty poems back together. Pickr is speechless, which has never happened before."
+  },
+  pickr: {
+    drop: [
+      "Oops. I tripped.",
+      "Whoops! I sneezed on the poem.",
+      "I was only holding it for a second!",
+      "Don't tell the poet.",
+      "It slipped. Poems are very slippery.",
+      "I tidied it. Sort of.",
+      "Beep. That was not supposed to happen."
+    ],
+    close: [ "So close! {n} of {N} lines are home.", "{n} of {N}. Getting warmer.", "Beep boop. {n} of {N} are in the right place." ],
+    none: [ "Hmm. None of them are home yet.", "Zero! Even I did better than that. Well, no." ],
+    part: [ "That part is done! Here comes the next bit.", "Yes! Hold on, I dropped some more." ],
+    hintMarks: [ "Psst. Look at the little letters.", "Here's a secret. Don't tell anyone." ],
+    hintFix: [ "Fine, I'll put one back myself.", "There. That one goes there. I think." ],
+    win: [ "Beep boop! You did it!", "Ta-da! The poem is whole again!", "Perfect. I would clap, but my claws only pinch." ],
+    idle: [ "Tap me. Go on.", "I am only a little bit sorry.", "Do you like rhymes? I like rhymes." ]
+  }
+};
