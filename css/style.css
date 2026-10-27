@@ -155,6 +155,11 @@ main:focus { outline: none; }
 .scan { font: 19px/1.5 var(--serif); background: var(--ochre-soft); border-radius: 8px; padding: 10px 14px; margin: 4px 0 4px; }
 .scan b { color: var(--rust); font-weight: 700; }
 
+/* start over */
+.restart { margin: 4px 0 0; }
+.restart p { margin: 8px 0 0; font-weight: 500; }
+.restart .actions { margin: 10px 0 0; }
+
 /* guide */
 .topnav { display: flex; align-items: center; gap: 14px; }
 .topnav a { font: 500 15px/1 var(--sans); text-decoration: none; }

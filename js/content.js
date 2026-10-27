@@ -1,6 +1,6 @@
 /* Pickr: site texts. Edit here, not in app.js. No dashes as punctuation in new texts. */
 window.PICKR = {
-  version: "v0.2",
+  version: "v0.3",
   name: "Pickr",
   tagline: "A mischievous little robot, a scrambled poem",
   lede: "Pickr loves poems so much it can't stop picking them up. Unfortunately it also drops them. Put the lines back in order, and Pickr will tell you which poem it is, what metre it is written in, and how that metre works.",
@@ -27,6 +27,11 @@ window.PICKR = {
   levels: { easy: "Warm up", medium: "Getting tricky", hard: "Sonnets and other beasts" },
   ui: {
     allPoems: "All poems",
+    restart: "Start over",
+    restartAsk: "Forget every solved poem and start from the beginning?",
+    restartYes: "Yes, start over",
+    restartNo: "Keep my progress",
+    restartDone: "All gone! Let's drop some poems.",
     home: "Home",
     poem: "Poem",
     of: "of",

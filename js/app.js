@@ -144,12 +144,33 @@
       '<h1>' + esc(C.name) + '</h1><p class="tagline">' + esc(C.tagline) + '</p><p>' + esc(C.lede) + '</p>' +
       '<div class="actions"><a class="btn" href="' + playHref + '">' + esc(n ? C.continueBtn : C.play) + '</a>' +
       '<a class="btn ghost" href="#poems">' + esc(C.choose) + '</a><a class="btn ghost" href="#guide">' + esc(C.guide.title) + '</a></div>' +
-      (n ? '<p class="progress">' + esc(U.progress(n, P.length)) + '</p>' : '') + '</section>' +
+      (n ? '<p class="progress">' + esc(U.progress(n, P.length)) + '</p>' + restartHTML() : '') + '</section>' +
       '<section class="card"><h2>' + esc(C.howTitle) + '</h2><ol class="process">' +
       C.steps.map(function (s) { return '<li><b>' + esc(s.t) + '</b><span>' + esc(s.d) + '</span></li>'; }).join('') +
       '</ol><p class="note">' + esc(C.hintNote) + '</p></section>' +
       '<section class="card"><h2>' + esc(C.aboutTitle) + '</h2>' + C.about.map(function (p) { return '<p>' + p + '</p>'; }).join('') + '</section>';
-    wireBot();
+    wireBot(); wireRestart();
+  }
+
+  /* ---------- start over ---------- */
+  function restartHTML() {
+    return '<div class="restart" id="restart"><button class="linkbtn" type="button" data-r="ask">' + esc(U.restart) + '</button></div>';
+  }
+  function wireRestart() {
+    var box = document.getElementById('restart'); if (!box) return;
+    box.addEventListener('click', function (e) {
+      var r = e.target.getAttribute('data-r'); if (!r) return;
+      if (r === 'ask') {
+        box.innerHTML = '<p>' + esc(U.restartAsk) + '</p><div class="actions"><button class="btn ochre" type="button" data-r="yes">' + esc(U.restartYes) + '</button>' +
+          '<button class="btn ghost" type="button" data-r="no">' + esc(U.restartNo) + '</button></div>';
+      } else if (r === 'no') {
+        box.innerHTML = restartHTML().replace(/^<div[^>]*>|<\/div>$/g, '');
+      } else if (r === 'yes') {
+        S.solved = {}; save(); G = null; lastHints = null;
+        if (location.hash && location.hash !== '#') location.hash = '#'; else route();
+        setTimeout(function () { say(U.restartDone, 'oops'); sfx.drop(); }, 50);
+      }
+    });
   }
 
   /* ---------- poem list ---------- */
@@ -167,7 +188,9 @@
       });
       html += '</div></section>';
     });
+    if (solvedCount()) html += restartHTML();
     app.innerHTML = html;
+    wireRestart();
   }
 
   /* ---------- game ---------- */

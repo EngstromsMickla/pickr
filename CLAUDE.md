@@ -36,6 +36,7 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 - Blandningen undviker att någon rad hamnar rätt från början.
 - Lättare sedan v0.2 (Dans önskemål 2026-10-27): första raden i varje dikt och del står alltid på plats. Vid Kontrollera låses rader som står rätt (gröna). I nivån Warm up (`easy`) visas markeringarna från början, utan att räknas som ledtråd.
 - Ledtrådar: först visas markeringarna (om de inte redan syns); varje följande ledtråd låser en rad på rätt plats. Antalet ledtrådar visas när dikten är löst.
+- Hem finns i sidhuvudet. Start over (på startsidan och i dikt-listan när något är löst) raderar alla lösta dikter efter en bekräftelse på sidan, inte i en webbläsardialog.
 - Styrning: dra i handtaget (mus och pekskärm) eller tryck på två rader för att byta plats (fungerar också med tangentbord).
 
 ## Guide
@@ -51,3 +52,4 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 
 - v0.1 (2026-10-27): första versionen med alla tjugo dikter.
 - v0.2 (2026-10-27): lättare spel (första raden på plats, rätta rader låses, markeringar från början i Warm up), guiden Metres and terms, förlaget Piratpensionat Produktion för båda samlingarna.
+- v0.3 (2026-10-27): Hem i sidhuvudet och Start over som raderar alla lösta dikter.
