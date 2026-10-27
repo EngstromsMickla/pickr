@@ -46,8 +46,8 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 
 ## Test
 
-- `node tests/check.mjs` körs i Actions före varje publicering: inga externa resurser eller nätverksanrop, 20 dikter, rätt antal markeringar, alla fält ifyllda, inga tankstreck i Claudes texter.
-- Innan något föreslås för publicering: lös alla tjugo dikterna i Playwright i dator- och telefonstorlek och titta på skärmbilderna.
+- `node tests/check.mjs` körs i Actions före varje publicering: inga externa resurser eller nätverksanrop, 40 dikter och tillräckligt många per nivå, rätt antal markeringar, alla fält ifyllda, inga tankstreck i Claudes texter.
+- Innan något föreslås för publicering: lös alla fyrtio dikterna i Playwright, med olika hjälpval, i dator- och telefonstorlek och titta på skärmbilderna.
 
 ## Versioner
 
