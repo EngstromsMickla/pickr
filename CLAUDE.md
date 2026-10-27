@@ -24,24 +24,25 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 
 - `index.html`, `css/style.css`, `js/app.js` (spelmotorn), `img/` (ormen och favikonen).
 - `js/content.js`: alla webbplatsens texter, inklusive Pickrs repliker och användarinstruktionen med processkarta.
-- `js/poems.js`: de tjugo dikterna i spelordning, med strofer, nivå (`easy`, `medium`, `hard`), markeringar för ledtråden och formtexterna.
+- `js/poems.js`: poolen om fyrtio dikter, med strofer, nivå (`easy`, `medium`, `hard`), markeringar för ledtråden och formtexterna.
   - `marks`: en markering per rad. Bokstäver för rim (`rhyme`) eller allittererande ljud (`sound`), `soft`/`hard` för versslut (`ending`), `-` för orimmad rad.
   - `sample`: en exempelrad med betonade stavelser inom hakparentes. `|` betyder cesur.
   - `partOf` (utdrag ur längre dikt) eller `excerpt` (förklaring av utdraget).
 
-## Spelregler
+## Spelregler (sedan v0.4)
 
-- Dikter på högst 14 rader spelas hela. Längre dikter delas i delar om högst 8 rader, strof för strof (en kort sista del slås ihop med den förra om summan blir högst 12).
-- Ordningen kontrolleras mot texten, inte mot radens nummer, så att upprepade rader (pantun) kan byta plats.
-- Blandningen undviker att någon rad hamnar rätt från början.
-- Lättare sedan v0.2 (Dans önskemål 2026-10-27): första raden i varje dikt och del står alltid på plats. Vid Kontrollera låses rader som står rätt (gröna). I nivån Warm up (`easy`) visas markeringarna från början, utan att räknas som ledtråd.
-- Ledtrådar: först visas markeringarna (om de inte redan syns); varje följande ledtråd låser en rad på rätt plats. Antalet ledtrådar visas när dikten är löst.
-- Hem finns i sidhuvudet. Start over (på startsidan och i dikt-listan när något är löst) raderar alla lösta dikter efter en bekräftelse på sidan, inte i en webbläsardialog.
+- **Pool och omgång** (Dans beslut 2026-10-27): poolen har 40 dikter (11 easy, 14 medium, 15 hard). Varje omgång lottar tio: 3 easy, 4 medium, 3 hard (`round` i `js/content.js`), i nivåordning med slumpad ordning inom nivån. Omgången sparas i `pickr.v1` (`round`, `solved`). Start over och Play a new round lottar en ny omgång och nollställer lösta dikter.
+- **Hjälp före varje dikt** (Dans beslut): tre frågor. (1) Första strofen på plats, eller första raden om dikten bara har en strof. (2) Rimbokstäver (ljudbokstäver för allitteration, mjuka och hårda versslut för blankvers; dold för dikter utan rim, `markLabel: "none"`). (3) Antal övriga strofer på plats: 0 till floor((antal strofer − 1) / 2); för enstrofiga dikter räknas rader i stället. Valen sparas (`help`) och föreslås nästa gång.
+- **Strategiskt val av övriga strofer** (`chooseUnits`): girigt, där poängen är strofens radantal × 2 plus avståndet till närmaste redan givna strof. Stora strofer går först och de sprids ut; vid lika poäng vinner den senare. Första strofen räknas aldrig till de övriga.
+- Hela dikten spelas på en gång. Mellanrum i listan visar var stroferna bryts.
+- Ordningen kontrolleras mot texten, inte mot radens nummer, så att upprepade rader (pantun) kan byta plats. Blandningen undviker att någon fri rad hamnar rätt från början.
+- Vid Kontrollera låses rader som står rätt (gröna). Ledtrådar: först rimbokstäverna om de är dolda; varje följande ledtråd låser en rad. Antalet ledtrådar visas när dikten är löst.
+- Hem finns i sidhuvudet. Start over (på startsidan och i dikt-listan när något är löst) lottar en ny omgång efter en bekräftelse på sidan, inte i en webbläsardialog.
 - Styrning: dra i handtaget (mus och pekskärm) eller tryck på två rader för att byta plats (fungerar också med tangentbord).
 
 ## Guide
 
-- `#guide` (Metres and terms, länkad i sidhuvudet, från startsidan och från varje avslöjande): begrepp i fem avsnitt (rader och strofer, ljud, rytm, versfötter, radlängder) i `guide` i `js/content.js`, med exempel ur dikterna. Avsnittet om formerna byggs ur `js/poems.js`, en post per form, med länkar till dikterna; olösta dikter visas bara med nummer.
+- `#guide` (Metres and terms, länkad i sidhuvudet, från startsidan och från varje avslöjande): begrepp i fem avsnitt (rader och strofer, ljud, rytm, versfötter, radlängder) i `guide` i `js/content.js`, med exempel ur dikterna. Avsnittet om formerna byggs ur hela poolen i `js/poems.js`, en post per form; länkar visas bara till dikter i aktuell omgång, och olösta visas med sitt nummer i omgången.
 
 ## Test
 
@@ -53,3 +54,4 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 - v0.1 (2026-10-27): första versionen med alla tjugo dikter.
 - v0.2 (2026-10-27): lättare spel (första raden på plats, rätta rader låses, markeringar från början i Warm up), guiden Metres and terms, förlaget Piratpensionat Produktion för båda samlingarna.
 - v0.3 (2026-10-27): Hem i sidhuvudet och Start over som raderar alla lösta dikter.
+- v0.4 (2026-10-27): pool om 40 dikter (20 nya), omgångar om tio, hjälpval före varje dikt med strategiskt valda strofer, strofmellanrum i spelet.

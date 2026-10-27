@@ -1,4 +1,5 @@
-/* Pickr: content. All poems by Dan Engström, CC BY-NC-SA. Edit texts here, not in app.js. */
+/* Pickr: content. All poems by Dan Engström, CC BY-NC-SA. Edit texts here, not in app.js.
+   The pool holds 40 poems; each round draws 10 (3 easy, 4 medium, 3 hard). */
 window.PICKR_POEMS = [
  {
   "id": "birds",
@@ -968,6 +969,969 @@ window.PICKR_POEMS = [
     "The hearths and homes put down at owner’s will",
     "The refuse reek where flowers once had been",
     "The rich prefer their houses to have stairs"
+   ]
+  ]
+ },
+ {
+  "id": "transitions",
+  "level": "easy",
+  "title": "Transitions",
+  "marks": [
+   "-",
+   "-",
+   "-"
+  ],
+  "markLabel": "none",
+  "form": "Free-verse tercet",
+  "scheme": "No rhyme",
+  "metre": "No fixed metre; the lines shrink",
+  "sample": "the [LAST] [RAYS] of the [DAY] [BRIEF]-ly [VIS]-it a [GLADE]",
+  "how": "Three unrhymed lines that work like a tiny film: a scene, a sudden change, an ending. Each line is shorter than the one before, so the poem itself fades out.",
+  "character": "Still and visual, close in spirit to the Japanese haiku without its syllable count.",
+  "use": "Short free-verse poems built on one image grew out of the Imagist movement of the 1910s (Ezra Pound, H.D.), which learned from Japanese haiku.",
+  "poem": "Light, then loud colour, then silence: the order follows the sun going down.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "The last rays of the day briefly visit a glade;",
+    "Trees turn loudly to gold, grass to roaring fires -",
+    "A moment later, silence"
+   ]
+  ]
+ },
+ {
+  "id": "notitle",
+  "level": "easy",
+  "title": "No title",
+  "marks": [
+   "-",
+   "-",
+   "-"
+  ],
+  "markLabel": "none",
+  "form": "Free-verse tercet",
+  "scheme": "No rhyme",
+  "metre": "No fixed metre",
+  "sample": "the [FOR]-est goes [SI]-lent at [DUSK]",
+  "how": "Three unrhymed lines that work like a tiny film: a scene, a sudden change, an ending. The order is carried by the image, not by sound.",
+  "character": "Still and visual, close in spirit to the Japanese haiku without its syllable count.",
+  "use": "Short free-verse poems built on one image grew out of the Imagist movement of the 1910s (Ezra Pound, H.D.), which learned from Japanese haiku.",
+  "poem": "The forest, its reflection, and the watcher: the poem moves from the world to the self.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "The forest goes silent at dusk;",
+    "A parallel world under still water -",
+    "I watch myself while the light lasts"
+   ]
+  ]
+ },
+ {
+  "id": "townact2",
+  "level": "easy",
+  "title": "The Town",
+  "excerpt": "Act II, the second of three acts",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "B"
+  ],
+  "markLabel": "rhyme",
+  "form": "Short-line cinquain",
+  "scheme": "ABABB",
+  "metre": "Short lines of two and three beats",
+  "sample": "so [MA]-ny [POOR] / [BUILD]-ings [REACH]-ing [HIGH]-er",
+  "how": "Five short lines on two rhymes. The extra fifth line repeats the B rhyme, so the stanza seems to end once and then keeps going, like a disaster that won't stop.",
+  "character": "Terse and ominous, a chronicle in headlines.",
+  "use": "Five-line stanzas (cinquains) come in many forms, from medieval song to the limerick, which also rhymes on two sounds.",
+  "poem": "Between two sonnets about building the town, this tiny middle act burns it down in five lines.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "So many poor",
+    "Buildings reaching higher",
+    "Make sure you bar your doors",
+    "Then famine and the fire",
+    "Songs of ruin from the choir"
+   ]
+  ]
+ },
+ {
+  "id": "thisisyours",
+  "level": "easy",
+  "title": "This is yours",
+  "marks": [
+   "A",
+   "A",
+   "B",
+   "B",
+   "C",
+   "C"
+  ],
+  "markLabel": "rhyme",
+  "form": "Anapestic couplets",
+  "scheme": "AABBCC",
+  "metre": "Four beats per line in a rolling triple rhythm",
+  "sample": "i [SEE] it, she [SAID] with a [SHRUG] and a [SMILE]",
+  "how": "Rhymed pairs of four-beat lines with two light syllables between most beats. Some rhymes are slant (smile, eye; dreams, feels), and the last couplet runs one sentence across the line break.",
+  "character": "Conversational and light on its feet.",
+  "use": "Anapestic tetrameter is the metre of Clement Clarke Moore's A Visit from St. Nicholas and of many comic and children's poems.",
+  "poem": "A dialogue in three couplets, ending on a full rhyme that hands the future over.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "I see it, she said with a shrug and a smile",
+    "Well we don’t, frowned I, we could use your eye",
+    "Feel free to explain what you see in your dreams",
+    "I cannot, she sighed, but here’s how it feels",
+    "That future is faint. It’s a wish, not a fate",
+    "that you must accept. It’s yours to create."
+   ]
+  ]
+ },
+ {
+  "id": "teacher",
+  "level": "easy",
+  "title": "The Teacher",
+  "marks": [
+   "A",
+   "A",
+   "B",
+   "B",
+   "C",
+   "C",
+   "D",
+   "D",
+   "E",
+   "E",
+   "F",
+   "F"
+  ],
+  "markLabel": "rhyme",
+  "form": "Heroic couplets",
+  "scheme": "AABB CCDD EEFF",
+  "metre": "Loose iambic pentameter in rhyming pairs",
+  "sample": "the [GUARD]-ian's [TORCH], for a [WHILE], is [MINE]",
+  "how": "Rhymed pairs of five-beat lines. Each couplet tends to close a thought, which gives the form a neat finality. Here every couplet turns to a different listener around the fire.",
+  "character": "Polished, confident and often satirical, but here warm and direct.",
+  "use": "The great form of English satire and translation in the seventeenth and eighteenth centuries: John Dryden, Alexander Pope.",
+  "poem": "The teacher speaks to three pupils in turn, then passes on the torch.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "Gather ’round, come closer to the fire",
+    "See the sparks rise effortlessly higher",
+    "The way, sweet one, you feel the heat has grown",
+    "One day, I’m sure, will help you make your own",
+    "It’s fine, young man, if you’re not fond of me",
+    "My mission is to teach you to be free"
+   ],
+   [
+    "And you my friend, with fire in your eyes",
+    "Who so reject the darkness and the lies",
+    "Those embers have glowed since the dawn of time",
+    "The guardian’s torch—for a while—is mine",
+    "Ever it burns to shine on what is true",
+    "If you so yearn I’ll pass it on to you"
+   ]
+  ]
+ },
+ {
+  "id": "illusion",
+  "level": "easy",
+  "title": "The Jester’s Illusion",
+  "marks": [
+   "-",
+   "A",
+   "-",
+   "A",
+   "-",
+   "B",
+   "-",
+   "B",
+   "-",
+   "C",
+   "-",
+   "C"
+  ],
+  "markLabel": "rhyme",
+  "form": "Common metre",
+  "scheme": "xAxA",
+  "metre": "Iambic lines of four and three beats in turn",
+  "sample": "some [TIME] a-[GO], and [FAR] a-[WAY]",
+  "how": "Four-line stanzas alternating four and three beats, with only the short lines rhyming. The pattern is so familiar that the ear expects each rhyme before it arrives.",
+  "character": "Plain, sing-able and storytelling.",
+  "use": "The metre of hymns such as Amazing Grace, of folk ballads and of most of Emily Dickinson's poems.",
+  "poem": "The last poem of the collection: a king has fallen, and the jester wonders which of them was the fool.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "Some time ago, and far away",
+    "A golden crown was lost",
+    "A patient rise, yet quick to fall",
+    "The rhythm of the frost"
+   ],
+   [
+    "I told him so, the Jester said,",
+    "His reign would never stand",
+    "I said they’d had enough of kings",
+    "And castles in the sand"
+   ],
+   [
+    "I always thought, he said and sighed,",
+    "You earn the right to rule",
+    "It’s hard to tell if he or I",
+    "Deserves to play the fool"
+   ]
+  ]
+ },
+ {
+  "id": "fathering",
+  "level": "medium",
+  "title": "Fathering",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "C",
+   "D",
+   "C",
+   "D",
+   "E",
+   "F",
+   "E",
+   "F"
+  ],
+  "markLabel": "rhyme",
+  "form": "Common metre",
+  "scheme": "ABAB CDCD EFEF",
+  "metre": "Iambic lines of four and three beats in turn",
+  "sample": "i [KNOW] that [LOOK] of [HERS], my [BAD]",
+  "how": "Four-line stanzas alternating four and three beats. Here all four lines rhyme crosswise, which tightens the ballad stanza into something closer to a hymn.",
+  "character": "Wry and tender; the jog of the metre keeps the frustration light.",
+  "use": "The metre of hymns, folk ballads and Emily Dickinson.",
+  "poem": "Two stanzas of a father's exasperation, then a third that turns the whole thing around.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "I know that look of hers, my bad",
+    "It’s all on me, again",
+    "Just hang in there, when you’re the dad",
+    "You mustn’t show the strain"
+   ],
+   [
+    "Displeasured eyes are déja vu",
+    "Best shut up, but you won’t",
+    "Deeply frustrated if you do",
+    "Quickly snubbed if you don’t"
+   ],
+   [
+    "It’s funny you felt lost at sea",
+    "Beside her as she grew",
+    "You took it on yourself but she",
+    "Was always there for you"
+   ]
+  ]
+ },
+ {
+  "id": "ohana",
+  "level": "medium",
+  "title": "Ohana",
+  "marks": [
+   "A",
+   "A",
+   "B",
+   "B",
+   "C",
+   "C",
+   "D",
+   "D",
+   "E",
+   "E"
+  ],
+  "markLabel": "rhyme",
+  "form": "Couplets in long lines",
+  "scheme": "AABB CC DDEE",
+  "metre": "Six beats per line, close to the alexandrine",
+  "sample": "[STRAN]-gers in the [CROWD], yet [SIB]-lings [BY] de-[FAULT]",
+  "how": "Rhymed pairs of long six-beat lines, most with a pause in the middle. The long line gives room for a thought and its answer, and the couplet rhyme ties them together. Some rhymes are slant (default, bought).",
+  "character": "Earnest and steady, like a promise spoken slowly.",
+  "use": "Rhyming alexandrine couplets are the classic form of French drama (Racine, Molière). In English, Michael Drayton wrote a whole topographical epic, Poly-Olbion, in them.",
+  "poem": "A short middle stanza of dark water and night road sits between doubt and the decision to go on.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "Strangers in the crowd, yet siblings by default",
+    "Silent understanding, sweet but deerly bought",
+    "Your power and your drive just as strong as mine",
+    "I share your doubts and fear of failure by design"
+   ],
+   [
+    "The waters are so dark, out of breath by fright",
+    "A lonely stretch of road in the dying night"
+   ],
+   [
+    "But listen, we’re alive! There still might be a chance",
+    "Just keep moving forward, that’s how we advance",
+    "Remember your tattoo; no mountain we can’t climb",
+    "One stroke, one step, one perfect moment at a time"
+   ]
+  ]
+ },
+ {
+  "id": "dyer",
+  "level": "medium",
+  "title": "The Dyer",
+  "marks": [
+   "A",
+   "A",
+   "B",
+   "B",
+   "C",
+   "C",
+   "D",
+   "D",
+   "E",
+   "E",
+   "F",
+   "F",
+   "G",
+   "G"
+  ],
+  "markLabel": "rhyme",
+  "form": "Octosyllabic couplets",
+  "scheme": "AABBCC DDEE FFGG",
+  "metre": "Iambic tetrameter in rhyming pairs",
+  "sample": "i [STRAIGHT]-en [OUT] a [TI]-ny [CREASE]",
+  "how": "Lines of eight syllables and four beats, rhymed in pairs. The short couplets move quickly from one small action to the next.",
+  "character": "Brisk and precise, like a craftsman's hands.",
+  "use": "Chaucer's early dream poems, Samuel Butler's Hudibras and Andrew Marvell's To His Coy Mistress all use it.",
+  "poem": "Touch, then image, then transformation: the dyer is changed by the cloth as much as the cloth by the dye.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "I straighten out a tiny crease,",
+    "Feeling the fabric of the fleece",
+    "The touch of the palm of my hand",
+    "Takes stock of every single strand",
+    "The way it speaks and how it reads,",
+    "The cloth will tell me what it needs"
+   ],
+   [
+    "An image forms inside my mind",
+    "Of soul and colour intertwined",
+    "Both earthy brown or crimson red",
+    "Sing clear to me inside my head"
+   ],
+   [
+    "With each new fabric that is dyed",
+    "Each cloth transformed with worker’s pride",
+    "By all the stories they will tell",
+    "The dyer is transformed as well"
+   ]
+  ]
+ },
+ {
+  "id": "prologue",
+  "level": "medium",
+  "title": "Prologue – The Jester speaks",
+  "partOf": "The North Wind by the Tail",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "A",
+   "B",
+   "C",
+   "C"
+  ],
+  "markLabel": "rhyme",
+  "form": "Ottava rima",
+  "scheme": "ABABABCC",
+  "metre": "Iambic pentameter",
+  "sample": "it [TAKES] a [FOOL] to [TELL] a [TALE] like [OURS]",
+  "how": "Eight lines of iambic pentameter: two rhymes alternate through six lines, then a couplet delivers the punchline. The rhymes are slanted on purpose (ours, towers, power; disregard, façade, bard), as the jester himself announces.",
+  "character": "In English it became the form of wit: build up for six lines, deflate in two.",
+  "use": "It comes from Italy (Boccaccio, Ariosto, Tasso). In English, Lord Byron's Don Juan made it the form of satire.",
+  "poem": "The jester promises a tale in slanted rhyme, and the stanza keeps the promise.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "It takes a fool to tell a tale like ours",
+    "To whisper truths we must not disregard",
+    "A town there was, complete with walls and towers",
+    "So strong and proud yet only a façade",
+    "Come learn to see the limit of their power",
+    "Pray silence for the fool, the roguish bard",
+    "A tale of wit and jest in slanted rhyme",
+    "How truth is shaped, a story old as time"
+   ]
+  ]
+ },
+ {
+  "id": "bardjester",
+  "level": "medium",
+  "title": "The Bard and the Jester",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "B",
+   "C",
+   "C",
+   "D",
+   "E",
+   "D",
+   "E",
+   "E",
+   "F",
+   "F"
+  ],
+  "markLabel": "rhyme",
+  "form": "Rhyme royal",
+  "scheme": "ABABBCC DEDEEFF",
+  "metre": "Iambic pentameter",
+  "sample": "i [SEE] the [QUI]-et [DIG]-ni-[TY] of [MAN]",
+  "how": "Seven-line stanzas of five-beat lines. The fourth and fifth lines share a rhyme, linking the opening to the final couplet, and the couplet sums up.",
+  "character": "Stately and reflective, with room to argue and then conclude.",
+  "use": "Brought into English by Geoffrey Chaucer in Troilus and Criseyde, and named after King James I of Scotland. Shakespeare used it for The Rape of Lucrece.",
+  "poem": "Two stanzas, two views of humanity: the bard sings, the jester answers, and the bard gets the last couplet.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "I see the quiet dignity of man",
+    "How each of us will try and fail and fall",
+    "Yet every one of us since we began",
+    "In secret wields the will to heed the call",
+    "To live and love whatever might befall",
+    "Though often beaten down upon one knee",
+    "The human soul will rise, for it is free"
+   ],
+   [
+    "The Bard thus sang of beauty with a smile",
+    "While Jester speaks the truth but with a frown",
+    "I see you think their spirit is worthwhile",
+    "It’s true that men get up when they fall down",
+    "They swim because they do not wish to drown",
+    "Oh Jester, said the Bard, you must be blind",
+    "They swim for they are part of humankind"
+   ]
+  ]
+ },
+ {
+  "id": "spring",
+  "level": "medium",
+  "title": "Spring",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "C",
+   "D",
+   "C",
+   "D",
+   "E",
+   "F",
+   "E",
+   "F",
+   "G",
+   "H",
+   "G",
+   "H"
+  ],
+  "markLabel": "rhyme",
+  "form": "Hymn quatrains",
+  "scheme": "ABAB CDCD EFEF GHGH",
+  "metre": "Iambic lines of four and three beats, with soft endings in the long lines",
+  "sample": "as [DARK]-ness [SPEAKS] of [DAWN] be-[HIND] us",
+  "how": "Cross-rhymed quatrains that mostly alternate four and three beats, like a hymn. Several long lines end on a soft extra syllable (dying, sighing; behind us, remind us), and some rhymes are slant (spring, begin; smile, alive).",
+  "character": "Hopeful and song-like, with a catch of grief in the last stanza.",
+  "use": "Hymn quatrains are the backbone of English church song, from Isaac Watts and Charles Wesley onward.",
+  "poem": "Winter dies, the birds return, and the last stanza remembers the friends who don't.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "I realised winter is dying",
+    "Just now, with the first hint of spring",
+    "Come temperate winds, gently sighing!",
+    "Come new life, about to begin"
+   ],
+   [
+    "As darkness speaks of dawn behind us",
+    "The skeins of birds that flew",
+    "Will soon return and thus remind us",
+    "That life begins anew"
+   ],
+   [
+    "As signs of hope and joy set free",
+    "A million birds will sing",
+    "From winter’s muted hills and trees",
+    "Like every year in spring"
+   ],
+   [
+    "We long for those we’ve lost and grieve",
+    "I think of us and smile",
+    "That friends like us still love and breathe",
+    "So very much alive"
+   ]
+  ]
+ },
+ {
+  "id": "thief",
+  "level": "medium",
+  "title": "The Thief",
+  "marks": [
+   "-",
+   "A",
+   "-",
+   "A",
+   "-",
+   "A",
+   "-",
+   "A",
+   "-",
+   "B",
+   "-",
+   "B",
+   "-",
+   "A",
+   "-",
+   "A",
+   "-",
+   "B",
+   "-",
+   "B"
+  ],
+  "markLabel": "rhyme",
+  "form": "Ballad stanza with refrain",
+  "scheme": "xAxA",
+  "metre": "Common metre: iambic lines of four and three beats in turn",
+  "sample": "the [BOOTS] step [SOFT]-ly [ON] the [STONE]",
+  "how": "Four-line stanzas alternating four and three beats, where only the short lines rhyme. The poem uses just two rhymes throughout, and the refrains (as they have done before; as you have ever been) return like footsteps.",
+  "character": "Hushed and menacing, a voice in the dark.",
+  "use": "The traditional ballad, from medieval folk songs to Coleridge's The Rime of the Ancient Mariner.",
+  "poem": "The thief's refrains turn the accusation around: thief and thug, as they have ever been.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "The boots step softly on the stone",
+    "In silence to the door",
+    "They fall like snowflakes silently",
+    "As they have done before"
+   ],
+   [
+    "A thief deserves a thief they say",
+    "I’ll even out the score",
+    "Enjoy the rich man’s righteous rest",
+    "Like you have done before"
+   ],
+   [
+    "You sleep on riches from the poor",
+    "A sordid little scene",
+    "If thief I am then thug are you",
+    "As you have ever been"
+   ],
+   [
+    "A shadow in the dark I creep",
+    "Faceless ’cross your floor",
+    "The smell of fear is foul in here",
+    "As it has been before"
+   ],
+   [
+    "Never doubt what they will do",
+    "We are as we are seen",
+    "Vile are you while thief am I",
+    "As we have ever been"
+   ]
+  ]
+ },
+ {
+  "id": "discovery",
+  "level": "hard",
+  "title": "Discovery",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "C",
+   "D",
+   "C",
+   "D",
+   "E",
+   "F",
+   "E",
+   "F",
+   "G",
+   "G"
+  ],
+  "markLabel": "rhyme",
+  "form": "Shakespearean sonnet",
+  "scheme": "ABAB CDCD EFEF GG",
+  "metre": "Loose pentameter",
+  "sample": "the [RUGS] are [SHIPS] in a [SEA] of [FIRE]",
+  "how": "Three quatrains with alternating rhyme and a closing couplet. Here the metre is loose and the voices of a father and a child interrupt each other. The couplet ends on beholder, the word that closes all four sonnets in the sequence The Edge of Perception.",
+  "character": "Balanced and argumentative, ideal for a setup and a twist; here playful.",
+  "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
+  "poem": "The first of the four sonnets in The Edge of Perception, on noticing: a child's game teaches the father to see.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "The rugs are ships in a sea of fire",
+    "Those are the rules, and without exception",
+    "Dad, were there really pirates for hire?",
+    "Must have earned them a YEAR of detention"
+   ],
+   [
+    "Every little piece leads him somewhere new",
+    "Rugs are ships to shore on a burning floor",
+    "Facts are only facts if you think they’re true",
+    "You said pirates were rugged once before"
+   ],
+   [
+    "Listen dad, just chill, he said later on",
+    "Trying too hard prevents me from seeing",
+    "My self-conscious mind is not so much gone",
+    "As keenly alive by simply just being"
+   ],
+   [
+    "Our floors may burn, our socks may smoulder",
+    "That’s still in the eyes of the beholder"
+   ]
+  ]
+ },
+ {
+  "id": "vertigo",
+  "level": "hard",
+  "title": "Vertigo",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "C",
+   "D",
+   "C",
+   "D",
+   "E",
+   "F",
+   "E",
+   "F",
+   "G",
+   "G"
+  ],
+  "markLabel": "rhyme",
+  "form": "Shakespearean sonnet",
+  "scheme": "ABAB CDCD EFEF GG",
+  "metre": "Loose pentameter",
+  "sample": "there [IS] a [HOUSE] in a [FOR]-est [SOME]-where",
+  "how": "Three quatrains with alternating rhyme and a closing couplet. The second quatrain ends its rhymes on a soft syllable (chosen, frozen), and the couplet ends on beholder, as in all four sonnets of The Edge of Perception.",
+  "character": "Balanced and argumentative, ideal for a setup and a twist; here full of wonder.",
+  "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
+  "poem": "The second sonnet of The Edge of Perception, on imagining: a house carried into a forest to see the trees from above.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "There is a house in a forest somewhere",
+    "A man had to bring it there on his back",
+    "The building became his food, drink and air",
+    "With ev’ry brick, ev’ry stick, ev’ry sack"
+   ],
+   [
+    "Touching the sky, his infinity room",
+    "Impossible proportions so chosen",
+    "To perfectly fit. I wonder to whom",
+    "Does it cater, this music so frozen"
+   ],
+   [
+    "To see pines from above; tall trees and proud,",
+    "Stretching towards you, frustrated, in vain,",
+    "Is that why he built this personal cloud,",
+    "For new perspectives, again and again?"
+   ],
+   [
+    "Precarious views from heaven’s shoulder",
+    "And yet, in the eyes of the beholder"
+   ]
+  ]
+ },
+ {
+  "id": "chisel",
+  "level": "hard",
+  "title": "Chisel",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "C",
+   "D",
+   "C",
+   "D",
+   "E",
+   "F",
+   "E",
+   "F",
+   "G",
+   "G"
+  ],
+  "markLabel": "rhyme",
+  "form": "Shakespearean sonnet",
+  "scheme": "ABAB CDCD EFEF GG",
+  "metre": "Loose pentameter",
+  "sample": "the [CAN]-vas is [BLANK], the [MU]-sic un-[PLAYED]",
+  "how": "Three quatrains with alternating rhyme and a closing couplet. Many of the rhymes are slant (unplayed, shape; loss, was; surprise, life), so the ear has to work harder. The couplet ends on beholder, as in all four sonnets of The Edge of Perception.",
+  "character": "Balanced and argumentative; here restless, like work in progress.",
+  "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
+  "poem": "The third sonnet of The Edge of Perception, on making: an idea arrives and the artist hangs on.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "The canvas is blank, the music unplayed",
+    "All that hard work to end up in a loss",
+    "This particular piece never took shape",
+    "However brilliant she thought it was"
+   ],
+   [
+    "Suddenly, at the edge of perception",
+    "Something flies, she is taken by surprise",
+    "A different idea, craving for attention",
+    "So it begins, she hangs on for dear life"
+   ],
+   [
+    "It might turn out elegant, or bold",
+    "She never has a say in the matter",
+    "No matter. She enjoys doing what she’s told",
+    "Searching for meaning, mad as a hatter"
+   ],
+   [
+    "Whether her search gets warmer or colder",
+    "Is left in the eyes of the beholder"
+   ]
+  ]
+ },
+ {
+  "id": "years",
+  "level": "hard",
+  "title": "Years and years",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "C",
+   "D",
+   "C",
+   "D",
+   "E",
+   "F",
+   "E",
+   "F",
+   "G",
+   "G"
+  ],
+  "markLabel": "rhyme",
+  "form": "Shakespearean sonnet",
+  "scheme": "ABAB CDCD EFEF GG",
+  "metre": "Loose pentameter",
+  "sample": "the [BIRDS] are [STILL] at the [END] of the [DAY]",
+  "how": "Three quatrains with alternating rhyme and a closing couplet. The quatrains move from evening to memory to an eternal June, and the couplet turns the elegy into consolation.",
+  "character": "Balanced and reflective; here elegiac and gentle.",
+  "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
+  "poem": "A couple long gone still walk together in a glade by the Braemalune, where it is never fully dark.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "The birds are still at the end of the day",
+    "The sky is deeply violet and blue",
+    "The tides of time have swept them both away",
+    "Long ago they lost everyone they knew"
+   ],
+   [
+    "A lifetime shared, once upon a time",
+    "He, smoothing another crease in her brow",
+    "She, bearing him from flawed to the sublime",
+    "They did so but who remembers them now"
+   ],
+   [
+    "As evening falls they are still together",
+    "Gently holding hands in eternal June",
+    "A subtle scent of honey from the heather",
+    "Walking in a glade by the Braemalune"
+   ],
+   [
+    "Still today, in that glade they meet again",
+    "It is never fully dark, even then"
+   ]
+  ]
+ },
+ {
+  "id": "neverfail",
+  "level": "hard",
+  "title": "I never fail",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "C",
+   "D",
+   "C",
+   "D",
+   "E",
+   "F",
+   "E",
+   "F",
+   "G",
+   "G"
+  ],
+  "markLabel": "rhyme",
+  "form": "Shakespearean sonnet",
+  "scheme": "ABAB CDCD EFEF GG",
+  "metre": "Loose pentameter",
+  "sample": "i [NE]-ver [FAIL]. i suc-[CEED], or i [LEARN]",
+  "how": "Three quatrains with alternating rhyme and a closing couplet. The poem opens with a motto, tests it for twelve lines, and the couplet delivers the verdict.",
+  "character": "Balanced and argumentative; here a pep talk with teeth.",
+  "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
+  "poem": "A motto, a couch, and a hard question: how bad do you need to bounce back?",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "I never fail. I succeed, or I learn.",
+    "At first glance, that looks easy, does it not?",
+    "It’s hard when your hopes are all overturned",
+    "Bravado can truly cost you a lot"
+   ],
+   [
+    "Successes are earned away from the light",
+    "Alone and in doubt, where demons will lurk",
+    "It’s not on the day you put up the fight",
+    "Deep down you know you should have done the work"
+   ],
+   [
+    "But here you are now, it is what it is",
+    "A comfortable couch, so cosy and slack",
+    "With horizons to touch. Now tell me this",
+    "Dear friend, how bad do you need to bounce back?"
+   ],
+   [
+    "Your many reasons will not justify",
+    "That you never made the effort to try"
+   ]
+  ]
+ },
+ {
+  "id": "townact3",
+  "level": "hard",
+  "title": "The Town",
+  "excerpt": "Act III, the last of three acts",
+  "marks": [
+   "A",
+   "B",
+   "B",
+   "A",
+   "A",
+   "B",
+   "B",
+   "A",
+   "C",
+   "D",
+   "E",
+   "C",
+   "D",
+   "E"
+  ],
+  "markLabel": "rhyme",
+  "form": "Petrarchan sonnet",
+  "scheme": "ABBAABBA CDECDE",
+  "metre": "Iambic pentameter",
+  "sample": "the [STREETS] re-[TURN] to [LIFE] but [NOW] they're [BROAD]",
+  "how": "An octave of eight lines on two rhymes, folded inward (ABBA ABBA), then a sestet on three new rhymes (CDE CDE). The volta at line 9 brings in silent tensions, and some sestet rhymes are slant (mine, die; found, town).",
+  "character": "Architectural and demanding: the octave sets the scene, the sestet complicates it.",
+  "use": "Perfected by Petrarch in fourteenth-century Italy and brought into English by Thomas Wyatt. Milton and Wordsworth made it their own.",
+  "poem": "The rebuilt town, and the choice between the builder's tools and the soldier's sword.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "The streets return to life but now they're broad",
+    "Straight and paved and wide, like the plans they laid",
+    "With life renewed the cries of anguish fade",
+    "There is a bridge where once there was a ford"
+   ],
+   [
+    "The boats come back with families on board",
+    "The merchants too, and makers to persuade",
+    "The blacksmith finds the tools that he had made",
+    "The builder’s hammer, and the soldier’s sword"
+   ],
+   [
+    "With every step the silent tensions rise",
+    "When he is gone this land might well be mine",
+    "The builder’s tools, the sword the blacksmith found",
+    "The choice of which to wield, so say the wise",
+    "To build or to protect, to do or die",
+    "A pocket of communion makes a town"
+   ]
+  ]
+ },
+ {
+  "id": "pathexile",
+  "level": "hard",
+  "title": "Path to Exile",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "C",
+   "D",
+   "C",
+   "D",
+   "E",
+   "F",
+   "E",
+   "F",
+   "G",
+   "G"
+  ],
+  "markLabel": "rhyme",
+  "form": "Shakespearean sonnet",
+  "scheme": "ABAB CDCD EFEF GG",
+  "metre": "Loose pentameter",
+  "sample": "the [MAN] i [SAW] [WALK]-ing [TO] the [STA]-tion",
+  "how": "Three quatrains with alternating rhyme and a closing couplet. The odd lines of the first two quatrains end on soft syllables (station, destination; persuasion, demarkations), and the couplet admits the speaker may have been wrong.",
+  "character": "Balanced and argumentative; here curious and self-mocking.",
+  "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
+  "poem": "Three guesses about the words across a stranger's chest, and a couplet that wonders if he was smiling.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "The man I saw walking to the station",
+    "He sported Path to Exile cross his chest",
+    "As if Exile was a destination",
+    "An active choice, in earnest or in jest"
+   ],
+   [
+    "Might it show political persuasion",
+    "Or could it be an author’s famous quote",
+    "Maybe he was setting demarkations",
+    "His stony face forbidding and remote"
+   ],
+   [
+    "And then again it also sounds like fun",
+    "Maybe Path to Exile just make games",
+    "A friendly crew who welcome everyone",
+    "The cutting edge, just shy to flaunt their names"
+   ],
+   [
+    "So maybe I was wrong, it’s hard to call",
+    "If he was smiling at me after all"
    ]
   ]
  }

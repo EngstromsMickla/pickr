@@ -18,10 +18,24 @@
   function scanHTML(t) { return esc(t).replace(/\[([^\]]+)\]/g, '<b>$1</b>').replace(/ \| /g, '<span class="cz"> </span>'); }
   function idx(id) { for (var i = 0; i < P.length; i++) if (P[i].id === id) return i; return -1; }
   function nLines(p) { return p.stanzas.reduce(function (a, s) { return a + s.length; }, 0); }
-  function solvedCount() { return P.filter(function (p) { return S.solved[p.id]; }).length; }
+  function shuffled(a) { a = a.slice(); for (var j = a.length - 1; j > 0; j--) { var r = Math.floor(Math.random() * (j + 1)); var t = a[j]; a[j] = a[r]; a[r] = t; } return a; }
+  /* A round is ten poems drawn from the pool, easy ones first. */
+  function drawRound() {
+    var out = [];
+    ['easy', 'medium', 'hard'].forEach(function (lv) {
+      out = out.concat(shuffled(P.filter(function (p) { return p.level === lv; }).map(function (p) { return p.id; })).slice(0, C.round[lv]));
+    });
+    return out;
+  }
+  function validRound(r) { return Array.isArray(r) && r.length && r.every(function (id) { return idx(id) >= 0; }); }
+  if (!validRound(S.round)) { S.round = drawRound(); S.solved = {}; save(); }
+  function newRound() { S.round = drawRound(); S.solved = {}; save(); }
+  function rpos(id) { return S.round.indexOf(id); }
+  function RP() { return S.round.map(function (id) { return P[idx(id)]; }); }
+  function solvedCount() { return S.round.filter(function (id) { return S.solved[id]; }).length; }
   function firstUnsolved(from) {
-    var start = from || 0;
-    for (var k = 0; k < P.length; k++) { var p = P[(start + k) % P.length]; if (!S.solved[p.id]) return p; }
+    var start = from || 0, n = S.round.length;
+    for (var k = 0; k < n; k++) { var id = S.round[(start + k) % n]; if (!S.solved[id]) return P[idx(id)]; }
     return null;
   }
 
@@ -138,13 +152,13 @@
   /* ---------- home ---------- */
   function renderHome() {
     var n = solvedCount(), next = firstUnsolved();
-    var playHref = '#play/' + (next ? next.id : P[0].id);
+    var playHref = next ? '#play/' + next.id : '#poems';
     app.innerHTML =
       '<section class="hero">' + stageHTML(n ? pick(C.pickr.idle) : pick(C.pickr.drop), true) +
       '<h1>' + esc(C.name) + '</h1><p class="tagline">' + esc(C.tagline) + '</p><p>' + esc(C.lede) + '</p>' +
       '<div class="actions"><a class="btn" href="' + playHref + '">' + esc(n ? C.continueBtn : C.play) + '</a>' +
       '<a class="btn ghost" href="#poems">' + esc(C.choose) + '</a><a class="btn ghost" href="#guide">' + esc(C.guide.title) + '</a></div>' +
-      (n ? '<p class="progress">' + esc(U.progress(n, P.length)) + '</p>' + restartHTML() : '') + '</section>' +
+      (n ? '<p class="progress">' + esc(U.progress(n, S.round.length)) + '</p>' + restartHTML() : '') + '</section>' +
       '<section class="card"><h2>' + esc(C.howTitle) + '</h2><ol class="process">' +
       C.steps.map(function (s) { return '<li><b>' + esc(s.t) + '</b><span>' + esc(s.d) + '</span></li>'; }).join('') +
       '</ol><p class="note">' + esc(C.hintNote) + '</p></section>' +
@@ -166,7 +180,7 @@
       } else if (r === 'no') {
         box.innerHTML = restartHTML().replace(/^<div[^>]*>|<\/div>$/g, '');
       } else if (r === 'yes') {
-        S.solved = {}; save(); G = null; lastHints = null;
+        newRound(); G = null; lastHints = null;
         if (location.hash && location.hash !== '#') location.hash = '#'; else route();
         setTimeout(function () { say(U.restartDone, 'oops'); sfx.drop(); }, 50);
       }
@@ -175,11 +189,12 @@
 
   /* ---------- poem list ---------- */
   function renderList() {
-    var html = '<div class="playhead"><a href="#">' + esc(U.home) + '</a><span>' + esc(U.progress(solvedCount(), P.length)) + '</span></div>';
-    if (solvedCount() === P.length) html += '<p class="note">' + esc(U.allDone) + '</p>';
+    var html = '<div class="playhead"><a href="#">' + esc(U.home) + '</a><span>' + esc(U.progress(solvedCount(), S.round.length)) + '</span></div>' +
+      '<p class="small">' + esc(U.roundNote) + '</p>';
+    if (solvedCount() === S.round.length) html += '<div class="note"><p>' + esc(U.allDone) + '</p><button class="btn" type="button" id="newround">' + esc(U.newRound) + '</button></div>';
     ['easy', 'medium', 'hard'].forEach(function (lv) {
       html += '<section class="level"><h2>' + esc(C.levels[lv]) + '</h2><div class="tiles">';
-      P.forEach(function (p, i) {
+      RP().forEach(function (p, i) {
         if (p.level !== lv) return;
         var s = S.solved[p.id];
         html += '<a class="tile' + (s ? ' solved' : '') + '" href="#' + (s ? 'done/' : 'play/') + p.id + '"><span class="n">' + (i + 1) + '</span>' +
@@ -191,22 +206,42 @@
     if (solvedCount()) html += restartHTML();
     app.innerHTML = html;
     wireRestart();
+    var nr = document.getElementById('newround');
+    if (nr) nr.addEventListener('click', function () { newRound(); renderList(); window.scrollTo(0, 0); });
   }
 
   /* ---------- game ---------- */
   var G = null;
-  function chunksFor(p) {
-    var flat = [], k = 0;
-    var st = p.stanzas.map(function (s) { return s.map(function (t) { return { text: t, mark: p.marks[k++] }; }); });
-    var total = k;
-    if (total <= 14) { st.forEach(function (s) { flat = flat.concat(s); }); return [flat]; }
-    var out = [], cur = [];
-    st.forEach(function (s) { if (cur.length && cur.length + s.length > 8) { out.push(cur); cur = []; } cur = cur.concat(s); });
-    if (cur.length) out.push(cur);
-    if (out.length > 1 && out[out.length - 1].length < 8 && out[out.length - 2].length + out[out.length - 1].length <= 12) {
-      var last = out.pop(); out[out.length - 1] = out[out.length - 1].concat(last);
-    }
+  function flatLines(p) {
+    var k = 0, out = [];
+    p.stanzas.forEach(function (st, si) { st.forEach(function (t, li) { out.push({ text: t, mark: p.marks[k++], end: li === st.length - 1 && si < p.stanzas.length - 1 }); }); });
     return out;
+  }
+  /* Units the player can ask for: stanzas, or single lines when the poem is one stanza. */
+  function unitsFor(p) {
+    var u = [], k = 0;
+    if (p.stanzas.length > 1) p.stanzas.forEach(function (st) { u.push({ from: k, to: k + st.length }); k += st.length; });
+    else p.stanzas[0].forEach(function () { u.push({ from: k, to: k + 1 }); k++; });
+    return u;
+  }
+  function maxOthers(p) { return Math.max(0, Math.floor((unitsFor(p).length - 1) / 2)); }
+  /* Pick the other units strategically: big ones first, spread out from the ones already given. */
+  function chooseUnits(p, first, others) {
+    var u = unitsFor(p), given = first ? [0] : [], chosen = [];
+    for (var n = 0; n < others; n++) {
+      var best = -1, bestScore = -1;
+      for (var c = 1; c < u.length; c++) {
+        if (chosen.indexOf(c) >= 0) continue;
+        var all = given.concat(chosen), dist = all.length ? Math.min.apply(null, all.map(function (g) { return Math.abs(g - c); })) : c + 1;
+        var score = (u[c].to - u[c].from) * 2 + dist + c / 100;
+        if (score > bestScore) { bestScore = score; best = c; }
+      }
+      if (best < 0) break;
+      chosen.push(best);
+    }
+    var fixed = {};
+    given.concat(chosen).forEach(function (c) { for (var i = u[c].from; i < u[c].to; i++) fixed[i] = true; });
+    return fixed;
   }
   function inPlace(order, lines, i) { return lines[order[i]].text === lines[i].text; }
   function shuffle(lines, fixed) {
@@ -230,31 +265,54 @@
     var cols = ['#2f6b5e', '#a57a12', '#b8532c', '#1f4a41', '#8a6a1a', '#8a3d22', '#4f8a7c', '#5f6b67', '#6d5a2e'];
     return cols[(mark.charCodeAt(0) - 65 + cols.length * 4) % cols.length];
   }
-  function startGame(id) {
+  function helpPrefs(p) {
+    var h = S.help || {};
+    return { first: h.first !== false, marks: p.markLabel === 'none' ? false : (h.marks !== false), others: Math.min(typeof h.others === 'number' ? h.others : 1, maxOthers(p)) };
+  }
+  function renderSetup(id) {
     var i = idx(id); if (i < 0) { location.hash = '#poems'; return; }
-    var p = P[i];
-    G = { p: p, i: i, chunks: chunksFor(p), ci: 0, hints: 0, marks: p.level === 'easy', sel: null, checked: false, fixed: { 0: true } };
-    G.order = shuffle(G.chunks[0], G.fixed);
+    var p = P[i], one = p.stanzas.length === 1, h = helpPrefs(p), k = maxOthers(p), pos = rpos(id), Hs = U.setup;
+    var head = (pos >= 0 ? U.poem + ' ' + (pos + 1) + ' ' + U.of + ' ' + S.round.length + ' · ' : '') + nLines(p) + ' ' + U.lines + (one ? '' : ', ' + p.stanzas.length + ' ' + U.stanzas);
+    var opts = '';
+    for (var n = 0; n <= k; n++) opts += '<label class="chip"><input type="radio" name="others" value="' + n + '"' + (n === h.others ? ' checked' : '') + '><span>' + n + '</span></label>';
+    app.innerHTML = '<div class="playhead"><a href="#poems">' + esc(U.allPoems) + '</a><span>' + esc(head) + '</span></div>' +
+      stageHTML(pick(C.pickr.setup), false) +
+      '<section class="card setup"><h2>' + esc(Hs.title) + '</h2>' +
+      '<label class="opt"><input type="checkbox" id="o-first"' + (h.first ? ' checked' : '') + '><span>' + esc(one ? Hs.firstLine : Hs.firstStanza) + '</span></label>' +
+      (p.markLabel === 'none' ? '<p class="small">' + esc(Hs.noRhyme) + '</p>' :
+        '<label class="opt"><input type="checkbox" id="o-marks"' + (h.marks ? ' checked' : '') + '><span>' + esc(Hs.marks[p.markLabel]) + '</span></label>') +
+      (k > 0 ? '<fieldset class="others"><legend>' + esc(one ? Hs.otherLines : Hs.otherStanzas) + '</legend><div class="chips">' + opts + '</div>' +
+        '<p class="small">' + esc(Hs.strategic) + '</p></fieldset>' : '') +
+      '<div class="actions"><button class="btn" id="go" type="button">' + esc(Hs.go) + '</button></div></section>';
+    wireBot();
+    document.getElementById('go').addEventListener('click', function () {
+      var first = document.getElementById('o-first').checked;
+      var mk = document.getElementById('o-marks'), marks = mk ? mk.checked : false;
+      var oth = app.querySelector('input[name="others"]:checked'), others = oth ? +oth.value : 0;
+      var old = S.help || {};
+      S.help = { first: first, marks: mk ? marks : old.marks, others: k > 0 ? others : old.others };
+      save();
+      startGame(id, first, marks, others);
+    });
+  }
+  function startGame(id, first, marks, others) {
+    var i = idx(id), p = P[i];
+    G = { p: p, i: i, lines: flatLines(p), hints: 0, marks: marks, sel: null, checked: false, fixed: chooseUnits(p, first, others) };
+    G.order = shuffle(G.lines, G.fixed);
     renderPlay(true);
     say(pick(C.pickr.drop), 'oops'); sfx.drop();
   }
-  function cur() { return G.chunks[G.ci]; }
+  function cur() { return G.lines; }
   function renderPlay(drop) {
-    var p = G.p, n = nLines(p);
-    var html = '<div class="playhead"><a href="#poems">' + esc(U.allPoems) + '</a><span>' + esc(U.poem) + ' ' + (G.i + 1) + ' ' + esc(U.of) + ' ' + P.length + ' · ' + n + ' ' + esc(U.lines) + '</span></div>' +
+    var p = G.p, n = nLines(p), pos = rpos(p.id);
+    var html = '<div class="playhead"><a href="#poems">' + esc(U.allPoems) + '</a><span>' + (pos >= 0 ? esc(U.poem) + ' ' + (pos + 1) + ' ' + esc(U.of) + ' ' + S.round.length + ' · ' : '') + n + ' ' + esc(U.lines) + '</span></div>' +
       stageHTML('', false);
-    if (G.ci > 0) {
-      html += '<div class="donepart">' + G.chunks.slice(0, G.ci).map(function (c) { return '<p>' + c.map(function (l) { return lineHTML(l.text); }).join('<br>') + '</p>'; }).join('') + '</div>';
-    }
-    if (G.chunks.length > 1) html += '<p class="parthead">' + esc(U.part) + ' ' + (G.ci + 1) + ' ' + esc(U.of) + ' ' + G.chunks.length + '</p>';
     html += '<ol class="lines" id="lines"></ol><p class="help">' + esc(U.dragHelp) + '</p>' +
       '<p class="hintline" id="hintline">' + (G.marks ? esc(U.hintMarks[p.markLabel]) : '') + '</p>' +
       '<div class="controls"><button class="btn" id="check" type="button">' + esc(U.check) + '</button>' +
       '<button class="btn ghost" id="hint" type="button">' + esc(U.hint) + '</button>' +
       '<button class="linkbtn" id="reshuffle" type="button">' + esc(U.reshuffle) + '</button></div>';
-    var keep = document.getElementById('bubble') ? document.getElementById('bubble').textContent : '';
     app.innerHTML = html;
-    if (keep) document.getElementById('bubble').textContent = keep;
     wireBot();
     document.getElementById('check').addEventListener('click', check);
     document.getElementById('hint').addEventListener('click', hint);
@@ -272,6 +330,7 @@
       if (G.fixed[pos]) cls += ' locked';
       else if (G.checked) cls += inPlace(G.order, lines, pos) ? ' home' : ' away';
       if (G.sel === pos) cls += ' sel';
+      if (lines[pos].end) cls += ' gap';
       var mark = G.marks && l.mark !== '-' ? '<span class="mark" style="background:' + colourFor(l.mark) + '">' + esc(l.mark) + '</span>' : '';
       var style = drop ? ' style="--d:' + (pos * 55) + 'ms;--dx:' + Math.round(Math.random() * 60 - 30) + 'px;--dr:' + Math.round(Math.random() * 16 - 8) + 'deg"' : '';
       return '<li class="' + cls + '" data-pos="' + pos + '"' + style + '><span class="grip">' + GRIP + '</span>' +
@@ -344,7 +403,7 @@
   function hint() {
     var lines = cur();
     G.hints++; G.sel = null;
-    if (!G.marks) {
+    if (!G.marks && G.p.markLabel !== 'none') {
       G.marks = true;
       document.getElementById('hintline').textContent = U.hintMarks[G.p.markLabel];
       say(pick(C.pickr.hintMarks), 'think'); sfx.hint(); renderLines(); return;
@@ -365,16 +424,6 @@
   }
   function chunkDone() {
     G.checked = true;
-    if (G.ci < G.chunks.length - 1) {
-      sfx.part(); say(pick(C.pickr.part), 'joy');
-      renderLines();
-      setTimeout(function () {
-        G.ci++; G.fixed = { 0: true }; G.checked = false; G.sel = null;
-        G.order = shuffle(cur(), G.fixed);
-        renderPlay(true); sfx.drop();
-      }, 1000);
-      return;
-    }
     var prev = S.solved[G.p.id];
     S.solved[G.p.id] = { hints: prev ? Math.min(prev.hints, G.hints) : G.hints };
     save();
@@ -390,9 +439,9 @@
   function renderDone(id) {
     var i = idx(id); if (i < 0 || !S.solved[id]) { location.hash = '#play/' + id; return; }
     var p = P[i], hints = lastHints !== null ? lastHints : S.solved[id].hints; lastHints = null;
-    var next = firstUnsolved(i + 1) || P[(i + 1) % P.length];
+    var pos = rpos(id), next = firstUnsolved(pos >= 0 ? pos + 1 : 0);
     var sub = p.partOf ? U.from + ' ' + p.partOf : (p.excerpt || '');
-    app.innerHTML = '<div class="playhead"><a href="#poems">' + esc(U.allPoems) + '</a><span>' + esc(U.poem) + ' ' + (i + 1) + ' ' + esc(U.of) + ' ' + P.length + '</span></div>' +
+    app.innerHTML = '<div class="playhead"><a href="#poems">' + esc(U.allPoems) + '</a><span>' + (pos >= 0 ? esc(U.poem) + ' ' + (pos + 1) + ' ' + esc(U.of) + ' ' + S.round.length : '') + '</span></div>' +
       stageHTML(pick(C.pickr.win), false) +
       '<p class="kicker">' + esc(U.hintsUsed(hints)) + '</p>' +
       '<h1 class="ptitle">' + esc(p.title) + '</h1>' + (sub ? '<p class="partof">' + esc(sub) + '</p>' : '') +
@@ -404,7 +453,7 @@
       '<h3>' + esc(U.character) + '</h3><p>' + esc(p.character) + '</p>' +
       '<h3>' + esc(U.use) + '</h3><p>' + esc(p.use) + '</p>' +
       '<h3>' + esc(U.inPoem) + '</h3><p>' + esc(p.poem) + '</p><p class="small"><a href="#guide">' + esc(C.guide.title) + '</a></p></section>' +
-      '<div class="actions"><a class="btn" href="#play/' + next.id + '">' + esc(U.next) + '</a>' +
+      '<div class="actions">' + (next ? '<a class="btn" href="#play/' + next.id + '">' + esc(U.next) + '</a>' : '<a class="btn" href="#poems">' + esc(U.roundDone) + '</a>') +
       '<a class="btn ghost" href="#play/' + p.id + '">' + esc(U.again) + '</a>' +
       '<a class="btn ghost" href="#poems">' + esc(U.allPoems) + '</a></div>';
     wireBot();
@@ -418,7 +467,7 @@
     var g = C.guide, forms = [], byForm = {};
     P.forEach(function (p, i) {
       if (!byForm[p.form]) { byForm[p.form] = { p: p, poems: [] }; forms.push(p.form); }
-      byForm[p.form].poems.push(i);
+      if (rpos(p.id) >= 0) byForm[p.form].poems.push(i);
     });
     var secs = g.sections.map(function (s) { return s.h; }).concat([g.formsTitle]);
     var html = '<div class="playhead"><a href="#">' + esc(U.home) + '</a><a href="#poems">' + esc(U.allPoems) + '</a></div>' +
@@ -432,10 +481,10 @@
     forms.forEach(function (f) {
       var e = byForm[f], p = e.p;
       html += '<div class="gform"><h3>' + esc(f) + '</h3><p class="small">' + esc(p.scheme) + ' · ' + esc(p.metre) + '</p><p>' + esc(p.how) + '</p>' +
-        '<p class="small">' + esc(p.use) + '</p><p class="meet">' + esc(g.meet) + ': ' + e.poems.map(function (i) {
+        '<p class="small">' + esc(p.use) + '</p>' + (e.poems.length ? '<p class="meet">' + esc(g.meet) + ': ' + e.poems.map(function (i) {
           var q = P[i], s = S.solved[q.id];
-          return '<a href="#' + (s ? 'done/' : 'play/') + q.id + '">' + (s ? esc(q.title) : esc(U.poem) + ' ' + (i + 1)) + '</a>';
-        }).join(', ') + '</p></div>';
+          return '<a href="#' + (s ? 'done/' : 'play/') + q.id + '">' + (s ? esc(q.title) : esc(U.poem) + ' ' + (rpos(q.id) + 1)) + '</a>';
+        }).join(', ') + '</p>' : '') + '</div>';
     });
     html += '</section>';
     app.innerHTML = html;
@@ -449,7 +498,7 @@
     var h = location.hash.replace(/^#/, ''), parts = h.split('/');
     window.scrollTo(0, 0);
     if (parts[0] === 'poems') renderList();
-    else if (parts[0] === 'play' && parts[1]) startGame(parts[1]);
+    else if (parts[0] === 'play' && parts[1]) renderSetup(parts[1]);
     else if (parts[0] === 'done' && parts[1]) renderDone(parts[1]);
     else if (parts[0] === 'guide') renderGuide();
     else renderHome();

@@ -155,6 +155,19 @@ main:focus { outline: none; }
 .scan { font: 19px/1.5 var(--serif); background: var(--ochre-soft); border-radius: 8px; padding: 10px 14px; margin: 4px 0 4px; }
 .scan b { color: var(--rust); font-weight: 700; }
 
+/* help setup */
+.line.gap { margin-bottom: 22px; }
+.setup .opt { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; font-size: 17px; cursor: pointer; }
+.setup .opt input { width: 22px; height: 22px; margin: 2px 0 0; accent-color: var(--accent); flex: 0 0 auto; }
+.setup .others { border: 0; padding: 10px 0 0; margin: 0; }
+.setup legend { font-size: 17px; padding: 0; margin-bottom: 8px; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+.chip span { display: inline-flex; align-items: center; justify-content: center; min-width: 48px; height: 44px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); font: 600 17px/1 var(--sans); cursor: pointer; }
+.chip input:checked + span { background: var(--accent); border-color: var(--accent); color: #fff; }
+.chip input:focus-visible + span { outline: 2px solid var(--ochre); outline-offset: 2px; }
+.setup .small { margin-top: 6px; }
+
 /* start over */
 .restart { margin: 4px 0 0; }
 .restart p { margin: 8px 0 0; font-weight: 500; }

@@ -1,6 +1,7 @@
 /* Pickr: site texts. Edit here, not in app.js. No dashes as punctuation in new texts. */
 window.PICKR = {
-  version: "v0.3",
+  version: "v0.4",
+  round: { easy: 3, medium: 4, hard: 3 },
   name: "Pickr",
   tagline: "A mischievous little robot, a scrambled poem",
   lede: "Pickr loves poems so much it can't stop picking them up. Unfortunately it also drops them. Put the lines back in order, and Pickr will tell you which poem it is, what metre it is written in, and how that metre works.",
@@ -9,14 +10,14 @@ window.PICKR = {
   choose: "Choose a poem",
   howTitle: "How to play",
   steps: [
-    { t: "Pickr drops a poem", d: "The lines land in the wrong order. Short poems come whole; long ones come a few stanzas at a time." },
-    { t: "Put the lines back", d: "Pickr always puts the first line in place for you. Drag the others by their handle, or tap two lines to swap them. Rhyme, rhythm and sense are your clues." },
+    { t: "Choose your help", d: "Before each poem, decide how much Pickr should leave in place: the first stanza, rhyme letters, and a few more stanzas picked to help you most." },
+    { t: "Put the lines back", d: "Pickr drops the rest. Drag a line by its handle, or tap two lines to swap them. Gaps show where the stanzas break; rhyme, rhythm and sense are your clues." },
     { t: "Check and discover", d: "Lines in the right place turn green and stay put. Get them all and you learn the poem's title, its form and how the metre works." }
   ],
-  hintNote: "In the warm-up poems, little letters show from the start which lines rhyme. Stuck later on? The first hint shows the letters, and every hint after that makes Pickr put one line in its right place. New to metre? The guide explains the forms and the words.",
+  hintNote: "Each round has ten poems, drawn from forty and starting with the easy ones. Stuck? The first hint shows the rhyme letters if they are hidden, and every hint after that makes Pickr put one line in its right place. New to metre? The guide explains the forms and the words.",
   aboutTitle: "About the poems",
   about: [
-    "Every line in Pickr was written by Dan Engström, a poet who writes in English and Swedish. The twenty poems come from two collections.",
+    "Every line in Pickr was written by Dan Engström, a poet who writes in English and Swedish. The forty poems come from two collections, and every round Pickr picks ten of them.",
     "<em>Echoes of Life</em> (Piratpensionat Produktion, 2025) gathers short poems about noticing, connection, doubt and resistance, with a sequence of four sonnets, <em>The Edge of Perception</em>, at its heart.",
     "<em>Hearts Around the Fire</em> (Piratpensionat Produktion, 2026) is set in Bælwythe, an imagined town at a river's bend, and is told through the voices of the people who live there: the brewer, the merchant, the bard, the wizard nobody talks about, and the jester who says what everyone else is thinking.",
     "The game was vibe-coded with Claude. The poems were not. Pickr only moves the lines around; it never writes or changes a word."
@@ -28,7 +29,11 @@ window.PICKR = {
   ui: {
     allPoems: "All poems",
     restart: "Start over",
-    restartAsk: "Forget every solved poem and start from the beginning?",
+    stanzas: "stanzas",
+    roundNote: "This round: ten poems picked at random from forty, easy ones first.",
+    newRound: "Play a new round",
+    roundDone: "See the whole round",
+    restartAsk: "Forget this round and start a new one with ten fresh poems?",
     restartYes: "Yes, start over",
     restartNo: "Keep my progress",
     restartDone: "All gone! Let's drop some poems.",
@@ -39,7 +44,18 @@ window.PICKR = {
     part: "Part",
     check: "Check",
     hint: "Hint",
-    hintMarks: { rhyme: "Letters show which lines rhyme.", sound: "Letters show the sound each line repeats.", ending: "Soft lines end on an unstressed syllable, hard lines on a stress. They take turns." },
+    setup: {
+      title: "How much help would you like?",
+      firstStanza: "Put the first stanza in place",
+      firstLine: "Put the first line in place",
+      marks: { rhyme: "Show rhyme letters", sound: "Show sound letters (this poem alliterates instead of rhyming)", ending: "Show soft and hard line endings (this poem does not rhyme)" },
+      noRhyme: "This poem has no rhyme, so there are no letters to show. Follow the image.",
+      otherStanzas: "Other stanzas in place",
+      otherLines: "Other lines in place",
+      strategic: "Pickr picks the ones that help you most.",
+      go: "Drop it, Pickr!"
+    },
+    hintMarks: { none: "This poem has no rhyme. Follow the image.", rhyme: "Letters show which lines rhyme.", sound: "Letters show the sound each line repeats.", ending: "Soft lines end on an unstressed syllable, hard lines on a stress. They take turns." },
     solved: "Solved",
     next: "Next poem",
     again: "Play again",
@@ -60,7 +76,7 @@ window.PICKR = {
     hintsUsed: function (n) { return n === 0 ? "Solved without hints. Pickr is impressed." : n === 1 ? "Solved with one hint." : "Solved with " + n + " hints."; },
     progress: function (n, N) { return n + " of " + N + " poems solved"; },
     dragHelp: "Drag the handle, or tap two lines to swap them. Green lines are locked in place.",
-    allDone: "You have put all twenty poems back together. Pickr is speechless, which has never happened before."
+    allDone: "You have put all ten poems back together. Pickr is speechless, which has never happened before."
   },
   guide: {
     nav: "Guide",
@@ -117,6 +133,7 @@ window.PICKR = {
     ]
   },
   pickr: {
+    setup: [ "I promise to drop it gently this time.", "How much should I hold on to?", "Pick your help. I will try not to sneeze." ],
     drop: [
       "Oops. I tripped.",
       "Whoops! I sneezed on the poem.",
