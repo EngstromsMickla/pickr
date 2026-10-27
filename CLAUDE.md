@@ -10,7 +10,7 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 
 ## Fasta principer
 
-- **Dikterna är Dans och ändras aldrig.** Spelet får bara flytta runt raderna. Ingen rad genereras, skrivs om eller "förbättras". Texten i `js/poems.js` är extraherad direkt ur Dans manus (Echoes of Life, 2025, och Hearts Around the Fire, 2026, båda utgivna av Piratpensionat Produktion). Enda rättelsen hittills, godkänd av Dan 2026-10-27: Reckoning, "I've came up" blev "I've come up".
+- **Dikterna är Dans och ändras aldrig.** Spelet får bara flytta runt raderna. Ingen rad genereras, skrivs om eller "förbättras". Texten i `js/poems.js` är extraherad direkt ur Dans manus (Echoes of Life, 2025, och Hearts Around the Fire, 2026, båda utgivna av Piratpensionat Produktion). Rättelser godkända av Dan 2026-10-27: Reckoning, "I've came up" blev "I've come up"; Ohana, "deerly" blev "dearly"; Path to Exile, "demarkations" blev "demarcations". "déja vu" (Fathering) och "just make games" (Path to Exile) är avsiktliga.
 - Allt på engelska (Dans beslut). Inga tankstreck i texter som Claude skriver; Dans egna titlar och dikter lämnas som de är.
 - Licens: dikterna CC BY-NC-SA, enligt Dan ("CC BY-NC-SA 2026", som i Hearts Around the Fire). Allt i repot är offentligt; Dan har bekräftat att alla dikter får vara offentliga.
 - Källorna beskrivs generellt på startsidan (About the poems), inte vid varje dikt (Dans beslut). Utdrag ur längre dikter anger vilken dikt de kommer ur.
@@ -32,8 +32,8 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 ## Spelregler (sedan v0.4)
 
 - **Pool och omgång** (Dans beslut 2026-10-27): poolen har 40 dikter (11 easy, 14 medium, 15 hard). Varje omgång lottar tio: 3 easy, 4 medium, 3 hard (`round` i `js/content.js`), i nivåordning med slumpad ordning inom nivån. Omgången sparas i `pickr.v1` (`round`, `solved`). Start over och Play a new round lottar en ny omgång och nollställer lösta dikter.
-- **Hjälp före varje dikt** (Dans beslut): tre frågor. (1) Första strofen på plats, eller första raden om dikten bara har en strof. (2) Rimbokstäver (ljudbokstäver för allitteration, mjuka och hårda versslut för blankvers; dold för dikter utan rim, `markLabel: "none"`). (3) Antal övriga strofer på plats: 0 till floor((antal strofer − 1) / 2); för enstrofiga dikter räknas rader i stället. Valen sparas (`help`) och föreslås nästa gång.
-- **Strategiskt val av övriga strofer** (`chooseUnits`): girigt, där poängen är strofens radantal × 2 plus avståndet till närmaste redan givna strof. Stora strofer går först och de sprids ut; vid lika poäng vinner den senare. Första strofen räknas aldrig till de övriga.
+- **Hjälp före varje dikt** (Dans beslut, rader och inte strofer): tre frågor. (1) Första raden på plats. (2) Rimbokstäver (ljudbokstäver för allitteration, mjuka och hårda versslut för blankvers; dold för dikter utan rim, `markLabel: "none"`). (3) Antal övriga rader på plats: 0 till en per ytterligare strof, eller en tredjedel av raderna i en enstrofig dikt; minst tre rader lämnas alltid att lägga (`maxOthers`). Valen sparas (`help`) och föreslås nästa gång.
+- **Strategiskt val av övriga rader** (`chooseLines`): i dikter med flera strofer ger Pickr inledningsraden i andra strofer, så långt ifrån redan givna rader som möjligt (större strof vinner vid lika avstånd). I enstrofiga dikter sprids raderna jämnt.
 - Hela dikten spelas på en gång. Mellanrum i listan visar var stroferna bryts.
 - Ordningen kontrolleras mot texten, inte mot radens nummer, så att upprepade rader (pantun) kan byta plats. Blandningen undviker att någon fri rad hamnar rätt från början.
 - Vid Kontrollera låses rader som står rätt (gröna). Ledtrådar: först rimbokstäverna om de är dolda; varje följande ledtråd låser en rad. Antalet ledtrådar visas när dikten är löst.
@@ -54,4 +54,5 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 - v0.1 (2026-10-27): första versionen med alla tjugo dikter.
 - v0.2 (2026-10-27): lättare spel (första raden på plats, rätta rader låses, markeringar från början i Warm up), guiden Metres and terms, förlaget Piratpensionat Produktion för båda samlingarna.
 - v0.3 (2026-10-27): Hem i sidhuvudet och Start over som raderar alla lösta dikter.
-- v0.4 (2026-10-27): pool om 40 dikter (20 nya), omgångar om tio, hjälpval före varje dikt med strategiskt valda strofer, strofmellanrum i spelet.
+- v0.4 (2026-10-27): pool om 40 dikter (20 nya), omgångar om tio, hjälpval före varje dikt, strofmellanrum i spelet.
+- v0.5 (2026-10-27): hjälpen gäller rader i stället för strofer; två stavfel rättade.

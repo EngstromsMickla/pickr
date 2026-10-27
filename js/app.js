@@ -217,30 +217,31 @@
     p.stanzas.forEach(function (st, si) { st.forEach(function (t, li) { out.push({ text: t, mark: p.marks[k++], end: li === st.length - 1 && si < p.stanzas.length - 1 }); }); });
     return out;
   }
-  /* Units the player can ask for: stanzas, or single lines when the poem is one stanza. */
-  function unitsFor(p) {
-    var u = [], k = 0;
-    if (p.stanzas.length > 1) p.stanzas.forEach(function (st) { u.push({ from: k, to: k + st.length }); k += st.length; });
-    else p.stanzas[0].forEach(function () { u.push({ from: k, to: k + 1 }); k++; });
-    return u;
+  /* How many other lines the player may ask for: one per further stanza,
+     or a third of the lines in a one-stanza poem, always leaving at least three lines to place. */
+  function maxOthers(p) {
+    var n = nLines(p), S = p.stanzas.length, k = S > 1 ? S - 1 : Math.floor(n / 3);
+    return Math.max(0, Math.min(k, n - 4));
   }
-  function maxOthers(p) { return Math.max(0, Math.floor((unitsFor(p).length - 1) / 2)); }
-  /* Pick the other units strategically: big ones first, spread out from the ones already given. */
-  function chooseUnits(p, first, others) {
-    var u = unitsFor(p), given = first ? [0] : [], chosen = [];
+  /* Pick the other lines strategically. In a poem with several stanzas Pickr gives the opening
+     line of other stanzas, spread out and largest first; in a one-stanza poem, lines spread evenly. */
+  function chooseLines(p, first, others) {
+    var fixed = {}, given = [];
+    if (first) { fixed[0] = true; given.push(0); }
+    var cands = [];
+    if (p.stanzas.length > 1) { var k = 0; p.stanzas.forEach(function (st, si) { if (si > 0) cands.push({ line: k, size: st.length }); k += st.length; }); }
+    else for (var i = 1; i < nLines(p); i++) cands.push({ line: i, size: 1 });
     for (var n = 0; n < others; n++) {
-      var best = -1, bestScore = -1;
-      for (var c = 1; c < u.length; c++) {
-        if (chosen.indexOf(c) >= 0) continue;
-        var all = given.concat(chosen), dist = all.length ? Math.min.apply(null, all.map(function (g) { return Math.abs(g - c); })) : c + 1;
-        var score = (u[c].to - u[c].from) * 2 + dist + c / 100;
+      var best = null, bestScore = -1;
+      cands.forEach(function (c) {
+        if (fixed[c.line]) return;
+        var dist = given.length ? Math.min.apply(null, given.map(function (g) { return Math.abs(g - c.line); })) : c.line + 1;
+        var score = dist * 10 + c.size + c.line / 1000;
         if (score > bestScore) { bestScore = score; best = c; }
-      }
-      if (best < 0) break;
-      chosen.push(best);
+      });
+      if (!best) break;
+      fixed[best.line] = true; given.push(best.line);
     }
-    var fixed = {};
-    given.concat(chosen).forEach(function (c) { for (var i = u[c].from; i < u[c].to; i++) fixed[i] = true; });
     return fixed;
   }
   function inPlace(order, lines, i) { return lines[order[i]].text === lines[i].text; }
@@ -278,11 +279,11 @@
     app.innerHTML = '<div class="playhead"><a href="#poems">' + esc(U.allPoems) + '</a><span>' + esc(head) + '</span></div>' +
       stageHTML(pick(C.pickr.setup), false) +
       '<section class="card setup"><h2>' + esc(Hs.title) + '</h2>' +
-      '<label class="opt"><input type="checkbox" id="o-first"' + (h.first ? ' checked' : '') + '><span>' + esc(one ? Hs.firstLine : Hs.firstStanza) + '</span></label>' +
+      '<label class="opt"><input type="checkbox" id="o-first"' + (h.first ? ' checked' : '') + '><span>' + esc(Hs.firstLine) + '</span></label>' +
       (p.markLabel === 'none' ? '<p class="small">' + esc(Hs.noRhyme) + '</p>' :
         '<label class="opt"><input type="checkbox" id="o-marks"' + (h.marks ? ' checked' : '') + '><span>' + esc(Hs.marks[p.markLabel]) + '</span></label>') +
-      (k > 0 ? '<fieldset class="others"><legend>' + esc(one ? Hs.otherLines : Hs.otherStanzas) + '</legend><div class="chips">' + opts + '</div>' +
-        '<p class="small">' + esc(Hs.strategic) + '</p></fieldset>' : '') +
+      (k > 0 ? '<fieldset class="others"><legend>' + esc(Hs.otherLines) + '</legend><div class="chips">' + opts + '</div>' +
+        '<p class="small">' + esc(one ? Hs.strategicOne : Hs.strategic) + '</p></fieldset>' : '') +
       '<div class="actions"><button class="btn" id="go" type="button">' + esc(Hs.go) + '</button></div></section>';
     wireBot();
     document.getElementById('go').addEventListener('click', function () {
@@ -297,7 +298,7 @@
   }
   function startGame(id, first, marks, others) {
     var i = idx(id), p = P[i];
-    G = { p: p, i: i, lines: flatLines(p), hints: 0, marks: marks, sel: null, checked: false, fixed: chooseUnits(p, first, others) };
+    G = { p: p, i: i, lines: flatLines(p), hints: 0, marks: marks, sel: null, checked: false, fixed: chooseLines(p, first, others) };
     G.order = shuffle(G.lines, G.fixed);
     renderPlay(true);
     say(pick(C.pickr.drop), 'oops'); sfx.drop();

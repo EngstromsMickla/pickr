@@ -1,6 +1,6 @@
 /* Pickr: site texts. Edit here, not in app.js. No dashes as punctuation in new texts. */
 window.PICKR = {
-  version: "v0.4",
+  version: "v0.5",
   round: { easy: 3, medium: 4, hard: 3 },
   name: "Pickr",
   tagline: "A mischievous little robot, a scrambled poem",
@@ -10,7 +10,7 @@ window.PICKR = {
   choose: "Choose a poem",
   howTitle: "How to play",
   steps: [
-    { t: "Choose your help", d: "Before each poem, decide how much Pickr should leave in place: the first stanza, rhyme letters, and a few more stanzas picked to help you most." },
+    { t: "Choose your help", d: "Before each poem, decide how much Pickr should leave in place: the first line, rhyme letters, and a few more lines picked to help you most." },
     { t: "Put the lines back", d: "Pickr drops the rest. Drag a line by its handle, or tap two lines to swap them. Gaps show where the stanzas break; rhyme, rhythm and sense are your clues." },
     { t: "Check and discover", d: "Lines in the right place turn green and stay put. Get them all and you learn the poem's title, its form and how the metre works." }
   ],
@@ -46,13 +46,12 @@ window.PICKR = {
     hint: "Hint",
     setup: {
       title: "How much help would you like?",
-      firstStanza: "Put the first stanza in place",
       firstLine: "Put the first line in place",
       marks: { rhyme: "Show rhyme letters", sound: "Show sound letters (this poem alliterates instead of rhyming)", ending: "Show soft and hard line endings (this poem does not rhyme)" },
       noRhyme: "This poem has no rhyme, so there are no letters to show. Follow the image.",
-      otherStanzas: "Other stanzas in place",
       otherLines: "Other lines in place",
-      strategic: "Pickr picks the ones that help you most.",
+      strategic: "Pickr picks the lines that help you most: the opening lines of other stanzas, spread through the poem.",
+      strategicOne: "Pickr picks the lines that help you most, spread through the poem.",
       go: "Drop it, Pickr!"
     },
     hintMarks: { none: "This poem has no rhyme. Follow the image.", rhyme: "Letters show which lines rhyme.", sound: "Letters show the sound each line repeats.", ending: "Soft lines end on an unstressed syllable, hard lines on a stress. They take turns." },

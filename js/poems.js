@@ -1265,7 +1265,7 @@ window.PICKR_POEMS = [
   "stanzas": [
    [
     "Strangers in the crowd, yet siblings by default",
-    "Silent understanding, sweet but deerly bought",
+    "Silent understanding, sweet but dearly bought",
     "Your power and your drive just as strong as mine",
     "I share your doubts and fear of failure by design"
    ],
@@ -1905,7 +1905,7 @@ window.PICKR_POEMS = [
   "scheme": "ABAB CDCD EFEF GG",
   "metre": "Loose pentameter",
   "sample": "the [MAN] i [SAW] [WALK]-ing [TO] the [STA]-tion",
-  "how": "Three quatrains with alternating rhyme and a closing couplet. The odd lines of the first two quatrains end on soft syllables (station, destination; persuasion, demarkations), and the couplet admits the speaker may have been wrong.",
+  "how": "Three quatrains with alternating rhyme and a closing couplet. The odd lines of the first two quatrains end on soft syllables (station, destination; persuasion, demarcations), and the couplet admits the speaker may have been wrong.",
   "character": "Balanced and argumentative; here curious and self-mocking.",
   "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
   "poem": "Three guesses about the words across a stranger's chest, and a couplet that wonders if he was smiling.",
@@ -1920,7 +1920,7 @@ window.PICKR_POEMS = [
    [
     "Might it show political persuasion",
     "Or could it be an author’s famous quote",
-    "Maybe he was setting demarkations",
+    "Maybe he was setting demarcations",
     "His stony face forbidding and remote"
    ],
    [
