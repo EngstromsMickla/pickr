@@ -1,6 +1,6 @@
 /* Pickr: site texts. Edit here, not in app.js. No dashes as punctuation in new texts. */
 window.PICKR = {
-  version: "v0.6",
+  version: "v0.7",
   round: { easy: 3, medium: 4, hard: 3 },
   name: "Pickr",
   tagline: "A mischievous little robot, a scrambled poem",
@@ -14,7 +14,7 @@ window.PICKR = {
     { t: "Put the lines back", d: "Pickr drops the rest. Drag a line by its handle, or tap two lines to swap them. Gaps show where the stanzas break; rhyme, rhythm and sense are your clues." },
     { t: "Check and discover", d: "Lines in the right place turn green and stay put. Get them all and you learn the poem's title, its form and how the metre works." }
   ],
-  hintNote: "Each round has ten poems, drawn from forty and starting with the easy ones. Stuck? The first hint shows the rhyme letters if they are hidden, and every hint after that makes Pickr put one line in its right place. New to metre? The guide explains the forms and the words.",
+  hintNote: "Each round has ten poems, drawn from forty and starting with the easy ones. Too hard once you see the poem? Tap More help to change your help without losing your place. The first Hint shows the rhyme letters if they are hidden, and every Hint after that makes Pickr put one line in its right place. New to metre? The guide explains the forms and the words.",
   aboutTitle: "About the poems",
   about: [
     "Every line in Pickr was written by Dan Engström, a poet who writes in English and Swedish. The forty poems come from two collections, and every round Pickr picks ten of them.",
@@ -29,6 +29,15 @@ window.PICKR = {
   ui: {
     allPoems: "All poems",
     restart: "Start over",
+    more: {
+      button: "More help",
+      title: "Too hard? Ask for more help",
+      intro: "You keep every line you have already placed. Pickr adds the help you choose.",
+      more: "Need even more? Each Hint puts one more line in its right place.",
+      apply: "Give me this help",
+      cancel: "Never mind",
+      nothing: "You already have all of that. Try a Hint!"
+    },
     quiz: {
       kicker: "Pickr's quiz",
       scheme: "Which rhyme scheme does the first stanza have?",
@@ -171,6 +180,7 @@ window.PICKR = {
     quiz: [ "Before I tell you everything: a little quiz!", "Quick, before I forget the answer myself!" ],
     quizRight: [ "Yes! You have an ear for this.", "Correct! I would clap if I could." ],
     quizWrong: [ "Oops. Don't worry, I mix them up too.", "Close! Now you know." ],
+    moreHelp: [ "Here you go. I put some lines back for you.", "Better? I tidied up a little." ],
     setup: [ "I promise to drop it gently this time.", "How much should I hold on to?", "Pick your help. I will try not to sneeze." ],
     drop: [
       "Oops. I tripped.",

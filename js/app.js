@@ -313,11 +313,14 @@
       '<p class="hintline" id="hintline">' + (G.marks ? esc(U.hintMarks[p.markLabel]) : '') + '</p>' +
       '<div class="controls"><button class="btn" id="check" type="button">' + esc(U.check) + '</button>' +
       '<button class="btn ghost" id="hint" type="button">' + esc(U.hint) + '</button>' +
-      '<button class="linkbtn" id="reshuffle" type="button">' + esc(U.reshuffle) + '</button></div>';
+      '<button class="linkbtn" id="morehelp" type="button" aria-expanded="false">' + esc(U.more.button) + '</button>' +
+      '<button class="linkbtn" id="reshuffle" type="button">' + esc(U.reshuffle) + '</button></div>' +
+      '<div id="helppanel"></div>';
     app.innerHTML = html;
     wireBot();
     document.getElementById('check').addEventListener('click', check);
     document.getElementById('hint').addEventListener('click', hint);
+    document.getElementById('morehelp').addEventListener('click', toggleHelp);
     document.getElementById('reshuffle').addEventListener('click', function () {
       G.order = shuffle(cur(), G.fixed); G.checked = false; G.sel = null; renderLines(true); say(pick(C.pickr.drop), 'oops'); sfx.drop();
     });
@@ -346,6 +349,56 @@
     });
   }
   function changed() { G.checked = false; }
+  /* ---------- more help during play ---------- */
+  function toggleHelp() {
+    var box = document.getElementById('helppanel'), btn = document.getElementById('morehelp');
+    if (box.innerHTML) { box.innerHTML = ''; btn.setAttribute('aria-expanded', 'false'); return; }
+    btn.setAttribute('aria-expanded', 'true');
+    var p = G.p, Hs = U.setup, M = U.more, k = maxOthers(p), one = p.stanzas.length === 1, h = G.help;
+    var opts = '';
+    for (var n = 0; n <= k; n++) opts += '<label class="chip"><input type="radio" name="mothers" value="' + n + '"' + (n === h.others ? ' checked' : '') + (n < h.others ? ' disabled' : '') + '><span>' + n + '</span></label>';
+    box.innerHTML = '<section class="card setup"><h2>' + esc(M.title) + '</h2><p class="small">' + esc(M.intro) + '</p>' +
+      '<label class="opt"><input type="checkbox" id="m-first"' + (h.first ? ' checked disabled' : '') + '><span>' + esc(Hs.firstLine) + '</span></label>' +
+      (p.markLabel === 'none' ? '' : '<label class="opt"><input type="checkbox" id="m-marks"' + (G.marks ? ' checked disabled' : '') + '><span>' + esc(Hs.marks[p.markLabel]) + '</span></label>') +
+      (k > 0 ? '<fieldset class="others"><legend>' + esc(Hs.otherLines) + '</legend><div class="chips">' + opts + '</div><p class="small">' + esc(one ? Hs.strategicOne : Hs.strategic) + '</p></fieldset>' : '') +
+      '<p class="small">' + esc(M.more) + '</p>' +
+      '<div class="actions"><button class="btn" id="m-apply" type="button">' + esc(M.apply) + '</button><button class="btn ghost" id="m-cancel" type="button">' + esc(M.cancel) + '</button></div></section>';
+    document.getElementById('m-cancel').addEventListener('click', toggleHelp);
+    document.getElementById('m-apply').addEventListener('click', applyHelp);
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  function applyHelp() {
+    var p = G.p, lines = cur();
+    var first = document.getElementById('m-first').checked;
+    var mk = document.getElementById('m-marks'), marks = mk ? mk.checked : G.marks;
+    var oth = app.querySelector('input[name="mothers"]:checked'), others = oth ? +oth.value : G.help.others;
+    var want = chooseLines(p, first, others), added = 0;
+    if (G.help.first !== first || G.help.others !== others) {
+      var prevGiven = chooseLines(p, G.help.first, G.help.others);
+      Object.keys(prevGiven).forEach(function (k) { want[k] = true; });
+    }
+    Object.keys(want).forEach(function (key) {
+      var i = +key; if (G.fixed[i]) return;
+      if (!inPlace(G.order, lines, i)) {
+        for (var j = 0; j < lines.length; j++) {
+          if (!G.fixed[j] && j !== i && lines[G.order[j]].text === lines[i].text) { var t = G.order[i]; G.order[i] = G.order[j]; G.order[j] = t; break; }
+        }
+      }
+      G.fixed[i] = true; added++;
+    });
+    var marksAdded = marks && !G.marks;
+    G.help = { first: first, marks: G.help.marks || marks, others: others };
+    G.marks = G.marks || marks;
+    document.getElementById('helppanel').innerHTML = '';
+    document.getElementById('morehelp').setAttribute('aria-expanded', 'false');
+    document.getElementById('hintline').textContent = G.marks ? U.hintMarks[p.markLabel] : '';
+    changed(); G.sel = null;
+    var all = true; for (var q = 0; q < lines.length; q++) if (!inPlace(G.order, lines, q)) all = false;
+    if (all) return chunkDone();
+    renderLines();
+    if (added || marksAdded) { sfx.hint(); say(pick(C.pickr.moreHelp), 'joy'); } else say(U.more.nothing, 'think');
+    var list = document.getElementById('lines'); if (list) list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
   function tap(pos) {
     if (G.fixed[pos]) return;
     if (G.sel === null) { G.sel = pos; renderLines(); return; }

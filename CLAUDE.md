@@ -39,6 +39,7 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 - **Mickla-ormar** (Dans val i stället för stjärnor, 2026-10-27): 3 ormar om dikten blev hel på högst ceil(rader / 6) + 1 kontroller, 2 på högst dubbelt så många, annars 1 (`snakesFor`). Hjälpval och ledtrådar kostar aldrig ormar men redovisas.
 - **Pickrs fråga** efter varje löst dikt, före formbeskrivningen (`makeQuiz`): tre svarsalternativ, fel svar kostar inget. Frågetypen växlar och börjar lätt (Dans beslut): plats 1 till 3 i omgången rimschemat, plats 4 till 7 omväxlande form och rimschema, plats 8 till 10 omväxlande versmått och form. Rimschemat frågas bara för rimmade dikter; annars blir det formen. Felaktiga alternativ: andra rimmönster av samma längd, former ur andra formfamiljer, andra taktkategorier (`beat` i `js/poems.js`). Frågan sparas med svaret i `solved`.
 - **Sammanfattning efter omgången** (`#summary`): antal ormar, antal igenkända former och rimscheman, de tio dikterna med ormar och svar, dikten med minst hjälp (första raden, rimbokstäver, övriga rader och ledtrådar räknas lika) och formerna man mött. Ingen totalpoäng eller topplista, med avsikt.
+- **More help under spelet** (Dans önskemål 2026-10-27): samma tre val som före dikten, men bara mer hjälp kan läggas till (redan valda val är låsta). Lagda rader behålls; nya rader läggs på plats och låses. Räknas in i hjälpen i sammanfattningen men kostar inga ormar.
 - Vid Kontrollera låses rader som står rätt (gröna). Ledtrådar: först rimbokstäverna om de är dolda; varje följande ledtråd låser en rad. Antalet ledtrådar visas när dikten är löst.
 - Hem finns i sidhuvudet. Start over (på startsidan och i dikt-listan när något är löst) lottar en ny omgång efter en bekräftelse på sidan, inte i en webbläsardialog.
 - Styrning: dra i handtaget (mus och pekskärm) eller tryck på två rader för att byta plats (fungerar också med tangentbord).
@@ -60,3 +61,4 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 - v0.4 (2026-10-27): pool om 40 dikter (20 nya), omgångar om tio, hjälpval före varje dikt, strofmellanrum i spelet.
 - v0.5 (2026-10-27): hjälpen gäller rader i stället för strofer; två stavfel rättade.
 - v0.6 (2026-10-27): Mickla-ormar, Pickrs fråga efter varje dikt och sammanfattning efter omgången. Publicerad tillsammans med v0.4 och v0.5.
+- v0.7 (2026-10-27): More help under spelet.
