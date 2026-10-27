@@ -10,7 +10,7 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 
 ## Fasta principer
 
-- **Dikterna är Dans och ändras aldrig.** Spelet får bara flytta runt raderna. Ingen rad genereras, skrivs om eller "förbättras". Texten i `js/poems.js` är extraherad direkt ur Dans manus (Echoes of Life, manus 2025; Hearts Around the Fire, 2026). Enda rättelsen hittills, godkänd av Dan 2026-10-27: Reckoning, "I've came up" blev "I've come up".
+- **Dikterna är Dans och ändras aldrig.** Spelet får bara flytta runt raderna. Ingen rad genereras, skrivs om eller "förbättras". Texten i `js/poems.js` är extraherad direkt ur Dans manus (Echoes of Life, 2025, och Hearts Around the Fire, 2026, båda utgivna av Piratpensionat Produktion). Enda rättelsen hittills, godkänd av Dan 2026-10-27: Reckoning, "I've came up" blev "I've come up".
 - Allt på engelska (Dans beslut). Inga tankstreck i texter som Claude skriver; Dans egna titlar och dikter lämnas som de är.
 - Licens: dikterna CC BY-NC-SA, enligt Dan ("CC BY-NC-SA 2026", som i Hearts Around the Fire). Allt i repot är offentligt; Dan har bekräftat att alla dikter får vara offentliga.
 - Källorna beskrivs generellt på startsidan (About the poems), inte vid varje dikt (Dans beslut). Utdrag ur längre dikter anger vilken dikt de kommer ur.
@@ -34,8 +34,13 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 - Dikter på högst 14 rader spelas hela. Längre dikter delas i delar om högst 8 rader, strof för strof (en kort sista del slås ihop med den förra om summan blir högst 12).
 - Ordningen kontrolleras mot texten, inte mot radens nummer, så att upprepade rader (pantun) kan byta plats.
 - Blandningen undviker att någon rad hamnar rätt från början.
-- Kontrollera: rader på rätt plats lyser grönt. Första ledtråden visar markeringarna; varje följande ledtråd låser en rad på rätt plats. Antalet ledtrådar visas när dikten är löst.
+- Lättare sedan v0.2 (Dans önskemål 2026-10-27): första raden i varje dikt och del står alltid på plats. Vid Kontrollera låses rader som står rätt (gröna). I nivån Warm up (`easy`) visas markeringarna från början, utan att räknas som ledtråd.
+- Ledtrådar: först visas markeringarna (om de inte redan syns); varje följande ledtråd låser en rad på rätt plats. Antalet ledtrådar visas när dikten är löst.
 - Styrning: dra i handtaget (mus och pekskärm) eller tryck på två rader för att byta plats (fungerar också med tangentbord).
+
+## Guide
+
+- `#guide` (Metres and terms, länkad i sidhuvudet, från startsidan och från varje avslöjande): begrepp i fem avsnitt (rader och strofer, ljud, rytm, versfötter, radlängder) i `guide` i `js/content.js`, med exempel ur dikterna. Avsnittet om formerna byggs ur `js/poems.js`, en post per form, med länkar till dikterna; olösta dikter visas bara med nummer.
 
 ## Test
 
@@ -45,3 +50,4 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 ## Versioner
 
 - v0.1 (2026-10-27): första versionen med alla tjugo dikter.
+- v0.2 (2026-10-27): lättare spel (första raden på plats, rätta rader låses, markeringar från början i Warm up), guiden Metres and terms, förlaget Piratpensionat Produktion för båda samlingarna.

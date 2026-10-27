@@ -143,7 +143,7 @@
       '<section class="hero">' + stageHTML(n ? pick(C.pickr.idle) : pick(C.pickr.drop), true) +
       '<h1>' + esc(C.name) + '</h1><p class="tagline">' + esc(C.tagline) + '</p><p>' + esc(C.lede) + '</p>' +
       '<div class="actions"><a class="btn" href="' + playHref + '">' + esc(n ? C.continueBtn : C.play) + '</a>' +
-      '<a class="btn ghost" href="#poems">' + esc(C.choose) + '</a></div>' +
+      '<a class="btn ghost" href="#poems">' + esc(C.choose) + '</a><a class="btn ghost" href="#guide">' + esc(C.guide.title) + '</a></div>' +
       (n ? '<p class="progress">' + esc(U.progress(n, P.length)) + '</p>' : '') + '</section>' +
       '<section class="card"><h2>' + esc(C.howTitle) + '</h2><ol class="process">' +
       C.steps.map(function (s) { return '<li><b>' + esc(s.t) + '</b><span>' + esc(s.d) + '</span></li>'; }).join('') +
@@ -210,7 +210,7 @@
   function startGame(id) {
     var i = idx(id); if (i < 0) { location.hash = '#poems'; return; }
     var p = P[i];
-    G = { p: p, i: i, chunks: chunksFor(p), ci: 0, hints: 0, marks: false, sel: null, checked: false, fixed: {} };
+    G = { p: p, i: i, chunks: chunksFor(p), ci: 0, hints: 0, marks: p.level === 'easy', sel: null, checked: false, fixed: { 0: true } };
     G.order = shuffle(G.chunks[0], G.fixed);
     renderPlay(true);
     say(pick(C.pickr.drop), 'oops'); sfx.drop();
@@ -312,6 +312,7 @@
     var lines = cur(), N = lines.length, n = 0;
     for (var i = 0; i < N; i++) if (inPlace(G.order, lines, i)) n++;
     G.checked = true; G.sel = null;
+    for (var f = 0; f < N; f++) if (inPlace(G.order, lines, f)) G.fixed[f] = true;
     if (n === N) return chunkDone();
     renderLines();
     if (n === 0) { say(pick(C.pickr.none), 'oops'); } else { say(fmt(pick(C.pickr.close), { n: n, N: N }), 'think'); }
@@ -345,7 +346,7 @@
       sfx.part(); say(pick(C.pickr.part), 'joy');
       renderLines();
       setTimeout(function () {
-        G.ci++; G.fixed = {}; G.checked = false; G.sel = null;
+        G.ci++; G.fixed = { 0: true }; G.checked = false; G.sel = null;
         G.order = shuffle(cur(), G.fixed);
         renderPlay(true); sfx.drop();
       }, 1000);
@@ -379,13 +380,45 @@
       '<h3>' + esc(U.how) + '</h3><p>' + esc(p.how) + '</p>' +
       '<h3>' + esc(U.character) + '</h3><p>' + esc(p.character) + '</p>' +
       '<h3>' + esc(U.use) + '</h3><p>' + esc(p.use) + '</p>' +
-      '<h3>' + esc(U.inPoem) + '</h3><p>' + esc(p.poem) + '</p></section>' +
+      '<h3>' + esc(U.inPoem) + '</h3><p>' + esc(p.poem) + '</p><p class="small"><a href="#guide">' + esc(C.guide.title) + '</a></p></section>' +
       '<div class="actions"><a class="btn" href="#play/' + next.id + '">' + esc(U.next) + '</a>' +
       '<a class="btn ghost" href="#play/' + p.id + '">' + esc(U.again) + '</a>' +
       '<a class="btn ghost" href="#poems">' + esc(U.allPoems) + '</a></div>';
     wireBot();
     var bot = document.getElementById('bot'); if (bot) bot.classList.add('joy');
     confetti();
+  }
+
+  /* ---------- guide ---------- */
+  function slug(t) { return 'g-' + t.toLowerCase().replace(/[^a-z0-9]+/g, '-'); }
+  function renderGuide() {
+    var g = C.guide, forms = [], byForm = {};
+    P.forEach(function (p, i) {
+      if (!byForm[p.form]) { byForm[p.form] = { p: p, poems: [] }; forms.push(p.form); }
+      byForm[p.form].poems.push(i);
+    });
+    var secs = g.sections.map(function (s) { return s.h; }).concat([g.formsTitle]);
+    var html = '<div class="playhead"><a href="#">' + esc(U.home) + '</a><a href="#poems">' + esc(U.allPoems) + '</a></div>' +
+      '<h1 class="ptitle">' + esc(g.title) + '</h1><p>' + esc(g.intro) + '</p>' +
+      '<nav class="toc" aria-label="' + esc(g.contents) + '">' + secs.map(function (h) { return '<button type="button" data-jump="' + slug(h) + '">' + esc(h) + '</button>'; }).join('') + '</nav>';
+    g.sections.forEach(function (s) {
+      html += '<section class="card guide" id="' + slug(s.h) + '"><h2>' + esc(s.h) + '</h2><dl class="terms">' +
+        s.items.map(function (it) { return '<dt>' + esc(it.t) + '</dt><dd>' + esc(it.d) + (it.ex ? '<span class="ex">' + lineHTML(it.ex) + '</span>' : '') + '</dd>'; }).join('') + '</dl></section>';
+    });
+    html += '<section class="card guide" id="' + slug(g.formsTitle) + '"><h2>' + esc(g.formsTitle) + '</h2><p class="small">' + esc(g.formsIntro) + '</p>';
+    forms.forEach(function (f) {
+      var e = byForm[f], p = e.p;
+      html += '<div class="gform"><h3>' + esc(f) + '</h3><p class="small">' + esc(p.scheme) + ' · ' + esc(p.metre) + '</p><p>' + esc(p.how) + '</p>' +
+        '<p class="small">' + esc(p.use) + '</p><p class="meet">' + esc(g.meet) + ': ' + e.poems.map(function (i) {
+          var q = P[i], s = S.solved[q.id];
+          return '<a href="#' + (s ? 'done/' : 'play/') + q.id + '">' + (s ? esc(q.title) : esc(U.poem) + ' ' + (i + 1)) + '</a>';
+        }).join(', ') + '</p></div>';
+    });
+    html += '</section>';
+    app.innerHTML = html;
+    Array.prototype.forEach.call(app.querySelectorAll('[data-jump]'), function (b) {
+      b.addEventListener('click', function () { var t = document.getElementById(b.dataset.jump); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    });
   }
 
   /* ---------- routing ---------- */
@@ -395,6 +428,7 @@
     if (parts[0] === 'poems') renderList();
     else if (parts[0] === 'play' && parts[1]) startGame(parts[1]);
     else if (parts[0] === 'done' && parts[1]) renderDone(parts[1]);
+    else if (parts[0] === 'guide') renderGuide();
     else renderHome();
     app.focus({ preventScroll: true });
   }
