@@ -1,6 +1,6 @@
 /* Pickr: site texts. Edit here, not in app.js. No dashes as punctuation in new texts. */
 window.PICKR = {
-  version: "v0.5",
+  version: "v0.6",
   round: { easy: 3, medium: 4, hard: 3 },
   name: "Pickr",
   tagline: "A mischievous little robot, a scrambled poem",
@@ -29,6 +29,42 @@ window.PICKR = {
   ui: {
     allPoems: "All poems",
     restart: "Start over",
+    quiz: {
+      kicker: "Pickr's quiz",
+      scheme: "Which rhyme scheme does the first stanza have?",
+      schemeOne: "Which rhyme scheme does the poem have?",
+      form: "Which form is this poem written in?",
+      metre: "What is the beat of this poem?",
+      note: "Look at the poem above, or read it aloud. A wrong answer costs nothing.",
+      right: "Right!",
+      wrong: "Not quite. The answer is {a}.",
+      then: "Here is how the form works.",
+      beats: {
+        pent: "Five beats per line (pentameter)",
+        tetra: "Four beats per line (tetrameter)",
+        tri: "Three beats per line (trimeter)",
+        hexa: "Six beats per line (hexameter)",
+        common: "Four and three beats in turn (common metre)",
+        free: "No fixed beat (free verse)",
+        allit: "Four heavy stresses bound by alliteration",
+        short: "Short lines of two to four beats"
+      }
+    },
+    snakes: {
+      label: function (k) { return k + (k === 1 ? " Mickla snake" : " Mickla snakes"); },
+      note: "Mickla snakes: three for a poem put back in a few checks, fewer if you needed many. Help and hints never cost snakes; they are only there to make the poem easier to hear."
+    },
+    summary: {
+      title: "Round complete",
+      pickr: "Ten poems, all in one piece. I didn't drop a single one. Well, I did, but you fixed them.",
+      snakes: function (n, N) { return "Mickla snakes, out of " + N; },
+      quiz: function (n, N) { return "forms and rhymes you recognised, out of " + N; },
+      poems: "Your ten poems",
+      knew: "recognised",
+      missed: "new to you",
+      leastHelp: "You needed the least help with {t}.",
+      forms: "Forms you met this round"
+    },
     stanzas: "stanzas",
     roundNote: "This round: ten poems picked at random from forty, easy ones first.",
     newRound: "Play a new round",
@@ -132,6 +168,9 @@ window.PICKR = {
     ]
   },
   pickr: {
+    quiz: [ "Before I tell you everything: a little quiz!", "Quick, before I forget the answer myself!" ],
+    quizRight: [ "Yes! You have an ear for this.", "Correct! I would clap if I could." ],
+    quizWrong: [ "Oops. Don't worry, I mix them up too.", "Close! Now you know." ],
     setup: [ "I promise to drop it gently this time.", "How much should I hold on to?", "Pick your help. I will try not to sneeze." ],
     drop: [
       "Oops. I tripped.",

@@ -30,7 +30,8 @@ window.PICKR_POEMS = [
     "Birds don’t stop to think",
     "Their instinct is to fly"
    ]
-  ]
+  ],
+  "beat": "tri"
  },
  {
   "id": "interlude",
@@ -74,7 +75,8 @@ window.PICKR_POEMS = [
     "Through your pain",
     "Your revenge will be in vain"
    ]
-  ]
+  ],
+  "beat": "short"
  },
  {
   "id": "roguemind",
@@ -113,7 +115,8 @@ window.PICKR_POEMS = [
     "Make a claim and I will think",
     "What if the opposite were true?"
    ]
-  ]
+  ],
+  "beat": "tetra"
  },
  {
   "id": "poetry",
@@ -144,7 +147,8 @@ window.PICKR_POEMS = [
     "That were slowly and silently sinking out of reach",
     "To lift up life into light from the depths"
    ]
-  ]
+  ],
+  "beat": "free"
  },
  {
   "id": "brewer",
@@ -193,7 +197,8 @@ window.PICKR_POEMS = [
     "Peaceful, pious prayer for you, monk",
     "I toast the courage of the drunk"
    ]
-  ]
+  ],
+  "beat": "tetra"
  },
  {
   "id": "merchant",
@@ -228,7 +233,8 @@ window.PICKR_POEMS = [
     "To grow your fortune, fail and try anew",
     "At rest, at night, to know it’s up to you"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "jester",
@@ -265,7 +271,8 @@ window.PICKR_POEMS = [
     "I whisper you are mortal in his ear",
     "The mocking slave who wields the jester’s tear"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "bard",
@@ -302,7 +309,8 @@ window.PICKR_POEMS = [
     "In light of daybreak living | lies the human heart",
     "There is hope for healing | however hard it is"
    ]
-  ]
+  ],
+  "beat": "allit"
  },
  {
   "id": "aftermath",
@@ -352,7 +360,8 @@ window.PICKR_POEMS = [
     "We lose, we win, I wear my grin",
     "The truth will set us free"
    ]
-  ]
+  ],
+  "beat": "common"
  },
  {
   "id": "wizard",
@@ -421,7 +430,8 @@ window.PICKR_POEMS = [
     "What he can do—for he is strange",
     "Don’t ever make him cross"
    ]
-  ]
+  ],
+  "beat": "common"
  },
  {
   "id": "pantoum",
@@ -470,7 +480,8 @@ window.PICKR_POEMS = [
     "Searching yet dreading what else I will find",
     "To have Steinbeck’s words running through my head"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "nobleman",
@@ -519,7 +530,8 @@ window.PICKR_POEMS = [
     "I think I’ll manage. Then he drained his glass",
     "A toast to plagues, he said, they too shall pass"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "jestersong",
@@ -558,7 +570,8 @@ window.PICKR_POEMS = [
     "You did not ever have it in your keeping",
     "And once you see that, now you never will"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "baelwythe",
@@ -627,7 +640,8 @@ window.PICKR_POEMS = [
     "Oh Bælwythe, while your stones may rest from conflict,",
     "How will you make the future promise yours?"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "totheyoung",
@@ -696,7 +710,8 @@ window.PICKR_POEMS = [
     "Retire the silence that dictates consent",
     "So reshape the world that your fathers have bent"
    ]
-  ]
+  ],
+  "beat": "tetra"
  },
  {
   "id": "holes",
@@ -751,7 +766,8 @@ window.PICKR_POEMS = [
     "You ask what is bringing me down?",
     "There are holes all over my town"
    ]
-  ]
+  ],
+  "beat": "tri"
  },
  {
   "id": "safe",
@@ -806,7 +822,8 @@ window.PICKR_POEMS = [
     "This will keep you safe. That will help you shine.",
     "Just get out of here, this kid will be just fine"
    ]
-  ]
+  ],
+  "beat": "hexa"
  },
  {
   "id": "nextstop",
@@ -861,7 +878,8 @@ window.PICKR_POEMS = [
     "But life resists, it won’t be thus defined",
     "There is no map of bus stops in my mind"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "reckoning",
@@ -916,7 +934,8 @@ window.PICKR_POEMS = [
     "So let there be light, that’s what he told her",
     "Straight in the eye of any beholder"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "town",
@@ -970,7 +989,8 @@ window.PICKR_POEMS = [
     "The refuse reek where flowers once had been",
     "The rich prefer their houses to have stairs"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "transitions",
@@ -997,7 +1017,8 @@ window.PICKR_POEMS = [
     "Trees turn loudly to gold, grass to roaring fires -",
     "A moment later, silence"
    ]
-  ]
+  ],
+  "beat": "free"
  },
  {
   "id": "notitle",
@@ -1024,7 +1045,8 @@ window.PICKR_POEMS = [
     "A parallel world under still water -",
     "I watch myself while the light lasts"
    ]
-  ]
+  ],
+  "beat": "free"
  },
  {
   "id": "townact2",
@@ -1056,7 +1078,8 @@ window.PICKR_POEMS = [
     "Then famine and the fire",
     "Songs of ruin from the choir"
    ]
-  ]
+  ],
+  "beat": "short"
  },
  {
   "id": "thisisyours",
@@ -1089,7 +1112,8 @@ window.PICKR_POEMS = [
     "That future is faint. It’s a wish, not a fate",
     "that you must accept. It’s yours to create."
    ]
-  ]
+  ],
+  "beat": "tetra"
  },
  {
   "id": "teacher",
@@ -1136,7 +1160,8 @@ window.PICKR_POEMS = [
     "Ever it burns to shine on what is true",
     "If you so yearn I’ll pass it on to you"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "illusion",
@@ -1185,7 +1210,8 @@ window.PICKR_POEMS = [
     "It’s hard to tell if he or I",
     "Deserves to play the fool"
    ]
-  ]
+  ],
+  "beat": "common"
  },
  {
   "id": "fathering",
@@ -1234,7 +1260,8 @@ window.PICKR_POEMS = [
     "You took it on yourself but she",
     "Was always there for you"
    ]
-  ]
+  ],
+  "beat": "common"
  },
  {
   "id": "ohana",
@@ -1279,7 +1306,8 @@ window.PICKR_POEMS = [
     "Remember your tattoo; no mountain we can’t climb",
     "One stroke, one step, one perfect moment at a time"
    ]
-  ]
+  ],
+  "beat": "hexa"
  },
  {
   "id": "dyer",
@@ -1332,7 +1360,8 @@ window.PICKR_POEMS = [
     "By all the stories they will tell",
     "The dyer is transformed as well"
    ]
-  ]
+  ],
+  "beat": "tetra"
  },
  {
   "id": "prologue",
@@ -1370,7 +1399,8 @@ window.PICKR_POEMS = [
     "A tale of wit and jest in slanted rhyme",
     "How truth is shaped, a story old as time"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "bardjester",
@@ -1421,7 +1451,8 @@ window.PICKR_POEMS = [
     "Oh Jester, said the Bard, you must be blind",
     "They swim for they are part of humankind"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "spring",
@@ -1480,7 +1511,8 @@ window.PICKR_POEMS = [
     "That friends like us still love and breathe",
     "So very much alive"
    ]
-  ]
+  ],
+  "beat": "common"
  },
  {
   "id": "thief",
@@ -1549,7 +1581,8 @@ window.PICKR_POEMS = [
     "Vile are you while thief am I",
     "As we have ever been"
    ]
-  ]
+  ],
+  "beat": "common"
  },
  {
   "id": "discovery",
@@ -1604,7 +1637,8 @@ window.PICKR_POEMS = [
     "Our floors may burn, our socks may smoulder",
     "That’s still in the eyes of the beholder"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "vertigo",
@@ -1659,7 +1693,8 @@ window.PICKR_POEMS = [
     "Precarious views from heaven’s shoulder",
     "And yet, in the eyes of the beholder"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "chisel",
@@ -1714,7 +1749,8 @@ window.PICKR_POEMS = [
     "Whether her search gets warmer or colder",
     "Is left in the eyes of the beholder"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "years",
@@ -1769,7 +1805,8 @@ window.PICKR_POEMS = [
     "Still today, in that glade they meet again",
     "It is never fully dark, even then"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "neverfail",
@@ -1824,7 +1861,8 @@ window.PICKR_POEMS = [
     "Your many reasons will not justify",
     "That you never made the effort to try"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "townact3",
@@ -1878,7 +1916,8 @@ window.PICKR_POEMS = [
     "To build or to protect, to do or die",
     "A pocket of communion makes a town"
    ]
-  ]
+  ],
+  "beat": "pent"
  },
  {
   "id": "pathexile",
@@ -1933,6 +1972,7 @@ window.PICKR_POEMS = [
     "So maybe I was wrong, it’s hard to call",
     "If he was smiling at me after all"
    ]
-  ]
+  ],
+  "beat": "pent"
  }
 ];

@@ -17,6 +17,7 @@
   function lineHTML(t) { return esc(t).replace(/ \| /g, '<span class="cz"> </span>'); }
   function scanHTML(t) { return esc(t).replace(/\[([^\]]+)\]/g, '<b>$1</b>').replace(/ \| /g, '<span class="cz"> </span>'); }
   function idx(id) { for (var i = 0; i < P.length; i++) if (P[i].id === id) return i; return -1; }
+  function shortTitle(p) { return p.title + (p.excerpt && /^Act /.test(p.excerpt) ? ', ' + p.excerpt.split(',')[0] : ''); }
   function nLines(p) { return p.stanzas.reduce(function (a, s) { return a + s.length; }, 0); }
   function shuffled(a) { a = a.slice(); for (var j = a.length - 1; j > 0; j--) { var r = Math.floor(Math.random() * (j + 1)); var t = a[j]; a[j] = a[r]; a[r] = t; } return a; }
   /* A round is ten poems drawn from the pool, easy ones first. */
@@ -180,7 +181,7 @@
       } else if (r === 'no') {
         box.innerHTML = restartHTML().replace(/^<div[^>]*>|<\/div>$/g, '');
       } else if (r === 'yes') {
-        newRound(); G = null; lastHints = null;
+        newRound(); G = null;
         if (location.hash && location.hash !== '#') location.hash = '#'; else route();
         setTimeout(function () { say(U.restartDone, 'oops'); sfx.drop(); }, 50);
       }
@@ -191,14 +192,14 @@
   function renderList() {
     var html = '<div class="playhead"><a href="#">' + esc(U.home) + '</a><span>' + esc(U.progress(solvedCount(), S.round.length)) + '</span></div>' +
       '<p class="small">' + esc(U.roundNote) + '</p>';
-    if (solvedCount() === S.round.length) html += '<div class="note"><p>' + esc(U.allDone) + '</p><button class="btn" type="button" id="newround">' + esc(U.newRound) + '</button></div>';
+    if (solvedCount() === S.round.length) html += '<div class="note"><p>' + esc(U.allDone) + '</p><div class="actions"><a class="btn" href="#summary">' + esc(U.roundDone) + '</a><button class="btn ghost" type="button" id="newround">' + esc(U.newRound) + '</button></div></div>';
     ['easy', 'medium', 'hard'].forEach(function (lv) {
       html += '<section class="level"><h2>' + esc(C.levels[lv]) + '</h2><div class="tiles">';
       RP().forEach(function (p, i) {
         if (p.level !== lv) return;
         var s = S.solved[p.id];
         html += '<a class="tile' + (s ? ' solved' : '') + '" href="#' + (s ? 'done/' : 'play/') + p.id + '"><span class="n">' + (i + 1) + '</span>' +
-          (s ? '<span class="t">' + esc(p.title) + '</span><span class="f">' + esc(p.form) + '</span>'
+          (s ? '<span class="t">' + esc(shortTitle(p)) + '</span><span class="f">' + esc(p.form) + '</span>' + snakesHTML(s.snakes || 1, true)
              : '<span class="t">?</span><span class="f">' + nLines(p) + ' ' + esc(U.lines) + '</span>') + '</a>';
       });
       html += '</div></section>';
@@ -298,7 +299,7 @@
   }
   function startGame(id, first, marks, others) {
     var i = idx(id), p = P[i];
-    G = { p: p, i: i, lines: flatLines(p), hints: 0, marks: marks, sel: null, checked: false, fixed: chooseLines(p, first, others) };
+    G = { p: p, i: i, lines: flatLines(p), hints: 0, checks: 0, help: { first: first, marks: marks, others: others }, marks: marks, sel: null, checked: false, fixed: chooseLines(p, first, others) };
     G.order = shuffle(G.lines, G.fixed);
     renderPlay(true);
     say(pick(C.pickr.drop), 'oops'); sfx.drop();
@@ -394,7 +395,7 @@
   function check() {
     var lines = cur(), N = lines.length, n = 0;
     for (var i = 0; i < N; i++) if (inPlace(G.order, lines, i)) n++;
-    G.checked = true; G.sel = null;
+    G.checked = true; G.sel = null; G.checks++;
     for (var f = 0; f < N; f++) if (inPlace(G.order, lines, f)) G.fixed[f] = true;
     if (n === N) return chunkDone();
     renderLines();
@@ -423,43 +424,160 @@
     if (all) return chunkDone();
     renderLines();
   }
+  function snakesFor(checks, n) {
+    var ok = Math.ceil(n / 6) + 1;
+    return checks <= ok ? 3 : checks <= ok * 2 ? 2 : 1;
+  }
+  function snakesHTML(k, small) {
+    var h = '<span class="snakes' + (small ? ' sm' : '') + '" role="img" aria-label="' + esc(U.snakes.label(k)) + '">';
+    for (var i = 0; i < 3; i++) h += '<img src="img/mickla.png" alt="" class="' + (i < k ? 'on' : 'off') + '">';
+    return h + '</span>';
+  }
   function chunkDone() {
     G.checked = true;
-    var prev = S.solved[G.p.id];
-    S.solved[G.p.id] = { hints: prev ? Math.min(prev.hints, G.hints) : G.hints };
+    var p = G.p, prev = S.solved[p.id] || {};
+    var help = (G.help.first ? 1 : 0) + (G.help.marks ? 1 : 0) + G.help.others + G.hints;
+    S.solved[p.id] = { hints: G.hints, checks: G.checks, snakes: snakesFor(G.checks, nLines(p)), help: help, setup: G.help, quiz: prev.quiz };
     save();
-    var last = G.hints, id = G.p.id;
+    var id = p.id;
     renderLines();
     document.getElementById('check').disabled = true; document.getElementById('hint').disabled = true;
     sfx.win(); say(pick(C.pickr.win), 'win', true); confetti();
-    setTimeout(function () { lastHints = last; location.hash = '#done/' + id; }, 1600);
+    setTimeout(function () { location.hash = '#done/' + id; }, 1600);
+  }
+
+  /* ---------- Pickr's quiz ---------- */
+  function normScheme(marks) {
+    var map = {}, next = 0;
+    return marks.map(function (m) { if (m === '-') return 'x'; if (!(m in map)) map[m] = String.fromCharCode(65 + next++); return map[m]; }).join('');
+  }
+  function repeatTo(pattern, n) {
+    var out = '', g = 0;
+    while (out.length < n) {
+      out += pattern.replace(/[A-Z]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) + g); });
+      g += (pattern.match(/[A-Z]/g) || []).reduce(function (a, c) { return Math.max(a, c.charCodeAt(0) - 64); }, 0);
+    }
+    return out.slice(0, n);
+  }
+  function schemeChoices(correct) {
+    var n = correct.length, c = [];
+    ['AABB', 'ABAB', 'ABBA', 'xAxA', 'AABA'].forEach(function (pt) {
+      if (n > 4 && n % 4 === 2) { var body = repeatTo(pt, n - 2), top = body.replace(/x/g, '').split('').reduce(function (m, ch) { return Math.max(m, ch.charCodeAt(0)); }, 64); var e = String.fromCharCode(top + 1); c.push(body + e + e); }
+      else c.push(repeatTo(pt, n));
+    });
+    c.push(repeatTo('A', n).replace(/./g, 'A'));
+    if (n === 7) c.push('ABABBCC'); if (n === 8) c.push('ABABABCC'); if (n === 5) c.push('ABABB'); if (n === 3) c.push('xAA', 'ABA');
+    var seen = {}; seen[correct] = 1;
+    c = c.map(function (s) { return s.indexOf('x') >= 0 ? s : normScheme(s.split('')); }).filter(function (s) { if (seen[s]) return false; seen[s] = 1; return true; });
+    return shuffled(c).slice(0, 2);
+  }
+  function family(f) {
+    f = f.toLowerCase();
+    var fams = [['sonnet', 'sonnet'], ['ballad', 'ballad'], ['common metre', 'ballad'], ['hymn', 'ballad'], ['couplet', 'couplet'], ['ottava', 'ottava'], ['rhyme royal', 'royal'], ['free', 'free'], ['alliterative', 'allit'], ['blank', 'blank'], ['pantoum', 'pantoum'], ['quatrain', 'quatrain'], ['tercet', 'tercet'], ['cinquain', 'cinquain'], ['rubai', 'rubai']];
+    for (var i = 0; i < fams.length; i++) if (f.indexOf(fams[i][0]) >= 0) return fams[i][1];
+    return f;
+  }
+  function makeQuiz(p) {
+    var pos = rpos(p.id), type = pos < 0 ? 'form' : pos < 3 ? 'scheme' : pos < 7 ? (pos % 2 ? 'form' : 'scheme') : (pos % 2 ? 'metre' : 'form');
+    var Q = U.quiz, first = p.marks.slice(0, p.stanzas[0].length), correct = normScheme(first);
+    if (type === 'scheme' && (p.markLabel !== 'rhyme' || correct.length < 3 || !/[A-Z]/.test(correct))) type = 'form';
+    var answer, options;
+    if (type === 'scheme') { answer = correct; options = [correct].concat(schemeChoices(correct)); }
+    else if (type === 'metre') {
+      answer = Q.beats[p.beat];
+      options = [answer].concat(shuffled(Object.keys(Q.beats).filter(function (k) { return k !== p.beat; })).slice(0, 2).map(function (k) { return Q.beats[k]; }));
+    } else {
+      answer = p.form; var fams = {}; fams[family(p.form)] = 1; options = [answer];
+      shuffled(P).forEach(function (q) { var f = family(q.form); if (options.length < 3 && !fams[f]) { fams[f] = 1; options.push(q.form); } });
+    }
+    var question = type === 'scheme' ? (p.stanzas.length > 1 ? Q.scheme : Q.schemeOne) : Q[type];
+    return { type: type, question: question, options: shuffled(options), answer: answer, chosen: null };
+  }
+  function quizHTML(q) {
+    var answered = q.chosen !== null;
+    var h = '<section class="card quiz" id="quiz"><p class="kicker">' + esc(U.quiz.kicker) + '</p><h2>' + esc(q.question) + '</h2><div class="qopts">';
+    q.options.forEach(function (o, k) {
+      var cls = 'qopt' + (q.type === 'scheme' ? ' mono' : '');
+      if (answered && o === q.answer) cls += ' right'; else if (answered && o === q.chosen) cls += ' wrong';
+      h += '<button type="button" class="' + cls + '" data-q="' + k + '"' + (answered ? ' disabled' : '') + '>' + esc(o) + '</button>';
+    });
+    h += '</div>';
+    if (answered) h += '<p class="qfb ' + (q.chosen === q.answer ? 'ok' : 'no') + '">' + esc(q.chosen === q.answer ? U.quiz.right : fmt(U.quiz.wrong, { a: q.answer })) + ' ' + esc(U.quiz.then) + '</p>';
+    else h += '<p class="small">' + esc(U.quiz.note) + '</p>';
+    return h + '</section>';
   }
 
   /* ---------- reveal ---------- */
-  var lastHints = null;
   function renderDone(id) {
     var i = idx(id); if (i < 0 || !S.solved[id]) { location.hash = '#play/' + id; return; }
-    var p = P[i], hints = lastHints !== null ? lastHints : S.solved[id].hints; lastHints = null;
+    var p = P[i], sv = S.solved[id];
+    if (!sv.quiz) { sv.quiz = makeQuiz(p); save(); }
+    var q = sv.quiz, answered = q.chosen !== null;
     var pos = rpos(id), next = firstUnsolved(pos >= 0 ? pos + 1 : 0);
     var sub = p.partOf ? U.from + ' ' + p.partOf : (p.excerpt || '');
-    app.innerHTML = '<div class="playhead"><a href="#poems">' + esc(U.allPoems) + '</a><span>' + (pos >= 0 ? esc(U.poem) + ' ' + (pos + 1) + ' ' + esc(U.of) + ' ' + S.round.length : '') + '</span></div>' +
-      stageHTML(pick(C.pickr.win), false) +
-      '<p class="kicker">' + esc(U.hintsUsed(hints)) + '</p>' +
+    var html = '<div class="playhead"><a href="#poems">' + esc(U.allPoems) + '</a><span>' + (pos >= 0 ? esc(U.poem) + ' ' + (pos + 1) + ' ' + esc(U.of) + ' ' + S.round.length : '') + '</span></div>' +
+      stageHTML(answered ? pick(C.pickr.win) : pick(C.pickr.quiz), false) +
+      '<div class="result">' + snakesHTML(sv.snakes || 1) + '<p class="kicker">' + esc(U.snakes.label(sv.snakes || 1)) + ' · ' + esc(U.hintsUsed(sv.hints)) + '</p></div>' +
       '<h1 class="ptitle">' + esc(p.title) + '</h1>' + (sub ? '<p class="partof">' + esc(sub) + '</p>' : '') +
       '<div class="poemtext">' + p.stanzas.map(function (s) { return '<p>' + s.map(lineHTML).join('<br>') + '</p>'; }).join('') + '</div>' +
-      '<section class="card form"><h2>' + esc(U.form) + ': ' + esc(p.form) + '</h2>' +
-      '<dl><dt>' + esc(U.scheme) + '</dt><dd>' + esc(p.scheme) + '</dd><dt>' + esc(U.metre) + '</dt><dd>' + esc(p.metre) + '</dd></dl>' +
-      '<h3>' + esc(U.scansion) + '</h3><p class="scan">' + scanHTML(p.sample) + '</p><p class="small">' + esc(U.scansionNote) + '</p>' +
-      '<h3>' + esc(U.how) + '</h3><p>' + esc(p.how) + '</p>' +
-      '<h3>' + esc(U.character) + '</h3><p>' + esc(p.character) + '</p>' +
-      '<h3>' + esc(U.use) + '</h3><p>' + esc(p.use) + '</p>' +
-      '<h3>' + esc(U.inPoem) + '</h3><p>' + esc(p.poem) + '</p><p class="small"><a href="#guide">' + esc(C.guide.title) + '</a></p></section>' +
-      '<div class="actions">' + (next ? '<a class="btn" href="#play/' + next.id + '">' + esc(U.next) + '</a>' : '<a class="btn" href="#poems">' + esc(U.roundDone) + '</a>') +
-      '<a class="btn ghost" href="#play/' + p.id + '">' + esc(U.again) + '</a>' +
-      '<a class="btn ghost" href="#poems">' + esc(U.allPoems) + '</a></div>';
+      quizHTML(q);
+    if (answered) {
+      html += '<section class="card form"><h2>' + esc(U.form) + ': ' + esc(p.form) + '</h2>' +
+        '<dl><dt>' + esc(U.scheme) + '</dt><dd>' + esc(p.scheme) + '</dd><dt>' + esc(U.metre) + '</dt><dd>' + esc(p.metre) + '</dd></dl>' +
+        '<h3>' + esc(U.scansion) + '</h3><p class="scan">' + scanHTML(p.sample) + '</p><p class="small">' + esc(U.scansionNote) + '</p>' +
+        '<h3>' + esc(U.how) + '</h3><p>' + esc(p.how) + '</p>' +
+        '<h3>' + esc(U.character) + '</h3><p>' + esc(p.character) + '</p>' +
+        '<h3>' + esc(U.use) + '</h3><p>' + esc(p.use) + '</p>' +
+        '<h3>' + esc(U.inPoem) + '</h3><p>' + esc(p.poem) + '</p><p class="small"><a href="#guide">' + esc(C.guide.title) + '</a></p></section>' +
+        '<p class="small">' + esc(U.snakes.note) + '</p>' +
+        '<div class="actions">' + (next ? '<a class="btn" href="#play/' + next.id + '">' + esc(U.next) + '</a>' : (pos >= 0 ? '<a class="btn" href="#summary">' + esc(U.roundDone) + '</a>' : '')) +
+        '<a class="btn ghost" href="#play/' + p.id + '">' + esc(U.again) + '</a>' +
+        '<a class="btn ghost" href="#poems">' + esc(U.allPoems) + '</a></div>';
+    }
+    app.innerHTML = html;
     wireBot();
-    var bot = document.getElementById('bot'); if (bot) bot.classList.add('joy');
+    var bot = document.getElementById('bot'); if (bot && answered) bot.classList.add('joy');
+    Array.prototype.forEach.call(app.querySelectorAll('.qopt'), function (b) {
+      b.addEventListener('click', function () {
+        q.chosen = q.options[+b.dataset.q]; save();
+        var right = q.chosen === q.answer;
+        if (right) { sfx.part(); } else { sfx.close(); }
+        renderDone(id);
+        say(pick(right ? C.pickr.quizRight : C.pickr.quizWrong), right ? 'win' : 'oops');
+        if (right) confetti();
+        var f = app.querySelector('.form'); if (f) f.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+    if (!answered) confetti();
+  }
+
+  /* ---------- round summary ---------- */
+  function renderSummary() {
+    if (solvedCount() < S.round.length) { location.hash = '#poems'; return; }
+    var R = RP(), snakes = 0, right = 0, asked = 0, best = null, forms = [], Su = U.summary;
+    R.forEach(function (p) {
+      var s = S.solved[p.id]; snakes += s.snakes || 1;
+      if (s.quiz && s.quiz.chosen !== null) { asked++; if (s.quiz.chosen === s.quiz.answer) right++; }
+      if (!best || s.help < S.solved[best.id].help || (s.help === S.solved[best.id].help && (s.snakes || 1) > (S.solved[best.id].snakes || 1))) best = p;
+      if (forms.indexOf(p.form) < 0) forms.push(p.form);
+    });
+    var html = '<div class="playhead"><a href="#">' + esc(U.home) + '</a><a href="#poems">' + esc(U.allPoems) + '</a></div>' +
+      stageHTML(Su.pickr, false) +
+      '<h1 class="ptitle">' + esc(Su.title) + '</h1>' +
+      '<div class="sumgrid"><div class="card stat"><span class="big">' + snakes + '</span><span>' + esc(Su.snakes(snakes, R.length * 3)) + '</span></div>' +
+      '<div class="card stat"><span class="big">' + right + '</span><span>' + esc(Su.quiz(right, asked)) + '</span></div></div>' +
+      '<section class="card"><h2>' + esc(Su.poems) + '</h2><ol class="sumlist">' +
+      R.map(function (p) {
+        var s = S.solved[p.id], qq = s.quiz && s.quiz.chosen !== null ? (s.quiz.chosen === s.quiz.answer ? '<span class="qok">' + esc(Su.knew) + '</span>' : '<span class="qno">' + esc(Su.missed) + '</span>') : '';
+        return '<li><a href="#done/' + p.id + '">' + esc(shortTitle(p)) + '</a> <span class="small">' + esc(p.form) + '</span> ' + snakesHTML(s.snakes || 1, true) + ' ' + qq + '</li>';
+      }).join('') + '</ol>' +
+      '<p>' + esc(fmt(Su.leastHelp, { t: shortTitle(best) })) + '</p></section>' +
+      '<section class="card"><h2>' + esc(Su.forms) + '</h2><p>' + forms.map(esc).join(' · ') + '</p><p class="small"><a href="#guide">' + esc(C.guide.title) + '</a></p></section>' +
+      '<div class="actions"><button class="btn" type="button" id="newround">' + esc(U.newRound) + '</button><a class="btn ghost" href="#guide">' + esc(C.guide.title) + '</a></div>';
+    app.innerHTML = html;
+    wireBot(); var bot = document.getElementById('bot'); if (bot) bot.classList.add('joy');
     confetti();
+    document.getElementById('newround').addEventListener('click', function () { newRound(); location.hash = '#poems'; });
   }
 
   /* ---------- guide ---------- */
@@ -484,7 +602,7 @@
       html += '<div class="gform"><h3>' + esc(f) + '</h3><p class="small">' + esc(p.scheme) + ' · ' + esc(p.metre) + '</p><p>' + esc(p.how) + '</p>' +
         '<p class="small">' + esc(p.use) + '</p>' + (e.poems.length ? '<p class="meet">' + esc(g.meet) + ': ' + e.poems.map(function (i) {
           var q = P[i], s = S.solved[q.id];
-          return '<a href="#' + (s ? 'done/' : 'play/') + q.id + '">' + (s ? esc(q.title) : esc(U.poem) + ' ' + (rpos(q.id) + 1)) + '</a>';
+          return '<a href="#' + (s ? 'done/' : 'play/') + q.id + '">' + (s ? esc(shortTitle(q)) : esc(U.poem) + ' ' + (rpos(q.id) + 1)) + '</a>';
         }).join(', ') + '</p>' : '') + '</div>';
     });
     html += '</section>';
@@ -502,6 +620,7 @@
     else if (parts[0] === 'play' && parts[1]) renderSetup(parts[1]);
     else if (parts[0] === 'done' && parts[1]) renderDone(parts[1]);
     else if (parts[0] === 'guide') renderGuide();
+    else if (parts[0] === 'summary') renderSummary();
     else renderHome();
     app.focus({ preventScroll: true });
   }
