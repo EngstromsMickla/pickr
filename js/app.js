@@ -102,7 +102,7 @@
     '....ff....ff....'
   ];
   var HAPPY = [[5, 6], [6, 6], [4, 7], [7, 7], [9, 6], [10, 6], [8, 7], [11, 7]];
-  var COL = { a: '#a57a12', s: '#1f4a41', d: '#1f4a41', g: '#2f6b5e', k: '#1f2a27', e: '#f3d27a', L: '#b8532c', M: '#b8532c', B: '#2f6b5e', W: '#f6f4ef', R: '#b8532c', f: '#1f2a27' };
+  var COL = { a: '#2ea3f2', s: '#9a9a9a', d: '#c9c9c9', g: '#f5f5f5', k: '#141414', e: '#2ea3f2', L: '#d8d8d8', M: '#d8d8d8', B: '#f5f5f5', W: '#dcdcdc', R: '#2ea3f2', f: '#8c8c8c' };
   var PART = { a: 'ant', s: 'ant', d: 'head', g: 'head', k: 'head', e: 'eyes', L: 'armL', M: 'armR', B: 'body', W: 'body', R: 'body', f: 'feet' };
   var ROBOT = (function () {
     var parts = { ant: '', head: '', eyes: '', armL: '', armR: '', body: '', feet: '' };
@@ -112,8 +112,8 @@
         parts[PART[c]] += '<rect x="' + x + '" y="' + y + '" width="1.02" height="1.02" fill="' + COL[c] + '"/>';
       }
     });
-    var happy = HAPPY.map(function (p) { return '<rect x="' + p[0] + '" y="' + p[1] + '" width="1.02" height="1.02" fill="#f3d27a"/>'; }).join('');
-    return '<svg class="pickr" viewBox="-1 -1 18 20" shape-rendering="crispEdges" role="img" aria-label="Pickr, a small green robot">' +
+    var happy = HAPPY.map(function (p) { return '<rect x="' + p[0] + '" y="' + p[1] + '" width="1.02" height="1.02" fill="#2ea3f2"/>'; }).join('');
+    return '<svg class="pickr" viewBox="-1 -1 18 20" shape-rendering="crispEdges" role="img" aria-label="Pickr, a small white robot">' +
       '<g class="p-feet">' + parts.feet + '</g><g class="p-body">' + parts.body + '</g>' +
       '<g class="p-armL">' + parts.armL + '</g><g class="p-armR">' + parts.armR + '</g>' +
       '<g class="p-ant">' + parts.ant + '</g><g class="p-head">' + parts.head + '</g>' +
@@ -139,7 +139,7 @@
   function confetti() {
     var st = document.querySelector('.stage'); if (!st) return;
     var box = document.createElement('div'); box.className = 'confetti';
-    var cols = ['#2f6b5e', '#a57a12', '#b8532c', '#f3d27a', '#1f4a41'];
+    var cols = ['#ffffff', '#2ea3f2', '#7fd0ff', '#e8b04a', '#bdbdbd'];
     for (var i = 0; i < 36; i++) {
       var c = document.createElement('i');
       c.style.left = (20 + Math.random() * 60) + 'px';
@@ -159,7 +159,7 @@
 
   /* ---------- footer ---------- */
   document.getElementById('footer').innerHTML =
-    '<span class="maker"><img src="img/mickla.png" alt="Mickla" width="22" height="22">' + esc(C.copyright) + '</span>' +
+    '<span class="maker"><img src="img/orm.png" alt="Mickla" width="22" height="22">' + esc(C.copyright) + '</span>' +
     '<span><a href="' + esc(C.licenceUrl) + '" rel="license noopener" target="_blank">' + esc(C.licence) + '</a></span>' +
     '<span>' + esc(C.name) + ' · ' + esc(C.version) + '</span>';
 
@@ -367,9 +367,9 @@
     return best;
   }
   function colourFor(mark) {
-    if (mark === 'soft') return '#a57a12';
-    if (mark === 'hard') return '#2f6b5e';
-    var cols = ['#2f6b5e', '#a57a12', '#b8532c', '#1f4a41', '#8a6a1a', '#8a3d22', '#4f8a7c', '#5f6b67', '#6d5a2e'];
+    if (mark === 'soft') return '#e8b04a';
+    if (mark === 'hard') return '#2ea3f2';
+    var cols = ['#2ea3f2', '#e8b04a', '#ff8a66', '#9be27a', '#c9a2ff', '#f2f2f2', '#7fd0ff', '#ffd27a', '#b4b4b4'];
     return cols[(mark.charCodeAt(0) - 65 + cols.length * 4) % cols.length];
   }
   function helpPrefs(p) {
@@ -589,7 +589,7 @@
   }
   function snakesHTML(k, small) {
     var h = '<span class="snakes' + (small ? ' sm' : '') + '" role="img" aria-label="' + esc(U.snakes.label(k)) + '">';
-    for (var i = 0; i < 3; i++) h += '<img src="img/mickla.png" alt="" class="' + (i < k ? 'on' : 'off') + '">';
+    for (var i = 0; i < 3; i++) h += '<img src="img/orm.png" alt="" class="' + (i < k ? 'on' : 'off') + '">';
     return h + '</span>';
   }
   function chunkDone() {

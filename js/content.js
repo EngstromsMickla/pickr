@@ -22,7 +22,7 @@ window.PICKR = {
   steps: [
     { t: "Choose your help", d: "Before each poem, decide how much Pickr should leave in place: the first line, rhyme letters, and a few more lines picked to help you most." },
     { t: "Put the lines back", d: "Pickr drops the rest. Drag a line by its handle, or tap two lines to swap them. Gaps show where the stanzas break; rhyme, rhythm and sense are your clues." },
-    { t: "Check and discover", d: "Lines in the right place turn green and stay put. Get them all and you learn the poem's title, its form and how the metre works." }
+    { t: "Check and discover", d: "Lines in the right place light up blue and stay put. Get them all and you learn the poem's title, its form and how the metre works." }
   ],
   hintNote: "Each round has six poems from a pool of sixty. Choose Easy, Tricky or Challenging when you start a round. Too hard once you see the poem? Tap More help to change your help without losing your place. The first Hint shows the rhyme letters if they are hidden, and every Hint after that makes Pickr put one line in its right place. New to metre? The guide explains the forms and the words.",
   aboutTitle: "About the poems",
@@ -148,7 +148,7 @@ window.PICKR = {
     from: "from",
     hintsUsed: function (n) { return n === 0 ? "Solved without hints. Pickr is impressed." : n === 1 ? "Solved with one hint." : "Solved with " + n + " hints."; },
     progress: function (n, N) { return n + " of " + N + " poems solved"; },
-    dragHelp: "Drag the handle, or tap two lines to swap them. Green lines are locked in place.",
+    dragHelp: "Drag the handle, or tap two lines to swap them. Blue lines are locked in place.",
     allDone: "You have put all six poems back together. Pickr is speechless, which has never happened before."
   },
   guide: {

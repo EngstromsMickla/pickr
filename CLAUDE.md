@@ -19,7 +19,8 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 - Helt statisk sida på GitHub Pages (repot EngstromsMickla/pickr, gren `main`, domänen via `CNAME`). Inga externa typsnitt, CDN eller statistik. Inget lämnar webbläsaren; bara lösta dikter och ljudvalet sparas lokalt (`pickr.v1`), med try/catch.
 - Publicera aldrig till `main` utan att Dan har sagt "publicera".
 - Sidhuvud (Dans beslut 2026-10-28): Micklas orm till vänster och "Pickr by Engströms Mickla" på alla sidor; länkar till startsidan. På telefon står "by Engströms Mickla" under Pickr, och under 360 px döljs länken Home eftersom loggan redan leder hem.
-- Formgivning enligt mickla.se: papper #f6f4ef, grön #2f6b5e, ockra #a57a12, rost #b8532c, serif i rubriker och dikter, systemets sans-serif i brödtext, endast ljust läge. Ormen i sidfoten med "© Engströms Mickla AB 2026", licensen och version.
+- **Grafisk profil (Dans beslut 2026-10-28):** Pickr följer mickla.se i stället för det ljusa formspråket från boost: grafit (#303030, kort #3a3a3a, sidhuvud #4a4a4a, sidfot #222), vit text, rubriker och knappar i Poppins (självhostad i `fonts/`, SIL OFL), vita fyllda knappar eller tunna vita konturer med 3 px hörn, scenblått #2ea3f2 som accent (låsta rader, rätt svar, betoningar), ockra #e8b04a för markerad rad. Logga: Micklas vita pixelorm i en svart ruta (`img/orm.png`, från ormen_W_svart). Pickr är vit med svart visir och blå ögon. Dikternas rader står kvar i ett boktypsnitt (serif), så att de mänskliga texterna skiljer sig från gränssnittet. Startsidan har en scen med blått scenljus.
+- Tidigare formgivning (ersatt): papper #f6f4ef, grön #2f6b5e, ockra #a57a12, rost #b8532c, serif i rubriker och dikter, systemets sans-serif i brödtext, endast ljust läge. Ormen i sidfoten med "© Engströms Mickla AB 2026", licensen och version.
 
 ## Struktur
 

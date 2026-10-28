@@ -1,18 +1,26 @@
+/* Pickr in the Mickla look (mickla.se): graphite, white, Poppins, thin white outlines and a touch of stage blue.
+   Poppins is self-hosted in fonts/ (SIL Open Font License). */
+@font-face { font-family: "Poppins"; font-weight: 500; font-style: normal; font-display: swap; src: url(../fonts/poppins-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "Poppins"; font-weight: 600; font-style: normal; font-display: swap; src: url(../fonts/poppins-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: "Poppins"; font-weight: 700; font-style: normal; font-display: swap; src: url(../fonts/poppins-latin-700-normal.woff2) format("woff2"); }
 :root {
-  --paper: #f6f4ef;
-  --card: #fffdf8;
-  --ink: #1f2a27;
-  --muted: #5f6b67;
-  --line: #e2ddd2;
-  --accent: #2f6b5e;
-  --accent-dark: #1f4a41;
-  --accent-soft: #e3ece8;
-  --ochre: #a57a12;
-  --ochre-soft: #f4ead2;
-  --rust: #b8532c;
-  --rust-soft: #f6e3da;
+  --paper: #303030;
+  --card: #3a3a3a;
+  --raised: #444444;
+  --ink: #ffffff;
+  --text: #dddddd;
+  --muted: #a8a8a8;
+  --line: rgba(255, 255, 255, .14);
+  --accent: #2ea3f2;
+  --accent-dark: #1b8ad3;
+  --accent-soft: rgba(46, 163, 242, .16);
+  --ochre: #e8b04a;
+  --ochre-soft: rgba(232, 176, 74, .16);
+  --rust: #ff8a66;
+  --rust-soft: rgba(255, 138, 102, .16);
+  --head: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --sans: Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 * { box-sizing: border-box; }
 /* Touch: no double-tap zoom wait, no grey flash, and hover styles only where a real mouse exists,
@@ -263,4 +271,127 @@ main:focus { outline: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .pickr, .pickr .p-eyes, .pickr .p-ant, .lines.drop .line, .confetti i, .bubble.pop { animation: none !important; }
+}
+
+/* ======================================================================
+   Mickla stage theme: overrides on top of the layout above
+   ====================================================================== */
+body { background: var(--paper); color: var(--text); }
+h1, h2, h3 { font-family: var(--head); font-weight: 600; color: var(--ink); letter-spacing: -.005em; }
+h1 { font-weight: 700; }
+a { color: var(--accent); }
+.small, .help, .progress, .playhead { color: var(--muted); }
+
+/* header like mickla.se: grey bar, black logo square with the white snake */
+.top { background: #4a4a4a; border-bottom: 0; }
+.top-inner { height: 64px; }
+.brand { color: #d0d0d0; font: 500 14px/1.15 var(--head); gap: 12px; }
+.brand .logo { width: 44px; height: 44px; background: #000; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.brand .logo img { width: 36px; height: 36px; image-rendering: pixelated; }
+.brand b { font: 700 22px/1 var(--head); color: #fff; letter-spacing: .01em; }
+.topnav a { font: 600 16px/1 var(--head); color: #fff; }
+.topnav a:not(:first-child), .topnav a[href="#guide"] { color: rgba(255,255,255,.72); }
+.soundbtn { font: 500 13px/1 var(--head); color: #fff; border: 1px solid rgba(255,255,255,.6); border-radius: 3px; }
+.soundbtn[aria-pressed="false"] { color: var(--rust); border-color: var(--rust); }
+@media (max-width: 430px) {
+  .brand { font-size: 12px; gap: 9px; }
+  .brand b { font-size: 19px; }
+  .brand .logo { width: 38px; height: 38px; }
+  .brand .logo img { width: 31px; height: 31px; }
+  .topnav a { font-size: 15px; }
+  .top .topnav a[href="#"] { display: none; }
+  .brand .wordmark { font-size: 11px; }
+}
+
+/* buttons: white fill, or thin white outline like "Kontakta oss" */
+.btn { font: 600 15px/1 var(--head); border-radius: 3px; background: #fff; border: 1px solid #fff; color: #222; letter-spacing: .01em; }
+.btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.75); }
+.btn.ochre { background: transparent; color: var(--rust); border-color: var(--rust); }
+.linkbtn { color: var(--muted); font-family: var(--head); font-size: 14px; }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { background: #e6e6e6; }
+  .btn.ghost:hover { background: rgba(255,255,255,.08); }
+  .tile:hover, .mode:hover, .qopt:hover:not(:disabled) { border-color: rgba(255,255,255,.6); }
+}
+
+/* surfaces */
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 4px; }
+.note { background: rgba(255,255,255,.06); color: var(--text); border-left: 3px solid var(--accent); border-radius: 2px; }
+
+/* home: Pickr on a lit stage */
+.hero { position: relative; margin: 0 -16px; padding: 30px 16px 26px;
+  background:
+    radial-gradient(ellipse 55% 70% at 18% 8%, rgba(46,163,242,.34), transparent 70%),
+    radial-gradient(ellipse 40% 60% at 85% 0%, rgba(90,120,255,.22), transparent 70%),
+    linear-gradient(180deg, #15171c 0%, #1d1f24 70%, #303030 100%); }
+.hero h1 { font-size: 46px; margin-top: 4px; }
+.tagline { font: 500 18px/1.4 var(--head); color: #fff; font-style: normal; }
+.hero > p { color: #d6d6d6; }
+@media (max-width: 520px) { .hero h1 { font-size: 38px; } }
+
+/* Pickr: a white robot under a spotlight */
+.bot svg { filter: drop-shadow(0 6px 14px rgba(0,0,0,.45)) drop-shadow(0 0 18px rgba(46,163,242,.25)); }
+.bubble { background: #fff; color: #222; border: 0; border-radius: 4px; font-family: var(--sans); box-shadow: 0 6px 18px rgba(0,0,0,.35); }
+.bubble::before { background: #fff; border: 0; }
+
+/* process map */
+.process li { background: rgba(255,255,255,.04); border-radius: 4px; }
+.process li::before { background: #fff; color: #222; font-family: var(--head); border-radius: 2px; }
+.process b { font-family: var(--head); color: #fff; font-size: 16px; }
+.process span { color: var(--muted); }
+@media (min-width: 700px) { .process li:not(:last-child)::after { border-left-color: var(--accent); } }
+
+/* poem list */
+.level h2 { font-size: 18px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.tile { border-radius: 4px; color: var(--ink); }
+.tile .n { font: 700 28px/1 var(--head); color: #fff; }
+.tile .t { font-family: var(--serif); color: var(--ink); }
+.tile.solved { background: var(--accent-soft); border-color: rgba(46,163,242,.5); }
+.tile.solved .n { color: var(--accent); }
+
+/* playing: the poem lines stay in a book face, everything else is Mickla */
+.line { border-radius: 4px; background: var(--card); }
+.line .grip { color: #8a8a8a; }
+.line .txt { color: #fff; }
+.line .mark { color: #111; border-radius: 3px; }
+.line.sel { background: var(--ochre-soft); border-color: var(--ochre); box-shadow: 0 0 0 2px var(--ochre) inset; }
+.line.home, .line.locked { background: var(--accent-soft); border-color: var(--accent); }
+.line.home .grip, .line.locked .grip { color: var(--accent); }
+.line.dragging { box-shadow: 0 14px 30px rgba(0,0,0,.5); background: var(--raised); }
+.hintline { color: var(--ochre); }
+
+/* reveal */
+.kicker { font-family: var(--head); color: var(--accent); }
+.ptitle { font-size: 34px; }
+.partof { font: 500 16px/1.4 var(--head); color: var(--muted); font-style: normal; }
+.poemtext { color: #f2f2f2; }
+.form dd { color: #fff; }
+.scan { background: rgba(255,255,255,.06); border-left: 3px solid var(--accent); border-radius: 2px; color: #eee; }
+.scan b { color: var(--accent); }
+.quiz { border-color: var(--accent); }
+.qopt { border-radius: 4px; background: rgba(255,255,255,.04); color: #fff; }
+.qopt.right { background: var(--accent-soft); border-color: var(--accent); }
+.qopt.wrong { background: var(--rust-soft); border-color: var(--rust); }
+.stat .big { font: 700 44px/1 var(--head); color: #fff; }
+.snakes img.off { opacity: .18; }
+
+/* setup, level choice, save */
+.setup .opt input { accent-color: var(--accent); }
+.chip span { border-radius: 3px; background: rgba(255,255,255,.04); color: #fff; font-family: var(--head); }
+.chip input:checked + span { background: #fff; border-color: #fff; color: #222; }
+.mode { border-radius: 4px; color: var(--text); }
+.mode b { font: 700 24px/1.2 var(--head); color: #fff; }
+.mode:active { background: var(--accent-soft); border-color: var(--accent); }
+.savelink { background: #262626; color: #fff; border-radius: 3px; }
+.toc button { border-radius: 3px; color: #fff; background: rgba(255,255,255,.05); font-family: var(--head); }
+.terms dt { font-family: var(--head); color: #fff; font-size: 16px; }
+.terms .ex { border-left-color: var(--accent); }
+
+/* footer like mickla.se */
+.site-foot { background: #222; margin-top: 30px; }
+.footer { border-top: 0; margin-top: 0; color: #9a9a9a; }
+.footer .maker img { opacity: .9; }
+.footer a { color: #bdbdbd; }
+@media (max-width: 360px) {
+  .top .topnav a[href="#guide"] { display: none; }
 }
