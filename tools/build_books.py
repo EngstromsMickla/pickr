@@ -8,7 +8,7 @@ import json, re, sys
 from docx import Document
 
 # Layout only: lines are split where the manuscript lost a line break; words are never changed.
-CORRECTIONS = [("I’ve came up", "I’ve come up"), ("deerly bought", "dearly bought"), ("demarkations", "demarcations")]
+CORRECTIONS = [("I’ve came up", "I’ve come up"), ("deerly bought", "dearly bought"), ("demarkations", "demarcations"), ("small loafs of bread", "small loaves of bread")]
 BOOKS = {
     "echoes": dict(title="Echoes of Life", skip_headings={"Echoes of Life", "Contents"}, intro={"Foreword"},
                    skip_paras={"By Dan Engström"}),
