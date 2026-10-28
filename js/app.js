@@ -22,23 +22,28 @@
   function shuffled(a) { a = a.slice(); for (var j = a.length - 1; j > 0; j--) { var r = Math.floor(Math.random() * (j + 1)); var t = a[j]; a[j] = a[r]; a[r] = t; } return a; }
   /* A round is ten poems drawn from the pool, easy ones first. */
   /* Poems from earlier rounds are kept out until every poem in that level has been played. */
-  function drawRound() {
-    var out = [], seen = S.seen || [];
+  function drawRound(mode) {
+    var out = [], seen = S.seen || [], mix = C.mixes[mode] || C.mixes.easy;
     ['easy', 'medium', 'hard'].forEach(function (lv) {
+      if (!mix[lv]) return;
       var all = P.filter(function (p) { return p.level === lv; }).map(function (p) { return p.id; });
       var fresh = shuffled(all.filter(function (id) { return seen.indexOf(id) < 0; }));
-      if (fresh.length < C.round[lv]) {
+      if (fresh.length < mix[lv]) {
         seen = seen.filter(function (id) { return all.indexOf(id) < 0; });
         fresh = fresh.concat(shuffled(all.filter(function (id) { return fresh.indexOf(id) < 0 && (S.round || []).indexOf(id) < 0; })));
       }
-      out = out.concat(fresh.slice(0, C.round[lv]));
+      out = out.concat(fresh.slice(0, mix[lv]));
     });
     S.seen = seen;
     return out;
   }
-  function validRound(r) { return Array.isArray(r) && r.length && r.every(function (id) { return idx(id) >= 0; }); }
-  if (!validRound(S.round)) { S.round = drawRound(); S.solved = {}; save(); }
-  function newRound() { S.seen = (S.seen || []).concat((S.round || []).filter(function (id) { return (S.seen || []).indexOf(id) < 0; })); S.round = drawRound(); S.solved = {}; save(); }
+  function validRound(r) { return Array.isArray(r) && r.length === C.roundSize && r.every(function (id) { return idx(id) >= 0; }); }
+  if (!validRound(S.round)) { S.round = []; S.solved = {}; save(); }
+  function hasRound() { return S.round.length > 0; }
+  function newRound(mode) {
+    S.seen = (S.seen || []).concat(S.round.filter(function (id) { return (S.seen || []).indexOf(id) < 0; }));
+    S.mode = mode; S.round = drawRound(mode); S.solved = {}; save();
+  }
   function rpos(id) { return S.round.indexOf(id); }
   function RP() { return S.round.map(function (id) { return P[idx(id)]; }); }
   function solvedCount() { return S.round.filter(function (id) { return S.solved[id]; }).length; }
@@ -160,19 +165,19 @@
 
   /* ---------- home ---------- */
   function renderHome() {
-    var n = solvedCount(), next = firstUnsolved();
-    var playHref = next ? '#play/' + next.id : '#poems';
+    var n = hasRound() ? solvedCount() : 0, next = hasRound() ? firstUnsolved() : null;
+    var playHref = !hasRound() ? '#new' : next ? '#play/' + next.id : '#summary';
     app.innerHTML =
       '<section class="hero">' + stageHTML(n ? pick(C.pickr.idle) : pick(C.pickr.drop), true) +
       '<h1>' + esc(C.name) + '</h1><p class="tagline">' + esc(C.tagline) + '</p><p>' + esc(C.lede) + '</p>' +
       '<div class="actions"><a class="btn" href="' + playHref + '">' + esc(n ? C.continueBtn : C.play) + '</a>' +
-      '<a class="btn ghost" href="#poems">' + esc(C.choose) + '</a><a class="btn ghost" href="#guide">' + esc(C.guide.title) + '</a></div>' +
-      (n ? '<p class="progress">' + esc(U.progress(n, S.round.length)) + '</p>' + restartHTML() : '') + '</section>' +
+      (hasRound() ? '<a class="btn ghost" href="#poems">' + esc(C.choose) + '</a>' : '') + '<a class="btn ghost" href="#guide">' + esc(C.guide.title) + '</a></div>' +
+      (hasRound() ? '<p class="progress">' + esc(U.progress(n, S.round.length)) + ' · ' + esc(C.modes[S.mode] ? C.modes[S.mode].name : '') + '</p>' + saveHTML() + restartHTML() : '') + '</section>' +
       '<section class="card"><h2>' + esc(C.howTitle) + '</h2><ol class="process">' +
       C.steps.map(function (s) { return '<li><b>' + esc(s.t) + '</b><span>' + esc(s.d) + '</span></li>'; }).join('') +
       '</ol><p class="note">' + esc(C.hintNote) + '</p></section>' +
       '<section class="card"><h2>' + esc(C.aboutTitle) + '</h2>' + C.about.map(function (p) { return '<p>' + p + '</p>'; }).join('') + '</section>';
-    wireBot(); wireRestart();
+    wireBot(); wireRestart(); wireSave();
   }
 
   /* ---------- start over ---------- */
@@ -189,19 +194,110 @@
       } else if (r === 'no') {
         box.innerHTML = restartHTML().replace(/^<div[^>]*>|<\/div>$/g, '');
       } else if (r === 'yes') {
-        newRound(); G = null;
-        if (location.hash && location.hash !== '#') location.hash = '#'; else route();
-        setTimeout(function () { say(U.restartDone, 'oops'); sfx.drop(); }, 50);
+        G = null; location.hash = '#new';
       }
+    });
+  }
+
+  /* ---------- choose a level for a new round ---------- */
+  function renderNew() {
+    var M = C.modes, html = '<div class="playhead"><a href="#">' + esc(U.home) + '</a><span></span></div>' +
+      stageHTML(pick(C.pickr.mode), false) + '<h1 class="ptitle">' + esc(U.newTitle) + '</h1><p>' + esc(U.newIntro) + '</p><div class="modes">';
+    ['easy', 'tricky', 'challenging'].forEach(function (k) {
+      html += '<button class="mode" type="button" data-mode="' + k + '"><b>' + esc(M[k].name) + '</b><span>' + esc(M[k].desc) + '</span></button>';
+    });
+    app.innerHTML = html + '</div><p class="small">' + esc(U.newNote) + '</p>';
+    wireBot();
+    Array.prototype.forEach.call(app.querySelectorAll('[data-mode]'), function (b) {
+      b.addEventListener('click', function () {
+        newRound(b.dataset.mode); sfx.drop();
+        location.hash = '#play/' + S.round[0];
+      });
+    });
+  }
+
+  /* ---------- save for later: the round travels in a link, nothing is sent anywhere ---------- */
+  function b64enc(str) { return btoa(unescape(encodeURIComponent(str))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); }
+  function b64dec(str) { str = str.replace(/-/g, '+').replace(/_/g, '/'); while (str.length % 4) str += '='; return decodeURIComponent(escape(atob(str))); }
+  function saveCode() {
+    var s = {};
+    S.round.forEach(function (id) {
+      var v = S.solved[id]; if (!v) return;
+      var q = v.quiz && v.quiz.chosen !== null && v.quiz.chosen !== undefined ? (v.quiz.chosen === v.quiz.answer ? 1 : 0) : 2;
+      s[id] = [v.snakes || 1, v.hints || 0, v.checks || 0, v.help || 0, q];
+    });
+    return b64enc(JSON.stringify({ v: 1, m: S.mode, r: S.round, s: s }));
+  }
+  function saveHTML() {
+    return '<div class="savebox" id="savebox"><button class="btn ghost" type="button" data-s="save">' + esc(U.save.button) + '</button></div>';
+  }
+  function wireSave() {
+    var box = document.getElementById('savebox'); if (!box) return;
+    box.addEventListener('click', function (e) {
+      var t = e.target.closest('[data-s]'); if (!t) return;
+      var url = location.origin + location.pathname + '#resume/' + saveCode();
+      if (t.dataset.s === 'save') {
+        box.innerHTML = '<p>' + esc(U.save.explain) + '</p><input class="savelink" id="savelink" type="text" readonly value="' + esc(url) + '" aria-label="' + esc(U.save.linkLabel) + '">' +
+          '<div class="actions">' + (navigator.share ? '<button class="btn" type="button" data-s="share">' + esc(U.save.share) + '</button>' : '') +
+          '<button class="btn' + (navigator.share ? ' ghost' : '') + '" type="button" data-s="copy">' + esc(U.save.copy) + '</button></div><p class="small" id="savemsg">' + esc(U.save.note) + '</p>';
+      } else if (t.dataset.s === 'share') {
+        navigator.share({ title: 'Pickr', text: U.save.shareText, url: url }).catch(function () {});
+      } else if (t.dataset.s === 'copy') {
+        var done = function () { document.getElementById('savemsg').textContent = U.save.copied; sfx.hint(); };
+        var field = document.getElementById('savelink');
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, function () { field.select(); });
+        else { field.select(); try { document.execCommand('copy'); done(); } catch (err) { /* user copies by hand */ } }
+      }
+    });
+  }
+  function parseSave(code) {
+    try {
+      var d = JSON.parse(b64dec(code));
+      if (!d || d.v !== 1 || !C.modes[d.m] || !validRound(d.r)) return null;
+      var solved = {};
+      Object.keys(d.s || {}).forEach(function (id) {
+        if (d.r.indexOf(id) < 0) return;
+        var a = d.s[id]; if (!Array.isArray(a)) return;
+        var num = function (x, lo, hi) { x = Math.round(Number(x)); return isFinite(x) ? Math.max(lo, Math.min(hi, x)) : lo; };
+        solved[id] = { snakes: num(a[0], 1, 3), hints: num(a[1], 0, 999), checks: num(a[2], 0, 999), help: num(a[3], 0, 999), restoredQuiz: num(a[4], 0, 2) };
+      });
+      return { mode: d.m, round: d.r, solved: solved };
+    } catch (e) { return null; }
+  }
+  function renderResume(code) {
+    var d = parseSave(code), Sv = U.save;
+    if (!d) { app.innerHTML = '<div class="playhead"><a href="#">' + esc(U.home) + '</a><span></span></div>' + stageHTML(Sv.broken, false) + '<div class="actions"><a class="btn" href="#new">' + esc(U.newRound) + '</a></div>'; wireBot(); return; }
+    var n = Object.keys(d.solved).length;
+    app.innerHTML = '<div class="playhead"><a href="#">' + esc(U.home) + '</a><span></span></div>' + stageHTML(Sv.welcome, false) +
+      '<h1 class="ptitle">' + esc(Sv.title) + '</h1><p>' + esc(fmt(Sv.summary, { n: n, N: d.round.length, m: C.modes[d.mode].name })) + '</p>' +
+      (hasRound() && solvedCount() ? '<p class="small">' + esc(Sv.replace) + '</p>' : '') +
+      '<div class="actions"><button class="btn" type="button" id="resume">' + esc(Sv.resume) + '</button><a class="btn ghost" href="#">' + esc(Sv.keep) + '</a></div>';
+    wireBot();
+    document.getElementById('resume').addEventListener('click', function () {
+      S.mode = d.mode; S.round = d.round; S.solved = {};
+      Object.keys(d.solved).forEach(function (id) {
+        var v = d.solved[id], p = P[idx(id)];
+        S.solved[id] = { snakes: v.snakes, hints: v.hints, checks: v.checks, help: v.help };
+        if (v.restoredQuiz < 2) {
+          var q = makeQuiz(p);
+          q.chosen = v.restoredQuiz === 1 ? q.answer : q.options.filter(function (o) { return o !== q.answer; })[0];
+          S.solved[id].quiz = q;
+        }
+      });
+      save(); sfx.part();
+      var next = firstUnsolved();
+      location.hash = next ? '#play/' + next.id : '#summary';
     });
   }
 
   /* ---------- poem list ---------- */
   function renderList() {
+    if (!hasRound()) { location.hash = '#new'; return; }
     var html = '<div class="playhead"><a href="#">' + esc(U.home) + '</a><span>' + esc(U.progress(solvedCount(), S.round.length)) + '</span></div>' +
       '<p class="small">' + esc(U.roundNote) + '</p>';
     if (solvedCount() === S.round.length) html += '<div class="note"><p>' + esc(U.allDone) + '</p><div class="actions"><a class="btn" href="#summary">' + esc(U.roundDone) + '</a><button class="btn ghost" type="button" id="newround">' + esc(U.newRound) + '</button></div></div>';
     ['easy', 'medium', 'hard'].forEach(function (lv) {
+      if (!RP().some(function (p) { return p.level === lv; })) return;
       html += '<section class="level"><h2>' + esc(C.levels[lv]) + '</h2><div class="tiles">';
       RP().forEach(function (p, i) {
         if (p.level !== lv) return;
@@ -212,11 +308,12 @@
       });
       html += '</div></section>';
     });
+    if (solvedCount() < S.round.length) html += saveHTML();
     if (solvedCount()) html += restartHTML();
     app.innerHTML = html;
-    wireRestart();
+    wireRestart(); wireSave();
     var nr = document.getElementById('newround');
-    if (nr) nr.addEventListener('click', function () { newRound(); renderList(); window.scrollTo(0, 0); });
+    if (nr) nr.addEventListener('click', function () { location.hash = '#new'; });
   }
 
   /* ---------- game ---------- */
@@ -540,7 +637,8 @@
     return f;
   }
   function makeQuiz(p) {
-    var pos = rpos(p.id), type = pos < 0 ? 'form' : pos < 3 ? 'scheme' : pos < 7 ? (pos % 2 ? 'form' : 'scheme') : (pos % 2 ? 'metre' : 'form');
+    var pos = rpos(p.id), odd = pos % 2 === 1;
+    var type = pos < 0 ? 'form' : p.level === 'easy' ? 'scheme' : p.level === 'medium' ? (odd ? 'form' : 'scheme') : (odd ? 'metre' : 'form');
     var Q = U.quiz, first = p.marks.slice(0, p.stanzas[0].length), correct = normScheme(first);
     if (type === 'scheme' && (p.markLabel !== 'rhyme' || correct.length < 3 || !/[A-Z]/.test(correct))) type = 'form';
     var answer, options;
@@ -615,7 +713,7 @@
 
   /* ---------- round summary ---------- */
   function renderSummary() {
-    if (solvedCount() < S.round.length) { location.hash = '#poems'; return; }
+    if (!hasRound() || solvedCount() < S.round.length) { location.hash = hasRound() ? '#poems' : '#new'; return; }
     var R = RP(), snakes = 0, right = 0, asked = 0, best = null, forms = [], Su = U.summary;
     R.forEach(function (p) {
       var s = S.solved[p.id]; snakes += s.snakes || 1;
@@ -639,7 +737,7 @@
     app.innerHTML = html;
     wireBot(); var bot = document.getElementById('bot'); if (bot) bot.classList.add('joy');
     confetti();
-    document.getElementById('newround').addEventListener('click', function () { newRound(); location.hash = '#poems'; });
+    document.getElementById('newround').addEventListener('click', function () { location.hash = '#new'; });
   }
 
   /* ---------- guide ---------- */
@@ -683,6 +781,8 @@
     else if (parts[0] === 'done' && parts[1]) renderDone(parts[1]);
     else if (parts[0] === 'guide') renderGuide();
     else if (parts[0] === 'summary') renderSummary();
+    else if (parts[0] === 'new') renderNew();
+    else if (parts[0] === 'resume' && parts[1]) renderResume(parts[1]);
     else renderHome();
     if (!window.matchMedia || !matchMedia('(pointer: coarse)').matches) app.focus({ preventScroll: true });
   }

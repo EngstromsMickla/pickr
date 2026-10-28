@@ -1,7 +1,17 @@
 /* Pickr: site texts. Edit here, not in app.js. No dashes as punctuation in new texts. */
 window.PICKR = {
-  version: "v0.9",
-  round: { easy: 3, medium: 4, hard: 3 },
+  version: "v1.0",
+  roundSize: 6,
+  mixes: {
+    easy: { easy: 5, medium: 1, hard: 0 },
+    tricky: { easy: 1, medium: 4, hard: 1 },
+    challenging: { easy: 0, medium: 1, hard: 5 }
+  },
+  modes: {
+    easy: { name: "Easy", desc: "Mostly short poems with clear rhymes or a single image, and one a little trickier to finish." },
+    tricky: { name: "Tricky", desc: "Mostly ballads, couplets and stanza forms with a twist. One easy poem to warm up and one hard one to finish." },
+    challenging: { name: "Challenging", desc: "Mostly sonnets and other beasts, with one gentler poem to start." }
+  },
   name: "Pickr",
   tagline: "A mischievous little robot, a scrambled poem",
   lede: "Pickr loves poems so much it can't stop picking them up. Unfortunately it also drops them. Put the lines back in order, and Pickr will tell you which poem it is, what metre it is written in, and how that metre works.",
@@ -14,10 +24,10 @@ window.PICKR = {
     { t: "Put the lines back", d: "Pickr drops the rest. Drag a line by its handle, or tap two lines to swap them. Gaps show where the stanzas break; rhyme, rhythm and sense are your clues." },
     { t: "Check and discover", d: "Lines in the right place turn green and stay put. Get them all and you learn the poem's title, its form and how the metre works." }
   ],
-  hintNote: "Each round has ten poems, drawn from sixty and starting with the easy ones. Too hard once you see the poem? Tap More help to change your help without losing your place. The first Hint shows the rhyme letters if they are hidden, and every Hint after that makes Pickr put one line in its right place. New to metre? The guide explains the forms and the words.",
+  hintNote: "Each round has six poems from a pool of sixty. Choose Easy, Tricky or Challenging when you start a round. Too hard once you see the poem? Tap More help to change your help without losing your place. The first Hint shows the rhyme letters if they are hidden, and every Hint after that makes Pickr put one line in its right place. New to metre? The guide explains the forms and the words.",
   aboutTitle: "About the poems",
   about: [
-    "Every line in Pickr was written by Dan Engström, a poet who writes in English and Swedish. The sixty poems come from two collections, and every round Pickr picks ten of them, saving the ones you have not met yet for the next rounds.",
+    "Every line in Pickr was written by Dan Engström, a poet who writes in English and Swedish. The sixty poems come from two collections, and every round Pickr picks six of them, saving the ones you have not met yet for the next rounds.",
     "<em>Echoes of Life</em> (Piratpensionat Produktion, 2025) gathers short poems about noticing, connection, doubt and resistance, with a sequence of four sonnets, <em>The Edge of Perception</em>, at its heart.",
     "<em>Hearts Around the Fire</em> (Piratpensionat Produktion, 2026) is set in Bælwythe, an imagined town at a river's bend, and is told through the voices of the people who live there: the brewer, the merchant, the bard, the wizard nobody talks about, and the jester who says what everyone else is thinking.",
     "The game was vibe-coded with Claude. The poems were not. Pickr only moves the lines around; it never writes or changes a word."
@@ -29,6 +39,25 @@ window.PICKR = {
   ui: {
     allPoems: "All poems",
     restart: "Start over",
+    newTitle: "How hard should it be?",
+    newIntro: "Pick a level for this round of six poems. You can still choose your help before every poem, and ask for more along the way.",
+    newNote: "Pickr picks poems you have not met yet whenever it can.",
+    save: {
+      button: "Save for later",
+      explain: "Pickr remembers your round on this phone or computer by itself. To be safe, or to carry on somewhere else, keep this link. Opening it brings your round back.",
+      linkLabel: "Your save link",
+      share: "Share link",
+      copy: "Copy link",
+      copied: "Copied! Paste it into a note or a message to yourself.",
+      note: "The link holds only which poems are in your round and how you did. Nothing is sent anywhere.",
+      shareText: "My Pickr round, to finish later",
+      title: "Welcome back",
+      summary: "This link holds a {m} round with {n} of {N} poems solved.",
+      replace: "Your current round on this device will be replaced.",
+      resume: "Carry on with this round",
+      keep: "Keep my current round",
+      broken: "Hmm. I can't read this link. Maybe a bit fell off? Let's start a new round."
+    },
     more: {
       button: "More help",
       title: "Too hard? Ask for more help",
@@ -65,20 +94,20 @@ window.PICKR = {
     },
     summary: {
       title: "Round complete",
-      pickr: "Ten poems, all in one piece. I didn't drop a single one. Well, I did, but you fixed them.",
+      pickr: "Six poems, all in one piece. I didn't drop a single one. Well, I did, but you fixed them.",
       snakes: function (n, N) { return "Mickla snakes, out of " + N; },
       quiz: function (n, N) { return "forms and rhymes you recognised, out of " + N; },
-      poems: "Your ten poems",
+      poems: "Your six poems",
       knew: "recognised",
       missed: "new to you",
       leastHelp: "You needed the least help with {t}.",
       forms: "Forms you met this round"
     },
     stanzas: "stanzas",
-    roundNote: "This round: ten poems picked at random from sixty, easy ones first. New rounds bring poems you have not met yet.",
+    roundNote: "This round: six poems picked at random from sixty, easier ones first. New rounds bring poems you have not met yet.",
     newRound: "Play a new round",
     roundDone: "See the whole round",
-    restartAsk: "Forget this round and start a new one with ten fresh poems?",
+    restartAsk: "Forget this round and start a new one with six fresh poems?",
     restartYes: "Yes, start over",
     restartNo: "Keep my progress",
     restartDone: "All gone! Let's drop some poems.",
@@ -120,7 +149,7 @@ window.PICKR = {
     hintsUsed: function (n) { return n === 0 ? "Solved without hints. Pickr is impressed." : n === 1 ? "Solved with one hint." : "Solved with " + n + " hints."; },
     progress: function (n, N) { return n + " of " + N + " poems solved"; },
     dragHelp: "Drag the handle, or tap two lines to swap them. Green lines are locked in place.",
-    allDone: "You have put all ten poems back together. Pickr is speechless, which has never happened before."
+    allDone: "You have put all six poems back together. Pickr is speechless, which has never happened before."
   },
   guide: {
     nav: "Guide",
@@ -181,6 +210,7 @@ window.PICKR = {
     quizRight: [ "Yes! You have an ear for this.", "Correct! I would clap if I could." ],
     quizWrong: [ "Oops. Don't worry, I mix them up too.", "Close! Now you know." ],
     moreHelp: [ "Here you go. I put some lines back for you.", "Better? I tidied up a little." ],
+    mode: [ "Easy, Tricky or Challenging? I drop them all the same.", "Pick a level. I will try to drop them gently." ],
     setup: [ "I promise to drop it gently this time.", "How much should I hold on to?", "Pick your help. I will try not to sneeze." ],
     drop: [
       "Oops. I tripped.",

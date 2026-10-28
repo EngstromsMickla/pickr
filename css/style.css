@@ -202,6 +202,16 @@ main:focus { outline: none; }
 .qok { font-size: 13px; color: var(--accent); font-weight: 600; }
 .qno { font-size: 13px; color: var(--rust); font-weight: 600; }
 
+/* level choice and save */
+.modes { display: grid; gap: 10px; margin: 16px 0; }
+.mode { text-align: left; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; cursor: pointer; display: flex; flex-direction: column; gap: 4px; color: var(--ink); font: 16px/1.4 var(--sans); }
+.mode b { font: 600 22px/1.2 var(--serif); color: var(--accent); }
+.mode:active { border-color: var(--accent); background: var(--accent-soft); }
+@media (hover: hover) and (pointer: fine) { .mode:hover { border-color: var(--accent); } }
+.savebox { margin: 10px 0 4px; }
+.savebox p { margin: 8px 0; }
+.savelink { width: 100%; font: 14px/1.3 ui-monospace, Menlo, Consolas, monospace; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); }
+
 /* start over */
 .restart { margin: 4px 0 0; }
 .restart p { margin: 8px 0 0; font-weight: 500; }
