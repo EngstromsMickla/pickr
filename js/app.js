@@ -76,7 +76,7 @@
     boing: function () { tone(300, .06, 0, 'triangle'); tone(520, .08, .05, 'triangle'); }
   };
   var soundbtn = document.getElementById('soundbtn');
-  function paintSound() { soundbtn.textContent = U.sound + ' ' + (S.muted ? U.off : U.on); soundbtn.setAttribute('aria-pressed', S.muted ? 'false' : 'true'); }
+  function paintSound() { soundbtn.innerHTML = '<span class="sl">' + esc(U.sound) + ' </span>' + esc(S.muted ? U.off : U.on); soundbtn.setAttribute('aria-label', U.sound + ' ' + (S.muted ? U.off : U.on)); soundbtn.setAttribute('aria-pressed', S.muted ? 'false' : 'true'); }
   soundbtn.addEventListener('click', function () { S.muted = !S.muted; save(); paintSound(); sfx.boing(); });
   paintSound();
 
@@ -160,7 +160,7 @@
   /* ---------- footer ---------- */
   document.getElementById('footer').innerHTML =
     '<span class="maker"><img src="img/orm.png" alt="Mickla" width="22" height="22">' + esc(C.copyright) + '</span>' +
-    '<span><a href="' + esc(C.licenceUrl) + '" rel="license noopener" target="_blank">' + esc(C.licence) + '</a></span>' +
+    '<span><a href="#library">' + esc(C.library.title) + '</a> · <a href="' + esc(C.licenceUrl) + '" rel="license noopener" target="_blank">' + esc(C.licence) + '</a></span>' +
     '<span>' + esc(C.name) + ' · ' + esc(C.version) + '</span>';
 
   /* ---------- home ---------- */
@@ -176,7 +176,8 @@
       '<section class="card"><h2>' + esc(C.howTitle) + '</h2><ol class="process">' +
       C.steps.map(function (s) { return '<li><b>' + esc(s.t) + '</b><span>' + esc(s.d) + '</span></li>'; }).join('') +
       '</ol><p class="note">' + esc(C.hintNote) + '</p></section>' +
-      '<section class="card"><h2>' + esc(C.aboutTitle) + '</h2>' + C.about.map(function (p) { return '<p>' + p + '</p>'; }).join('') + '</section>';
+      '<section class="card"><h2>' + esc(C.aboutTitle) + '</h2>' + C.about.map(function (p) { return '<p>' + p + '</p>'; }).join('') +
+      '<div class="actions"><a class="btn ghost" href="#library">' + esc(C.library.button) + '</a></div></section>';
     wireBot(); wireRestart(); wireSave();
   }
 
@@ -689,6 +690,7 @@
         '<h3>' + esc(U.character) + '</h3><p>' + esc(p.character) + '</p>' +
         '<h3>' + esc(U.use) + '</h3><p>' + esc(p.use) + '</p>' +
         '<h3>' + esc(U.inPoem) + '</h3><p>' + esc(p.poem) + '</p><p class="small"><a href="#guide">' + esc(C.guide.title) + '</a></p></section>' +
+        livesHTML(p) +
         '<p class="small">' + esc(U.snakes.note) + '</p>' +
         '<div class="actions">' + (next ? '<a class="btn" href="#play/' + next.id + '">' + esc(U.next) + '</a>' : (pos >= 0 ? '<a class="btn" href="#summary">' + esc(U.roundDone) + '</a>' : '')) +
         '<a class="btn ghost" href="#play/' + p.id + '">' + esc(U.again) + '</a>' +
@@ -733,11 +735,104 @@
       }).join('') + '</ol>' +
       '<p>' + esc(fmt(Su.leastHelp, { t: shortTitle(best) })) + '</p></section>' +
       '<section class="card"><h2>' + esc(Su.forms) + '</h2><p>' + forms.map(esc).join(' · ') + '</p><p class="small"><a href="#guide">' + esc(C.guide.title) + '</a></p></section>' +
+      '<section class="card"><h2>' + esc(C.library.keepReading) + '</h2><p>' + esc(C.library.keepIntro) + '</p>' + bookCards() + '</section>' +
       '<div class="actions"><button class="btn" type="button" id="newround">' + esc(U.newRound) + '</button><a class="btn ghost" href="#guide">' + esc(C.guide.title) + '</a></div>';
     app.innerHTML = html;
     wireBot(); var bot = document.getElementById('bot'); if (bot) bot.classList.add('joy');
     confetti();
     document.getElementById('newround').addEventListener('click', function () { location.hash = '#new'; });
+  }
+
+  /* ---------- the library: the three works, free to read ---------- */
+  var BOOKS = null, booksWaiting = [];
+  function withBooks(cb) {
+    if (window.PICKR_BOOKS) { BOOKS = window.PICKR_BOOKS; return cb(); }
+    booksWaiting.push(cb);
+    if (booksWaiting.length > 1) return;
+    app.innerHTML = '<p class="small">' + esc(C.library.loading) + '</p>';
+    var sc = document.createElement('script'); sc.src = 'js/books.js';
+    sc.onload = function () { BOOKS = window.PICKR_BOOKS; var w = booksWaiting; booksWaiting = []; w.forEach(function (f) { f(); }); };
+    sc.onerror = function () { booksWaiting = []; app.innerHTML = '<p>' + esc(C.library.failed) + '</p>'; };
+    document.head.appendChild(sc);
+  }
+  function bookCards() {
+    var L = C.library;
+    return '<div class="books">' + L.order.map(function (k) {
+      var b = L.books[k];
+      return '<a class="bookcard" href="#read/' + k + '"><span class="bk">' + esc(b.kind) + '</span><b>' + esc(b.title) + '</b><span>' + esc(b.about) + '</span><span class="go">' + esc(L.read) + '</span></a>';
+    }).join('') + '</div>';
+  }
+  function livesHTML(p) {
+    var L = C.library, b = L.books[p.book];
+    if (!p.src || !b) return '';
+    var h = '<section class="card lives"><p class="kicker">' + esc(L.livesKicker) + '</p><h2>' + esc(fmt(L.livesTitle, { b: b.title })) + '</h2>' +
+      (p.src.path ? '<p class="small">' + esc(p.src.path) + '</p>' : '') + '<p>' + esc(L.livesText) + '</p>' +
+      '<div class="actions"><a class="btn" href="#read/' + p.book + '/' + p.src.l + '-' + p.src.n + '-' + p.id + '">' + esc(L.readInBook) + '</a>';
+    if (p.play) h += '<a class="btn ghost" href="#read/fire/' + p.play.l + '-' + p.play.n + '-' + p.id + '">' + esc(L.seeOnStage) + '</a>';
+    h += '</div>';
+    if (p.play) h += '<p class="small">' + esc(fmt(L.alsoPlay, { s: p.play.path })) + '</p>';
+    return h + '</section>';
+  }
+  function renderLibrary() {
+    var L = C.library;
+    app.innerHTML = '<div class="playhead"><a href="#">' + esc(U.home) + '</a><span></span></div>' +
+      stageHTML(pick(C.pickr.library), false) +
+      '<h1 class="ptitle">' + esc(L.title) + '</h1><p>' + esc(L.intro) + '</p>' + bookCards() +
+      '<p class="small">' + esc(L.licence) + '</p>';
+    wireBot();
+  }
+  function segHTML(x) {
+    if (typeof x === 'string') return lineHTML(x);
+    return x.map(function (sg) { return sg[1] ? '<em>' + lineHTML(sg[0]) + '</em>' : lineHTML(sg[0]); }).join('');
+  }
+  function renderBook(key, focus) {
+    var B = BOOKS[key], L = C.library, info = L.books[key];
+    if (!B || !info) { location.hash = '#library'; return; }
+    var hl = null, back = null;
+    var m = /^(\d+)-(\d+)(?:-([a-z0-9]+))?$/.exec(focus || '');
+    if (m) { hl = [+m[1], +m[1] + (+m[2])]; back = m[3] && idx(m[3]) >= 0 ? m[3] : null; }
+    var toc = [], body = '', open = null;
+    B.blocks.forEach(function (bl) {
+      if (bl[0] === 'h') {
+        if (open && bl[1] === 1) { body += '</div></details>'; open = null; }
+        if (bl[1] <= 2) toc.push(bl);
+        if (bl[4]) {
+          open = bl[3];
+          body += '<details class="intro" id="' + bl[3] + '"><summary><span class="h">' + esc(bl[2]) + '</span><span class="small">' + esc(L.openIntro) + '</span></summary><div class="introbody">';
+          return;
+        }
+        body += '<h' + Math.min(bl[1] + 1, 5) + ' class="bh bh' + bl[1] + '" id="' + bl[3] + '">' + esc(bl[2]) + '</h' + Math.min(bl[1] + 1, 5) + '>';
+      } else if (bl[0] === 'p') {
+        body += '<p class="prose' + (bl[2] ? ' dir' : '') + '">' + segHTML(bl[1]) + '</p>';
+      } else {
+        var n0 = bl[1];
+        body += '<p class="stanza">' + bl[2].map(function (ln, k) {
+          var n = n0 + k, on = hl && n >= hl[0] && n < hl[1];
+          return '<span class="vl' + (on ? ' hl' : '') + '" id="L' + n + '">' + segHTML(ln) + '</span>';
+        }).join('') + '</p>';
+      }
+    });
+    if (open) body += '</div></details>';
+    var tocHTML = '<details class="contents"><summary>' + esc(L.contents) + '</summary><ol>' + toc.map(function (h) {
+      return '<li class="t' + h[1] + '"><button type="button" data-jump="' + h[3] + '">' + esc(h[2]) + '</button></li>';
+    }).join('') + '</ol></details>';
+    var banner = hl ? '<div class="note hlnote">' + esc(L.highlighted) + (back && S.solved[back] ? ' <a href="#done/' + back + '">' + esc(L.backToPoem) + '</a>' : '') + '</div>' : '';
+    app.innerHTML = '<div class="playhead"><a href="#library">' + esc(L.title) + '</a><span>' + esc(info.kind) + '</span></div>' +
+      '<header class="bookhead"><h1 class="ptitle">' + esc(B.title) + '</h1><p class="partof">' + esc(B.by) + ' · ' + esc(B.pub) + ', ' + esc(B.year) + '</p>' +
+      (B.sub ? '<p>' + esc(B.sub) + '</p>' : '') + (info.stage ? '<p class="small">' + esc(info.stage) + '</p>' : '') + '</header>' +
+      banner + tocHTML + '<article class="book">' + body + '</article>' +
+      '<p class="small">' + esc(L.licence) + '</p><div class="actions"><a class="btn ghost" href="#library">' + esc(L.title) + '</a><a class="btn" href="' + (hasRound() ? '#poems' : '#new') + '">' + esc(L.backToGame) + '</a></div>';
+    Array.prototype.forEach.call(app.querySelectorAll('[data-jump]'), function (b) {
+      b.addEventListener('click', function () {
+        var t = document.getElementById(b.dataset.jump); if (!t) return;
+        if (t.tagName === 'DETAILS') t.open = true;
+        t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+    if (hl) {
+      var first = document.getElementById('L' + hl[0]);
+      if (first) setTimeout(function () { first.scrollIntoView({ block: 'center' }); }, 30);
+    }
   }
 
   /* ---------- guide ---------- */
@@ -780,6 +875,8 @@
     else if (parts[0] === 'play' && parts[1]) renderSetup(parts[1]);
     else if (parts[0] === 'done' && parts[1]) renderDone(parts[1]);
     else if (parts[0] === 'guide') renderGuide();
+    else if (parts[0] === 'library') renderLibrary();
+    else if (parts[0] === 'read' && parts[1]) { var bk = parts[1], fc = parts[2]; withBooks(function () { renderBook(bk, fc); }); }
     else if (parts[0] === 'summary') renderSummary();
     else if (parts[0] === 'new') renderNew();
     else if (parts[0] === 'resume' && parts[1]) renderResume(parts[1]);

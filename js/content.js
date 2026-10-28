@@ -30,9 +30,10 @@ window.PICKR = {
     "Every line in Pickr was written by Dan Engström, a poet who writes in English and Swedish. The sixty poems come from two collections, and every round Pickr picks six of them, saving the ones you have not met yet for the next rounds.",
     "<em>Echoes of Life</em> (Piratpensionat Produktion, 2025) gathers short poems about noticing, connection, doubt and resistance, with a sequence of four sonnets, <em>The Edge of Perception</em>, at its heart.",
     "<em>Hearts Around the Fire</em> (Piratpensionat Produktion, 2026) is set in Bælwythe, an imagined town at a river's bend, and is told through the voices of the people who live there: the brewer, the merchant, the bard, the wizard nobody talks about, and the jester who says what everyone else is thinking.",
+    "All three works are free to read in the library: the two collections and Fire in Bælwythe, a play built from Hearts Around the Fire. After every poem you can jump straight to the place where it lives.",
     "The game was vibe-coded with Claude. The poems were not. Pickr only moves the lines around; it never writes or changes a word."
   ],
-  licence: "Poems © Dan Engström, licensed CC BY-NC-SA.",
+  licence: "Poetry by Dan Engström, published by Piratpensionat Produktion, CC BY-NC-SA.",
   licenceUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
   copyright: "© Engströms Mickla AB 2026",
   levels: { easy: "Warm up", medium: "Getting tricky", hard: "Sonnets and other beasts" },
@@ -151,6 +152,35 @@ window.PICKR = {
     dragHelp: "Drag the handle, or tap two lines to swap them. Blue lines are locked in place.",
     allDone: "You have put all six poems back together. Pickr is speechless, which has never happened before."
   },
+  library: {
+    title: "The library",
+    button: "Read the books",
+    intro: "Every poem in Pickr lives in a book. Here are all three works, free to read: two collections of poems and a play built from one of them. Read them from start to finish, or jump straight to a poem you have just put back together.",
+    loading: "Fetching the books…",
+    failed: "The books could not be loaded. Check your connection and try again.",
+    order: ["echoes", "hearts", "fire"],
+    read: "Read",
+    books: {
+      echoes: { kind: "Poems", title: "Echoes of Life", about: "Short poems on noticing, connection, doubt and resistance, with four sonnets, The Edge of Perception, at their heart." },
+      hearts: { kind: "Poems", title: "Hearts Around the Fire", about: "Bælwythe, an imagined town at a river's bend, told through the voices of the people who live there." },
+      fire: { kind: "Play", title: "Fire in Bælwythe", about: "A one-act play for a single actor: the Jester tells the story of Bælwythe through poems from Hearts Around the Fire.",
+        stage: "Want to stage it? Under the licence anyone may perform Fire in Bælwythe for non-commercial purposes, crediting the author. Dan would love to hear about it at dan@mickla.se. For commercial performances, please ask first." }
+    },
+    livesKicker: "Where it lives",
+    livesTitle: "Read it in {b}",
+    livesText: "This poem is part of a book. Read it where it belongs, with the poems around it.",
+    readInBook: "Read it in the book",
+    seeOnStage: "See it on stage",
+    alsoPlay: "The Jester also speaks it in the play Fire in Bælwythe: {s}.",
+    contents: "Contents",
+    openIntro: "Tap to read",
+    highlighted: "Highlighted: the lines you put back in order in Pickr.",
+    backToPoem: "Back to the poem",
+    backToGame: "Back to Pickr",
+    keepReading: "Keep reading",
+    keepIntro: "The poems you just played live in these books, free to read.",
+    licence: "The poems and the play are by Dan Engström, published by Piratpensionat Produktion and licensed CC BY-NC-SA: share them freely for non-commercial purposes, with credit. Pickr itself is © Engströms Mickla AB 2026."
+  },
   guide: {
     nav: "Guide",
     title: "Metres and terms",
@@ -213,6 +243,7 @@ window.PICKR = {
     quizWrong: [ "Oops. Don't worry, I mix them up too.", "Close! Now you know." ],
     moreHelp: [ "Here you go. I put some lines back for you.", "Better? I tidied up a little." ],
     mode: [ "Easy, Tricky or Challenging? I drop them all the same.", "Pick a level. I will try to drop them gently." ],
+    library: [ "I read all of these. Then I dropped them.", "Books! The poems in their natural habitat." ],
     setup: [ "I promise to drop it gently this time.", "How much should I hold on to?", "Pick your help. I will try not to sneeze." ],
     drop: [
       "Oops. I tripped.",

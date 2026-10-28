@@ -31,7 +31,12 @@ window.PICKR_POEMS = [
     "Their instinct is to fly"
    ]
   ],
-  "beat": "tri"
+  "beat": "tri",
+  "src": {
+   "l": 80,
+   "n": 4,
+   "path": "Perception and Curiosity"
+  }
  },
  {
   "id": "interlude",
@@ -76,7 +81,12 @@ window.PICKR_POEMS = [
     "Your revenge will be in vain"
    ]
   ],
-  "beat": "short"
+  "beat": "short",
+  "src": {
+   "l": 413,
+   "n": 9,
+   "path": "The Fire · The North Wind by the Tail"
+  }
  },
  {
   "id": "roguemind",
@@ -116,7 +126,12 @@ window.PICKR_POEMS = [
     "What if the opposite were true?"
    ]
   ],
-  "beat": "tetra"
+  "beat": "tetra",
+  "src": {
+   "l": 61,
+   "n": 8,
+   "path": "Perception and Curiosity"
+  }
  },
  {
   "id": "poetry",
@@ -148,7 +163,12 @@ window.PICKR_POEMS = [
     "To lift up life into light from the depths"
    ]
   ],
-  "beat": "free"
+  "beat": "free",
+  "src": {
+   "l": 56,
+   "n": 5,
+   "path": "Perception and Curiosity"
+  }
  },
  {
   "id": "brewer",
@@ -198,7 +218,17 @@ window.PICKR_POEMS = [
     "I toast the courage of the drunk"
    ]
   ],
-  "beat": "tetra"
+  "beat": "tetra",
+  "src": {
+   "l": 116,
+   "n": 12,
+   "path": "The Hearts"
+  },
+  "play": {
+   "l": 90,
+   "n": 12,
+   "path": "Scene II The Hearts · The Brewer"
+  }
  },
  {
   "id": "merchant",
@@ -234,7 +264,17 @@ window.PICKR_POEMS = [
     "At rest, at night, to know it’s up to you"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 79,
+   "n": 7,
+   "path": "The Hearts"
+  },
+  "play": {
+   "l": 82,
+   "n": 7,
+   "path": "Scene II The Hearts · The Merchant"
+  }
  },
  {
   "id": "jester",
@@ -272,7 +312,17 @@ window.PICKR_POEMS = [
     "The mocking slave who wields the jester’s tear"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 170,
+   "n": 8,
+   "path": "The Hearts"
+  },
+  "play": {
+   "l": 112,
+   "n": 8,
+   "path": "Scene II The Hearts · The Jester"
+  }
  },
  {
   "id": "bard",
@@ -310,7 +360,17 @@ window.PICKR_POEMS = [
     "There is hope for healing | however hard it is"
    ]
   ],
-  "beat": "allit"
+  "beat": "allit",
+  "src": {
+   "l": 162,
+   "n": 8,
+   "path": "The Hearts"
+  },
+  "play": {
+   "l": 103,
+   "n": 8,
+   "path": "Scene II The Hearts · The Bard"
+  }
  },
  {
   "id": "aftermath",
@@ -361,7 +421,17 @@ window.PICKR_POEMS = [
     "The truth will set us free"
    ]
   ],
-  "beat": "common"
+  "beat": "common",
+  "src": {
+   "l": 742,
+   "n": 12,
+   "path": "The Fire · The Fire and the Crown"
+  },
+  "play": {
+   "l": 361,
+   "n": 12,
+   "path": "Scene III The Fire · The Fire and the Crown · The Aftermath – The Jester speaks"
+  }
  },
  {
   "id": "wizard",
@@ -431,7 +501,17 @@ window.PICKR_POEMS = [
     "Don’t ever make him cross"
    ]
   ],
-  "beat": "common"
+  "beat": "common",
+  "src": {
+   "l": 178,
+   "n": 20,
+   "path": "The Hearts"
+  },
+  "play": {
+   "l": 120,
+   "n": 20,
+   "path": "Scene II The Hearts · The Wizard"
+  }
  },
  {
   "id": "pantoum",
@@ -481,7 +561,12 @@ window.PICKR_POEMS = [
     "To have Steinbeck’s words running through my head"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 174,
+   "n": 12,
+   "path": "Doubt and Becoming"
+  }
  },
  {
   "id": "nobleman",
@@ -531,7 +616,12 @@ window.PICKR_POEMS = [
     "A toast to plagues, he said, they too shall pass"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 150,
+   "n": 12,
+   "path": "The Hearts"
+  }
  },
  {
   "id": "jestersong",
@@ -571,7 +661,12 @@ window.PICKR_POEMS = [
     "And once you see that, now you never will"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 866,
+   "n": 8,
+   "path": "The Fire"
+  }
  },
  {
   "id": "baelwythe",
@@ -641,7 +736,12 @@ window.PICKR_POEMS = [
     "How will you make the future promise yours?"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 33,
+   "n": 20,
+   "path": "The Hearth"
+  }
  },
  {
   "id": "totheyoung",
@@ -711,7 +811,12 @@ window.PICKR_POEMS = [
     "So reshape the world that your fathers have bent"
    ]
   ],
-  "beat": "tetra"
+  "beat": "tetra",
+  "src": {
+   "l": 303,
+   "n": 20,
+   "path": "Society and Resistance"
+  }
  },
  {
   "id": "holes",
@@ -767,7 +872,12 @@ window.PICKR_POEMS = [
     "There are holes all over my town"
    ]
   ],
-  "beat": "tri"
+  "beat": "tri",
+  "src": {
+   "l": 381,
+   "n": 14,
+   "path": "Society and Resistance"
+  }
  },
  {
   "id": "safe",
@@ -823,7 +933,12 @@ window.PICKR_POEMS = [
     "Just get out of here, this kid will be just fine"
    ]
   ],
-  "beat": "hexa"
+  "beat": "hexa",
+  "src": {
+   "l": 337,
+   "n": 14,
+   "path": "Society and Resistance"
+  }
  },
  {
   "id": "nextstop",
@@ -879,7 +994,12 @@ window.PICKR_POEMS = [
     "There is no map of bus stops in my mind"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 351,
+   "n": 14,
+   "path": "Society and Resistance"
+  }
  },
  {
   "id": "reckoning",
@@ -935,7 +1055,12 @@ window.PICKR_POEMS = [
     "Straight in the eye of any beholder"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 42,
+   "n": 14,
+   "path": "The Edge of Perception"
+  }
  },
  {
   "id": "town",
@@ -990,7 +1115,17 @@ window.PICKR_POEMS = [
     "The rich prefer their houses to have stairs"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 0,
+   "n": 14,
+   "path": "The Hearth · Act I"
+  },
+  "play": {
+   "l": 32,
+   "n": 14,
+   "path": "Scene I The Hearth · The Town"
+  }
  },
  {
   "id": "transitions",
@@ -1018,7 +1153,12 @@ window.PICKR_POEMS = [
     "A moment later, silence"
    ]
   ],
-  "beat": "free"
+  "beat": "free",
+  "src": {
+   "l": 77,
+   "n": 3,
+   "path": "Perception and Curiosity"
+  }
  },
  {
   "id": "notitle",
@@ -1046,7 +1186,12 @@ window.PICKR_POEMS = [
     "I watch myself while the light lasts"
    ]
   ],
-  "beat": "free"
+  "beat": "free",
+  "src": {
+   "l": 74,
+   "n": 3,
+   "path": "Perception and Curiosity"
+  }
  },
  {
   "id": "townact2",
@@ -1079,7 +1224,17 @@ window.PICKR_POEMS = [
     "Songs of ruin from the choir"
    ]
   ],
-  "beat": "short"
+  "beat": "short",
+  "src": {
+   "l": 14,
+   "n": 5,
+   "path": "The Hearth · Act II"
+  },
+  "play": {
+   "l": 46,
+   "n": 5,
+   "path": "Scene I The Hearth · The Town"
+  }
  },
  {
   "id": "thisisyours",
@@ -1113,7 +1268,12 @@ window.PICKR_POEMS = [
     "that you must accept. It’s yours to create."
    ]
   ],
-  "beat": "tetra"
+  "beat": "tetra",
+  "src": {
+   "l": 98,
+   "n": 6,
+   "path": "Identity and Connection"
+  }
  },
  {
   "id": "teacher",
@@ -1161,7 +1321,12 @@ window.PICKR_POEMS = [
     "If you so yearn I’ll pass it on to you"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 53,
+   "n": 12,
+   "path": "The Hearts"
+  }
  },
  {
   "id": "illusion",
@@ -1211,7 +1376,17 @@ window.PICKR_POEMS = [
     "Deserves to play the fool"
    ]
   ],
-  "beat": "common"
+  "beat": "common",
+  "src": {
+   "l": 1177,
+   "n": 12,
+   "path": ""
+  },
+  "play": {
+   "l": 0,
+   "n": 12,
+   "path": "The Jester’s Illusion"
+  }
  },
  {
   "id": "fathering",
@@ -1261,7 +1436,12 @@ window.PICKR_POEMS = [
     "Was always there for you"
    ]
   ],
-  "beat": "common"
+  "beat": "common",
+  "src": {
+   "l": 148,
+   "n": 12,
+   "path": "Identity and Connection"
+  }
  },
  {
   "id": "ohana",
@@ -1307,7 +1487,12 @@ window.PICKR_POEMS = [
     "One stroke, one step, one perfect moment at a time"
    ]
   ],
-  "beat": "hexa"
+  "beat": "hexa",
+  "src": {
+   "l": 104,
+   "n": 10,
+   "path": "Identity and Connection"
+  }
  },
  {
   "id": "dyer",
@@ -1361,7 +1546,17 @@ window.PICKR_POEMS = [
     "The dyer is transformed as well"
    ]
   ],
-  "beat": "tetra"
+  "beat": "tetra",
+  "src": {
+   "l": 65,
+   "n": 14,
+   "path": "The Hearts"
+  },
+  "play": {
+   "l": 67,
+   "n": 14,
+   "path": "Scene II The Hearts · The Dyer"
+  }
  },
  {
   "id": "prologue",
@@ -1400,7 +1595,17 @@ window.PICKR_POEMS = [
     "How truth is shaped, a story old as time"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 332,
+   "n": 8,
+   "path": "The Fire · The North Wind by the Tail"
+  },
+  "play": {
+   "l": 449,
+   "n": 8,
+   "path": "Scene IV Farewell · The Jester speaks"
+  }
  },
  {
   "id": "bardjester",
@@ -1452,7 +1657,12 @@ window.PICKR_POEMS = [
     "They swim for they are part of humankind"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 926,
+   "n": 14,
+   "path": "The Fire"
+  }
  },
  {
   "id": "spring",
@@ -1512,7 +1722,12 @@ window.PICKR_POEMS = [
     "So very much alive"
    ]
   ],
-  "beat": "common"
+  "beat": "common",
+  "src": {
+   "l": 132,
+   "n": 16,
+   "path": "Identity and Connection"
+  }
  },
  {
   "id": "thief",
@@ -1582,7 +1797,12 @@ window.PICKR_POEMS = [
     "As we have ever been"
    ]
   ],
-  "beat": "common"
+  "beat": "common",
+  "src": {
+   "l": 86,
+   "n": 20,
+   "path": "The Hearts"
+  }
  },
  {
   "id": "discovery",
@@ -1638,7 +1858,12 @@ window.PICKR_POEMS = [
     "That’s still in the eyes of the beholder"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 0,
+   "n": 14,
+   "path": "The Edge of Perception"
+  }
  },
  {
   "id": "vertigo",
@@ -1694,7 +1919,12 @@ window.PICKR_POEMS = [
     "And yet, in the eyes of the beholder"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 14,
+   "n": 14,
+   "path": "The Edge of Perception"
+  }
  },
  {
   "id": "chisel",
@@ -1750,7 +1980,12 @@ window.PICKR_POEMS = [
     "Is left in the eyes of the beholder"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 28,
+   "n": 14,
+   "path": "The Edge of Perception"
+  }
  },
  {
   "id": "years",
@@ -1806,7 +2041,12 @@ window.PICKR_POEMS = [
     "It is never fully dark, even then"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 118,
+   "n": 14,
+   "path": "Identity and Connection"
+  }
  },
  {
   "id": "neverfail",
@@ -1862,7 +2102,12 @@ window.PICKR_POEMS = [
     "That you never made the effort to try"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 433,
+   "n": 14,
+   "path": "Society and Resistance"
+  }
  },
  {
   "id": "townact3",
@@ -1917,7 +2162,17 @@ window.PICKR_POEMS = [
     "A pocket of communion makes a town"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 19,
+   "n": 14,
+   "path": "The Hearth · Act III"
+  },
+  "play": {
+   "l": 51,
+   "n": 14,
+   "path": "Scene I The Hearth · The Town"
+  }
  },
  {
   "id": "pathexile",
@@ -1973,7 +2228,12 @@ window.PICKR_POEMS = [
     "If he was smiling at me after all"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 160,
+   "n": 14,
+   "path": "Identity and Connection"
+  }
  },
  {
   "id": "fringe",
@@ -2005,7 +2265,12 @@ window.PICKR_POEMS = [
     "Only poetry can bring me home"
    ]
   ],
-  "beat": "free"
+  "beat": "free",
+  "src": {
+   "l": 69,
+   "n": 5,
+   "path": "Perception and Curiosity"
+  }
  },
  {
   "id": "solstice",
@@ -2035,7 +2300,12 @@ window.PICKR_POEMS = [
     "Suddenly, the stillness brings hope"
    ]
   ],
-  "beat": "free"
+  "beat": "free",
+  "src": {
+   "l": 84,
+   "n": 4,
+   "path": "Perception and Curiosity"
+  }
  },
  {
   "id": "afterwards",
@@ -2065,7 +2335,12 @@ window.PICKR_POEMS = [
     "Relieved laughter hides their stunned silence"
    ]
   ],
-  "beat": "free"
+  "beat": "free",
+  "src": {
+   "l": 114,
+   "n": 4,
+   "path": "Identity and Connection"
+  }
  },
  {
   "id": "maybe",
@@ -2095,7 +2370,12 @@ window.PICKR_POEMS = [
     "My bath robe cloaks my indecision"
    ]
   ],
-  "beat": "free"
+  "beat": "free",
+  "src": {
+   "l": 448,
+   "n": 4,
+   "path": "Society and Resistance"
+  }
  },
  {
   "id": "crownepilogue",
@@ -2128,7 +2408,17 @@ window.PICKR_POEMS = [
     "because we are human"
    ]
   ],
-  "beat": "free"
+  "beat": "free",
+  "src": {
+   "l": 754,
+   "n": 5,
+   "path": "The Fire · Epilogue"
+  },
+  "play": {
+   "l": 373,
+   "n": 5,
+   "path": "Scene III The Fire · The Fire and the Crown · Epilogue"
+  }
  },
  {
   "id": "healing1",
@@ -2161,7 +2451,12 @@ window.PICKR_POEMS = [
     "The dice will have its throw"
    ]
   ],
-  "beat": "short"
+  "beat": "short",
+  "src": {
+   "l": 968,
+   "n": 5,
+   "path": "The Fire · Act 1 : Disaster"
+  }
  },
  {
   "id": "healing2",
@@ -2194,7 +2489,12 @@ window.PICKR_POEMS = [
     "We’d better see it through"
    ]
   ],
-  "beat": "short"
+  "beat": "short",
+  "src": {
+   "l": 1009,
+   "n": 5,
+   "path": "The Fire · Act 2 : Salvation"
+  }
  },
  {
   "id": "healing4",
@@ -2227,7 +2527,12 @@ window.PICKR_POEMS = [
     "I say this will not stand"
    ]
   ],
-  "beat": "short"
+  "beat": "short",
+  "src": {
+   "l": 1091,
+   "n": 5,
+   "path": "The Fire · Act 4 : Revelation"
+  }
  },
  {
   "id": "interlude2",
@@ -2264,7 +2569,12 @@ window.PICKR_POEMS = [
     "I try, but I can’t mock her anymore"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 470,
+   "n": 7,
+   "path": "The Fire · The North Wind by the Tail"
+  }
  },
  {
   "id": "bride1",
@@ -2309,7 +2619,12 @@ window.PICKR_POEMS = [
     "Envy has the patience to wait"
    ]
   ],
-  "beat": "allit"
+  "beat": "allit",
+  "src": {
+   "l": 545,
+   "n": 9,
+   "path": "The Fire · Act I – Humble beginnings"
+  }
  },
  {
   "id": "bride4",
@@ -2354,7 +2669,12 @@ window.PICKR_POEMS = [
     "The mad-dog king and his slut"
    ]
   ],
-  "beat": "allit"
+  "beat": "allit",
+  "src": {
+   "l": 572,
+   "n": 9,
+   "path": "The Fire · Act IV – The public fall"
+  }
  },
  {
   "id": "windepilogue",
@@ -2405,7 +2725,12 @@ window.PICKR_POEMS = [
     "He takes a final bow"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 533,
+   "n": 12,
+   "path": "The Fire · The North Wind by the Tail"
+  }
  },
  {
   "id": "tofriend",
@@ -2449,7 +2774,12 @@ window.PICKR_POEMS = [
     "I hope we did you proud"
    ]
   ],
-  "beat": "hexa"
+  "beat": "hexa",
+  "src": {
+   "l": 88,
+   "n": 10,
+   "path": "Identity and Connection"
+  }
  },
  {
   "id": "facades",
@@ -2509,7 +2839,12 @@ window.PICKR_POEMS = [
     "And realised it’s mine"
    ]
   ],
-  "beat": "common"
+  "beat": "common",
+  "src": {
+   "l": 365,
+   "n": 16,
+   "path": "Society and Resistance"
+  }
  },
  {
   "id": "lettinggo",
@@ -2579,7 +2914,12 @@ window.PICKR_POEMS = [
     "Inside your restless soul"
    ]
   ],
-  "beat": "common"
+  "beat": "common",
+  "src": {
+   "l": 195,
+   "n": 20,
+   "path": "Doubt and Becoming"
+  }
  },
  {
   "id": "retort",
@@ -2635,7 +2975,12 @@ window.PICKR_POEMS = [
     "I almost wish you’d understand"
    ]
   ],
-  "beat": "common"
+  "beat": "common",
+  "src": {
+   "l": 323,
+   "n": 14,
+   "path": "Society and Resistance"
+  }
  },
  {
   "id": "morning",
@@ -2691,7 +3036,12 @@ window.PICKR_POEMS = [
     "The sordid end, the brewing doom of kings"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 419,
+   "n": 14,
+   "path": "Society and Resistance"
+  }
  },
  {
   "id": "court",
@@ -2748,7 +3098,17 @@ window.PICKR_POEMS = [
     "We’ll let the bishops preach on after-life"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 714,
+   "n": 14,
+   "path": "The Fire · Act III – The Court"
+  },
+  "play": {
+   "l": 332,
+   "n": 14,
+   "path": "Scene III The Fire · The Fire and the Crown · Episode III – The Court"
+  }
  },
  {
   "id": "spark",
@@ -2803,7 +3163,17 @@ window.PICKR_POEMS = [
     "His Bishop sacrifice headed into town"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 728,
+   "n": 14,
+   "path": "The Fire · Act IV – The Spark"
+  },
+  "play": {
+   "l": 346,
+   "n": 14,
+   "path": "Scene III The Fire · The Fire and the Crown · Episode IV – The Spark"
+  }
  },
  {
   "id": "pilgrim1",
@@ -2856,6 +3226,16 @@ window.PICKR_POEMS = [
     "I trust in him; I’ll live—or I might die"
    ]
   ],
-  "beat": "pent"
+  "beat": "pent",
+  "src": {
+   "l": 590,
+   "n": 14,
+   "path": "The Fire · Act I – Departure"
+  },
+  "play": {
+   "l": 378,
+   "n": 14,
+   "path": "Scene III The Fire · The Pilgrim · Episode I – Departure"
+  }
  }
 ];
