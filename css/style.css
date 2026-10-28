@@ -350,14 +350,15 @@ a { color: var(--accent); }
 .tile.solved .n { color: var(--accent); }
 
 /* playing: the poem lines stay in a book face, everything else is Mickla */
-.line { border-radius: 4px; background: var(--card); }
-.line .grip { color: #8a8a8a; }
+.line { border-radius: 4px; background: #505050; border-color: rgba(255,255,255,.26); box-shadow: 0 1px 0 rgba(0,0,0,.25); }
+.line .grip { border-right-color: rgba(255,255,255,.18); }
+.line .grip { color: #b0b0b0; }
 .line .txt { color: #fff; }
 .line .mark { color: #111; border-radius: 3px; }
-.line.sel { background: var(--ochre-soft); border-color: var(--ochre); box-shadow: 0 0 0 2px var(--ochre) inset; }
-.line.home, .line.locked { background: var(--accent-soft); border-color: var(--accent); }
+.line.sel { background: #6a5a38; border-color: var(--ochre); box-shadow: 0 0 0 2px var(--ochre) inset; }
+.line.home, .line.locked { background: #2f5573; border-color: var(--accent); }
 .line.home .grip, .line.locked .grip { color: var(--accent); }
-.line.dragging { box-shadow: 0 14px 30px rgba(0,0,0,.5); background: var(--raised); }
+.line.dragging { box-shadow: 0 14px 30px rgba(0,0,0,.5); background: #5c5c5c; }
 .hintline { color: var(--ochre); }
 
 /* reveal */
