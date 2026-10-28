@@ -39,7 +39,22 @@ main:focus { outline: none; }
 /* header */
 .top { border-bottom: 1px solid var(--line); background: var(--paper); }
 .top-inner { display: flex; align-items: center; justify-content: space-between; height: 54px; }
-.brand { font: 600 21px/1 var(--serif); color: var(--ink); text-decoration: none; letter-spacing: .01em; }
+.brand { display: inline-flex; align-items: center; gap: 9px; font: 400 16px/1.15 var(--serif); color: var(--muted); text-decoration: none; min-width: 0; }
+.brand img { width: 26px; height: 26px; image-rendering: pixelated; flex: 0 0 auto; }
+.brand b { font-weight: 600; font-size: 21px; color: var(--ink); letter-spacing: .01em; }
+.top-inner { gap: 12px; }
+.topnav { flex: 0 0 auto; }
+@media (max-width: 430px) {
+  .brand { font-size: 13px; gap: 7px; }
+  .brand b { font-size: 18px; }
+  .brand span { display: flex; flex-direction: column; }
+  .top .topnav { gap: 10px; }
+  .soundbtn { padding: 7px 9px; font-size: 13px; }
+  .brand span { white-space: nowrap; }
+}
+@media (max-width: 360px) {
+  .topnav a[href="#"] { display: none; }
+}
 .soundbtn { font: 500 14px/1 var(--sans); background: none; border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; color: var(--muted); cursor: pointer; }
 .soundbtn[aria-pressed="false"] { color: var(--rust); border-color: var(--rust-soft); }
 

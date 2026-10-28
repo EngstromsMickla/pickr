@@ -18,6 +18,7 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 - Roboten Pickr är en egen figur i pixelstil (grön kropp, ockra antenn, visir med två ögon, rostfärgade klor). Den ska inte likna någon känd figur, till exempel Wall-E.
 - Helt statisk sida på GitHub Pages (repot EngstromsMickla/pickr, gren `main`, domänen via `CNAME`). Inga externa typsnitt, CDN eller statistik. Inget lämnar webbläsaren; bara lösta dikter och ljudvalet sparas lokalt (`pickr.v1`), med try/catch.
 - Publicera aldrig till `main` utan att Dan har sagt "publicera".
+- Sidhuvud (Dans beslut 2026-10-28): Micklas orm till vänster och "Pickr by Engströms Mickla" på alla sidor; länkar till startsidan. På telefon står "by Engströms Mickla" under Pickr, och under 360 px döljs länken Home eftersom loggan redan leder hem.
 - Formgivning enligt mickla.se: papper #f6f4ef, grön #2f6b5e, ockra #a57a12, rost #b8532c, serif i rubriker och dikter, systemets sans-serif i brödtext, endast ljust läge. Ormen i sidfoten med "© Engströms Mickla AB 2026", licensen och version.
 
 ## Struktur
