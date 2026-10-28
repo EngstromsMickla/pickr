@@ -1,6 +1,6 @@
 /* Pickr: site texts. Edit here, not in app.js. No dashes as punctuation in new texts. */
 window.PICKR = {
-  version: "v0.7",
+  version: "v0.8",
   round: { easy: 3, medium: 4, hard: 3 },
   name: "Pickr",
   tagline: "A mischievous little robot, a scrambled poem",
@@ -14,10 +14,10 @@ window.PICKR = {
     { t: "Put the lines back", d: "Pickr drops the rest. Drag a line by its handle, or tap two lines to swap them. Gaps show where the stanzas break; rhyme, rhythm and sense are your clues." },
     { t: "Check and discover", d: "Lines in the right place turn green and stay put. Get them all and you learn the poem's title, its form and how the metre works." }
   ],
-  hintNote: "Each round has ten poems, drawn from forty and starting with the easy ones. Too hard once you see the poem? Tap More help to change your help without losing your place. The first Hint shows the rhyme letters if they are hidden, and every Hint after that makes Pickr put one line in its right place. New to metre? The guide explains the forms and the words.",
+  hintNote: "Each round has ten poems, drawn from sixty and starting with the easy ones. Too hard once you see the poem? Tap More help to change your help without losing your place. The first Hint shows the rhyme letters if they are hidden, and every Hint after that makes Pickr put one line in its right place. New to metre? The guide explains the forms and the words.",
   aboutTitle: "About the poems",
   about: [
-    "Every line in Pickr was written by Dan Engström, a poet who writes in English and Swedish. The forty poems come from two collections, and every round Pickr picks ten of them.",
+    "Every line in Pickr was written by Dan Engström, a poet who writes in English and Swedish. The sixty poems come from two collections, and every round Pickr picks ten of them, saving the ones you have not met yet for the next rounds.",
     "<em>Echoes of Life</em> (Piratpensionat Produktion, 2025) gathers short poems about noticing, connection, doubt and resistance, with a sequence of four sonnets, <em>The Edge of Perception</em>, at its heart.",
     "<em>Hearts Around the Fire</em> (Piratpensionat Produktion, 2026) is set in Bælwythe, an imagined town at a river's bend, and is told through the voices of the people who live there: the brewer, the merchant, the bard, the wizard nobody talks about, and the jester who says what everyone else is thinking.",
     "The game was vibe-coded with Claude. The poems were not. Pickr only moves the lines around; it never writes or changes a word."
@@ -75,7 +75,7 @@ window.PICKR = {
       forms: "Forms you met this round"
     },
     stanzas: "stanzas",
-    roundNote: "This round: ten poems picked at random from forty, easy ones first.",
+    roundNote: "This round: ten poems picked at random from sixty, easy ones first. New rounds bring poems you have not met yet.",
     newRound: "Play a new round",
     roundDone: "See the whole round",
     restartAsk: "Forget this round and start a new one with ten fresh poems?",

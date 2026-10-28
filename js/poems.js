@@ -1,5 +1,5 @@
 /* Pickr: content. All poems by Dan Engström, CC BY-NC-SA. Edit texts here, not in app.js.
-   The pool holds 40 poems; each round draws 10 (3 easy, 4 medium, 3 hard). */
+   The pool holds 60 poems; each round draws 10 (3 easy, 4 medium, 3 hard). */
 window.PICKR_POEMS = [
  {
   "id": "birds",
@@ -1971,6 +1971,889 @@ window.PICKR_POEMS = [
    [
     "So maybe I was wrong, it’s hard to call",
     "If he was smiling at me after all"
+   ]
+  ],
+  "beat": "pent"
+ },
+ {
+  "id": "fringe",
+  "level": "easy",
+  "title": "The Fringe of reality",
+  "marks": [
+   "-",
+   "-",
+   "-",
+   "-",
+   "-"
+  ],
+  "markLabel": "none",
+  "form": "Free verse",
+  "scheme": "No rhyme",
+  "metre": "No fixed metre",
+  "sample": "i am an e-[LU]-sive i-[DE]-a",
+  "how": "Unrhymed lines with no fixed beat. With nothing to listen for at the line ends, the order is carried by the image and the thought: what comes first, what changes, where it lands.",
+  "character": "Wry and dreamlike, a self-portrait as weather.",
+  "use": "Free verse has been central to modern poetry since Walt Whitman, and short free-verse poems built on one image grew out of the Imagist movement (Ezra Pound, H.D.).",
+  "poem": "An idea lost in the rain, a road sign, and the only way home.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "I am an elusive idea",
+    "Turning my collar to the rain",
+    "This is the fringe of reality",
+    "Did the sign say Awareness, 3 miles on?",
+    "Only poetry can bring me home"
+   ]
+  ],
+  "beat": "free"
+ },
+ {
+  "id": "solstice",
+  "level": "easy",
+  "title": "Winter solstice",
+  "marks": [
+   "-",
+   "-",
+   "-",
+   "-"
+  ],
+  "markLabel": "none",
+  "form": "Free verse",
+  "scheme": "No rhyme",
+  "metre": "No fixed metre",
+  "sample": "the [SUN] [GENT]-ly [KISS]-es the [ROCKS]",
+  "how": "Unrhymed lines with no fixed beat. With nothing to listen for at the line ends, the order is carried by the image and the thought: what comes first, what changes, where it lands.",
+  "character": "Quiet and patient, like the shortest day itself.",
+  "use": "Free verse has been central to modern poetry since Walt Whitman, and short free-verse poems built on one image grew out of the Imagist movement (Ezra Pound, H.D.).",
+  "poem": "The sun touches the rocks and turns back: the whole turning of the year in four lines.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "Just when our patience runs out",
+    "The sun gently kisses the rocks",
+    "and springs back up -",
+    "Suddenly, the stillness brings hope"
+   ]
+  ],
+  "beat": "free"
+ },
+ {
+  "id": "afterwards",
+  "level": "easy",
+  "title": "Afterwards",
+  "marks": [
+   "-",
+   "-",
+   "-",
+   "-"
+  ],
+  "markLabel": "none",
+  "form": "Free verse",
+  "scheme": "No rhyme",
+  "metre": "No fixed metre",
+  "sample": "the [SET]-ting [SUN] is [WARM] on their [FA]-ces",
+  "how": "Unrhymed lines with no fixed beat. With nothing to listen for at the line ends, the order is carried by the image and the thought: what comes first, what changes, where it lands.",
+  "character": "Warm on the surface, with something unsaid underneath.",
+  "use": "Free verse has been central to modern poetry since Walt Whitman, and short free-verse poems built on one image grew out of the Imagist movement (Ezra Pound, H.D.).",
+  "poem": "Five friends, an old wall and a sunset; the last line tells you something happened.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "On a summer evening, the five friends meet again",
+    "The ancient wall cools their backs",
+    "The setting sun is warm on their faces",
+    "Relieved laughter hides their stunned silence"
+   ]
+  ],
+  "beat": "free"
+ },
+ {
+  "id": "maybe",
+  "level": "easy",
+  "title": "Maybe",
+  "marks": [
+   "-",
+   "-",
+   "-",
+   "-"
+  ],
+  "markLabel": "none",
+  "form": "Free verse",
+  "scheme": "No rhyme",
+  "metre": "No fixed metre",
+  "sample": "[LIT]-tle [WAVES] [GENT]-ly [GREET] the [SHORE]",
+  "how": "Unrhymed lines with no fixed beat. With nothing to listen for at the line ends, the order is carried by the image and the thought: what comes first, what changes, where it lands.",
+  "character": "Lazy and sunlit, a poem about not yet writing a poem.",
+  "use": "Free verse has been central to modern poetry since Walt Whitman, and short free-verse poems built on one image grew out of the Imagist movement (Ezra Pound, H.D.).",
+  "poem": "Waiting for inspiration on a beach, wrapped in a bath robe of indecision.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "Little waves gently greet the shore;",
+    "I wait patiently for inspiration -",
+    "The sun is hot on my skin",
+    "My bath robe cloaks my indecision"
+   ]
+  ],
+  "beat": "free"
+ },
+ {
+  "id": "crownepilogue",
+  "level": "easy",
+  "title": "The Fire and the Crown",
+  "excerpt": "Epilogue, the end of the poem",
+  "marks": [
+   "-",
+   "-",
+   "-",
+   "-",
+   "-"
+  ],
+  "markLabel": "none",
+  "form": "Free verse",
+  "scheme": "No rhyme",
+  "metre": "No fixed metre",
+  "sample": "be-[CAUSE] we [MUST], / be-[CAUSE] we are [HU]-man",
+  "how": "Unrhymed lines with no fixed beat, getting shorter and then repeating a word (because, because), so the poem ends like a refrain.",
+  "character": "Bare and solemn after a story full of rhyme.",
+  "use": "Free verse has been central to modern poetry since Walt Whitman, and short free-verse poems built on one image grew out of the Imagist movement (Ezra Pound, H.D.).",
+  "poem": "After a revolution told in strict rhyme, the epilogue drops the rhyme altogether.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "Truth ever has a cost—",
+    "for the honest as for the liar—",
+    "but still we sing,",
+    "because we must,",
+    "because we are human"
+   ]
+  ],
+  "beat": "free"
+ },
+ {
+  "id": "healing1",
+  "level": "easy",
+  "title": "The Healing of Bælwythe",
+  "excerpt": "Act 1 chorus, after the Disaster",
+  "marks": [
+   "-",
+   "A",
+   "B",
+   "A",
+   "B"
+  ],
+  "markLabel": "rhyme",
+  "form": "Short-line chorus",
+  "scheme": "xABAB",
+  "metre": "Short lines of two and three beats",
+  "sample": "the [DOUBT] pro-[VIDES] its [KING]",
+  "how": "A tiny closing chorus: an exclamation on its own, then four short lines whose rhymes cross (B and C, B and C). The short lines snap shut like a door. Here lingering and king are a slant rhyme.",
+  "character": "Hushed and uneasy, the town holding its breath.",
+  "use": "Short choruses that comment on the action go back to Greek drama, and to the burden or refrain of medieval carols.",
+  "poem": "The guild hall has burned, and the town asks the only question left: what now?",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "What now?",
+    "The silence lingering",
+    "Where now is there to go?",
+    "The doubt provides its king",
+    "The dice will have its throw"
+   ]
+  ],
+  "beat": "short"
+ },
+ {
+  "id": "healing2",
+  "level": "easy",
+  "title": "The Healing of Bælwythe",
+  "excerpt": "Act 2 chorus, after Salvation",
+  "marks": [
+   "-",
+   "A",
+   "B",
+   "A",
+   "B"
+  ],
+  "markLabel": "rhyme",
+  "form": "Short-line chorus",
+  "scheme": "xABAB",
+  "metre": "Short lines of two and three beats",
+  "sample": "if [TOW]-ers [TRUMP] our [BREAD]",
+  "how": "A tiny closing chorus: an exclamation on its own, then four short lines whose rhymes cross (B and C, B and C). The short lines snap shut like a door.",
+  "character": "Grumbling and resigned, a town doing as it is told.",
+  "use": "Short choruses that comment on the action go back to Greek drama, and to the burden or refrain of medieval carols.",
+  "poem": "The bishop has spoken, and the townsfolk wonder if towers really matter more than bread.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "Hold on!",
+    "Extend the church, he said",
+    "Is that for us to do?",
+    "If towers trump our bread",
+    "We’d better see it through"
+   ]
+  ],
+  "beat": "short"
+ },
+ {
+  "id": "healing4",
+  "level": "easy",
+  "title": "The Healing of Bælwythe",
+  "excerpt": "Act 4 chorus, after the Revelation",
+  "marks": [
+   "-",
+   "A",
+   "B",
+   "A",
+   "B"
+  ],
+  "markLabel": "rhyme",
+  "form": "Short-line chorus",
+  "scheme": "xABAB",
+  "metre": "Short lines of two and three beats",
+  "sample": "the [GOLD] has [TURNED] to [DUST]",
+  "how": "A tiny closing chorus: an exclamation on its own, then four short lines whose rhymes cross (B and C, B and C). The short lines snap shut like a door.",
+  "character": "Angry and resolved, the moment the town stops listening.",
+  "use": "Short choruses that comment on the action go back to Greek drama, and to the burden or refrain of medieval carols.",
+  "poem": "The tower built for God has burned, and the town decides it will not stand for it.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "Well then!",
+    "The gold has turned to dust",
+    "A castle in the sand",
+    "Now let them earn our trust",
+    "I say this will not stand"
+   ]
+  ],
+  "beat": "short"
+ },
+ {
+  "id": "interlude2",
+  "level": "medium",
+  "title": "Interlude – The Jester speaks",
+  "partOf": "The North Wind by the Tail, second interlude",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "B",
+   "C",
+   "C"
+  ],
+  "markLabel": "rhyme",
+  "form": "Rhyme royal",
+  "scheme": "ABABBCC",
+  "metre": "Iambic pentameter",
+  "sample": "so [OFF] she [WENT], the [WO]-man [POOR] and [BRAVE]",
+  "how": "A seven-line stanza of five-beat lines. The fourth and fifth lines share a rhyme (here a slant one, knife and fight), linking the opening to the final couplet.",
+  "character": "Stately and reflective; here the jester's mockery melts in the couplet.",
+  "use": "Brought into English by Geoffrey Chaucer in Troilus and Criseyde, and named after King James I of Scotland. Shakespeare used it for The Rape of Lucrece.",
+  "poem": "The jester laughs at Guilda's kitchen knife, then finds he cannot laugh any more.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "So off she went, the woman poor and brave",
+    "Who never once saw violence or strife",
+    "To send the wind—THE WIND—into its grave",
+    "She had no sword but brought her kitchen-knife",
+    "Don’t ever bring a fish-knife to a fight",
+    "The folly, as if blinded to the core",
+    "I try, but I can’t mock her anymore"
+   ]
+  ],
+  "beat": "pent"
+ },
+ {
+  "id": "bride1",
+  "level": "medium",
+  "title": "The Bride and the King",
+  "excerpt": "Act I, Humble beginnings",
+  "marks": [
+   "-",
+   "-",
+   "-",
+   "-",
+   "A",
+   "B",
+   "A",
+   "B",
+   "A"
+  ],
+  "markLabel": "rhyme",
+  "form": "Long lines with a rhymed chorus",
+  "scheme": "xxxx ABABA",
+  "metre": "Long unrhymed lines, then short lines of two to four beats",
+  "sample": "[SAVED] by the [LOVE] for the [LA]-dy she [SERVED]",
+  "how": "Four long, loose lines tell the story, full of alliteration (dreary days, chore and cheerless). Then a short chorus of five lines on two rhymes comments on it, like a voice from the court.",
+  "character": "Ballad-like and sorrowful, with the chorus whispering gossip.",
+  "use": "Alternating narration and a sung comment is the shape of many ballads and of the chorus in drama.",
+  "poem": "A soldier's daughter serves at court, and the chorus warns that envy can wait.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "The straw was soft for the lass, a simple soldier’s daughter",
+    "Destined for dreary days and hopeless dreams—and forever a maid"
+   ],
+   [
+    "Every chore much the same, cheerless in the shadow of the crown",
+    "Saved by the love for the lady she served, with moments secretly shared"
+   ],
+   [
+    "Above your state",
+    "Life is never simple at court",
+    "Surrounded by ambition and hate",
+    "Such positions are dearly bought",
+    "Envy has the patience to wait"
+   ]
+  ],
+  "beat": "short"
+ },
+ {
+  "id": "bride4",
+  "level": "medium",
+  "title": "The Bride and the King",
+  "excerpt": "Act IV, The public fall",
+  "marks": [
+   "-",
+   "-",
+   "-",
+   "-",
+   "A",
+   "B",
+   "A",
+   "B",
+   "A"
+  ],
+  "markLabel": "rhyme",
+  "form": "Long lines with a rhymed chorus",
+  "scheme": "xxxx ABABA",
+  "metre": "Long unrhymed lines, then short lines of two to four beats",
+  "sample": "the [DOOR] on their [BED]-room [CELL]",
+  "how": "Four long, loose lines tell the story in two pairs. Then a short chorus of five lines on two rhymes slams shut, starting with the words Slammed shut.",
+  "character": "Brutal and sudden, a fall told in headlines.",
+  "use": "Alternating narration and a sung comment is the shape of many ballads and of the chorus in drama.",
+  "poem": "Crowned before cheering crowds, then locked away by the king's own brothers.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "Crowned in a church, with cheering crowds amassed",
+    "Swept away by adulation and all that she could ask for"
+   ],
+   [
+    "The wave that rudely wiped away her ambitions and dreams",
+    "Brought to her—and to him—by brothers once beloved"
+   ],
+   [
+    "Slammed shut",
+    "The door on their bedroom cell",
+    "A dream-thread brutally cut",
+    "Here, let them dwell",
+    "The mad-dog king and his slut"
+   ]
+  ],
+  "beat": "short"
+ },
+ {
+  "id": "windepilogue",
+  "level": "medium",
+  "title": "Epilogue – The Jester speaks",
+  "partOf": "The North Wind by the Tail",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "A",
+   "B",
+   "C",
+   "C",
+   "-",
+   "D",
+   "-",
+   "D"
+  ],
+  "markLabel": "rhyme",
+  "form": "Ottava rima with a ballad coda",
+  "scheme": "ABABABCC xDxD",
+  "metre": "Iambic pentameter, then lines of four and three beats",
+  "sample": "so [THERE] it [IS], the [JES]-ter [SAYS] with [GLEE]",
+  "how": "Eight lines of ottava rima, two rhymes alternating and a closing couplet with the moral, followed by a short ballad stanza that steps back and watches the jester leave.",
+  "character": "Witty, then suddenly quiet.",
+  "use": "Ottava rima comes from Italy and became the form of wit in Byron's Don Juan; the ballad stanza is the oldest storytelling stanza in English.",
+  "poem": "The jester draws the moral of Guilda's tale, then puts away his lute without a joke.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "So there it is, the Jester says with glee",
+    "Our Guilda has become what she detests",
+    "Forever locked—or maybe she is free—",
+    "To ride the tail, to storm and to forget"
+   ],
+   [
+    "If you would hunt the wind, I do foresee",
+    "You will resist advice and even threats",
+    "By then your only option is to choose",
+    "To be your foe, or fight him—and to lose"
+   ],
+   [
+    "The Jester puts away his lute",
+    "He’s lost for words somehow",
+    "The faintest smile—Before he leaves",
+    "He takes a final bow"
+   ]
+  ],
+  "beat": "pent"
+ },
+ {
+  "id": "tofriend",
+  "level": "medium",
+  "title": "To a friend",
+  "marks": [
+   "A",
+   "A",
+   "B",
+   "B",
+   "C",
+   "C",
+   "D",
+   "E",
+   "D",
+   "E"
+  ],
+  "markLabel": "rhyme",
+  "form": "Couplets with a ballad coda",
+  "scheme": "AABBCC DEDE",
+  "metre": "Long lines of five and six beats, then lines of three beats",
+  "sample": "[MEET]-ing is a [BREATH] we [TAKE] be-[FORE] fare-[WELL]",
+  "how": "Three rhymed couplets in long lines, each a memory, then a short cross-rhymed quatrain that speaks to the friend directly.",
+  "character": "Tender and plain, an elegy that sounds like a toast.",
+  "use": "Couplets for remembrance go back to classical epitaphs; the short closing stanza works like a farewell song.",
+  "poem": "A life of open doors, and the hope that the friends did him proud.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "Even when we met that first time I could tell",
+    "Meeting is a breath we take before farewell",
+    "From our first hello to our last goodbye",
+    "You never let us go, never questioned why",
+    "It would leave its mark, your life of open doors",
+    "You were part of ours, but we were all of yours"
+   ],
+   [
+    "For noone but you",
+    "We stood out from the crowd",
+    "We’ll see each other through",
+    "I hope we did you proud"
+   ]
+  ],
+  "beat": "hexa"
+ },
+ {
+  "id": "facades",
+  "level": "medium",
+  "title": "Façades",
+  "marks": [
+   "-",
+   "A",
+   "-",
+   "A",
+   "-",
+   "B",
+   "-",
+   "B",
+   "-",
+   "-",
+   "-",
+   "-",
+   "-",
+   "C",
+   "-",
+   "C"
+  ],
+  "markLabel": "rhyme",
+  "form": "Common metre",
+  "scheme": "xAxA xBxB xxxx xCxC",
+  "metre": "Iambic lines of four and three beats in turn",
+  "sample": "i [DROVE] through [SOME]-one's [SUB]-urb [ONCE]",
+  "how": "Four-line stanzas alternating four and three beats, with the short lines rhyming. In the third stanza the rhyme disappears and the sentences break across the lines (ballet of / Clones of prefab houses, I), as if the poem itself loses its footing.",
+  "character": "Sardonic and tidy, until the twist.",
+  "use": "The metre of hymns such as Amazing Grace, of folk ballads and of most of Emily Dickinson's poems.",
+  "poem": "A sneer at a too-perfect suburb, and a last line that turns the sneer around.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "I drove through someone’s suburb once",
+    "But wasn’t too impressed",
+    "By all its gardens neatly trimmed",
+    "And people smartly dressed"
+   ],
+   [
+    "Expensive cars and skateboard kids",
+    "Appearing well-behaved",
+    "The only mark of discontent;",
+    "A sign that Jesus saves"
+   ],
+   [
+    "Tapping to the rhythm of this",
+    "Frozen Dutch ballet of",
+    "Clones of prefab houses, I",
+    "Prepared to speed away"
+   ],
+   [
+    "It’s too clean to be real, I thought",
+    "While looking for some sign",
+    "Of life in one pathetic home;",
+    "And realised it’s mine"
+   ]
+  ],
+  "beat": "common"
+ },
+ {
+  "id": "lettinggo",
+  "level": "medium",
+  "title": "Letting go",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "C",
+   "D",
+   "C",
+   "D",
+   "E",
+   "F",
+   "E",
+   "F",
+   "G",
+   "H",
+   "G",
+   "H",
+   "I",
+   "I",
+   "J",
+   "J"
+  ],
+  "markLabel": "rhyme",
+  "form": "Common metre",
+  "scheme": "ABAB CDCD EFEF GHGH IIJJ",
+  "metre": "Iambic lines of four and three beats in turn",
+  "sample": "a [SUD]-den [THOUGHT]; that's [IT], you're [DONE]",
+  "how": "Cross-rhymed quatrains alternating four and three beats. The last stanza switches to rhymed couplets, closing the argument with two firm clicks.",
+  "character": "A pep talk in the voice of a hymn.",
+  "use": "The metre of hymns, folk ballads and Emily Dickinson.",
+  "poem": "A voice talks the reader out of quitting, and into losing control on purpose.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "A sudden thought; that’s it, you’re done",
+    "Don’t want to see it through",
+    "You brush it off, you’ve just begun",
+    "And this is what you do"
+   ],
+   [
+    "Who are you to fold and quit",
+    "At the drop of a hat",
+    "Lower the mask just when it fits",
+    "You know better than that"
+   ],
+   [
+    "Challenge yourself is what you preach",
+    "Succeed and take a bow",
+    "But tasks that made you have to reach",
+    "Are second nature now"
+   ],
+   [
+    "The efforts made, the things you’ve seen",
+    "The lessons over time",
+    "You’re letting them become routine",
+    "What mountains now to climb"
+   ],
+   [
+    "Respect yourself and all that work",
+    "Feel free to drop that smirk",
+    "Embrace the need to lose control",
+    "Inside your restless soul"
+   ]
+  ],
+  "beat": "common"
+ },
+ {
+  "id": "retort",
+  "level": "hard",
+  "title": "Retort to the old",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "C",
+   "D",
+   "C",
+   "D",
+   "E",
+   "F",
+   "E",
+   "F",
+   "G",
+   "G"
+  ],
+  "markLabel": "rhyme",
+  "form": "Sonnet in ballad metre",
+  "scheme": "ABAB CDCD EFEF GG",
+  "metre": "Iambic lines of four and three beats in turn",
+  "sample": "we [CRASHED] it, [NOW] it's [UP] to [YOU]",
+  "how": "The Shakespearean sonnet shape of three quatrains and a couplet, but in the short alternating lines of a ballad. The couplet goes back to four beats for the last word.",
+  "character": "Blunt and defiant; the sonnet's dignity cut down to a chant.",
+  "use": "Sonnets usually use pentameter; shorter lines are a modern liberty, used for speed and bite.",
+  "poem": "Paired with To the young in the book: here the young refuse to save a world the old have crashed.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "We crashed it, now it’s up to you",
+    "A film we’ve seen before",
+    "Why don’t you stop and think it through",
+    "Since when are we your whore"
+   ],
+   [
+    "A generation set apart",
+    "Together or alone",
+    "A hundred million beating hearts",
+    "These queens don’t need your thrones"
+   ],
+   [
+    "It’s not on us to save your realm",
+    "To build or to forgive",
+    "It’s not on us to take the helm",
+    "We just want to live"
+   ],
+   [
+    "We won’t create your wonderland",
+    "I almost wish you’d understand"
+   ]
+  ],
+  "beat": "common"
+ },
+ {
+  "id": "morning",
+  "level": "hard",
+  "title": "On every morning light the dark descends",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "C",
+   "D",
+   "C",
+   "D",
+   "E",
+   "F",
+   "E",
+   "F",
+   "G",
+   "G"
+  ],
+  "markLabel": "rhyme",
+  "form": "Shakespearean sonnet",
+  "scheme": "ABAB CDCD EFEF GG",
+  "metre": "Loose iambic pentameter",
+  "sample": "on [EV]-ery [MOR]-ning [LIGHT] the [DARK] de-[SCENDS]",
+  "how": "Three quatrains with alternating rhyme and a closing couplet. The title line sits in the middle of the second quatrain, turning a proverb about dawn upside down.",
+  "character": "Balanced and argumentative; here anxious and wry.",
+  "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
+  "poem": "Mice and kings, birds of prey and a silent dragon: every day brings hope, and fear with it.",
+  "book": "echoes",
+  "stanzas": [
+   [
+    "We set our goals and quickly add some more",
+    "Owners of the world, we are birds of prey",
+    "For everyone, as we have learned before",
+    "We’re mice, we’re kings; and life gets in our way"
+   ],
+   [
+    "Despair will fade at dawn when night must end",
+    "He boldly said, when he had seen it through",
+    "On every morning light the dark descends",
+    "A silent dragon that we never slew"
+   ],
+   [
+    "While every day brings hope, we wake up scared",
+    "A thousand tasks to face, we mustn’t fail",
+    "We do, but smile, pretend we never cared",
+    "Another breath; remember to exhale"
+   ],
+   [
+    "In our minds, waiting calmly in the wings",
+    "The sordid end, the brewing doom of kings"
+   ]
+  ],
+  "beat": "pent"
+ },
+ {
+  "id": "court",
+  "level": "hard",
+  "title": "The Fire and the Crown",
+  "excerpt": "Act III, The Court",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "C",
+   "D",
+   "C",
+   "D",
+   "E",
+   "F",
+   "E",
+   "F",
+   "G",
+   "G"
+  ],
+  "markLabel": "rhyme",
+  "form": "Shakespearean sonnet",
+  "scheme": "ABAB CDCD EFEF GG",
+  "metre": "Iambic pentameter",
+  "sample": "i [HEAR] the [SOUND] of [SING]-ing [IN] the [STREET]",
+  "how": "Three quatrains with alternating rhyme and a closing couplet. The king speaks the first two quatrains, the chamberlain answers in the third, and the couplet gives the king his cynical last word.",
+  "character": "Balanced and argumentative, ideal for a setup and a twist.",
+  "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
+  "poem": "Revolution in the streets, and a court that decides to send in the bishops.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "The King said you must tell me what to do",
+    "You’re scared, I know, and wish to hide away",
+    "The throne and crown do not belong to you",
+    "You’d better bring your sharpest anyway"
+   ],
+   [
+    "I hear the sound of singing in the street",
+    "The sky vibrates with anger and with hate",
+    "I smell the smoke and hear the marching feet",
+    "So is the day then here to seal my fate?"
+   ],
+   [
+    "The Chamberlain said, no my Lord, not yet",
+    "There’s still the holy Mother Church to use",
+    "To teach them what they give is what they get",
+    "That’s how a revolution is defused"
+   ],
+   [
+    "Of course, the King said, celebrate their strife",
+    "We’ll let the bishops preach on after-life"
+   ]
+  ],
+  "beat": "pent"
+ },
+ {
+  "id": "spark",
+  "level": "hard",
+  "title": "The Fire and the Crown",
+  "excerpt": "Act IV, The Spark",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "C",
+   "D",
+   "C",
+   "D",
+   "E",
+   "F",
+   "E",
+   "F",
+   "G",
+   "G"
+  ],
+  "markLabel": "rhyme",
+  "form": "Shakespearean sonnet",
+  "scheme": "ABAB CDCD EFEF GG",
+  "metre": "Loose iambic pentameter",
+  "sample": "the [SPARK] was [LIT], there [WAS] no [TURN]-ing [BACK]",
+  "how": "Three quatrains with alternating rhyme and a closing couplet, here printed as eight, four and two lines. Several rhymes are feminine (alley, valley) and the couplet is slant (downs, town).",
+  "character": "Fast and fatalistic; events outrun the form.",
+  "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
+  "poem": "The king flees, the chamberlain keeps the key, and the bishop is sent to the mob.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "The spark was lit, there was no turning back",
+    "A word, a push in a crowded alley",
+    "The swift retaliatory attack",
+    "The fire raged from village to valley",
+    "And even as the word had spread in court",
+    "The Chamberlain advised the King to flee",
+    "To go, to use this very last resort",
+    "Such a noble plea—Leave the key with me"
+   ],
+   [
+    "So I’m dead, said the Bishop to the Priest",
+    "They think the cross can stop a violent mob",
+    "Then I should be the fodder for the beast",
+    "Indeed a way of learning on the job"
+   ],
+   [
+    "So as the King rode away across the downs",
+    "His Bishop sacrifice headed into town"
+   ]
+  ],
+  "beat": "pent"
+ },
+ {
+  "id": "pilgrim1",
+  "level": "hard",
+  "title": "The Pilgrim",
+  "excerpt": "Act I, Departure",
+  "marks": [
+   "A",
+   "B",
+   "A",
+   "B",
+   "B",
+   "C",
+   "C",
+   "D",
+   "E",
+   "D",
+   "E",
+   "E",
+   "F",
+   "F"
+  ],
+  "markLabel": "rhyme",
+  "form": "Rhyme royal",
+  "scheme": "ABABBCC DEDEEFF",
+  "metre": "Iambic pentameter",
+  "sample": "what [LAY] a-[HEAD] she [KNEW] not, [BUT] she [PRAYED]",
+  "how": "Seven-line stanzas of five-beat lines. The fourth and fifth lines share a rhyme, linking the opening to the final couplet, and the couplet sums up.",
+  "character": "Stately and reflective, suited to a solemn journey.",
+  "use": "Brought into English by Geoffrey Chaucer in Troilus and Criseyde, and named after King James I of Scotland. Shakespeare used it for The Rape of Lucrece.",
+  "poem": "A girl sets out alone with a leg of lamb, two loaves and a psalm.",
+  "book": "hearts",
+  "stanzas": [
+   [
+    "The Lord is my shepherd, I shall not want,",
+    "The Pilgrim said aloud and turned away",
+    "From everything she knew at Rue du Pont",
+    "And from the thought that she would rather stay",
+    "What lay ahead she knew not, but she prayed",
+    "Please let me come home safely from this quest",
+    "The glory be to you—then let me rest"
+   ],
+   [
+    "A leg of lamb and two small loaves of bread",
+    "With anxious heart into a great unknown",
+    "There’s nothing for it but to go ahead",
+    "There’ll come a day they’ll say How you have grown",
+    "From what you learned and did—a girl, alone",
+    "It was not I, but God, here at my side",
+    "I trust in him; I’ll live—or I might die"
    ]
   ],
   "beat": "pent"

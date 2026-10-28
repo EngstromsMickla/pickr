@@ -24,14 +24,14 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 
 - `index.html`, `css/style.css`, `js/app.js` (spelmotorn), `img/` (ormen och favikonen).
 - `js/content.js`: alla webbplatsens texter, inklusive Pickrs repliker och användarinstruktionen med processkarta.
-- `js/poems.js`: poolen om fyrtio dikter, med strofer, nivå (`easy`, `medium`, `hard`), markeringar för ledtråden och formtexterna.
+- `js/poems.js`: poolen om sextio dikter, med strofer, nivå (`easy`, `medium`, `hard`), markeringar för ledtråden och formtexterna.
   - `marks`: en markering per rad. Bokstäver för rim (`rhyme`) eller allittererande ljud (`sound`), `soft`/`hard` för versslut (`ending`), `-` för orimmad rad.
   - `sample`: en exempelrad med betonade stavelser inom hakparentes. `|` betyder cesur.
   - `partOf` (utdrag ur längre dikt) eller `excerpt` (förklaring av utdraget).
 
 ## Spelregler (sedan v0.4)
 
-- **Pool och omgång** (Dans beslut 2026-10-27): poolen har 40 dikter (11 easy, 14 medium, 15 hard). Varje omgång lottar tio: 3 easy, 4 medium, 3 hard (`round` i `js/content.js`), i nivåordning med slumpad ordning inom nivån. Omgången sparas i `pickr.v1` (`round`, `solved`). Start over och Play a new round lottar en ny omgång och nollställer lösta dikter.
+- **Pool och omgång** (Dans beslut 2026-10-27, utökad 2026-10-28 med fler korta dikter): poolen har 60 dikter (19 easy, 21 medium, 20 hard). Dikter från tidigare omgångar (`seen`) väljs inte förrän alla i nivån har spelats. Varje omgång lottar tio: 3 easy, 4 medium, 3 hard (`round` i `js/content.js`), i nivåordning med slumpad ordning inom nivån. Omgången sparas i `pickr.v1` (`round`, `solved`). Start over och Play a new round lottar en ny omgång och nollställer lösta dikter.
 - **Hjälp före varje dikt** (Dans beslut, rader och inte strofer): tre frågor. (1) Första raden på plats. (2) Rimbokstäver (ljudbokstäver för allitteration, mjuka och hårda versslut för blankvers; dold för dikter utan rim, `markLabel: "none"`). (3) Antal övriga rader på plats: 0 till en per ytterligare strof, eller en tredjedel av raderna i en enstrofig dikt; minst tre rader lämnas alltid att lägga (`maxOthers`). Valen sparas (`help`) och föreslås nästa gång.
 - **Strategiskt val av övriga rader** (`chooseLines`): i dikter med flera strofer ger Pickr inledningsraden i andra strofer, så långt ifrån redan givna rader som möjligt (större strof vinner vid lika avstånd). I enstrofiga dikter sprids raderna jämnt.
 - Hela dikten spelas på en gång. Mellanrum i listan visar var stroferna bryts.
@@ -42,6 +42,7 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 - **More help under spelet** (Dans önskemål 2026-10-27): samma tre val som före dikten, men bara mer hjälp kan läggas till (redan valda val är låsta). Lagda rader behålls; nya rader läggs på plats och låses. Räknas in i hjälpen i sammanfattningen men kostar inga ormar.
 - Vid Kontrollera låses rader som står rätt (gröna). Ledtrådar: först rimbokstäverna om de är dolda; varje följande ledtråd låser en rad. Antalet ledtrådar visas när dikten är löst.
 - Hem finns i sidhuvudet. Start over (på startsidan och i dikt-listan när något är löst) lottar en ny omgång efter en bekräftelse på sidan, inte i en webbläsardialog.
+- Telefon (2026-10-28): hovereffekter bara för mus (`@media (hover: hover) and (pointer: fine)`), `touch-action: manipulation` på knappar och länkar, ett tryck på handtaget utan att dra markerar raden, och sidan flyttar inte fokus vid navigering på pekskärm. Så räcker ett tryck.
 - Styrning: dra i handtaget (mus och pekskärm) eller tryck på två rader för att byta plats (fungerar också med tangentbord).
 
 ## Guide
@@ -51,7 +52,7 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 ## Test
 
 - `node tests/check.mjs` körs i Actions före varje publicering: inga externa resurser eller nätverksanrop, 40 dikter och tillräckligt många per nivå, rätt antal markeringar, alla fält ifyllda, inga tankstreck i Claudes texter.
-- Innan något föreslås för publicering: lös alla fyrtio dikterna i Playwright, med olika hjälpval, i dator- och telefonstorlek och titta på skärmbilderna.
+- Innan något föreslås för publicering: lös alla sextio dikterna i Playwright, med olika hjälpval, i dator- och telefonstorlek och titta på skärmbilderna.
 
 ## Versioner
 
@@ -62,3 +63,4 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 - v0.5 (2026-10-27): hjälpen gäller rader i stället för strofer; två stavfel rättade.
 - v0.6 (2026-10-27): Mickla-ormar, Pickrs fråga efter varje dikt och sammanfattning efter omgången. Publicerad tillsammans med v0.4 och v0.5.
 - v0.7 (2026-10-27): More help under spelet.
+- v0.8 (2026-10-28): 20 nya dikter (fler korta), nya omgångar undviker redan spelade dikter, ett tryck räcker på telefon.

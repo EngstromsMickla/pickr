@@ -17,20 +17,28 @@
   function lineHTML(t) { return esc(t).replace(/ \| /g, '<span class="cz"> </span>'); }
   function scanHTML(t) { return esc(t).replace(/\[([^\]]+)\]/g, '<b>$1</b>').replace(/ \| /g, '<span class="cz"> </span>'); }
   function idx(id) { for (var i = 0; i < P.length; i++) if (P[i].id === id) return i; return -1; }
-  function shortTitle(p) { return p.title + (p.excerpt && /^Act /.test(p.excerpt) ? ', ' + p.excerpt.split(',')[0] : ''); }
+  function shortTitle(p) { return p.title + (p.excerpt && /^(Act|Epilogue)/.test(p.excerpt) ? ', ' + p.excerpt.split(',')[0] : ''); }
   function nLines(p) { return p.stanzas.reduce(function (a, s) { return a + s.length; }, 0); }
   function shuffled(a) { a = a.slice(); for (var j = a.length - 1; j > 0; j--) { var r = Math.floor(Math.random() * (j + 1)); var t = a[j]; a[j] = a[r]; a[r] = t; } return a; }
   /* A round is ten poems drawn from the pool, easy ones first. */
+  /* Poems from earlier rounds are kept out until every poem in that level has been played. */
   function drawRound() {
-    var out = [];
+    var out = [], seen = S.seen || [];
     ['easy', 'medium', 'hard'].forEach(function (lv) {
-      out = out.concat(shuffled(P.filter(function (p) { return p.level === lv; }).map(function (p) { return p.id; })).slice(0, C.round[lv]));
+      var all = P.filter(function (p) { return p.level === lv; }).map(function (p) { return p.id; });
+      var fresh = shuffled(all.filter(function (id) { return seen.indexOf(id) < 0; }));
+      if (fresh.length < C.round[lv]) {
+        seen = seen.filter(function (id) { return all.indexOf(id) < 0; });
+        fresh = fresh.concat(shuffled(all.filter(function (id) { return fresh.indexOf(id) < 0 && (S.round || []).indexOf(id) < 0; })));
+      }
+      out = out.concat(fresh.slice(0, C.round[lv]));
     });
+    S.seen = seen;
     return out;
   }
   function validRound(r) { return Array.isArray(r) && r.length && r.every(function (id) { return idx(id) >= 0; }); }
   if (!validRound(S.round)) { S.round = drawRound(); S.solved = {}; save(); }
-  function newRound() { S.round = drawRound(); S.solved = {}; save(); }
+  function newRound() { S.seen = (S.seen || []).concat((S.round || []).filter(function (id) { return (S.seen || []).indexOf(id) < 0; })); S.round = drawRound(); S.solved = {}; save(); }
   function rpos(id) { return S.round.indexOf(id); }
   function RP() { return S.round.map(function (id) { return P[idx(id)]; }); }
   function solvedCount() { return S.round.filter(function (id) { return S.solved[id]; }).length; }
@@ -416,7 +424,7 @@
     var ph = document.createElement('li'); ph.className = 'line ph'; ph.style.height = r.height + 'px';
     list.insertBefore(ph, li.nextSibling);
     li.classList.add('dragging'); li.style.width = r.width + 'px'; li.style.left = r.left + 'px'; li.style.top = r.top + 'px';
-    var lastY = e.clientY, raf = null;
+    var lastY = e.clientY, startY = e.clientY, raf = null;
     function place(y) {
       li.style.top = (y - offY) + 'px';
       var items = Array.prototype.filter.call(list.children, function (x) { return x !== li && x !== ph; }), before = null;
@@ -435,6 +443,7 @@
       cancelAnimationFrame(raf);
       window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); window.removeEventListener('pointercancel', up);
       list.insertBefore(li, ph); ph.remove();
+      if (Math.abs(lastY - startY) < 6) { li.classList.remove('dragging'); li.style.cssText = ''; tap(pos); return; }
       var domFree = Array.prototype.map.call(list.children, function (x) { return +x.dataset.pos; })
         .filter(function (p) { return !G.fixed[p]; }).map(function (p) { return G.order[p]; });
       var neu = [], q = 0;
@@ -675,7 +684,7 @@
     else if (parts[0] === 'guide') renderGuide();
     else if (parts[0] === 'summary') renderSummary();
     else renderHome();
-    app.focus({ preventScroll: true });
+    if (!window.matchMedia || !matchMedia('(pointer: coarse)').matches) app.focus({ preventScroll: true });
   }
   window.addEventListener('hashchange', route);
   route();

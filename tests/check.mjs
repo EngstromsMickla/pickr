@@ -29,7 +29,7 @@ vm.createContext(ctx);
 vm.runInContext(readFileSync('js/content.js', 'utf8'), ctx);
 vm.runInContext(readFileSync('js/poems.js', 'utf8'), ctx);
 const P = ctx.window.PICKR_POEMS, C = ctx.window.PICKR;
-if (!Array.isArray(P) || P.length !== 40) fail('Det ska finnas 40 dikter');
+if (!Array.isArray(P) || P.length !== 60) fail('Det ska finnas 60 dikter');
 for (const lv of ['easy', 'medium', 'hard']) if ((P || []).filter((p) => p.level === lv).length < C.round[lv]) fail(`För få dikter i nivån ${lv}`);
 const ids = new Set();
 const dash = /[–—]/;
