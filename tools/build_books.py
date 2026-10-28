@@ -7,13 +7,14 @@ Dan har godkänt (CORRECTIONS). Skriptet uppdaterar också fälten src och play 
 import json, re, sys
 from docx import Document
 
+# Layout only: lines are split where the manuscript lost a line break; words are never changed.
 CORRECTIONS = [("I’ve came up", "I’ve come up"), ("deerly bought", "dearly bought"), ("demarkations", "demarcations")]
 BOOKS = {
     "echoes": dict(title="Echoes of Life", skip_headings={"Echoes of Life", "Contents"}, intro={"Foreword"},
                    skip_paras={"By Dan Engström"}),
     "hearts": dict(title="Hearts Around the Fire", skip_headings={"HEARTS AROUND THE FIRE"}, intro={"OUR HOME BY THE RIVER"},
                    skip_paras=set()),
-    "fire": dict(title="Fire in Bælwythe", skip_headings={"Fire in Bælwythe"}, intro={"Directions"}, skip_paras=set()),
+    "fire": dict(title="Fire in Bælwythe", skip_headings={"Fire in Bælwythe"}, intro={"Directions"}, skip_paras=set(), speech=True),
 }
 
 def fix(t):
@@ -99,7 +100,12 @@ def build(path, cfg):
         if plain(segs(p)).strip() in cfg["skip_paras"]:
             continue
         s = segs(p)
-        prose = in_intro or len(text) > 115 or all_italic(s)
+        sentences = re.search(r"[.?!](\s|$)", text) is not None
+        merged = len(text) > 115 and not sentences and not in_intro
+        if merged:
+            # Verse lines that lost their line breaks in the manuscript: split where a new line starts with a capital.
+            s = "\n".join(re.split(r"(?<=[a-z,;!?’]) (?=[A-Z])", plain(s)))
+        prose = not merged and (in_intro or len(text) > 115 or all_italic(s) or (cfg.get("speech") and len(text) >= 60 and sentences))
         if prose:
             close()
             blocks.append(["p", s if isinstance(s, str) else s, 1 if all_italic(s) else 0])
@@ -109,12 +115,20 @@ def build(path, cfg):
                 continue
             if isinstance(ln, str):
                 ln = ln.rstrip()
+                if ln.startswith(" ") and not ln.startswith("  "):
+                    ln = ln[1:]  # a stray single space; deliberate indents (2+ spaces) are kept
             if stanza is None:
                 stanza = [nline, []]
             stanza[1].append(ln)
             lines_meta.append((plain(ln).strip(), [h[1] for h in heads]))
             nline += 1
     close()
+    # A lone line that is a spoken sentence or a date is prose, not a one-line stanza.
+    for i, bl in enumerate(blocks):
+        if bl[0] == "s" and len(bl[2]) == 1:
+            t = plain(bl[2][0]).strip()
+            if (cfg.get("speech") and re.search(r"[.?!]$", t)) or re.match(r"^[A-Z][a-z]+ \d{1,2}(st|nd|rd|th)?, \d{4}$", t):
+                blocks[i] = ["p", bl[2][0], 0]
     return blocks, lines_meta
 
 def norm(t):

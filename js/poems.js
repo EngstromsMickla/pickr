@@ -225,7 +225,7 @@ window.PICKR_POEMS = [
    "path": "The Hearts"
   },
   "play": {
-   "l": 90,
+   "l": 88,
    "n": 12,
    "path": "Scene II The Hearts · The Brewer"
   }
@@ -271,7 +271,7 @@ window.PICKR_POEMS = [
    "path": "The Hearts"
   },
   "play": {
-   "l": 82,
+   "l": 81,
    "n": 7,
    "path": "Scene II The Hearts · The Merchant"
   }
@@ -319,7 +319,7 @@ window.PICKR_POEMS = [
    "path": "The Hearts"
   },
   "play": {
-   "l": 112,
+   "l": 108,
    "n": 8,
    "path": "Scene II The Hearts · The Jester"
   }
@@ -367,7 +367,7 @@ window.PICKR_POEMS = [
    "path": "The Hearts"
   },
   "play": {
-   "l": 103,
+   "l": 100,
    "n": 8,
    "path": "Scene II The Hearts · The Bard"
   }
@@ -428,7 +428,7 @@ window.PICKR_POEMS = [
    "path": "The Fire · The Fire and the Crown"
   },
   "play": {
-   "l": 361,
+   "l": 353,
    "n": 12,
    "path": "Scene III The Fire · The Fire and the Crown · The Aftermath – The Jester speaks"
   }
@@ -508,7 +508,7 @@ window.PICKR_POEMS = [
    "path": "The Hearts"
   },
   "play": {
-   "l": 120,
+   "l": 116,
    "n": 20,
    "path": "Scene II The Hearts · The Wizard"
   }
@@ -1378,7 +1378,7 @@ window.PICKR_POEMS = [
   ],
   "beat": "common",
   "src": {
-   "l": 1177,
+   "l": 1181,
    "n": 12,
    "path": ""
   },
@@ -1602,7 +1602,7 @@ window.PICKR_POEMS = [
    "path": "The Fire · The North Wind by the Tail"
   },
   "play": {
-   "l": 449,
+   "l": 440,
    "n": 8,
    "path": "Scene IV Farewell · The Jester speaks"
   }
@@ -2415,7 +2415,7 @@ window.PICKR_POEMS = [
    "path": "The Fire · Epilogue"
   },
   "play": {
-   "l": 373,
+   "l": 365,
    "n": 5,
    "path": "Scene III The Fire · The Fire and the Crown · Epilogue"
   }
@@ -3105,7 +3105,7 @@ window.PICKR_POEMS = [
    "path": "The Fire · Act III – The Court"
   },
   "play": {
-   "l": 332,
+   "l": 325,
    "n": 14,
    "path": "Scene III The Fire · The Fire and the Crown · Episode III – The Court"
   }
@@ -3170,7 +3170,7 @@ window.PICKR_POEMS = [
    "path": "The Fire · Act IV – The Spark"
   },
   "play": {
-   "l": 346,
+   "l": 339,
    "n": 14,
    "path": "Scene III The Fire · The Fire and the Crown · Episode IV – The Spark"
   }
@@ -3233,7 +3233,7 @@ window.PICKR_POEMS = [
    "path": "The Fire · Act I – Departure"
   },
   "play": {
-   "l": 378,
+   "l": 370,
    "n": 14,
    "path": "Scene III The Fire · The Pilgrim · Episode I – Departure"
   }

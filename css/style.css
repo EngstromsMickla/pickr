@@ -438,3 +438,4 @@ a { color: var(--accent); }
 @media (max-width: 430px) { .top .topnav a[href="#guide"] { display: none; } }
 @media (max-width: 340px) { .soundbtn { padding: 6px 7px; } }
 @media (max-width: 360px) { .soundbtn .sl { display: none; } .soundbtn::before { content: "\266A "; } }
+.book .vl { white-space: pre-wrap; }
