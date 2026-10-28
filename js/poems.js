@@ -19,7 +19,7 @@ window.PICKR_POEMS = [
   "how": "Four lines where the first, second and fourth rhyme and the third stands apart. The odd line out makes a small pause before the last line snaps the rhyme shut.",
   "character": "Compact and proverb-like, a saying with a punchline.",
   "use": "Made famous in English by Edward FitzGerald's Rubáiyát of Omar Khayyám (1859), and used ever since for epigrams and wisdom verse.",
-  "poem": "The short trochaic lines start on the stress, which gives the poem a blunt, clipped certainty.",
+  "poem": "Four lines about instinct, and the form behaves like one. The short trochaic lines start on the stress with no run-up, the way a bird leaves a branch without deliberating. The third line, the only one that does not rhyme, is where the poem itself stops to think; the last line answers by snapping back to the rhyme. Trying and thinking are what kill the bird, and the poem makes its point by not hesitating.",
   "book": "echoes",
   "stanzas": [
    [
@@ -57,7 +57,7 @@ window.PICKR_POEMS = [
   "how": "Each stanza has three lines: two short lines of two beats, then a longer line of four beats that rhymes with the second. The short lines build pressure; the long line lets it out.",
   "character": "Chant-like, almost a nursery rhyme, which makes the cold message land harder.",
   "use": "Short tercets like these belong to songs, chants and the interludes of verse drama, where a voice steps outside the story to comment on it.",
-  "poem": "The Jester interrupts the tale of Guilda and the North Wind, and his three tiny stanzas move from fact to blame to warning.",
+  "poem": "The Jester steps out of the tale of Guilda, whose husband has just died in the storm. His three tiny stanzas move from fact (he is dead) to blame (that's on him) to warning (your revenge will be in vain). The chanting short lines sound almost like a nursery rhyme, which makes them cold, and the long third line of each stanza delivers the sting. The fool is the only one who says aloud what the town will not: the quest she is about to begin is hopeless.",
   "book": "hearts",
   "stanzas": [
    [
@@ -100,7 +100,7 @@ window.PICKR_POEMS = [
   "how": "Two quatrains with alternating rhyme. Some lines start on an unstressed syllable (iambic), others drop it and start straight on the stress (trochaic). The four beats stay; the number of syllables shifts.",
   "character": "Light and nimble; the dropped syllables make the lines skip.",
   "use": "Free-moving four-beat lines like these are the backbone of English song, hymn and children's verse, and of poems such as William Blake's The Tyger.",
-  "poem": "The metre itself refuses to sit still, which suits a mind that turns every claim upside down.",
+  "poem": "A poem about a mind that refuses to sit still, in a metre that refuses too: some lines start on an upbeat, others jump straight onto the stress, so the rhythm keeps tipping over. The first stanza shows the mind making strange things, like the queen of bus stops on her throne; the second turns it into a method, imagining the opposite of whatever it hears. The final question is the poem's engine: what if the opposite were true? It is the habit of a contrarian, and of a poet.",
   "book": "echoes",
   "stanzas": [
    [
@@ -137,7 +137,7 @@ window.PICKR_POEMS = [
   "how": "There is no rhyme and no regular beat. Instead each line is held together by repeated opening sounds: p, then s, then p and s again, and finally l. The sounds return like ripples on water.",
   "character": "Quiet and musical; sound does the work that rhyme does elsewhere.",
   "use": "Free verse has been central to modern poetry since Walt Whitman. Alliteration as the glue of a line goes back to Old English poetry.",
-  "poem": "Without rhyme or beat to guide you, the order lies in the sounds and in the image: pebbles drop, circles spread, light rises.",
+  "poem": "A poem about how poems work, built the way it describes. Thoughts sink like pebbles, send out circles of waves and rise again as light. The alliteration (pebbles, pond, pearls; sending, circles, single) makes each line a ripple of one sound. There is no rhyme to hold it together, only sound and image, so you find the order by following the stone down and the light back up.",
   "book": "echoes",
   "stanzas": [
    [
@@ -176,7 +176,7 @@ window.PICKR_POEMS = [
   "how": "Lines of eight syllables and four beats, rhymed in pairs. A couplet closes quickly, so every pair can carry a joke or a turn. Two lines swing into a trochaic rhythm with a soft double rhyme (creation, fermentation).",
   "character": "Brisk, merry and a little cheeky.",
   "use": "Chaucer's early dream poems, Samuel Butler's Hudibras and Andrew Marvell's To His Coy Mistress all use it. It has long been a favourite for comic and narrative verse.",
-  "poem": "The brewer rewrites Genesis, and the tidy couplets make the blasphemy sound like a toast.",
+  "poem": "The brewer rewrites Genesis: in the beginning there was beer. The merry couplets make the blasphemy sound like a toast, and each rhyme lands like a raised glass (laugh, epitaph; how, bow). The two lines with soft double rhymes put creation and fermentation side by side on purpose. The last couplet sets the monk's pious prayer against the courage of the drunk, and you can hear which one the brewer prefers.",
   "book": "hearts",
   "stanzas": [
    [
@@ -221,7 +221,7 @@ window.PICKR_POEMS = [
   "how": "A seven-line stanza of five-beat lines. The fourth and fifth lines share a rhyme, which links the opening to the final couplet, and the couplet sums up.",
   "character": "Stately and reflective, with room to argue and then conclude.",
   "use": "Brought into English by Geoffrey Chaucer in Troilus and Criseyde, and named after King James I of Scotland, who used it in The Kingis Quair. Shakespeare used it for The Rape of Lucrece.",
-  "poem": "A single stanza that moves from the work to the reward and ends, in the couplet, with responsibility.",
+  "poem": "A single stanza on the merchant's pride in honest work. Rhyme royal gives the trade the dignity of a sermon, and the alliteration (find fatigue fits, nurture needs, fortune, fail) gives it the steady rhythm of labour. The repeated rhyme in lines four and five ties the image of the ox and plough to the question of how to grow. The couplet ends at night, alone, with the thought that it is all up to you.",
   "book": "hearts",
   "stanzas": [
    [
@@ -258,7 +258,7 @@ window.PICKR_POEMS = [
   "how": "Eight lines of iambic pentameter. Two rhymes alternate through six lines, then a couplet delivers the punchline. Here the A rhymes are long feminine rhymes (absolution, dissolution, revolution), which end on an unstressed syllable.",
   "character": "In English it became the form of wit: build up for six lines, deflate in two.",
   "use": "It comes from Italy (Boccaccio, Ariosto, Tasso). In English, Lord Byron's Don Juan made it the form of satire.",
-  "poem": "The jester's whole job fits the form: six lines of play, then the couplet whispers that the king is mortal.",
+  "poem": "The jester describes his job: to keep the king laughing, and to slip the truth in under the laughter. Ottava rima, the form of comic wit since Byron, is the perfect costume. The long feminine rhymes (absolution, dissolution, revolution) build a threat while sounding like a joke, and the couplet drops the mask: I whisper you are mortal in his ear. The mocking slave of the last line seems to echo the slave who rode behind a triumphant Roman general to remind him he would die.",
   "book": "hearts",
   "stanzas": [
    [
@@ -296,7 +296,7 @@ window.PICKR_POEMS = [
   "how": "Each line has two halves divided by a pause, the caesura, shown here as a gap. Stressed words in both halves begin with the same sound, which ties the line together. There is no rhyme and no fixed number of syllables, only the weight of the beats.",
   "character": "Heavy, ancient and incantatory, made to be recited aloud.",
   "use": "The verse of Old English poetry such as Beowulf, and of Middle English poems like Sir Gawain and the Green Knight. Modern poets such as J.R.R. Tolkien and W.H. Auden revived it.",
-  "poem": "The bard's song follows a single morning, from sunrise through mist and warmth to the hope of healing.",
+  "poem": "The bard sings a single morning over the tired town: sunrise, shadows, fog, a breeze, warmth and finally hope. Alliterative verse, the oldest English poetry, gives the song the weight of something ancient and shared, as if it had always been sung in Bælwythe. Each line is split by a pause and bound by its repeated sound, so the poem moves half a line at a time, like daylight spreading. The last line brings the human heart into the landscape: there is hope for healing, however hard it is.",
   "book": "hearts",
   "stanzas": [
    [
@@ -339,7 +339,7 @@ window.PICKR_POEMS = [
   "how": "Common metre alternates four-beat and three-beat lines and rhymes the short ones. Here each long line also rhymes inside itself (fled, dead; sent, rent; is, miss), which shows that a ballad stanza is really one long line of seven beats broken in two.",
   "character": "Jaunty and sing-song; the inner rhymes make it bounce like a jig, at odds with the grim news.",
   "use": "The metre of hymns such as Amazing Grace, of folk ballads and of most of Emily Dickinson's poems.",
-  "poem": "The Jester sums up a revolution in a nursery-rhyme beat, which is exactly how a fool would mock it.",
+  "poem": "After the revolution in The Fire and the Crown, the Jester sums it up: the king has fled, the bishop is dead, mothers count the cost. The jaunty common metre, with rhymes chiming inside the long lines (fled, dead; sent, rent; is, miss), sounds like a street song, and the jolly tune against the grim news is the jester's whole stance. His bells ring in a minor key, he grins anyway, and he ends on a line that is both a hope and a slogan.",
   "book": "hearts",
   "stanzas": [
    [
@@ -397,7 +397,7 @@ window.PICKR_POEMS = [
   "how": "Four-line stanzas alternating four and three beats, where only the short lines rhyme. A refrain returns and shifts a little each time (At least that's what he claims, says, I've heard), and some rhymes are slant (dress, says).",
   "character": "Gossipy and conversational; the refrain undercuts each claim as soon as it is made.",
   "use": "The traditional ballad, from medieval folk songs to Coleridge's The Rime of the Ancient Mariner.",
-  "poem": "We only ever hear about the wizard through rumour, and the refrain turns the rumour itself into the subject.",
+  "poem": "Everything we learn about the wizard comes from rumour, and the refrain makes that the subject: at least that's what he claims, says, I've heard. Each stanza adds a claim and the refrain undercuts it, until the gossip turns on the townsfolk themselves: I think they're just afraid. The plain ballad metre is the voice of village talk. The wizard never speaks for himself, which is exactly how a town turns someone into an outsider.",
   "book": "hearts",
   "stanzas": [
    [
@@ -459,7 +459,7 @@ window.PICKR_POEMS = [
   "how": "Lines 2 and 4 of each stanza return as lines 1 and 3 of the next. In the last stanza the unused lines 1 and 3 of the first stanza come back, so the poem ends where it began.",
   "character": "Circling and obsessive, like a thought that will not let go.",
   "use": "It comes from the Malay pantun. Victor Hugo brought it into French in the nineteenth century, and from there it spread to English.",
-  "poem": "Steinbeck's line about the best laid plans keeps returning, just as the poem says it does.",
+  "poem": "A poem about being stuck, in a form that is stuck: every second line returns in the next stanza, and the last line is the first. Steinbeck's best laid plans of mice and men keep coming back, as do the lost foothold and the urge to stay in bed. Because each line returns in new company, its meaning shifts a little each time, the way a worry does every time you turn it over.",
   "book": "echoes",
   "stanzas": [
    [
@@ -509,7 +509,7 @@ window.PICKR_POEMS = [
   "how": "Rhymed pairs of five-beat lines. Each couplet tends to close a thought, which gives the form a neat finality, perfect for a sting in the tail. Some rhymes are slant (mine, behind; return, burned).",
   "character": "Polished, confident and often satirical.",
   "use": "The great form of English satire and translation in the seventeenth and eighteenth centuries: John Dryden, Alexander Pope.",
-  "poem": "The polish of the couplets matches the young man's manners, and the last couplet shows what lies underneath.",
+  "poem": "The young nobleman repeats his father's lesson about caring for the land, then shows what he really learned. The heroic couplet, the polished form of satire, matches his manners: every pair is neat and closed, even when the content is ugly (they've had another brat). The slant rhymes (mine, behind; return, burned) are small cracks in the polish. The final couplet, a toast to plagues, is the sting in the tail the form was made for.",
   "book": "hearts",
   "stanzas": [
    [
@@ -557,7 +557,7 @@ window.PICKR_POEMS = [
   "how": "Unrhymed lines of iambic pentameter. Without rhyme, the order depends on the sense and the beat. Here the lines alternate between soft endings on an unstressed syllable (royal, important, dearly, keeping) and hard endings on a stress (poor, way, is, will).",
   "character": "The closest metre to natural English speech: flexible, serious and dramatic.",
   "use": "The verse of Shakespeare's plays, Milton's Paradise Lost and Wordsworth's The Prelude.",
-  "poem": "After a quarrel between king and archbishop, the Jester's song tells them both that control was never theirs.",
+  "poem": "After the king and the archbishop have fought over power and money, the Jester sings to both of them at once. Blank verse is the form of Shakespeare's kings and clowns, close to speech, so the song sounds like a quiet aside rather than a performance. The alternation of soft and hard line endings gives it a rocking, almost lullaby movement, which makes the message sharper: holy or royal, rich or poor, control is an illusion you never really held.",
   "book": "hearts",
   "stanzas": [
    [
@@ -607,7 +607,7 @@ window.PICKR_POEMS = [
   "how": "Five-beat lines in quatrains. The odd lines are unrhymed and end on a soft extra syllable (surface, meadows, water); the even lines rhyme and end on a stress (downs, town). The swing between soft and hard endings gives a rocking motion.",
   "character": "Gentle and lyrical, flowing like the river it describes.",
   "use": "Pentameter quatrains are a staple of English lyric, from Thomas Gray's Elegy onward. Leaving the soft-ended lines unrhymed is this poem's own twist.",
-  "poem": "A portrait of the town at the river's bend, ending on a question about its future.",
+  "poem": "A portrait of the town at the river's bend that opens the world of the collection. The long, soft-ended odd lines (surface, meadows, water) flow like the river, while the rhymed even lines (downs, town) set down the solid things. The stanzas move from the river into the market, the taverns and the cathedral, then out again to a question. The last line, how will you make the future promise yours, turns the postcard into a challenge.",
   "book": "hearts",
   "stanzas": [
    [
@@ -677,7 +677,7 @@ window.PICKR_POEMS = [
   "how": "Each line has four beats, often with two light syllables between them, a galloping triple rhythm. The last stanza drops the alternating rhyme and uses one rhyme in all four lines (content, dissent, consent, bent), hammering home the call to action.",
   "character": "Galloping and rousing; triple metre pushes forward.",
   "use": "Popular in nineteenth-century ballads and recitation pieces, such as Lord Byron's The Destruction of Sennacherib.",
-  "poem": "A manifesto: the rhythm charges forward, and the final monorhyme reads like four slogans.",
+  "poem": "A manifesto to the young. The galloping triple rhythm charges forward, and the argument charges with it, from a simpler past of hunters and brewers, through the rule of the old and wealthy, to a call for the agile and brave. Quick images (hoodies and Red Bull trump suits and Chablis) keep the tone half serious, half mocking. The last stanza drops the alternating rhyme for one rhyme in all four lines, so the call to action reads like four slogans shouted in a row.",
   "book": "echoes",
   "stanzas": [
    [
@@ -741,7 +741,7 @@ window.PICKR_POEMS = [
   "how": "Fourteen lines in three quatrains and a couplet, like a Shakespearean sonnet, but with short three-beat lines in a lilting rhythm (da da DUM). Odd lines end on a soft syllable (city, pretty), even lines on a stress (sites, lights).",
   "character": "A sing-song tune carrying a complaint; the bounce makes the grumbling funny and sad at once.",
   "use": "Anapestic trimeter is the metre of the long lines of a limerick and of much comic verse. Using it for a sonnet is unusual.",
-  "poem": "The sonnet's argument is a complaint, and the couplet answers its own question with a rhyme.",
+  "poem": "A sonnet about a hometown dug up by building works, in a bouncy anapestic rhythm better suited to a limerick. The clash is the point: the tune is cheerful, the speaker is not, and the grumble becomes funny and sad at once. The sonnet still argues like a sonnet, from the holes to the promises of growth to the dejected faces and the cranes puking concrete, and the couplet answers its own question with a rhyme: there are holes all over my town.",
   "book": "echoes",
   "stanzas": [
    [
@@ -797,7 +797,7 @@ window.PICKR_POEMS = [
   "how": "The sonnet shape of three quatrains and a couplet, stretched to six beats per line, most lines breaking in the middle. The couplet returns to the rhyme of the second line and repeats its refrain, closing a circle.",
   "character": "Long-breathed and dreamlike, a child's memory moving in slow pulses.",
   "use": "The alexandrine is the classic line of French verse (Racine, Corneille). In English it is best known as the long last line of the Spenserian stanza.",
-  "poem": "The refrain about the kid being just fine opens and closes the poem, and changes meaning on the way.",
+  "poem": "A child's memory of Stockholm in 1969, heard from inside: a pulse in the ears, adult voices out of reach, a door slamming, a sudden urge to find the yellow socks. The long six-beat lines with a pause in the middle move slowly, like a child lying awake and listening. The refrain about the kid being just fine opens and closes the poem, and the couplet returns to the second line's rhyme to close the circle. By the end the reassurance sounds less like comfort and more like an instruction: stash your stuff well inside the box.",
   "book": "echoes",
   "stanzas": [
    [
@@ -853,7 +853,7 @@ window.PICKR_POEMS = [
   "how": "Three quatrains with alternating rhyme and a closing couplet. The quatrains build a thought; the couplet turns it around. Here the turn, the volta, comes with But life resists.",
   "character": "Balanced and argumentative, ideal for a setup and a twist.",
   "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
-  "poem": "Twelve lines of comfort from a bus announcement, then two lines that take the map away.",
+  "poem": "Twelve lines of gratitude to the automated voice on the bus: she announces the next stop, keeps you on time and helps you choose. The smooth iambic pentameter is as calm and regular as the announcement itself. Then the couplet, the classic turn of the Shakespearean sonnet, takes the map away: life resists, it won't be thus defined, and there is no map of bus stops in my mind. The regular form that was comfort becomes the very thing life refuses.",
   "book": "echoes",
   "stanzas": [
    [
@@ -909,7 +909,7 @@ window.PICKR_POEMS = [
   "how": "The shape of the Shakespearean sonnet, with a looser metre and two speakers. The couplet ends on beholder, the word that closes all four sonnets in the sequence The Edge of Perception.",
   "character": "Conversational and playful; a strict frame holding a casual chat between gods.",
   "use": "Sonnet sequences that share a theme or a line go back to Petrarch and Philip Sidney. Sonnets in dialogue are rarer, and often comic.",
-  "poem": "Two gods talk shop over tea, and the invention of dawn becomes a shrug.",
+  "poem": "Two gods talk shop over tea, and the invention of dawn becomes a shrug. This is the fourth sonnet of The Edge of Perception, about letting a creation go, and it treats the biggest subject, the making of light, as the smallest, most casual conversation. The loose metre lets the voices interrupt each other. The couplet brings in let there be light and then turns it, like the other three sonnets, toward the eye of the beholder: once made, a thing belongs to whoever sees it.",
   "book": "echoes",
   "stanzas": [
    [
@@ -966,7 +966,7 @@ window.PICKR_POEMS = [
   "how": "An octave of eight lines on just two rhymes, folded inward (ABBA ABBA), then a sestet on three new rhymes (CDE CDE). The shift between them, the volta, falls at line 9, where rules, rulers and the hangman's hill arrive.",
   "character": "Architectural and demanding: the octave sets the scene, the sestet complicates it.",
   "use": "Perfected by Petrarch in fourteenth-century Italy and brought into English by Thomas Wyatt. Milton and Wordsworth made it their own.",
-  "poem": "The founding of Bælwythe in fourteen lines: the octave builds the town, the sestet brings in power, church and class.",
+  "poem": "The founding of Bælwythe in fourteen lines. The octave builds the town, a man with an axe, builders, fishermen tying up at the quay, all on two rhymes folded inward like walls closing around a settlement. The turn at line nine brings what follows every settlement: rules, rulers, the hangman's hill, a small church that dominates the square. The sestet's new rhymes carry the new order and end on a quietly devastating detail: the rich prefer their houses to have stairs.",
   "book": "hearts",
   "stanzas": [
    [
@@ -1009,7 +1009,7 @@ window.PICKR_POEMS = [
   "how": "Three unrhymed lines that work like a tiny film: a scene, a sudden change, an ending. Each line is shorter than the one before, so the poem itself fades out.",
   "character": "Still and visual, close in spirit to the Japanese haiku without its syllable count.",
   "use": "Short free-verse poems built on one image grew out of the Imagist movement of the 1910s (Ezra Pound, H.D.), which learned from Japanese haiku.",
-  "poem": "Light, then loud colour, then silence: the order follows the sun going down.",
+  "poem": "Three lines, three moments: the last rays visit a glade, the trees turn loudly to gold, and then silence. The lines get shorter as the light fades, so the form performs the sunset. Calling colour loud (trees turn loudly to gold, grass to roaring fires) is the poem's surprise, and it is what makes the final silence audible.",
   "book": "echoes",
   "stanzas": [
    [
@@ -1037,7 +1037,7 @@ window.PICKR_POEMS = [
   "how": "Three unrhymed lines that work like a tiny film: a scene, a sudden change, an ending. The order is carried by the image, not by sound.",
   "character": "Still and visual, close in spirit to the Japanese haiku without its syllable count.",
   "use": "Short free-verse poems built on one image grew out of the Imagist movement of the 1910s (Ezra Pound, H.D.), which learned from Japanese haiku.",
-  "poem": "The forest, its reflection, and the watcher: the poem moves from the world to the self.",
+  "poem": "Dusk in a forest, a parallel world in still water, and a watcher who watches himself. The three lines move from the world to its reflection and then inward to the self, so the poem becomes a mirror too. With no rhyme to guide you, the order lies in that movement, and in the light that is running out.",
   "book": "echoes",
   "stanzas": [
    [
@@ -1068,7 +1068,7 @@ window.PICKR_POEMS = [
   "how": "Five short lines on two rhymes. The extra fifth line repeats the B rhyme, so the stanza seems to end once and then keeps going, like a disaster that won't stop.",
   "character": "Terse and ominous, a chronicle in headlines.",
   "use": "Five-line stanzas (cinquains) come in many forms, from medieval song to the limerick, which also rhymes on two sounds.",
-  "poem": "Between two sonnets about building the town, this tiny middle act burns it down in five lines.",
+  "poem": "The middle act of The Town sits between two sonnets about building and rebuilding, and it is the shortest: in five lines the town grows poor, builds higher, bars its doors and burns. The short lines and the extra fifth line on the same rhyme make it feel like a chronicle written in headlines. The songs of ruin from the choir close it like a funeral.",
   "book": "hearts",
   "stanzas": [
    [
@@ -1101,7 +1101,7 @@ window.PICKR_POEMS = [
   "how": "Rhymed pairs of four-beat lines with two light syllables between most beats. Some rhymes are slant (smile, eye; dreams, feels), and the last couplet runs one sentence across the line break.",
   "character": "Conversational and light on its feet.",
   "use": "Anapestic tetrameter is the metre of Clement Clarke Moore's A Visit from St. Nicholas and of many comic and children's poems.",
-  "poem": "A dialogue in three couplets, ending on a full rhyme that hands the future over.",
+  "poem": "A conversation in three couplets. Someone sees a future the others cannot see, and asked to explain it, she can only say how it feels. The rolling anapestic rhythm keeps the dialogue light, and the inexact rhymes of the first two couplets (smile, eye; dreams, feels) are as blurred as the vision itself. The last couplet rhymes fully and runs one sentence across the line break: the future is a wish, not a fate, and it is yours to create.",
   "book": "echoes",
   "stanzas": [
    [
@@ -1141,7 +1141,7 @@ window.PICKR_POEMS = [
   "how": "Rhymed pairs of five-beat lines. Each couplet tends to close a thought, which gives the form a neat finality. Here every couplet turns to a different listener around the fire.",
   "character": "Polished, confident and often satirical, but here warm and direct.",
   "use": "The great form of English satire and translation in the seventeenth and eighteenth centuries: John Dryden, Alexander Pope.",
-  "poem": "The teacher speaks to three pupils in turn, then passes on the torch.",
+  "poem": "The teacher gathers the pupils round the fire and speaks to each in turn: the sweet one feeling the heat, the young man who is not fond of the teacher, the friend with fire in his eyes. Each couplet is a small, closed lesson. The fire becomes a torch of truth handed from one guardian to the next, and the last couplet is the handing over itself: if you so yearn, I'll pass it on to you.",
   "book": "hearts",
   "stanzas": [
    [
@@ -1189,7 +1189,7 @@ window.PICKR_POEMS = [
   "how": "Four-line stanzas alternating four and three beats, with only the short lines rhyming. The pattern is so familiar that the ear expects each rhyme before it arrives.",
   "character": "Plain, sing-able and storytelling.",
   "use": "The metre of hymns such as Amazing Grace, of folk ballads and of most of Emily Dickinson's poems.",
-  "poem": "The last poem of the collection: a king has fallen, and the jester wonders which of them was the fool.",
+  "poem": "The last poem of Hearts Around the Fire: a crown lost long ago, and a jester who told the king so. The plain common metre sounds like a story told by the fire, and the rhymes on the short lines (lost, frost; stand, sand; rule, fool) carry the moral. The final stanza turns the joke inward: it is hard to tell whether the king or the jester deserves to play the fool.",
   "book": "hearts",
   "stanzas": [
    [
@@ -1239,7 +1239,7 @@ window.PICKR_POEMS = [
   "how": "Four-line stanzas alternating four and three beats. Here all four lines rhyme crosswise, which tightens the ballad stanza into something closer to a hymn.",
   "character": "Wry and tender; the jog of the metre keeps the frustration light.",
   "use": "The metre of hymns, folk ballads and Emily Dickinson.",
-  "poem": "Two stanzas of a father's exasperation, then a third that turns the whole thing around.",
+  "poem": "Two stanzas of a father's exasperation with his daughter's look: whatever he does is wrong, speak up and be snubbed, keep quiet and be frustrated. The jogging hymn metre keeps it wry rather than bitter. The third stanza turns the whole poem around: the father who felt lost at sea beside her finds she was always there for him. The turn comes at the stanza break, where the ballad stanza gives you room to breathe.",
   "book": "echoes",
   "stanzas": [
    [
@@ -1287,7 +1287,7 @@ window.PICKR_POEMS = [
   "how": "Rhymed pairs of long six-beat lines, most with a pause in the middle. The long line gives room for a thought and its answer, and the couplet rhyme ties them together. Some rhymes are slant (default, bought).",
   "character": "Earnest and steady, like a promise spoken slowly.",
   "use": "Rhyming alexandrine couplets are the classic form of French drama (Racine, Molière). In English, Michael Drayton wrote a whole topographical epic, Poly-Olbion, in them.",
-  "poem": "A short middle stanza of dark water and night road sits between doubt and the decision to go on.",
+  "poem": "Ohana is the Hawaiian word for family, including the family you choose. The poem speaks to a sibling in spirit: strangers in the crowd, yet siblings by default. The long, steady lines in rhymed pairs give it the sound of a promise. A two-line stanza of dark water and a lonely night road sits in the middle like a low point, and the last stanza climbs out of it: one stroke, one step, one perfect moment at a time.",
   "book": "echoes",
   "stanzas": [
    [
@@ -1337,7 +1337,7 @@ window.PICKR_POEMS = [
   "how": "Lines of eight syllables and four beats, rhymed in pairs. The short couplets move quickly from one small action to the next.",
   "character": "Brisk and precise, like a craftsman's hands.",
   "use": "Chaucer's early dream poems, Samuel Butler's Hudibras and Andrew Marvell's To His Coy Mistress all use it.",
-  "poem": "Touch, then image, then transformation: the dyer is changed by the cloth as much as the cloth by the dye.",
+  "poem": "The dyer works by touch: the palm reads the fleece, the cloth says what it needs, colours sing in the head. The brisk octosyllabic couplets match the small, precise movements of a craftsman's hands. The three stanzas move from touch to image to transformation, and the last couplet makes the turn: through all the stories the cloths will tell, the dyer is transformed as well.",
   "book": "hearts",
   "stanzas": [
    [
@@ -1386,7 +1386,7 @@ window.PICKR_POEMS = [
   "how": "Eight lines of iambic pentameter: two rhymes alternate through six lines, then a couplet delivers the punchline. The rhymes are slanted on purpose (ours, towers, power; disregard, façade, bard), as the jester himself announces.",
   "character": "In English it became the form of wit: build up for six lines, deflate in two.",
   "use": "It comes from Italy (Boccaccio, Ariosto, Tasso). In English, Lord Byron's Don Juan made it the form of satire.",
-  "poem": "The jester promises a tale in slanted rhyme, and the stanza keeps the promise.",
+  "poem": "The Jester opens the tale of Guilda and the North Wind and promises a story told in slanted rhyme, and the stanza keeps the promise: ours, towers, power and disregard, façade, bard only nearly rhyme. Ottava rima, the form of comic wit, suits a fool about to mock a proud town and its walls. The couplet states the theme of the whole tale: how truth is shaped, a story old as time.",
   "book": "hearts",
   "stanzas": [
    [
@@ -1430,7 +1430,7 @@ window.PICKR_POEMS = [
   "how": "Seven-line stanzas of five-beat lines. The fourth and fifth lines share a rhyme, linking the opening to the final couplet, and the couplet sums up.",
   "character": "Stately and reflective, with room to argue and then conclude.",
   "use": "Brought into English by Geoffrey Chaucer in Troilus and Criseyde, and named after King James I of Scotland. Shakespeare used it for The Rape of Lucrece.",
-  "poem": "Two stanzas, two views of humanity: the bard sings, the jester answers, and the bard gets the last couplet.",
+  "poem": "Two stanzas, two views of humanity. The bard sings of quiet dignity: we try and fail and fall, but the soul rises because it is free. The jester answers, with a frown, that men only swim because they do not wish to drown. Rhyme royal gives each speaker a full stanza, and the final couplet, which the form reserves for the conclusion, goes back to the bard: they swim because they are part of humankind.",
   "book": "hearts",
   "stanzas": [
    [
@@ -1484,7 +1484,7 @@ window.PICKR_POEMS = [
   "how": "Cross-rhymed quatrains that mostly alternate four and three beats, like a hymn. Several long lines end on a soft extra syllable (dying, sighing; behind us, remind us), and some rhymes are slant (spring, begin; smile, alive).",
   "character": "Hopeful and song-like, with a catch of grief in the last stanza.",
   "use": "Hymn quatrains are the backbone of English church song, from Isaac Watts and Charles Wesley onward.",
-  "poem": "Winter dies, the birds return, and the last stanza remembers the friends who don't.",
+  "poem": "Winter is dying, the birds will return, life begins anew. The hymn-like quatrains carry the hope, and the soft double endings in the long lines (dying, sighing; behind us, remind us) give them a sighing, song-like fall. The last stanza turns from the season to the people: we long for those we've lost, and smile that friends like us still love and breathe. The slant rhyme of its last words, smile and alive, is the poem's catch in the throat.",
   "book": "echoes",
   "stanzas": [
    [
@@ -1548,7 +1548,7 @@ window.PICKR_POEMS = [
   "how": "Four-line stanzas alternating four and three beats, where only the short lines rhyme. The poem uses just two rhymes throughout, and the refrains (as they have done before; as you have ever been) return like footsteps.",
   "character": "Hushed and menacing, a voice in the dark.",
   "use": "The traditional ballad, from medieval folk songs to Coleridge's The Rime of the Ancient Mariner.",
-  "poem": "The thief's refrains turn the accusation around: thief and thug, as they have ever been.",
+  "poem": "The thief speaks as he creeps into a rich man's house, and turns the accusation around: you sleep on riches from the poor, so if thief I am, then thug are you. The ballad metre and its two refrains (as they have done before; as you have ever been) return like footsteps in the dark. By the end the refrain has become a verdict on both of them: we are as we are seen.",
   "book": "hearts",
   "stanzas": [
    [
@@ -1612,7 +1612,7 @@ window.PICKR_POEMS = [
   "how": "Three quatrains with alternating rhyme and a closing couplet. Here the metre is loose and the voices of a father and a child interrupt each other. The couplet ends on beholder, the word that closes all four sonnets in the sequence The Edge of Perception.",
   "character": "Balanced and argumentative, ideal for a setup and a twist; here playful.",
   "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
-  "poem": "The first of the four sonnets in The Edge of Perception, on noticing: a child's game teaches the father to see.",
+  "poem": "The first sonnet of The Edge of Perception, about noticing. A child turns rugs into ships on a sea of fire, and the father, trying to join in, gets the rules and the facts tangled. The loose metre lets the voices of father and child tumble over each other. The third quatrain gives the child the wisdom (trying too hard prevents me from seeing), and the couplet introduces the line that closes all four sonnets: it lies in the eyes of the beholder.",
   "book": "echoes",
   "stanzas": [
    [
@@ -1668,7 +1668,7 @@ window.PICKR_POEMS = [
   "how": "Three quatrains with alternating rhyme and a closing couplet. The second quatrain ends its rhymes on a soft syllable (chosen, frozen), and the couplet ends on beholder, as in all four sonnets of The Edge of Perception.",
   "character": "Balanced and argumentative, ideal for a setup and a twist; here full of wonder.",
   "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
-  "poem": "The second sonnet of The Edge of Perception, on imagining: a house carried into a forest to see the trees from above.",
+  "poem": "The second sonnet of The Edge of Perception, about imagining. A man carries a house into a forest on his back and builds an infinity room to look down on the pines. The poem borrows an old saying, that architecture is frozen music, and asks for whom the music plays. The quatrains move from the labour to the impossible proportions to the view from above, and the couplet asks once more whether the vision is real or in the eye of the beholder.",
   "book": "echoes",
   "stanzas": [
    [
@@ -1724,7 +1724,7 @@ window.PICKR_POEMS = [
   "how": "Three quatrains with alternating rhyme and a closing couplet. Many of the rhymes are slant (unplayed, shape; loss, was; surprise, life), so the ear has to work harder. The couplet ends on beholder, as in all four sonnets of The Edge of Perception.",
   "character": "Balanced and argumentative; here restless, like work in progress.",
   "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
-  "poem": "The third sonnet of The Edge of Perception, on making: an idea arrives and the artist hangs on.",
+  "poem": "The third sonnet of The Edge of Perception, about making. A piece fails, then an idea flies past at the edge of perception and the artist hangs on for dear life. The many slant rhymes (unplayed, shape; loss, was; surprise, life) make the sonnet feel unfinished, like work in progress. She never has a say in the matter, and enjoys doing what she's told: the poem pictures creation as obedience to the idea.",
   "book": "echoes",
   "stanzas": [
    [
@@ -1780,7 +1780,7 @@ window.PICKR_POEMS = [
   "how": "Three quatrains with alternating rhyme and a closing couplet. The quatrains move from evening to memory to an eternal June, and the couplet turns the elegy into consolation.",
   "character": "Balanced and reflective; here elegiac and gentle.",
   "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
-  "poem": "A couple long gone still walk together in a glade by the Braemalune, where it is never fully dark.",
+  "poem": "A couple long gone, remembered by no one, still walk together in a glade by the Braemalune in eternal June. The quatrains move from evening, to the lifetime they shared (he smoothing a crease in her brow, she bearing him from flawed to the sublime), to the timeless glade. The couplet turns the elegy into consolation: still today they meet again, and it is never fully dark.",
   "book": "echoes",
   "stanzas": [
    [
@@ -1836,7 +1836,7 @@ window.PICKR_POEMS = [
   "how": "Three quatrains with alternating rhyme and a closing couplet. The poem opens with a motto, tests it for twelve lines, and the couplet delivers the verdict.",
   "character": "Balanced and argumentative; here a pep talk with teeth.",
   "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
-  "poem": "A motto, a couch, and a hard question: how bad do you need to bounce back?",
+  "poem": "The poem opens with a motto, I never fail: I succeed, or I learn, and then tests it for twelve lines. Successes are earned away from the light, and the comfortable couch is where they are lost. The sonnet's argumentative shape suits a pep talk, and the couplet gives its verdict without mercy: your many reasons will not justify that you never made the effort to try.",
   "book": "echoes",
   "stanzas": [
    [
@@ -1893,7 +1893,7 @@ window.PICKR_POEMS = [
   "how": "An octave of eight lines on two rhymes, folded inward (ABBA ABBA), then a sestet on three new rhymes (CDE CDE). The volta at line 9 brings in silent tensions, and some sestet rhymes are slant (mine, die; found, town).",
   "character": "Architectural and demanding: the octave sets the scene, the sestet complicates it.",
   "use": "Perfected by Petrarch in fourteenth-century Italy and brought into English by Thomas Wyatt. Milton and Wordsworth made it their own.",
-  "poem": "The rebuilt town, and the choice between the builder's tools and the soldier's sword.",
+  "poem": "The last act of The Town: the streets return, broad and paved, the boats and merchants come back, the blacksmith finds his tools. The octave rebuilds the town on two rhymes, as the first act built it. But the turn at line nine brings silent tensions: someone thinks the land might well be his, and the choice between the builder's tools and the soldier's sword lies open. The last line is the hope the whole collection lives by: a pocket of communion makes a town.",
   "book": "hearts",
   "stanzas": [
    [
@@ -1947,7 +1947,7 @@ window.PICKR_POEMS = [
   "how": "Three quatrains with alternating rhyme and a closing couplet. The odd lines of the first two quatrains end on soft syllables (station, destination; persuasion, demarcations), and the couplet admits the speaker may have been wrong.",
   "character": "Balanced and argumentative; here curious and self-mocking.",
   "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
-  "poem": "Three guesses about the words across a stranger's chest, and a couplet that wonders if he was smiling.",
+  "poem": "A stranger walks to the station with Path to Exile across his chest, and the speaker makes three guesses: a political statement, an author's famous quote, or just a company that makes games. Each quatrain is one guess, the sonnet's natural rhythm of argument. The couplet admits the speaker may have been wrong and wonders if the stranger was smiling after all. The poem is really about how quickly we read strangers.",
   "book": "echoes",
   "stanzas": [
    [
@@ -1994,7 +1994,7 @@ window.PICKR_POEMS = [
   "how": "Unrhymed lines with no fixed beat. With nothing to listen for at the line ends, the order is carried by the image and the thought: what comes first, what changes, where it lands.",
   "character": "Wry and dreamlike, a self-portrait as weather.",
   "use": "Free verse has been central to modern poetry since Walt Whitman, and short free-verse poems built on one image grew out of the Imagist movement (Ezra Pound, H.D.).",
-  "poem": "An idea lost in the rain, a road sign, and the only way home.",
+  "poem": "The speaker is an elusive idea with its collar turned against the rain, at the fringe of reality. A road sign promises Awareness, 3 miles on, a joke in the middle of a dreamscape. With no rhyme or beat, the lines drift like the idea itself, and the last line gives the only direction home: only poetry can bring me home.",
   "book": "echoes",
   "stanzas": [
    [
@@ -2025,7 +2025,7 @@ window.PICKR_POEMS = [
   "how": "Unrhymed lines with no fixed beat. With nothing to listen for at the line ends, the order is carried by the image and the thought: what comes first, what changes, where it lands.",
   "character": "Quiet and patient, like the shortest day itself.",
   "use": "Free verse has been central to modern poetry since Walt Whitman, and short free-verse poems built on one image grew out of the Imagist movement (Ezra Pound, H.D.).",
-  "poem": "The sun touches the rocks and turns back: the whole turning of the year in four lines.",
+  "poem": "The shortest day, told as a near miss: just when our patience runs out, the sun gently kisses the rocks and springs back up. The tiny third line is the bounce itself. The last line turns the turning of the year into a feeling: suddenly, the stillness brings hope.",
   "book": "echoes",
   "stanzas": [
    [
@@ -2055,7 +2055,7 @@ window.PICKR_POEMS = [
   "how": "Unrhymed lines with no fixed beat. With nothing to listen for at the line ends, the order is carried by the image and the thought: what comes first, what changes, where it lands.",
   "character": "Warm on the surface, with something unsaid underneath.",
   "use": "Free verse has been central to modern poetry since Walt Whitman, and short free-verse poems built on one image grew out of the Imagist movement (Ezra Pound, H.D.).",
-  "poem": "Five friends, an old wall and a sunset; the last line tells you something happened.",
+  "poem": "Five friends meet again on a summer evening, their backs to an ancient wall and their faces in the setting sun. Everything is warm until the last line: relieved laughter hides their stunned silence. We are never told what happened. The title and that last line turn the whole calm scene into an aftermath.",
   "book": "echoes",
   "stanzas": [
    [
@@ -2085,7 +2085,7 @@ window.PICKR_POEMS = [
   "how": "Unrhymed lines with no fixed beat. With nothing to listen for at the line ends, the order is carried by the image and the thought: what comes first, what changes, where it lands.",
   "character": "Lazy and sunlit, a poem about not yet writing a poem.",
   "use": "Free verse has been central to modern poetry since Walt Whitman, and short free-verse poems built on one image grew out of the Imagist movement (Ezra Pound, H.D.).",
-  "poem": "Waiting for inspiration on a beach, wrapped in a bath robe of indecision.",
+  "poem": "A poem about not yet writing a poem. Little waves, a hot sun, a speaker waiting for inspiration in a bath robe that cloaks the indecision. The unrhymed, unhurried lines are as lazy as the afternoon, and the title is the answer to whether the poem will ever come.",
   "book": "echoes",
   "stanzas": [
    [
@@ -2117,7 +2117,7 @@ window.PICKR_POEMS = [
   "how": "Unrhymed lines with no fixed beat, getting shorter and then repeating a word (because, because), so the poem ends like a refrain.",
   "character": "Bare and solemn after a story full of rhyme.",
   "use": "Free verse has been central to modern poetry since Walt Whitman, and short free-verse poems built on one image grew out of the Imagist movement (Ezra Pound, H.D.).",
-  "poem": "After a revolution told in strict rhyme, the epilogue drops the rhyme altogether.",
+  "poem": "After a revolution told in strict rhyme and metre, The Fire and the Crown ends with five unrhymed lines that grow shorter and then repeat themselves: because we must, because we are human. Truth has a cost for the honest and the liar alike, but still we sing. Dropping the rhyme at the very end feels like the poet stepping out from behind the story.",
   "book": "hearts",
   "stanzas": [
    [
@@ -2150,7 +2150,7 @@ window.PICKR_POEMS = [
   "how": "A tiny closing chorus: an exclamation on its own, then four short lines whose rhymes cross (B and C, B and C). The short lines snap shut like a door. Here lingering and king are a slant rhyme.",
   "character": "Hushed and uneasy, the town holding its breath.",
   "use": "Short choruses that comment on the action go back to Greek drama, and to the burden or refrain of medieval carols.",
-  "poem": "The guild hall has burned, and the town asks the only question left: what now?",
+  "poem": "The guild hall has burned, and the town stands watching in silence. Then the chorus asks the only question left: what now? The rhymes cross and no line is longer than three beats, as if nobody dares to speak at length. The doubt provides its king, and the dice will have its throw: chance, not leadership, will decide what happens next.",
   "book": "hearts",
   "stanzas": [
    [
@@ -2183,7 +2183,7 @@ window.PICKR_POEMS = [
   "how": "A tiny closing chorus: an exclamation on its own, then four short lines whose rhymes cross (B and C, B and C). The short lines snap shut like a door.",
   "character": "Grumbling and resigned, a town doing as it is told.",
   "use": "Short choruses that comment on the action go back to Greek drama, and to the burden or refrain of medieval carols.",
-  "poem": "The bishop has spoken, and the townsfolk wonder if towers really matter more than bread.",
+  "poem": "The bishop has blamed the town for the fire and demanded a taller church tower. The chorus mutters its reply: extend the church, he said, is that for us to do? The crossed rhymes carry a grumbling irony, and the last two lines say what the town will do anyway: if towers trump our bread, we'd better see it through.",
   "book": "hearts",
   "stanzas": [
    [
@@ -2216,7 +2216,7 @@ window.PICKR_POEMS = [
   "how": "A tiny closing chorus: an exclamation on its own, then four short lines whose rhymes cross (B and C, B and C). The short lines snap shut like a door.",
   "character": "Angry and resolved, the moment the town stops listening.",
   "use": "Short choruses that comment on the action go back to Greek drama, and to the burden or refrain of medieval carols.",
-  "poem": "The tower built for God has burned, and the town decides it will not stand for it.",
+  "poem": "The tower the town built for God has been struck by lightning, and the bishop stands alone in the firelight. The chorus is short and furious: well then, the gold has turned to dust, a castle in the sand. The clipped lines and hard rhymes (dust, trust; sand, stand) sound like a decision being made, and the last line is the turning point of the whole poem: I say this will not stand.",
   "book": "hearts",
   "stanzas": [
    [
@@ -2251,7 +2251,7 @@ window.PICKR_POEMS = [
   "how": "A seven-line stanza of five-beat lines. The fourth and fifth lines share a rhyme (here a slant one, knife and fight), linking the opening to the final couplet.",
   "character": "Stately and reflective; here the jester's mockery melts in the couplet.",
   "use": "Brought into English by Geoffrey Chaucer in Troilus and Criseyde, and named after King James I of Scotland. Shakespeare used it for The Rape of Lucrece.",
-  "poem": "The jester laughs at Guilda's kitchen knife, then finds he cannot laugh any more.",
+  "poem": "Guilda sets off to kill the North Wind with a kitchen knife, and the Jester cannot resist the joke: don't ever bring a fish-knife to a fight. Rhyme royal, a stately form, makes the mockery sound like a chronicle. Then the couplet changes key: the folly is too great, and the fool admits, I try, but I can't mock her anymore. It is one of the few moments the jester's mask slips.",
   "book": "hearts",
   "stanzas": [
    [
@@ -2290,7 +2290,7 @@ window.PICKR_POEMS = [
   "how": "Four long, loose lines tell the story, full of alliteration (dreary days, chore and cheerless). Then a short chorus of five lines on two rhymes comments on it, like a voice from the court.",
   "character": "Ballad-like and sorrowful, with the chorus whispering gossip.",
   "use": "Alternating narration and a sung comment is the shape of many ballads and of the chorus in drama.",
-  "poem": "A soldier's daughter serves at court, and the chorus warns that envy can wait.",
+  "poem": "A soldier's daughter serves a lady at court: soft straw, dreary days, and moments secretly shared. The long, alliterative lines tell her story with sympathy. Then a short chorus, like a voice from the court, warns in clipped rhymes that life there is never simple, positions are dearly bought, and envy has the patience to wait.",
   "book": "hearts",
   "stanzas": [
    [
@@ -2335,7 +2335,7 @@ window.PICKR_POEMS = [
   "how": "Four long, loose lines tell the story in two pairs. Then a short chorus of five lines on two rhymes slams shut, starting with the words Slammed shut.",
   "character": "Brutal and sudden, a fall told in headlines.",
   "use": "Alternating narration and a sung comment is the shape of many ballads and of the chorus in drama.",
-  "poem": "Crowned before cheering crowds, then locked away by the king's own brothers.",
+  "poem": "The maid has become queen, crowned before cheering crowds, and then a wave brought by brothers once beloved sweeps her and the king away. The long lines swell with the adulation; the chorus slams shut, beginning with the words Slammed shut. Its short rhymes (shut, cut; cell, dwell) are as brutal as the gossip they report, and the whole fall takes nine lines.",
   "book": "hearts",
   "stanzas": [
    [
@@ -2383,7 +2383,7 @@ window.PICKR_POEMS = [
   "how": "Eight lines of ottava rima, two rhymes alternating and a closing couplet with the moral, followed by a short ballad stanza that steps back and watches the jester leave.",
   "character": "Witty, then suddenly quiet.",
   "use": "Ottava rima comes from Italy and became the form of wit in Byron's Don Juan; the ballad stanza is the oldest storytelling stanza in English.",
-  "poem": "The jester draws the moral of Guilda's tale, then puts away his lute without a joke.",
+  "poem": "The Jester draws the moral of Guilda's tale: she hunted the wind and became it, forever locked, or maybe free. Ottava rima gives him six lines of wit and a couplet with the bitter lesson: you can only become your foe, or fight him and lose. Then the form changes to a plain ballad quatrain, and the poem simply watches the jester put away his lute, lost for words for once.",
   "book": "hearts",
   "stanzas": [
    [
@@ -2431,7 +2431,7 @@ window.PICKR_POEMS = [
   "how": "Three rhymed couplets in long lines, each a memory, then a short cross-rhymed quatrain that speaks to the friend directly.",
   "character": "Tender and plain, an elegy that sounds like a toast.",
   "use": "Couplets for remembrance go back to classical epitaphs; the short closing stanza works like a farewell song.",
-  "poem": "A life of open doors, and the hope that the friends did him proud.",
+  "poem": "A farewell to a friend whose life was a house of open doors. The three long couplets each hold one memory, and their rhymes (tell, farewell; goodbye, why) chime like glasses in a toast. The short closing quatrain speaks to the friend directly, and the sudden short lines sound like a voice catching: we stood out from the crowd, I hope we did you proud.",
   "book": "echoes",
   "stanzas": [
    [
@@ -2481,7 +2481,7 @@ window.PICKR_POEMS = [
   "how": "Four-line stanzas alternating four and three beats, with the short lines rhyming. In the third stanza the rhyme disappears and the sentences break across the lines (ballet of / Clones of prefab houses, I), as if the poem itself loses its footing.",
   "character": "Sardonic and tidy, until the twist.",
   "use": "The metre of hymns such as Amazing Grace, of folk ballads and of most of Emily Dickinson's poems.",
-  "poem": "A sneer at a too-perfect suburb, and a last line that turns the sneer around.",
+  "poem": "The speaker drives through a perfect suburb and sneers: trimmed gardens, expensive cars, well-behaved skateboard kids, a sign that Jesus saves. Common metre, the tidy hymn stanza, suits the tidiness being mocked. In the third stanza the rhyme vanishes and sentences break across the lines, like the frozen Dutch ballet of prefab houses. The last stanza looks for one sign of life in a pathetic home, and realises it's mine.",
   "book": "echoes",
   "stanzas": [
    [
@@ -2545,7 +2545,7 @@ window.PICKR_POEMS = [
   "how": "Cross-rhymed quatrains alternating four and three beats. The last stanza switches to rhymed couplets, closing the argument with two firm clicks.",
   "character": "A pep talk in the voice of a hymn.",
   "use": "The metre of hymns, folk ballads and Emily Dickinson.",
-  "poem": "A voice talks the reader out of quitting, and into losing control on purpose.",
+  "poem": "A voice talks someone out of quitting: who are you to fold and quit at the drop of a hat? The hymn metre gives the pep talk a firm, almost preacherly beat. The argument turns in the fourth stanza: tasks that once stretched you are routine now, so where are the mountains to climb? The final stanza switches to couplets and closes on a paradox: respect yourself and your work, and embrace the need to lose control.",
   "book": "echoes",
   "stanzas": [
    [
@@ -2609,7 +2609,7 @@ window.PICKR_POEMS = [
   "how": "The Shakespearean sonnet shape of three quatrains and a couplet, but in the short alternating lines of a ballad. The couplet goes back to four beats for the last word.",
   "character": "Blunt and defiant; the sonnet's dignity cut down to a chant.",
   "use": "Sonnets usually use pentameter; shorter lines are a modern liberty, used for speed and bite.",
-  "poem": "Paired with To the young in the book: here the young refuse to save a world the old have crashed.",
+  "poem": "Placed after To the young in the book, this is the young answering back: we crashed it, now it's up to you, they are told, and they refuse. The sonnet shape is cut down to the short lines of a ballad, so it sounds like a chant at a protest rather than a meditation. These queens don't need your thrones; and the couplet's last word is a wish, not a demand: I almost wish you'd understand.",
   "book": "echoes",
   "stanzas": [
    [
@@ -2665,7 +2665,7 @@ window.PICKR_POEMS = [
   "how": "Three quatrains with alternating rhyme and a closing couplet. The title line sits in the middle of the second quatrain, turning a proverb about dawn upside down.",
   "character": "Balanced and argumentative; here anxious and wry.",
   "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
-  "poem": "Mice and kings, birds of prey and a silent dragon: every day brings hope, and fear with it.",
+  "poem": "We set our goals and add some more; we are owners of the world, birds of prey, mice and kings. The title line turns the proverb about dawn inside out: on every morning light the dark descends. The quatrains move from ambition to dread to the daily act of pretending we never cared, and the couplet leaves the end waiting in the wings: the brewing doom of kings.",
   "book": "echoes",
   "stanzas": [
    [
@@ -2722,7 +2722,7 @@ window.PICKR_POEMS = [
   "how": "Three quatrains with alternating rhyme and a closing couplet. The king speaks the first two quatrains, the chamberlain answers in the third, and the couplet gives the king his cynical last word.",
   "character": "Balanced and argumentative, ideal for a setup and a twist.",
   "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
-  "poem": "Revolution in the streets, and a court that decides to send in the bishops.",
+  "poem": "The revolution has reached the palace. The frightened king hears singing in the street and smells the smoke, and the chamberlain calms him with a plan: use the Church to teach the people that what they give is what they get. The sonnet splits between them, the king in the first two quatrains and the chamberlain in the third, and the couplet gives the king his cynical last word: let the bishops preach on after-life.",
   "book": "hearts",
   "stanzas": [
    [
@@ -2779,7 +2779,7 @@ window.PICKR_POEMS = [
   "how": "Three quatrains with alternating rhyme and a closing couplet, here printed as eight, four and two lines. Several rhymes are feminine (alley, valley) and the couplet is slant (downs, town).",
   "character": "Fast and fatalistic; events outrun the form.",
   "use": "Shakespeare's 154 sonnets made this the English sonnet, and it is still the most used sonnet form in English.",
-  "poem": "The king flees, the chamberlain keeps the key, and the bishop is sent to the mob.",
+  "poem": "A word, a push in a crowded alley, and the fire spreads from village to valley. The sonnet moves as fast as the events: the king flees, the chamberlain keeps the key, and the bishop understands he is to be the fodder for the beast. The feminine rhymes (alley, valley) and the slant couplet (downs, town) make the form feel slightly out of control, like the revolution itself.",
   "book": "hearts",
   "stanzas": [
    [
@@ -2834,7 +2834,7 @@ window.PICKR_POEMS = [
   "how": "Seven-line stanzas of five-beat lines. The fourth and fifth lines share a rhyme, linking the opening to the final couplet, and the couplet sums up.",
   "character": "Stately and reflective, suited to a solemn journey.",
   "use": "Brought into English by Geoffrey Chaucer in Troilus and Criseyde, and named after King James I of Scotland. Shakespeare used it for The Rape of Lucrece.",
-  "poem": "A girl sets out alone with a leg of lamb, two loaves and a psalm.",
+  "poem": "A girl sets out alone on a pilgrimage with a psalm on her lips, a leg of lamb and two small loaves of bread. Rhyme royal, the stately form of Chaucer's Troilus, gives her departure the gravity of a quest. The first stanza is prayer and leave-taking; the second is courage and doubt, and it ends on the honest alternative in the pilgrim's faith: I'll live, or I might die.",
   "book": "hearts",
   "stanzas": [
    [

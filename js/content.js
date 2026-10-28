@@ -1,6 +1,6 @@
 /* Pickr: site texts. Edit here, not in app.js. No dashes as punctuation in new texts. */
 window.PICKR = {
-  version: "v0.8",
+  version: "v0.9",
   round: { easy: 3, medium: 4, hard: 3 },
   name: "Pickr",
   tagline: "A mischievous little robot, a scrambled poem",

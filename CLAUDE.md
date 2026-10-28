@@ -64,3 +64,4 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 - v0.6 (2026-10-27): Mickla-ormar, Pickrs fråga efter varje dikt och sammanfattning efter omgången. Publicerad tillsammans med v0.4 och v0.5.
 - v0.7 (2026-10-27): More help under spelet.
 - v0.8 (2026-10-28): 20 nya dikter (fler korta), nya omgångar undviker redan spelade dikter, ett tryck räcker på telefon.
+- v0.9 (2026-10-28): fylligare texter i In this poem för alla 60 dikter (innehållet och hur formen bär det), på Dans begäran. Texterna är Claudes läsningar; Dan kan stryka eller ändra.
