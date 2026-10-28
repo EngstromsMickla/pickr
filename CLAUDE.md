@@ -72,3 +72,4 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 - v1.0 (2026-10-28): nivåval Easy, Tricky, Challenging, omgångar om sex dikter, Save for later med länk.
 
 - 2026-10-28 (Dans påpekande): utdragen ur The Healing of Bælwythe är bob and wheel (efter Sir Gawain), inte en allmän kör; The Bride and the King är skriven i Gawainstrof (allittererande långrader + bob and wheel som rimmar ababa). Formtexter, frågefamiljer och guiden (Bob and wheel, Gawain stanza) uppdaterade. Versionen är fortfarande v1.0.
+- 2026-10-28 (Dan): The Town, akt II, är inspirerad av bob and wheel men är inget riktigt bob and wheel (lite för lång); formen heter Loose bob and wheel. Narrens interludium ("He is gone") har ingen förebild, formen kom av sig själv.

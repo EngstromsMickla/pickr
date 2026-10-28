@@ -1061,14 +1061,14 @@ window.PICKR_POEMS = [
    "B"
   ],
   "markLabel": "rhyme",
-  "form": "Short-line cinquain",
+  "form": "Loose bob and wheel",
   "scheme": "ABABB",
   "metre": "Short lines of two and three beats",
   "sample": "so [MA]-ny [POOR] / [BUILD]-ings [REACH]-ing [HIGH]-er",
-  "how": "Five short lines on two rhymes. The extra fifth line repeats the B rhyme, so the stanza seems to end once and then keeps going, like a disaster that won't stop.",
+  "how": "Inspired by the bob and wheel of Sir Gawain and the Green Knight: a short opening line, the bob, followed by four short lines, the wheel. It is not a strict bob and wheel. The bob is a little longer and already rhymes (poor, doors), and instead of Gawain's ababa the stanza ends on a run of the same rhyme (higher, fire, choir), so it seems to finish once and then keep going.",
   "character": "Terse and ominous, a chronicle in headlines.",
-  "use": "Five-line stanzas (cinquains) come in many forms, from medieval song to the limerick, which also rhymes on two sounds.",
-  "poem": "The middle act of The Town sits between two sonnets about building and rebuilding, and it is the shortest: in five lines the town grows poor, builds higher, bars its doors and burns. The short lines and the extra fifth line on the same rhyme make it feel like a chronicle written in headlines. The songs of ruin from the choir close it like a funeral.",
+  "use": "The bob and wheel closes every stanza of Sir Gawain and the Green Knight (late fourteenth century): a bob of one or two beats and a wheel of four three-beat lines, rhyming ababa. Poets have borrowed and loosened it ever since; this act takes the idea and lets it run a little long.",
+  "poem": "The middle act of The Town sits between two sonnets about building and rebuilding, and it is the shortest: in five lines the town grows poor, builds higher, bars its doors and burns. The bob, So many poor, states the cause; the wheel runs from the buildings to the fire, and the extra rhyme at the end lets the disaster carry on one line past where you expect it to stop. The songs of ruin from the choir close it like a funeral.",
   "book": "hearts",
   "stanzas": [
    [
