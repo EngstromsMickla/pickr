@@ -166,6 +166,8 @@ window.PICKR = {
         { t: "Couplet", d: "Two lines that belong together, usually rhyming. A sonnet often ends with one.", ex: "So let there be light, that’s what he told her / Straight in the eye of any beholder" },
         { t: "Tercet", d: "A stanza of three lines." },
         { t: "Quatrain", d: "A stanza of four lines, the most common stanza in English." },
+        { t: "Bob and wheel", d: "A five-line break at the end of a stanza: the bob is one very short line of one or two beats, the wheel four short lines of three beats. It comes from Sir Gawain and the Green Knight, where it rhymes ababa and closes every stanza after a run of long unrhymed lines. In The Healing of Bælwythe it breaks into the ballad quatrains at the end of each act.", ex: "What now? / The silence lingering / Where now is there to go? / The doubt provides its king / The dice will have its throw" },
+        { t: "Gawain stanza", d: "The stanza of Sir Gawain and the Green Knight: a run of unrhymed alliterative long lines, closed by a bob and wheel. The Bride and the King uses it in miniature, four long lines and a bob and wheel in each act.", ex: "Above your state / Life is never simple at court / Surrounded by ambition and hate" },
         { t: "Octave and sestet", d: "The two parts of a Petrarchan sonnet: eight lines that set out a situation and six that answer or complicate it." }
       ] },
       { h: "Sound", items: [

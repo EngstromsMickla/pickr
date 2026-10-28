@@ -2143,14 +2143,14 @@ window.PICKR_POEMS = [
    "B"
   ],
   "markLabel": "rhyme",
-  "form": "Short-line chorus",
-  "scheme": "xABAB",
-  "metre": "Short lines of two and three beats",
-  "sample": "the [DOUBT] pro-[VIDES] its [KING]",
-  "how": "A tiny closing chorus: an exclamation on its own, then four short lines whose rhymes cross (B and C, B and C). The short lines snap shut like a door. Here lingering and king are a slant rhyme.",
-  "character": "Hushed and uneasy, the town holding its breath.",
-  "use": "Short choruses that comment on the action go back to Greek drama, and to the burden or refrain of medieval carols.",
-  "poem": "The guild hall has burned, and the town stands watching in silence. Then the chorus asks the only question left: what now? The rhymes cross and no line is longer than three beats, as if nobody dares to speak at length. The doubt provides its king, and the dice will have its throw: chance, not leadership, will decide what happens next.",
+  "form": "Bob and wheel",
+  "scheme": "x ABAB (bob, then wheel)",
+  "metre": "A bob of one or two beats, then four short lines of three beats",
+  "sample": "what [NOW]? / the [DOUBT] pro-[VIDES] its [KING]",
+  "how": "A bob and wheel: first the bob, a single exclamation of one or two beats standing on its own, then the wheel, four short lines of three beats with crossed rhymes. In The Healing of Bælwythe each act is told in ballad quatrains, and the bob and wheel breaks in at the end like a sudden change of voice, the town talking back to the story. Unlike Gawain, the bob here does not rhyme; it hangs in the air as a question or a cry, and the wheel answers it. Here lingering and king are a slant rhyme.",
+  "character": "Hushed and uneasy: the bob is the question everyone is thinking, the wheel the shrug that follows.",
+  "use": "The bob and wheel closes every stanza of Sir Gawain and the Green Knight (late fourteenth century). After a run of unrhymed alliterative long lines comes the bob, a single line of one or two beats, and then the wheel, four short lines of three beats. In Gawain the five lines rhyme ababa, so the bob chimes with the second and fourth lines of the wheel.",
+  "poem": "The guild hall has burned and the town stands watching in silence, told in ballad quatrains. Then the bob breaks the rhythm with the only question left, What now?, and the wheel answers with doubt: the dice will have its throw. Chance, not leadership, will decide what happens next. The sudden short lines feel like the townsfolk speaking for themselves after a stretch of narration.",
   "book": "hearts",
   "stanzas": [
    [
@@ -2176,14 +2176,14 @@ window.PICKR_POEMS = [
    "B"
   ],
   "markLabel": "rhyme",
-  "form": "Short-line chorus",
-  "scheme": "xABAB",
-  "metre": "Short lines of two and three beats",
-  "sample": "if [TOW]-ers [TRUMP] our [BREAD]",
-  "how": "A tiny closing chorus: an exclamation on its own, then four short lines whose rhymes cross (B and C, B and C). The short lines snap shut like a door.",
-  "character": "Grumbling and resigned, a town doing as it is told.",
-  "use": "Short choruses that comment on the action go back to Greek drama, and to the burden or refrain of medieval carols.",
-  "poem": "The bishop has blamed the town for the fire and demanded a taller church tower. The chorus mutters its reply: extend the church, he said, is that for us to do? The crossed rhymes carry a grumbling irony, and the last two lines say what the town will do anyway: if towers trump our bread, we'd better see it through.",
+  "form": "Bob and wheel",
+  "scheme": "x ABAB (bob, then wheel)",
+  "metre": "A bob of one or two beats, then four short lines of three beats",
+  "sample": "hold [ON]! / if [TOW]-ers [TRUMP] our [BREAD]",
+  "how": "A bob and wheel: first the bob, a single exclamation of one or two beats standing on its own, then the wheel, four short lines of three beats with crossed rhymes. In The Healing of Bælwythe each act is told in ballad quatrains, and the bob and wheel breaks in at the end like a sudden change of voice, the town talking back to the story. Unlike Gawain, the bob here does not rhyme; it hangs in the air as a question or a cry, and the wheel answers it.",
+  "character": "Grumbling and ironic: the bob is a protest, the wheel a resigned shrug.",
+  "use": "The bob and wheel closes every stanza of Sir Gawain and the Green Knight (late fourteenth century). After a run of unrhymed alliterative long lines comes the bob, a single line of one or two beats, and then the wheel, four short lines of three beats. In Gawain the five lines rhyme ababa, so the bob chimes with the second and fourth lines of the wheel.",
+  "poem": "The bishop has blamed the town for the fire and demanded a taller church tower. The bob, Hold on!, is a protest cut short, and the wheel mutters the townsfolk's reply in crossed rhymes: extend the church, he said, is that for us to do? Its last two lines say what they will do anyway, because if towers trump our bread, we'd better see it through.",
   "book": "hearts",
   "stanzas": [
    [
@@ -2209,14 +2209,14 @@ window.PICKR_POEMS = [
    "B"
   ],
   "markLabel": "rhyme",
-  "form": "Short-line chorus",
-  "scheme": "xABAB",
-  "metre": "Short lines of two and three beats",
-  "sample": "the [GOLD] has [TURNED] to [DUST]",
-  "how": "A tiny closing chorus: an exclamation on its own, then four short lines whose rhymes cross (B and C, B and C). The short lines snap shut like a door.",
-  "character": "Angry and resolved, the moment the town stops listening.",
-  "use": "Short choruses that comment on the action go back to Greek drama, and to the burden or refrain of medieval carols.",
-  "poem": "The tower the town built for God has been struck by lightning, and the bishop stands alone in the firelight. The chorus is short and furious: well then, the gold has turned to dust, a castle in the sand. The clipped lines and hard rhymes (dust, trust; sand, stand) sound like a decision being made, and the last line is the turning point of the whole poem: I say this will not stand.",
+  "form": "Bob and wheel",
+  "scheme": "x ABAB (bob, then wheel)",
+  "metre": "A bob of one or two beats, then four short lines of three beats",
+  "sample": "well [THEN]! / the [GOLD] has [TURNED] to [DUST]",
+  "how": "A bob and wheel: first the bob, a single exclamation of one or two beats standing on its own, then the wheel, four short lines of three beats with crossed rhymes. In The Healing of Bælwythe each act is told in ballad quatrains, and the bob and wheel breaks in at the end like a sudden change of voice, the town talking back to the story. Unlike Gawain, the bob here does not rhyme; it hangs in the air as a question or a cry, and the wheel answers it.",
+  "character": "Angry and resolved: the bob is a breath drawn in, the wheel a decision.",
+  "use": "The bob and wheel closes every stanza of Sir Gawain and the Green Knight (late fourteenth century). After a run of unrhymed alliterative long lines comes the bob, a single line of one or two beats, and then the wheel, four short lines of three beats. In Gawain the five lines rhyme ababa, so the bob chimes with the second and fourth lines of the wheel.",
+  "poem": "The tower the town built for God has been struck by lightning, and the bishop stands alone in the firelight. The bob, Well then!, is the moment the mood turns, and the wheel's clipped lines and hard rhymes (dust, trust; sand, stand) sound like a decision being made. Its last line is the turning point of the whole poem: I say this will not stand.",
   "book": "hearts",
   "stanzas": [
    [
@@ -2283,14 +2283,14 @@ window.PICKR_POEMS = [
    "A"
   ],
   "markLabel": "rhyme",
-  "form": "Long lines with a rhymed chorus",
-  "scheme": "xxxx ABABA",
-  "metre": "Long unrhymed lines, then short lines of two to four beats",
-  "sample": "[SAVED] by the [LOVE] for the [LA]-dy she [SERVED]",
-  "how": "Four long, loose lines tell the story, full of alliteration (dreary days, chore and cheerless). Then a short chorus of five lines on two rhymes comments on it, like a voice from the court.",
-  "character": "Ballad-like and sorrowful, with the chorus whispering gossip.",
-  "use": "Alternating narration and a sung comment is the shape of many ballads and of the chorus in drama.",
-  "poem": "A soldier's daughter serves a lady at court: soft straw, dreary days, and moments secretly shared. The long, alliterative lines tell her story with sympathy. Then a short chorus, like a voice from the court, warns in clipped rhymes that life there is never simple, positions are dearly bought, and envy has the patience to wait.",
+  "form": "Gawain stanza",
+  "scheme": "xxxx ababa (long lines, then bob and wheel)",
+  "metre": "Alliterative long lines, then a bob of two beats and a wheel of short lines",
+  "sample": "[DES]-tined for [DREAR]-y [DAYS] and [HOPE]-less [DREAMS]",
+  "how": "A Gawain stanza in miniature. Four long, unrhymed lines carry the story and are bound by alliteration, as in Old and Middle English verse. Then comes the bob and wheel: a bob of two beats and four short lines, rhyming ababa exactly as in Gawain, so the bob chimes with the second and fourth lines of the wheel. Here: state, court, hate, bought, wait.",
+  "character": "Ballad-like and sorrowful, with the wheel whispering court gossip.",
+  "use": "This is the stanza of Sir Gawain and the Green Knight: a run of unrhymed alliterative long lines, closed by a bob and wheel of five short lines rhyming ababa. The Gawain poet's form fell out of use after the Middle Ages and is rare in modern poetry.",
+  "poem": "A soldier's daughter serves a lady at court: soft straw, dreary days and moments secretly shared. The long alliterative lines (dreary days, hopeless dreams) tell her story slowly and with sympathy, in the oldest manner of English storytelling. Then the bob, Above your state, cuts in like a raised eyebrow, and the wheel delivers the court's verdict in quick rhymes: positions are dearly bought, and envy has the patience to wait.",
   "book": "hearts",
   "stanzas": [
    [
@@ -2309,7 +2309,7 @@ window.PICKR_POEMS = [
     "Envy has the patience to wait"
    ]
   ],
-  "beat": "short"
+  "beat": "allit"
  },
  {
   "id": "bride4",
@@ -2328,14 +2328,14 @@ window.PICKR_POEMS = [
    "A"
   ],
   "markLabel": "rhyme",
-  "form": "Long lines with a rhymed chorus",
-  "scheme": "xxxx ABABA",
-  "metre": "Long unrhymed lines, then short lines of two to four beats",
-  "sample": "the [DOOR] on their [BED]-room [CELL]",
-  "how": "Four long, loose lines tell the story in two pairs. Then a short chorus of five lines on two rhymes slams shut, starting with the words Slammed shut.",
-  "character": "Brutal and sudden, a fall told in headlines.",
-  "use": "Alternating narration and a sung comment is the shape of many ballads and of the chorus in drama.",
-  "poem": "The maid has become queen, crowned before cheering crowds, and then a wave brought by brothers once beloved sweeps her and the king away. The long lines swell with the adulation; the chorus slams shut, beginning with the words Slammed shut. Its short rhymes (shut, cut; cell, dwell) are as brutal as the gossip they report, and the whole fall takes nine lines.",
+  "form": "Gawain stanza",
+  "scheme": "xxxx ababa (long lines, then bob and wheel)",
+  "metre": "Alliterative long lines, then a bob of two beats and a wheel of short lines",
+  "sample": "[CROWNED] in a [CHURCH], with [CHEER]-ing [CROWDS] a-[MASSED]",
+  "how": "A Gawain stanza in miniature. Four long, unrhymed lines carry the story and are bound by alliteration, as in Old and Middle English verse. Then comes the bob and wheel: a bob of two beats and four short lines, rhyming ababa exactly as in Gawain, so the bob chimes with the second and fourth lines of the wheel. Here: shut, cell, cut, dwell, slut.",
+  "character": "Brutal and sudden, a fall told in one breath.",
+  "use": "This is the stanza of Sir Gawain and the Green Knight: a run of unrhymed alliterative long lines, closed by a bob and wheel of five short lines rhyming ababa. The Gawain poet's form fell out of use after the Middle Ages and is rare in modern poetry.",
+  "poem": "The maid has become queen, crowned before cheering crowds, and then a wave brought by brothers once beloved sweeps her and the king away. The long alliterative lines swell with the adulation (crowned in a church, with cheering crowds). The bob literally slams the door, Slammed shut, and the wheel spits out the gossip in rhymes as brutal as its words (shut, cut, slut). The whole fall takes nine lines.",
   "book": "hearts",
   "stanzas": [
    [
@@ -2354,7 +2354,7 @@ window.PICKR_POEMS = [
     "The mad-dog king and his slut"
    ]
   ],
-  "beat": "short"
+  "beat": "allit"
  },
  {
   "id": "windepilogue",

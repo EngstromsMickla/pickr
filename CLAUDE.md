@@ -70,3 +70,5 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 - v0.9 (2026-10-28): fylligare texter i In this poem för alla 60 dikter (innehållet och hur formen bär det), på Dans begäran. Texterna är Claudes läsningar; Dan kan stryka eller ändra.
 
 - v1.0 (2026-10-28): nivåval Easy, Tricky, Challenging, omgångar om sex dikter, Save for later med länk.
+
+- 2026-10-28 (Dans påpekande): utdragen ur The Healing of Bælwythe är bob and wheel (efter Sir Gawain), inte en allmän kör; The Bride and the King är skriven i Gawainstrof (allittererande långrader + bob and wheel som rimmar ababa). Formtexter, frågefamiljer och guiden (Bob and wheel, Gawain stanza) uppdaterade. Versionen är fortfarande v1.0.

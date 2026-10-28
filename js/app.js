@@ -632,7 +632,7 @@
   }
   function family(f) {
     f = f.toLowerCase();
-    var fams = [['sonnet', 'sonnet'], ['ballad', 'ballad'], ['common metre', 'ballad'], ['hymn', 'ballad'], ['couplet', 'couplet'], ['ottava', 'ottava'], ['rhyme royal', 'royal'], ['free', 'free'], ['alliterative', 'allit'], ['blank', 'blank'], ['pantoum', 'pantoum'], ['quatrain', 'quatrain'], ['tercet', 'tercet'], ['cinquain', 'cinquain'], ['rubai', 'rubai']];
+    var fams = [['gawain', 'gawain'], ['bob and wheel', 'gawain'], ['sonnet', 'sonnet'], ['ballad', 'ballad'], ['common metre', 'ballad'], ['hymn', 'ballad'], ['couplet', 'couplet'], ['ottava', 'ottava'], ['rhyme royal', 'royal'], ['free', 'free'], ['alliterative', 'allit'], ['blank', 'blank'], ['pantoum', 'pantoum'], ['quatrain', 'quatrain'], ['tercet', 'tercet'], ['cinquain', 'cinquain'], ['rubai', 'rubai']];
     for (var i = 0; i < fams.length; i++) if (f.indexOf(fams[i][0]) >= 0) return fams[i][1];
     return f;
   }
