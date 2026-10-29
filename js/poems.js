@@ -1687,14 +1687,14 @@ window.PICKR_POEMS = [
    "H"
   ],
   "markLabel": "rhyme",
-  "form": "Hymn quatrains",
+  "form": "Loose English sonnet",
   "scheme": "ABAB CDCD EFEF GHGH",
   "metre": "Iambic lines of four and three beats, with soft endings in the long lines",
   "sample": "as [DARK]-ness [SPEAKS] of [DAWN] be-[HIND] us",
-  "how": "Cross-rhymed quatrains that mostly alternate four and three beats, like a hymn. Several long lines end on a soft extra syllable (dying, sighing; behind us, remind us), and some rhymes are slant (spring, begin; smile, alive).",
+  "how": "Written from the English (Shakespearean) sonnet: cross-rhymed quatrains that build, and a turn at the end. Here the closing couplet has grown into a fourth quatrain, and the lines are shorter and singable, mostly four and three beats. Several long lines end on a soft extra syllable (dying, sighing; behind us, remind us), and some rhymes are slant (spring, begin; smile, alive).",
   "character": "Hopeful and song-like, with a catch of grief in the last stanza.",
-  "use": "Hymn quatrains are the backbone of English church song, from Isaac Watts and Charles Wesley onward.",
-  "poem": "Winter is dying, the birds will return, life begins anew. The hymn-like quatrains carry the hope, and the soft double endings in the long lines (dying, sighing; behind us, remind us) give them a sighing, song-like fall. The last stanza turns from the season to the people: we long for those we've lost, and smile that friends like us still love and breathe. The slant rhyme of its last words, smile and alive, is the poem's catch in the throat.",
+  "use": "The English sonnet, made famous by Shakespeare, has fourteen lines of iambic pentameter: three cross-rhymed quatrains and a closing couplet that turns or sums up. Poets have loosened it ever since, in line length, rhyme and number of lines, while keeping its build and its turn.",
+  "poem": "Winter is dying, the birds will return, life begins anew. The sonnet's quatrains carry the hope in short, song-like lines, and the soft double endings in the long lines (dying, sighing; behind us, remind us) give them a sighing, song-like fall. The last stanza, where a sonnet would have its couplet, turns from the season to the people: we long for those we've lost, and smile that friends like us still love and breathe. The slant rhyme of its last words, smile and alive, is the poem's catch in the throat.",
   "book": "echoes",
   "stanzas": [
    [
