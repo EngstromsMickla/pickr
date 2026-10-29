@@ -97,3 +97,4 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 - Före varje dikt råkar Pickr ut för en kort olycka som blandar raderna: nysning, snubbel, jonglering, vinkning som välter högen, stretching med dikten på huvudet, halka på en lös rad (Dans idé). Varje olycka finns en gång per omgång om sex, i en ordning som räknas fram ur omgångens dikter (`gagFor`), så att en sparad och återupptagen omgång får samma ordning.
 - Ritas med kod (SVG och CSS), inte film: samma pixelrobot, några kilobyte, inget externt. Under två sekunder; ett tryck hoppar över; vid minskad rörelse visas bara Pickrs replik. Ljud bara om ljudet är på.
 - Replikerna ligger i `pickr.gags` i `js/content.js`. Dan tyckte att nysningen var "perfectly quirky and odd".
+- v1.2 (2026-10-29): historiesidor och tidslinje, fast list i läsläget, Spring som Loose English sonnet, Pickrs sex olyckor. (v1.1 var uppläsningen som togs bort.)

@@ -1,6 +1,6 @@
 /* Pickr: site texts. Edit here, not in app.js. No dashes as punctuation in new texts. */
 window.PICKR = {
-  version: "v1.0",
+  version: "v1.2",
   roundSize: 6,
   mixes: {
     easy: { easy: 5, medium: 1, hard: 0 },
