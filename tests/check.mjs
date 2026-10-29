@@ -34,7 +34,7 @@ for (const [mode, mix] of Object.entries(C.mixes)) {
   if (Object.values(mix).reduce((a, b) => a + b, 0) !== C.roundSize) fail(`Blandningen ${mode} ger inte ${C.roundSize} dikter`);
   for (const lv of ['easy', 'medium', 'hard']) if ((P || []).filter((p) => p.level === lv).length < mix[lv]) fail(`För få dikter i nivån ${lv}`);
 }
-const ids = new Set();
+const ids = new Set(), uses = new Map();
 const dash = /[–—]/;
 for (const p of P || []) {
   if (ids.has(p.id)) fail(`Dubblett: ${p.id}`); ids.add(p.id);
@@ -44,6 +44,9 @@ for (const p of P || []) {
     if (!p[k]) fail(`${p.id}: saknar ${k}`);
   }
   if (!C.ui.hintMarks[p.markLabel]) fail(`${p.id}: okänd markLabel ${p.markLabel}`);
+  // Varje dikt bär en egen sida ur poesins historia.
+  if (!p.hist || typeof p.hist.era !== 'number' || !p.hist.when || !p.hist.h) fail(`${p.id}: saknar historiesida (hist)`);
+  if (uses.has(p.use)) fail(`${p.id}: historietexten finns redan i ${uses.get(p.use)}`); uses.set(p.use, p.id);
   if (!['easy', 'medium', 'hard'].includes(p.level)) fail(`${p.id}: okänd nivå`);
   // Claudes texter får inte ha tankstreck. Dikterna och Dans titlar lämnas orörda.
   for (const k of ['form', 'scheme', 'metre', 'sample', 'how', 'character', 'use', 'poem', 'excerpt']) {

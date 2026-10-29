@@ -144,7 +144,8 @@ window.PICKR = {
     scansionNote: "Stressed syllables in capitals.",
     how: "How it works",
     character: "Its character",
-    use: "Where you meet it",
+    use: "A page of history",
+    pageFound: "New page for your timeline in the Guide.",
     inPoem: "In this poem",
     from: "from",
     hintsUsed: function (n) { return n === 0 ? "Solved without hints. Pickr is impressed." : n === 1 ? "Solved with one hint." : "Solved with " + n + " hints."; },
@@ -189,6 +190,11 @@ window.PICKR = {
     formsTitle: "The forms in the game",
     formsIntro: "Every form you meet in Pickr, in the order they appear. Poems you have solved are shown by title.",
     meet: "Meet it in",
+    historyTitle: "Poetry through time",
+    historyIntro: "Every poem in Pickr holds one page of poetry's history. Solve a poem and its page lands here, in order of time, until the whole story is filled in.",
+    historyCount: function (n, N) { return n + " of " + N + " pages found"; },
+    historyLocked: "Still hidden in one of the poems.",
+    historyFrom: "Found in",
     sections: [
       { h: "Lines and stanzas", items: [
         { t: "Line", d: "A single row of a poem. In verse the line, not the sentence, is the basic unit, and where a line ends is part of the meaning." },

@@ -445,3 +445,15 @@ a { color: var(--accent); }
 .readbar-in { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
 .readbar .btn { min-height: 44px; padding: 11px 16px; }
 @media (max-width: 430px) { .readbar-in .btn { flex: 1 1 0; } }
+
+/* History pages and the timeline */
+.histhead { margin: 0 0 6px; font-family: var(--head); font-weight: 600; }
+.when { display: inline-block; font: 600 13px/1 var(--head); color: var(--ochre); letter-spacing: .03em; margin-right: 6px; }
+.timeline { list-style: none; margin: 14px 0 0; padding: 0 0 0 18px; border-left: 2px solid rgba(255,255,255,.18); }
+.timeline li { position: relative; margin: 0 0 18px; }
+.timeline li::before { content: ""; position: absolute; left: -25px; top: 3px; width: 10px; height: 10px; border-radius: 50%; background: var(--ochre); }
+.timeline li.locked::before { background: #555; }
+.timeline li.locked { opacity: .7; }
+.timeline li.locked .when { color: #aaa; }
+.timeline h3 { margin: 6px 0 4px; }
+.timeline p { margin: 0 0 6px; }

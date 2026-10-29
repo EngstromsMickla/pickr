@@ -669,11 +669,17 @@
   }
 
   /* ---------- reveal ---------- */
+  function histHTML(p, fresh) {
+    if (!p.hist) return '<p>' + esc(p.use) + '</p>';
+    return '<p class="histhead"><span class="when">' + esc(p.hist.when) + '</span> ' + esc(p.hist.h) + '</p><p>' + esc(p.use) + '</p>' +
+      '<p class="small"><a href="#guide/history">' + esc(fresh ? U.pageFound : C.guide.historyTitle) + '</a></p>';
+  }
   function renderDone(id) {
     var i = idx(id); if (i < 0 || !S.solved[id]) { location.hash = '#play/' + id; return; }
     var p = P[i], sv = S.solved[id];
     if (!sv.quiz) { sv.quiz = makeQuiz(p); save(); }
-    var q = sv.quiz, answered = q.chosen !== null;
+    var q = sv.quiz, answered = q.chosen !== null, fresh = false;
+    if (answered && p.hist) { S.pages = S.pages || []; if (S.pages.indexOf(id) < 0) { S.pages.push(id); save(); fresh = true; } }
     var pos = rpos(id), next = firstUnsolved(pos >= 0 ? pos + 1 : 0);
     var sub = p.partOf ? U.from + ' ' + p.partOf : (p.excerpt || '');
     var html = '<div class="playhead"><a href="#poems">' + esc(U.allPoems) + '</a><span>' + (pos >= 0 ? esc(U.poem) + ' ' + (pos + 1) + ' ' + esc(U.of) + ' ' + S.round.length : '') + '</span></div>' +
@@ -688,7 +694,7 @@
         '<h3>' + esc(U.scansion) + '</h3><p class="scan">' + scanHTML(p.sample) + '</p><p class="small">' + esc(U.scansionNote) + '</p>' +
         '<h3>' + esc(U.how) + '</h3><p>' + esc(p.how) + '</p>' +
         '<h3>' + esc(U.character) + '</h3><p>' + esc(p.character) + '</p>' +
-        '<h3>' + esc(U.use) + '</h3><p>' + esc(p.use) + '</p>' +
+        '<h3>' + esc(U.use) + '</h3>' + histHTML(p, fresh) +
         '<h3>' + esc(U.inPoem) + '</h3><p>' + esc(p.poem) + '</p><p class="small"><a href="#guide">' + esc(C.guide.title) + '</a></p></section>' +
         livesHTML(p) +
         '<p class="small">' + esc(U.snakes.note) + '</p>' +
@@ -845,7 +851,7 @@
       if (!byForm[p.form]) { byForm[p.form] = { p: p, poems: [] }; forms.push(p.form); }
       if (rpos(p.id) >= 0) byForm[p.form].poems.push(i);
     });
-    var secs = g.sections.map(function (s) { return s.h; }).concat([g.formsTitle]);
+    var secs = g.sections.map(function (s) { return s.h; }).concat([g.formsTitle, g.historyTitle]);
     var html = '<div class="playhead"><a href="#">' + esc(U.home) + '</a><a href="#poems">' + esc(U.allPoems) + '</a></div>' +
       '<h1 class="ptitle">' + esc(g.title) + '</h1><p>' + esc(g.intro) + '</p>' +
       '<nav class="toc" aria-label="' + esc(g.contents) + '">' + secs.map(function (h) { return '<button type="button" data-jump="' + slug(h) + '">' + esc(h) + '</button>'; }).join('') + '</nav>';
@@ -857,12 +863,20 @@
     forms.forEach(function (f) {
       var e = byForm[f], p = e.p;
       html += '<div class="gform"><h3>' + esc(f) + '</h3><p class="small">' + esc(p.scheme) + ' · ' + esc(p.metre) + '</p><p>' + esc(p.how) + '</p>' +
-        '<p class="small">' + esc(p.use) + '</p>' + (e.poems.length ? '<p class="meet">' + esc(g.meet) + ': ' + e.poems.map(function (i) {
+        (e.poems.length ? '<p class="meet">' + esc(g.meet) + ': ' + e.poems.map(function (i) {
           var q = P[i], s = S.solved[q.id];
           return '<a href="#' + (s ? 'done/' : 'play/') + q.id + '">' + (s ? esc(shortTitle(q)) : esc(U.poem) + ' ' + (rpos(q.id) + 1)) + '</a>';
         }).join(', ') + '</p>' : '') + '</div>';
     });
     html += '</section>';
+    var found = (S.pages || []).filter(function (id) { return idx(id) >= 0; });
+    var tl = P.filter(function (p) { return p.hist; }).slice().sort(function (a, b) { return a.hist.era - b.hist.era; });
+    html += '<section class="card guide" id="' + slug(g.historyTitle) + '"><h2>' + esc(g.historyTitle) + '</h2><p>' + esc(g.historyIntro) + '</p>' +
+      '<p class="kicker">' + esc(g.historyCount(found.length, tl.length)) + '</p><ol class="timeline">' + tl.map(function (p) {
+        if (found.indexOf(p.id) < 0) return '<li class="locked"><span class="when">' + esc(p.hist.when) + '</span><span class="small">' + esc(g.historyLocked) + '</span></li>';
+        return '<li><span class="when">' + esc(p.hist.when) + '</span><h3>' + esc(p.hist.h) + '</h3><p>' + esc(p.use) + '</p>' +
+          '<p class="small">' + esc(g.historyFrom) + ' ' + (S.solved[p.id] ? '<a href="#done/' + p.id + '">' + esc(shortTitle(p)) + '</a>' : esc(shortTitle(p))) + '</p></li>';
+      }).join('') + '</ol></section>';
     app.innerHTML = html;
     Array.prototype.forEach.call(app.querySelectorAll('[data-jump]'), function (b) {
       b.addEventListener('click', function () { var t = document.getElementById(b.dataset.jump); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
@@ -882,7 +896,10 @@
       /* back from the book: land where the reader left the poem */
       var lv = from === 'read' && app.querySelector('.lives'); if (lv) lv.scrollIntoView({ block: 'start' });
     }
-    else if (parts[0] === 'guide') renderGuide();
+    else if (parts[0] === 'guide') {
+      renderGuide();
+      var gt = parts[1] === 'history' && document.getElementById(slug(C.guide.historyTitle)); if (gt) gt.scrollIntoView({ block: 'start' });
+    }
     else if (parts[0] === 'library') renderLibrary();
     else if (parts[0] === 'read' && parts[1]) { var bk = parts[1], fc = parts[2]; withBooks(function () { renderBook(bk, fc); }); }
     else if (parts[0] === 'summary') renderSummary();
