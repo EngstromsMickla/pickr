@@ -439,3 +439,11 @@ a { color: var(--accent); }
 @media (max-width: 340px) { .soundbtn { padding: 6px 7px; } }
 @media (max-width: 360px) { .soundbtn .sl { display: none; } .soundbtn::before { content: "\266A "; } }
 .book .vl { white-space: pre-wrap; }
+
+/* read aloud */
+.poemtext .pl { display: block; padding: 0 6px; margin-left: -6px; border-radius: 2px; transition: background .2s; }
+.line.reading { background: #3c5f7d; border-color: #fff; box-shadow: 0 0 0 2px #fff inset; }
+.poemtext .pl.reading { background: var(--accent-soft); box-shadow: inset 3px 0 0 var(--accent); }
+.btn.tts.on { background: #fff; color: #222; }
+.readrow { align-items: center; margin-top: -8px; }
+[hidden] { display: none !important; }

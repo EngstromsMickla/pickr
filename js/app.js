@@ -317,6 +317,70 @@
     if (nr) nr.addEventListener('click', function () { location.hash = '#new'; });
   }
 
+  /* ---------- read aloud: Pickr reads with the device's own voice; only on-device voices, nothing is sent ---------- */
+  var TTS = { voice: null, run: 0, btn: null };
+  function ttsPickVoice() {
+    if (!('speechSynthesis' in window)) return null;
+    var vs = window.speechSynthesis.getVoices().filter(function (v) { return v.localService && /^en([-_]|$)/i.test(v.lang); });
+    if (!vs.length) return null;
+    var rank = function (v) { return (/^en[-_]GB/i.test(v.lang) ? 0 : /^en[-_]US/i.test(v.lang) ? 1 : 2) * 10 + (v.default ? 0 : 1); };
+    vs.sort(function (a, b) { return rank(a) - rank(b); });
+    return vs[0];
+  }
+  function ttsReady() { TTS.voice = TTS.voice || ttsPickVoice(); return !!TTS.voice; }
+  function ttsRefresh() {
+    var ok = ttsReady();
+    Array.prototype.forEach.call(document.querySelectorAll('.tts'), function (b) { b.hidden = !ok; });
+  }
+  if ('speechSynthesis' in window) {
+    try { window.speechSynthesis.addEventListener('voiceschanged', function () { TTS.voice = null; ttsRefresh(); }); } catch (e) { /* old browsers */ }
+  }
+  function ttsStop() {
+    TTS.run++;
+    try { if ('speechSynthesis' in window) window.speechSynthesis.cancel(); } catch (e) { /* ignore */ }
+    Array.prototype.forEach.call(document.querySelectorAll('.reading'), function (el) { el.classList.remove('reading'); });
+    if (TTS.btn) { TTS.btn.textContent = TTS.btn.dataset.label; TTS.btn.classList.remove('on'); TTS.btn = null; }
+  }
+  /* items: [{ text, el: function () -> element to light up, pause: ms after the line }] */
+  function ttsRead(items, btn) {
+    if (TTS.btn === btn) { ttsStop(); return; }
+    ttsStop();
+    if (!ttsReady()) return;
+    var run = TTS.run, i = 0;
+    TTS.btn = btn; btn.dataset.label = btn.dataset.label || btn.textContent; btn.textContent = U.read.stop; btn.classList.add('on');
+    function next() {
+      if (run !== TTS.run) return;
+      Array.prototype.forEach.call(document.querySelectorAll('.reading'), function (el) { el.classList.remove('reading'); });
+      if (i >= items.length) { ttsStop(); return; }
+      var it = items[i++], el = it.el && it.el();
+      if (el) el.classList.add('reading');
+      var u = new SpeechSynthesisUtterance(it.text.replace(/ \| /g, ', '));
+      u.voice = TTS.voice; u.lang = TTS.voice.lang; u.rate = 0.9; u.pitch = 1.1;
+      var done = false;
+      var go = function () { if (done) return; done = true; setTimeout(next, it.pause); };
+      u.onend = go; u.onerror = go;
+      window.speechSynthesis.speak(u);
+    }
+    next();
+  }
+  function readOrder(btn) {
+    var lines = cur();
+    ttsRead(G.order.map(function (li, pos) {
+      return { text: lines[li].text, el: function () { return document.querySelector('#lines .line[data-pos="' + pos + '"]'); }, pause: lines[pos].end ? 750 : 280 };
+    }), btn);
+    if (TTS.btn === btn) say(pick(C.pickr.read), 'joy');
+  }
+  function readPoem(p, btn) {
+    var items = [], k = 0;
+    p.stanzas.forEach(function (st, si) {
+      st.forEach(function (t, li) {
+        var n = k++;
+        items.push({ text: t, el: function () { return document.getElementById('pl' + n); }, pause: li === st.length - 1 ? 750 : 280 });
+      });
+    });
+    ttsRead(items, btn);
+  }
+
   /* ---------- game ---------- */
   var G = null;
   function flatLines(p) {
@@ -419,6 +483,7 @@
       '<p class="hintline" id="hintline">' + (G.marks ? esc(U.hintMarks[p.markLabel]) : '') + '</p>' +
       '<div class="controls"><button class="btn" id="check" type="button">' + esc(U.check) + '</button>' +
       '<button class="btn ghost" id="hint" type="button">' + esc(U.hint) + '</button>' +
+      '<button class="btn ghost tts" id="readorder" type="button" hidden>' + esc(U.read.order) + '</button>' +
       '<button class="linkbtn" id="morehelp" type="button" aria-expanded="false">' + esc(U.more.button) + '</button>' +
       '<button class="linkbtn" id="reshuffle" type="button">' + esc(U.reshuffle) + '</button></div>' +
       '<div id="helppanel"></div>';
@@ -427,6 +492,8 @@
     document.getElementById('check').addEventListener('click', check);
     document.getElementById('hint').addEventListener('click', hint);
     document.getElementById('morehelp').addEventListener('click', toggleHelp);
+    document.getElementById('readorder').addEventListener('click', function () { readOrder(this); });
+    ttsRefresh();
     document.getElementById('reshuffle').addEventListener('click', function () {
       G.order = shuffle(cur(), G.fixed); G.checked = false; G.sel = null; renderLines(true); say(pick(C.pickr.drop), 'oops'); sfx.drop();
     });
@@ -454,7 +521,7 @@
       li.querySelector('.grip').addEventListener('pointerdown', function (e) { startDrag(e, li); });
     });
   }
-  function changed() { G.checked = false; }
+  function changed() { G.checked = false; if (TTS.btn) ttsStop(); }
   /* ---------- more help during play ---------- */
   function toggleHelp() {
     var box = document.getElementById('helppanel'), btn = document.getElementById('morehelp');
@@ -680,7 +747,8 @@
       stageHTML(answered ? pick(C.pickr.win) : pick(C.pickr.quiz), false) +
       '<div class="result">' + snakesHTML(sv.snakes || 1) + '<p class="kicker">' + esc(U.snakes.label(sv.snakes || 1)) + ' · ' + esc(U.hintsUsed(sv.hints)) + '</p></div>' +
       '<h1 class="ptitle">' + esc(p.title) + '</h1>' + (sub ? '<p class="partof">' + esc(sub) + '</p>' : '') +
-      '<div class="poemtext">' + p.stanzas.map(function (s) { return '<p>' + s.map(lineHTML).join('<br>') + '</p>'; }).join('') + '</div>' +
+      '<div class="poemtext">' + (function () { var k = 0; return p.stanzas.map(function (s) { return '<p>' + s.map(function (t) { return '<span class="pl" id="pl' + (k++) + '">' + lineHTML(t) + '</span>'; }).join('') + '</p>'; }).join(''); })() + '</div>' +
+      '<div class="actions readrow"><button class="btn ghost tts" id="readpoem" type="button" hidden>' + esc(U.read.poem) + '</button><span class="small tts" hidden>' + esc(U.read.note) + '</span></div>' +
       quizHTML(q);
     if (answered) {
       html += '<section class="card form"><h2>' + esc(U.form) + ': ' + esc(p.form) + '</h2>' +
@@ -698,6 +766,8 @@
     }
     app.innerHTML = html;
     wireBot();
+    var rp = document.getElementById('readpoem'); if (rp) rp.addEventListener('click', function () { readPoem(p, this); });
+    ttsRefresh();
     var bot = document.getElementById('bot'); if (bot && answered) bot.classList.add('joy');
     Array.prototype.forEach.call(app.querySelectorAll('.qopt'), function (b) {
       b.addEventListener('click', function () {
@@ -869,6 +939,7 @@
 
   /* ---------- routing ---------- */
   function route() {
+    ttsStop();
     var h = location.hash.replace(/^#/, ''), parts = h.split('/');
     window.scrollTo(0, 0);
     if (parts[0] === 'poems') renderList();

@@ -1,6 +1,6 @@
 /* Pickr: site texts. Edit here, not in app.js. No dashes as punctuation in new texts. */
 window.PICKR = {
-  version: "v1.0",
+  version: "v1.1",
   roundSize: 6,
   mixes: {
     easy: { easy: 5, medium: 1, hard: 0 },
@@ -21,7 +21,7 @@ window.PICKR = {
   howTitle: "How to play",
   steps: [
     { t: "Choose your help", d: "Before each poem, decide how much Pickr should leave in place: the first line, rhyme letters, and a few more lines picked to help you most." },
-    { t: "Put the lines back", d: "Pickr drops the rest. Drag a line by its handle, or tap two lines to swap them. Gaps show where the stanzas break; rhyme, rhythm and sense are your clues." },
+    { t: "Put the lines back", d: "Pickr drops the rest. Drag a line by its handle, or tap two lines to swap them. Gaps show where the stanzas break; rhyme, rhythm and sense are your clues. Let Pickr read your order aloud and listen for where it limps." },
     { t: "Check and discover", d: "Lines in the right place light up blue and stay put. Get them all and you learn the poem's title, its form and how the metre works." }
   ],
   hintNote: "Each round has six poems from a pool of sixty. Choose Easy, Tricky or Challenging when you start a round. Too hard once you see the poem? Tap More help to change your help without losing your place. The first Hint shows the rhyme letters if they are hidden, and every Hint after that makes Pickr put one line in its right place. New to metre? The guide explains the forms and the words.",
@@ -40,6 +40,12 @@ window.PICKR = {
   ui: {
     allPoems: "All poems",
     restart: "Start over",
+    read: {
+      order: "Read my order aloud",
+      poem: "Hear the poem",
+      stop: "Stop reading",
+      note: "Pickr reads with your device's own voice. Nothing is sent anywhere."
+    },
     newTitle: "How hard should it be?",
     newIntro: "Pick a level for this round of six poems. You can still choose your help before every poem, and ask for more along the way.",
     newNote: "Pickr picks poems you have not met yet whenever it can.",
@@ -244,6 +250,7 @@ window.PICKR = {
     moreHelp: [ "Here you go. I put some lines back for you.", "Better? I tidied up a little." ],
     mode: [ "Easy, Tricky or Challenging? I drop them all the same.", "Pick a level. I will try to drop them gently." ],
     library: [ "I read all of these. Then I dropped them.", "Books! The poems in their natural habitat." ],
+    read: [ "Ahem. Listen closely.", "I will read it exactly as you laid it. No promises about the rhythm.", "Beep. Reading mode on." ],
     setup: [ "I promise to drop it gently this time.", "How much should I hold on to?", "Pick your help. I will try not to sneeze." ],
     drop: [
       "Oops. I tripped.",
