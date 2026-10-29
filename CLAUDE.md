@@ -83,9 +83,7 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 - **AI-skrapning:** `robots.txt` ber kända AI-sökrobotar att låta bli sajten, och sidan har `noai`. Det är en begäran, ingen garanti.
 - Byggskriptet (2026-10-28): rader som har tappat sina radbrytningar i manuset delas där en ny rad börjar med versal (orden ändras aldrig); en ensam inledande blanksteg tas bort, medan avsiktliga indrag (två eller fler blanksteg, som i Dignity) behålls; i pjäsen blir Narrens talade meningar prosa i stället för versrader, och ett ensamt datum blir prosa.
 
-## Uppläsning (v1.1, 2026-10-29)
+## Uppläsning: sparad, inte i drift (2026-10-29)
 
-- Knappen **Read my order aloud** under raderna läser spelarens ordning högt, rad för rad; raden som läses lyser upp, kort paus mellan rader och längre paus där en strof bryts. **Hear the poem** på sidan efter dikten läser poetens ordning. Uppläsningen stoppas när en rad flyttas eller sidan byts.
-- Webbläsarens inbyggda talsyntes (Web Speech API). **Bara röster som finns på enheten** (`localService`) och på engelska används, så att ingen text skickas till en molntjänst (t.ex. Googles röster i Chrome). Finns ingen sådan röst visas inte knapparna. Brittisk engelska väljs före amerikansk.
-- Senare möjlighet (Dans och Claudes plan): Dan läser in raderna själv, en ljudfil per rad, så att spelarens ordning kan spelas med hans röst. Börjar i så fall med några dikter.
-- v1.1 (2026-10-29): uppläsning av spelarens ordning och av dikten.
+- v1.1 hade uppläsning med enhetens talsyntes. Dan valde bort den samma dag: en artificiell röst ger fel intryck av dikterna. Sajten är tillbaka på v1.0.
+- Koden finns kvar orörd i grenen `upplasning` (commit 1b47855) i EngstromsMickla/pickr. Om Dan läser in dikterna själv byggs den om så att den spelar hans inspelningar (en ljudfil per rad, så att spelarens ordning kan spelas upp) i stället för talsyntes. Ingen talsyntes ska användas.
