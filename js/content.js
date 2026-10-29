@@ -251,6 +251,7 @@ window.PICKR = {
     mode: [ "Easy, Tricky or Challenging? I drop them all the same.", "Pick a level. I will try to drop them gently." ],
     library: [ "I read all of these. Then I dropped them.", "Books! The poems in their natural habitat." ],
     setup: [ "I promise to drop it gently this time.", "How much should I hold on to?", "Pick your help. I will try not to sneeze." ],
+    sneeze: { ah: "Ah...", ahah: "Ah... ah...", choo: "ACHOO!", after: [ "Bless me. Sorry about the poem.", "Robot hay fever. Very rare. Very messy.", "That one blew the lines right out of order.", "Excuse me. Dust in my circuits." ] },
     drop: [
       "Oops. I tripped.",
       "Whoops! I sneezed on the poem.",

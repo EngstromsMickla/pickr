@@ -73,7 +73,22 @@
     part: function () { [523, 659, 784].forEach(function (f, i) { tone(f, .1, i * .08, 'triangle'); }); },
     win: function () { [523, 659, 784, 1047, 784, 1047].forEach(function (f, i) { tone(f, .12, i * .1, 'triangle'); }); },
     hint: function () { tone(990, .06, 0, 'triangle'); tone(1320, .08, .07, 'triangle'); },
-    boing: function () { tone(300, .06, 0, 'triangle'); tone(520, .08, .05, 'triangle'); }
+    boing: function () { tone(300, .06, 0, 'triangle'); tone(520, .08, .05, 'triangle'); },
+    ah: function (n) { tone(n ? 520 : 440, .22, 0, 'sine'); },
+    choo: function () {
+      if (S.muted) return;
+      try {
+        AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+        if (AC.state === 'suspended') AC.resume();
+        var len = Math.floor(AC.sampleRate * .35), buf = AC.createBuffer(1, len, AC.sampleRate), d = buf.getChannelData(0);
+        for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2);
+        var src = AC.createBufferSource(), f = AC.createBiquadFilter(), g = AC.createGain(), t = AC.currentTime;
+        f.type = 'bandpass'; f.frequency.setValueAtTime(2600, t); f.frequency.exponentialRampToValueAtTime(900, t + .3); f.Q.value = .8;
+        g.gain.setValueAtTime(.25, t);
+        src.buffer = buf; src.connect(f); f.connect(g); g.connect(AC.destination); src.start(t);
+      } catch (e) { /* no audio */ }
+      tone(330, .12, 0, 'square');
+    }
   };
   var soundbtn = document.getElementById('soundbtn');
   function paintSound() { soundbtn.innerHTML = '<span class="sl">' + esc(U.sound) + ' </span>' + esc(S.muted ? U.off : U.on); soundbtn.setAttribute('aria-label', U.sound + ' ' + (S.muted ? U.off : U.on)); soundbtn.setAttribute('aria-pressed', S.muted ? 'false' : 'true'); }
@@ -403,12 +418,56 @@
       startGame(id, first, marks, others);
     });
   }
+  /* ---------- the drop: a short gag before each poem (prototype: the sneeze) ---------- */
+  var GAG = null;
+  var PAPER = '<svg class="paper" viewBox="0 0 12 14" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="0" width="10" height="12" fill="#cfcfcf"/><rect x="0" y="2" width="10" height="12" fill="#ffffff"/>' +
+    '<rect x="2" y="5" width="6" height="1" fill="#9a9a9a"/><rect x="2" y="7" width="5" height="1" fill="#9a9a9a"/><rect x="2" y="9" width="6" height="1" fill="#9a9a9a"/><rect x="2" y="11" width="4" height="1" fill="#9a9a9a"/></svg>';
+  function gagSkip() { if (GAG) GAG.finish(); }
+  function playSneeze() {
+    var st = document.querySelector('.stage'), list = document.getElementById('lines');
+    var Z = C.pickr.sneeze, timers = [], done = false;
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function finish() {
+      if (done) return; done = true; GAG = null;
+      timers.forEach(clearTimeout);
+      st.classList.remove('gag', 'sneeze', 'ah1', 'ah2', 'choo');
+      var pap = st.querySelector('.paperbox'); if (pap) pap.remove();
+      list.classList.remove('waiting');
+      renderLines(!calm, 'blow');
+      say(Z.choo + ' ' + pick(Z.after), 'oops');
+    }
+    GAG = { finish: finish, cancel: function () { done = true; GAG = null; timers.forEach(clearTimeout); } };
+    if (calm) { finish(); return; }
+    st.classList.add('gag', 'sneeze');
+    list.classList.add('waiting');
+    var box = document.createElement('div'); box.className = 'paperbox'; box.innerHTML = PAPER;
+    for (var i = 0; i < 7; i++) {
+      var sh = document.createElement('i'); sh.className = 'sheet';
+      sh.style.setProperty('--x', Math.round(60 + Math.random() * 220) + 'px');
+      sh.style.setProperty('--y', Math.round(-40 + Math.random() * 120) + 'px');
+      sh.style.setProperty('--r', Math.round(Math.random() * 540 - 270) + 'deg');
+      sh.style.animationDelay = (i * 25) + 'ms';
+      box.appendChild(sh);
+    }
+    st.appendChild(box);
+    function at(ms, fn) { timers.push(setTimeout(function () { if (!done) fn(); }, ms)); }
+    say(Z.ah, null, true);
+    at(0, function () { st.classList.add('ah1'); sfx.ah(0); });
+    at(520, function () { st.classList.remove('ah1'); void st.offsetWidth; st.classList.add('ah2'); say(Z.ahah, null, true); sfx.ah(1); });
+    at(1100, function () { st.classList.add('choo'); say(Z.choo, 'oops', true); sfx.choo(); });
+    at(1750, finish);
+  }
+  document.addEventListener('pointerdown', function (e) {
+    if (GAG && !(e.target.closest && e.target.closest('header'))) gagSkip();
+  }, true);
+  document.addEventListener('keydown', function (e) { if (GAG && (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter')) gagSkip(); });
+
   function startGame(id, first, marks, others) {
     var i = idx(id), p = P[i];
     G = { p: p, i: i, lines: flatLines(p), hints: 0, checks: 0, help: { first: first, marks: marks, others: others }, marks: marks, sel: null, checked: false, fixed: chooseLines(p, first, others) };
     G.order = shuffle(G.lines, G.fixed);
-    renderPlay(true);
-    say(pick(C.pickr.drop), 'oops'); sfx.drop();
+    renderPlay(false);
+    playSneeze();
   }
   function cur() { return G.lines; }
   function renderPlay(drop) {
@@ -433,7 +492,7 @@
     renderLines(drop);
   }
   var GRIP = '<svg viewBox="0 0 6 10" aria-hidden="true"><g fill="currentColor"><rect x="0" y="0" width="2" height="2"/><rect x="4" y="0" width="2" height="2"/><rect x="0" y="4" width="2" height="2"/><rect x="4" y="4" width="2" height="2"/><rect x="0" y="8" width="2" height="2"/><rect x="4" y="8" width="2" height="2"/></g></svg>';
-  function renderLines(drop) {
+  function renderLines(drop, how) {
     var list = document.getElementById('lines'), lines = cur();
     list.classList.remove('drop');
     list.innerHTML = G.order.map(function (li, pos) {
@@ -443,7 +502,9 @@
       if (G.sel === pos) cls += ' sel';
       if (lines[pos].end) cls += ' gap';
       var mark = G.marks && l.mark !== '-' ? '<span class="mark" style="background:' + colourFor(l.mark) + '">' + esc(l.mark) + '</span>' : '';
-      var style = drop ? ' style="--d:' + (pos * 55) + 'ms;--dx:' + Math.round(Math.random() * 60 - 30) + 'px;--dr:' + Math.round(Math.random() * 16 - 8) + 'deg"' : '';
+      var style = !drop ? '' : how === 'blow'
+        ? ' style="--d:' + Math.round(Math.random() * 220) + 'ms;--dx:' + Math.round(-140 - Math.random() * 120) + 'px;--dy:' + Math.round(-120 - Math.random() * 60) + 'px;--dr:' + Math.round(Math.random() * 50 - 25) + 'deg"'
+        : ' style="--d:' + (pos * 55) + 'ms;--dx:' + Math.round(Math.random() * 60 - 30) + 'px;--dr:' + Math.round(Math.random() * 16 - 8) + 'deg"';
       return '<li class="' + cls + '" data-pos="' + pos + '"' + style + '><span class="grip">' + GRIP + '</span>' +
         '<button class="txt" type="button"' + (G.fixed[pos] ? ' aria-disabled="true"' : '') + '>' + lineHTML(l.text) + '</button>' + mark + '</li>';
     }).join('');
@@ -886,6 +947,7 @@
   /* ---------- routing ---------- */
   var lastRoute = '';
   function route() {
+    if (GAG) GAG.cancel();
     var h = location.hash.replace(/^#/, ''), parts = h.split('/'), from = lastRoute;
     lastRoute = parts[0];
     window.scrollTo(0, 0);

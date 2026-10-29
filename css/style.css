@@ -457,3 +457,30 @@ a { color: var(--accent); }
 .timeline li.locked .when { color: #aaa; }
 .timeline h3 { margin: 6px 0 4px; }
 .timeline p { margin: 0 0 6px; }
+
+/* The sneeze: Pickr holds the poem, breathes in twice, and blows it apart */
+.lines.waiting .line { opacity: 0; }
+.lines.drop .line { transform-origin: left center; }
+.lines.drop .line[style*="--dy"] { animation-name: blown; animation-duration: .6s; }
+@keyframes blown { from { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(var(--dr)); } 60% { opacity: 1; } to { opacity: 1; transform: none; } }
+.paperbox { position: absolute; left: 58px; bottom: 2px; width: 30px; pointer-events: none; z-index: 3; }
+.stage.big .paperbox { left: 84px; }
+.paperbox .paper { width: 30px; height: auto; display: block; transition: transform .15s; }
+.stage.ah1 .paperbox .paper { transform: translateY(2px) rotate(-4deg); }
+.stage.ah2 .paperbox .paper { transform: translateY(4px) rotate(-8deg); }
+.stage.choo .paperbox .paper { opacity: 0; }
+.paperbox .sheet { position: absolute; left: 4px; top: 8px; width: 14px; height: 17px; background: #fff; border-top: 3px solid #e6e6e6; opacity: 0; box-shadow: 0 2px 6px rgba(0,0,0,.35); }
+.stage.choo .paperbox .sheet { animation: sheet .75s cubic-bezier(.15,.7,.35,1) forwards; }
+@keyframes sheet { 0% { opacity: 1; transform: translate(0, 0) rotate(0); } 70% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--x), var(--y)) rotate(var(--r)); } }
+.stage.sneeze .pickr .p-head, .stage.sneeze .pickr .p-eyes, .stage.sneeze .pickr .p-ant { transform-box: view-box; transform-origin: 8px 11px; transition: transform .35s ease-in; }
+.stage.ah1 .pickr .p-head, .stage.ah1 .pickr .p-eyes, .stage.ah1 .pickr .p-ant { transform: rotate(-8deg) translateY(-.5px); }
+.stage.ah2 .pickr .p-head, .stage.ah2 .pickr .p-eyes, .stage.ah2 .pickr .p-ant { transform: rotate(-16deg) translateY(-1px); }
+.stage.ah1 .pickr .p-eyes, .stage.ah2 .pickr .p-eyes { transform: rotate(-12deg) translateY(1.4px) scaleY(.35); }
+.stage.choo .pickr .p-head, .stage.choo .pickr .p-ant { transition: transform .08s ease-out; transform: rotate(14deg) translateY(1px); }
+.stage.choo .pickr .p-eyes { transition: transform .08s ease-out; transform: rotate(14deg) translateY(1.8px) scaleY(.15); }
+.stage.choo .pickr { animation: choo .5s ease-out; }
+@keyframes choo { 0% { transform: translateX(0); } 15% { transform: translateX(7px) rotate(5deg); } 40% { transform: translateX(-4px) rotate(-3deg); } 70% { transform: translateX(2px); } 100% { transform: none; } }
+.stage.gag::after { content: ""; position: absolute; inset: 0; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) { .paperbox { display: none; } }
+.stage.sneeze .pickr, .stage.sneeze .pickr .p-eyes { animation: none; }
+.stage.choo .pickr { animation: choo .5s ease-out; }
