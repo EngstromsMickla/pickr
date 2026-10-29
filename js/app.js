@@ -821,7 +821,9 @@
       '<header class="bookhead"><h1 class="ptitle">' + esc(B.title) + '</h1><p class="partof">' + esc(B.by) + ' · ' + esc(B.pub) + ', ' + esc(B.year) + '</p>' +
       (B.sub ? '<p>' + esc(B.sub) + '</p>' : '') + (info.stage ? '<p class="small">' + esc(info.stage) + '</p>' : '') + '</header>' +
       banner + tocHTML + '<article class="book">' + body + '</article>' +
-      '<p class="small">' + esc(L.licence) + '</p><div class="actions"><a class="btn ghost" href="#library">' + esc(L.title) + '</a><a class="btn" href="' + (hasRound() ? '#poems' : '#new') + '">' + esc(L.backToGame) + '</a></div>';
+      '<p class="small">' + esc(L.licence) + '</p>' +
+      '<div class="readbar"><div class="readbar-in">' + (back && S.solved[back] ? '<a class="btn ghost" href="#done/' + back + '">' + esc(L.backToPoem) + '</a>' : '<a class="btn ghost" href="#library">' + esc(L.title) + '</a>') +
+      '<a class="btn" href="' + (hasRound() ? '#poems' : '#new') + '">' + esc(L.backToGame) + '</a></div></div>';
     Array.prototype.forEach.call(app.querySelectorAll('[data-jump]'), function (b) {
       b.addEventListener('click', function () {
         var t = document.getElementById(b.dataset.jump); if (!t) return;
@@ -868,12 +870,18 @@
   }
 
   /* ---------- routing ---------- */
+  var lastRoute = '';
   function route() {
-    var h = location.hash.replace(/^#/, ''), parts = h.split('/');
+    var h = location.hash.replace(/^#/, ''), parts = h.split('/'), from = lastRoute;
+    lastRoute = parts[0];
     window.scrollTo(0, 0);
     if (parts[0] === 'poems') renderList();
     else if (parts[0] === 'play' && parts[1]) renderSetup(parts[1]);
-    else if (parts[0] === 'done' && parts[1]) renderDone(parts[1]);
+    else if (parts[0] === 'done' && parts[1]) {
+      renderDone(parts[1]);
+      /* back from the book: land where the reader left the poem */
+      var lv = from === 'read' && app.querySelector('.lives'); if (lv) lv.scrollIntoView({ block: 'start' });
+    }
     else if (parts[0] === 'guide') renderGuide();
     else if (parts[0] === 'library') renderLibrary();
     else if (parts[0] === 'read' && parts[1]) { var bk = parts[1], fc = parts[2]; withBooks(function () { renderBook(bk, fc); }); }
