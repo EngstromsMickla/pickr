@@ -87,3 +87,8 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 
 - v1.1 hade uppläsning med enhetens talsyntes. Dan valde bort den samma dag: en artificiell röst ger fel intryck av dikterna. Sajten är tillbaka på v1.0.
 - Koden finns kvar orörd i grenen `upplasning` (commit 1b47855) i EngstromsMickla/pickr. Om Dan läser in dikterna själv byggs den om så att den spelar hans inspelningar (en ljudfil per rad, så att spelarens ordning kan spelas upp) i stället för talsyntes. Ingen talsyntes ska användas.
+
+## Poesins historia (2026-10-29)
+- Varje dikt har en egen historietext (`use`) och en rubrik med årtal (`hist: {era, when, h}`). Ingen text får upprepas; tests/check.mjs kontrollerar det.
+- Texterna är skrivna av Claude och faktagranskade mot källor (Dans tips: RPO-tidslinjen, americanboard.org, Jake Young, A genealogy of poetry, 2024). Legender skrivs som "the story goes".
+- Rubriken på resultatsidan är "A page of history". Sidan låses upp i guidens tidslinje "Poetry through time" när quizen är besvarad; listan sparas lokalt i `pages` och följer med mellan omgångar.
