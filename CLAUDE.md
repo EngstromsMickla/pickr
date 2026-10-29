@@ -92,3 +92,8 @@ Arbetsbeskrivning för den som utvecklar spelet vidare, människa eller Claude.
 - Varje dikt har en egen historietext (`use`) och en rubrik med årtal (`hist: {era, when, h}`). Ingen text får upprepas; tests/check.mjs kontrollerar det.
 - Texterna är skrivna av Claude och faktagranskade mot källor (Dans tips: RPO-tidslinjen, americanboard.org, Jake Young, A genealogy of poetry, 2024). Legender skrivs som "the story goes".
 - Rubriken på resultatsidan är "A page of history". Sidan låses upp i guidens tidslinje "Poetry through time" när quizen är besvarad; listan sparas lokalt i `pages` och följer med mellan omgångar.
+
+## Pickrs sex olyckor (2026-10-29, grenen nasta)
+- Före varje dikt råkar Pickr ut för en kort olycka som blandar raderna: nysning, snubbel, jonglering, vinkning som välter högen, stretching med dikten på huvudet, halka på en lös rad (Dans idé). Varje olycka finns en gång per omgång om sex, i en ordning som räknas fram ur omgångens dikter (`gagFor`), så att en sparad och återupptagen omgång får samma ordning.
+- Ritas med kod (SVG och CSS), inte film: samma pixelrobot, några kilobyte, inget externt. Under två sekunder; ett tryck hoppar över; vid minskad rörelse visas bara Pickrs replik. Ljud bara om ljudet är på.
+- Replikerna ligger i `pickr.gags` i `js/content.js`. Dan tyckte att nysningen var "perfectly quirky and odd".

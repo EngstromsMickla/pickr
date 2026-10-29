@@ -75,6 +75,9 @@
     hint: function () { tone(990, .06, 0, 'triangle'); tone(1320, .08, .07, 'triangle'); },
     boing: function () { tone(300, .06, 0, 'triangle'); tone(520, .08, .05, 'triangle'); },
     ah: function (n) { tone(n ? 520 : 440, .22, 0, 'sine'); },
+    step: function () { [0, .18, .36].forEach(function (w) { tone(180, .05, w, 'triangle'); }); },
+    thud: function () { tone(110, .18, 0, 'square'); tone(80, .22, .05, 'triangle'); },
+    slip: function () { [900, 1100, 1350, 1600].forEach(function (f, i) { tone(f, .05, i * .03, 'sine'); }); tone(100, .2, .2, 'square'); },
     choo: function () {
       if (S.muted) return;
       try {
@@ -418,44 +421,72 @@
       startGame(id, first, marks, others);
     });
   }
-  /* ---------- the drop: a short gag before each poem (prototype: the sneeze) ---------- */
+  /* ---------- the drop: one of six short gags before each poem, one of each per round ---------- */
   var GAG = null;
   var PAPER = '<svg class="paper" viewBox="0 0 12 14" shape-rendering="crispEdges" aria-hidden="true"><rect x="2" y="0" width="10" height="12" fill="#cfcfcf"/><rect x="0" y="2" width="10" height="12" fill="#ffffff"/>' +
     '<rect x="2" y="5" width="6" height="1" fill="#9a9a9a"/><rect x="2" y="7" width="5" height="1" fill="#9a9a9a"/><rect x="2" y="9" width="6" height="1" fill="#9a9a9a"/><rect x="2" y="11" width="4" height="1" fill="#9a9a9a"/></svg>';
+  /* steps: [ms, class added to the stage, key of Pickr's line, sound]; fly: where the sheets go [x0, x1, y0, y1] */
+  var GAGS = {
+    sneeze:  { paper: 'hold',  fly: [60, 280, -40, 80],   end: 1750, steps: [[0, 's1', 'a', function () { sfx.ah(0); }], [520, 's2', 'b', function () { sfx.ah(1); }], [1100, 'go', 'c', function () { sfx.choo(); }]] },
+    trip:    { paper: 'hold',  fly: [90, 300, 10, 120],   end: 1550, steps: [[0, 's1', 'a', function () { sfx.step(); }], [800, 'go', 'c', function () { sfx.thud(); }]] },
+    juggle:  { paper: 'air',   fly: [-40, 220, 40, 140],  end: 1800, steps: [[0, 's1', 'a', function () { sfx.hint(); }], [1150, 'go', 'c', function () { sfx.drop(); }]] },
+    wave:    { paper: 'floor', fly: [120, 320, -10, 90],  end: 1500, steps: [[0, 's1', 'a', function () { sfx.boing(); }], [850, 'go', 'c', function () { sfx.thud(); }]] },
+    stretch: { paper: 'head',  fly: [-60, 260, -90, 40],  end: 1850, steps: [[0, 's1', 'a', null], [650, 's2', 'b', function () { sfx.ah(0); }], [1200, 'go', 'c', function () { sfx.drop(); }]] },
+    slip:    { paper: 'hold', loose: true,  fly: [40, 260, -110, 30],  end: 1550, steps: [[0, 's1', 'a', function () { sfx.step(); }], [700, 'go', 'c', function () { sfx.slip(); }]] }
+  };
+  var GAG_ORDER = ['sneeze', 'trip', 'juggle', 'wave', 'stretch', 'slip'];
+  /* The deck is shuffled from the round itself, so a saved and resumed round gets the same order. */
+  function gagFor(id) {
+    var pos = rpos(id);
+    if (pos < 0) return pick(GAG_ORDER);
+    var seed = 0, key = S.round.join(',');
+    for (var i = 0; i < key.length; i++) seed = (seed * 31 + key.charCodeAt(i)) >>> 0;
+    var deck = GAG_ORDER.slice();
+    for (var j = deck.length - 1; j > 0; j--) { seed = (seed * 1103515245 + 12345) >>> 0; var k = seed % (j + 1), t = deck[j]; deck[j] = deck[k]; deck[k] = t; }
+    return deck[pos % deck.length];
+  }
   function gagSkip() { if (GAG) GAG.finish(); }
-  function playSneeze() {
+  function playGag(name) {
+    var g = GAGS[name], Z = C.pickr.gags[name];
     var st = document.querySelector('.stage'), list = document.getElementById('lines');
-    var Z = C.pickr.sneeze, timers = [], done = false;
+    var timers = [], done = false, cls = ['gag', 'g-' + name, 'pp-' + g.paper, 's1', 's2', 'go'];
     var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function finish() {
       if (done) return; done = true; GAG = null;
       timers.forEach(clearTimeout);
-      st.classList.remove('gag', 'sneeze', 'ah1', 'ah2', 'choo');
-      var pap = st.querySelector('.paperbox'); if (pap) pap.remove();
+      cls.forEach(function (c) { st.classList.remove(c); });
+      Array.prototype.forEach.call(st.querySelectorAll('.paperbox, .loose'), function (el) { el.remove(); });
       list.classList.remove('waiting');
       renderLines(!calm, 'blow');
-      say(Z.choo + ' ' + pick(Z.after), 'oops');
+      say(Z.c + ' ' + pick(Z.after), 'oops');
     }
     GAG = { finish: finish, cancel: function () { done = true; GAG = null; timers.forEach(clearTimeout); } };
     if (calm) { finish(); return; }
-    st.classList.add('gag', 'sneeze');
+    st.classList.add('gag', 'g-' + name, 'pp-' + g.paper);
     list.classList.add('waiting');
-    var box = document.createElement('div'); box.className = 'paperbox'; box.innerHTML = PAPER;
+    var box = document.createElement('div'); box.className = 'paperbox';
+    box.innerHTML = g.paper === 'air' ? '<i class="jug j1"></i><i class="jug j2"></i><i class="jug j3"></i>' : PAPER;
     for (var i = 0; i < 7; i++) {
       var sh = document.createElement('i'); sh.className = 'sheet';
-      sh.style.setProperty('--x', Math.round(60 + Math.random() * 220) + 'px');
-      sh.style.setProperty('--y', Math.round(-40 + Math.random() * 120) + 'px');
+      sh.style.setProperty('--x', Math.round(g.fly[0] + Math.random() * (g.fly[1] - g.fly[0])) + 'px');
+      sh.style.setProperty('--y', Math.round(g.fly[2] + Math.random() * (g.fly[3] - g.fly[2])) + 'px');
       sh.style.setProperty('--r', Math.round(Math.random() * 540 - 270) + 'deg');
       sh.style.animationDelay = (i * 25) + 'ms';
       box.appendChild(sh);
     }
     st.appendChild(box);
-    function at(ms, fn) { timers.push(setTimeout(function () { if (!done) fn(); }, ms)); }
-    say(Z.ah, null, true);
-    at(0, function () { st.classList.add('ah1'); sfx.ah(0); });
-    at(520, function () { st.classList.remove('ah1'); void st.offsetWidth; st.classList.add('ah2'); say(Z.ahah, null, true); sfx.ah(1); });
-    at(1100, function () { st.classList.add('choo'); say(Z.choo, 'oops', true); sfx.choo(); });
-    at(1750, finish);
+    if (g.loose) { var lo = document.createElement('i'); lo.className = 'loose'; st.appendChild(lo); }
+    g.steps.forEach(function (stp) {
+      timers.push(setTimeout(function () {
+        if (done) return;
+        if (stp[1] === 's2') st.classList.remove('s1');
+        if (stp[1] === 'go') { st.classList.remove('s1'); st.classList.remove('s2'); }
+        st.classList.add(stp[1]);
+        say(Z[stp[2]], stp[1] === 'go' ? 'oops' : null, true);
+        if (stp[3]) stp[3]();
+      }, stp[0]));
+    });
+    timers.push(setTimeout(finish, g.end));
   }
   document.addEventListener('pointerdown', function (e) {
     if (GAG && !(e.target.closest && e.target.closest('header'))) gagSkip();
@@ -467,7 +498,7 @@
     G = { p: p, i: i, lines: flatLines(p), hints: 0, checks: 0, help: { first: first, marks: marks, others: others }, marks: marks, sel: null, checked: false, fixed: chooseLines(p, first, others) };
     G.order = shuffle(G.lines, G.fixed);
     renderPlay(false);
-    playSneeze();
+    playGag(gagFor(id));
   }
   function cur() { return G.lines; }
   function renderPlay(drop) {

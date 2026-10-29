@@ -458,29 +458,113 @@ a { color: var(--accent); }
 .timeline h3 { margin: 6px 0 4px; }
 .timeline p { margin: 0 0 6px; }
 
-/* The sneeze: Pickr holds the poem, breathes in twice, and blows it apart */
+/* The gags: Pickr holds the poem, something happens, the lines fly */
 .lines.waiting .line { opacity: 0; }
 .lines.drop .line { transform-origin: left center; }
 .lines.drop .line[style*="--dy"] { animation-name: blown; animation-duration: .6s; }
 @keyframes blown { from { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(var(--dr)); } 60% { opacity: 1; } to { opacity: 1; transform: none; } }
-.paperbox { position: absolute; left: 58px; bottom: 2px; width: 30px; pointer-events: none; z-index: 3; }
-.stage.big .paperbox { left: 84px; }
-.paperbox .paper { width: 30px; height: auto; display: block; transition: transform .15s; }
-.stage.ah1 .paperbox .paper { transform: translateY(2px) rotate(-4deg); }
-.stage.ah2 .paperbox .paper { transform: translateY(4px) rotate(-8deg); }
-.stage.choo .paperbox .paper { opacity: 0; }
-.paperbox .sheet { position: absolute; left: 4px; top: 8px; width: 14px; height: 17px; background: #fff; border-top: 3px solid #e6e6e6; opacity: 0; box-shadow: 0 2px 6px rgba(0,0,0,.35); }
-.stage.choo .paperbox .sheet { animation: sheet .75s cubic-bezier(.15,.7,.35,1) forwards; }
-@keyframes sheet { 0% { opacity: 1; transform: translate(0, 0) rotate(0); } 70% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--x), var(--y)) rotate(var(--r)); } }
-.stage.sneeze .pickr .p-head, .stage.sneeze .pickr .p-eyes, .stage.sneeze .pickr .p-ant { transform-box: view-box; transform-origin: 8px 11px; transition: transform .35s ease-in; }
-.stage.ah1 .pickr .p-head, .stage.ah1 .pickr .p-eyes, .stage.ah1 .pickr .p-ant { transform: rotate(-8deg) translateY(-.5px); }
-.stage.ah2 .pickr .p-head, .stage.ah2 .pickr .p-eyes, .stage.ah2 .pickr .p-ant { transform: rotate(-16deg) translateY(-1px); }
-.stage.ah1 .pickr .p-eyes, .stage.ah2 .pickr .p-eyes { transform: rotate(-12deg) translateY(1.4px) scaleY(.35); }
-.stage.choo .pickr .p-head, .stage.choo .pickr .p-ant { transition: transform .08s ease-out; transform: rotate(14deg) translateY(1px); }
-.stage.choo .pickr .p-eyes { transition: transform .08s ease-out; transform: rotate(14deg) translateY(1.8px) scaleY(.15); }
-.stage.choo .pickr { animation: choo .5s ease-out; }
-@keyframes choo { 0% { transform: translateX(0); } 15% { transform: translateX(7px) rotate(5deg); } 40% { transform: translateX(-4px) rotate(-3deg); } 70% { transform: translateX(2px); } 100% { transform: none; } }
 .stage.gag::after { content: ""; position: absolute; inset: 0; cursor: pointer; }
-@media (prefers-reduced-motion: reduce) { .paperbox { display: none; } }
-.stage.sneeze .pickr, .stage.sneeze .pickr .p-eyes { animation: none; }
-.stage.choo .pickr { animation: choo .5s ease-out; }
+.stage.gag .pickr, .stage.gag .pickr .p-eyes { animation: none; }
+.stage.gag .pickr g { transition: transform .3s ease-in-out; }
+.stage.gag .pickr .p-head, .stage.gag .pickr .p-eyes, .stage.gag .pickr .p-ant { transform-box: view-box; transform-origin: 8px 11px; }
+.stage.gag .pickr .p-armL { transform-box: view-box; transform-origin: 3px 12px; }
+.stage.gag .pickr .p-armR { transform-box: view-box; transform-origin: 13px 12px; }
+.stage.gag .bot { transition: transform .35s ease-in-out; }
+
+.paperbox { position: absolute; left: 58px; bottom: 2px; width: 30px; pointer-events: none; z-index: 3; transition: transform .3s; }
+.stage.big .paperbox { left: 84px; }
+.paperbox .paper { width: 30px; height: auto; display: block; transition: transform .2s; }
+.stage.go .paperbox .paper { opacity: 0; }
+.paperbox .sheet { position: absolute; left: 4px; top: 8px; width: 14px; height: 17px; background: #fff; border-top: 3px solid #e6e6e6; opacity: 0; box-shadow: 0 2px 6px rgba(0,0,0,.35); }
+.stage.go .paperbox .sheet { animation: sheet .75s cubic-bezier(.15,.7,.35,1) forwards; }
+@keyframes sheet { 0% { opacity: 1; transform: translate(0, 0) rotate(0); } 70% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--x), var(--y)) rotate(var(--r)); } }
+
+/* 1 sneeze: two breaths in, then the sneeze */
+.g-sneeze.s1 .pickr .p-head, .g-sneeze.s1 .pickr .p-ant { transform: rotate(-8deg) translateY(-.5px); }
+.g-sneeze.s2 .pickr .p-head, .g-sneeze.s2 .pickr .p-ant { transform: rotate(-16deg) translateY(-1px); }
+.g-sneeze.s1 .pickr .p-eyes, .g-sneeze.s2 .pickr .p-eyes { transform: rotate(-12deg) translateY(1.4px) scaleY(.35); }
+.g-sneeze.s1 .paperbox .paper { transform: translateY(2px) rotate(-4deg); }
+.g-sneeze.s2 .paperbox .paper { transform: translateY(4px) rotate(-8deg); }
+.g-sneeze.go .pickr g { transition-duration: .08s; }
+.g-sneeze.go .pickr .p-head, .g-sneeze.go .pickr .p-ant { transform: rotate(14deg) translateY(1px); }
+.g-sneeze.go .pickr .p-eyes { transform: rotate(14deg) translateY(1.8px) scaleY(.15); }
+.g-sneeze.go .pickr { animation: choo .5s ease-out; }
+@keyframes choo { 0% { transform: translateX(0); } 15% { transform: translateX(7px) rotate(5deg); } 40% { transform: translateX(-4px) rotate(-3deg); } 70% { transform: translateX(2px); } 100% { transform: none; } }
+
+/* 2 trip: a proud little walk, then the toe catches */
+.g-trip.s1 .bot { transform: translateX(46px); transition-duration: .8s; transition-timing-function: linear; }
+.g-trip.s1 .paperbox { transform: translateX(46px); transition: transform .8s linear; }
+.g-trip.s1 .pickr { animation: waddle .27s ease-in-out infinite; }
+@keyframes waddle { 0%,100% { transform: rotate(-7deg); } 50% { transform: rotate(7deg) translateY(-3px); } }
+.g-trip.go .bot, .g-trip.go .paperbox { transform: translateX(46px); }
+.g-trip.go .pickr { animation: trip .7s ease-out forwards; transform-origin: 70% 100%; }
+@keyframes trip { 0% { transform: rotate(0); } 35% { transform: rotate(32deg) translateY(4px); } 60% { transform: rotate(24deg) translateY(4px); } 100% { transform: rotate(0); } }
+.g-trip.go .pickr .p-armL { transform: rotate(-70deg); }
+.g-trip.go .pickr .p-armR { transform: rotate(70deg); }
+
+/* 3 juggle: three pages in the air, one too many */
+.pp-air .paperbox { left: 14px; bottom: 84px; width: 60px; height: 50px; }
+.stage.big.pp-air .paperbox { left: 30px; bottom: 128px; }
+.jug { position: absolute; left: 24px; top: 30px; width: 11px; height: 14px; background: #fff; border-top: 3px solid #e6e6e6; box-shadow: 0 2px 4px rgba(0,0,0,.35); }
+.g-juggle.s1 .jug { animation: jug .55s linear infinite; }
+.g-juggle.s1 .j2 { animation-delay: -.18s; }
+.g-juggle.s1 .j3 { animation-delay: -.36s; }
+@keyframes jug { 0% { transform: translate(-22px, 14px) rotate(0); } 25% { transform: translate(-8px, -14px) rotate(90deg); } 50% { transform: translate(22px, 10px) rotate(180deg); } 75% { transform: translate(8px, -14px) rotate(270deg); } 100% { transform: translate(-22px, 10px) rotate(360deg); } }
+.g-juggle.s1 .pickr .p-armL { animation: jarmL .55s ease-in-out infinite; }
+.g-juggle.s1 .pickr .p-armR { animation: jarmR .55s ease-in-out infinite; }
+@keyframes jarmL { 0%,100% { transform: rotate(0); } 50% { transform: rotate(60deg); } }
+@keyframes jarmR { 0%,100% { transform: rotate(-60deg); } 50% { transform: rotate(0); } }
+.g-juggle.s1 .pickr .p-head, .g-juggle.s1 .pickr .p-eyes, .g-juggle.s1 .pickr .p-ant { transform: translateY(-.5px); }
+.g-juggle.go .jug { animation: jugfall .5s ease-in forwards; }
+.g-juggle.go .j2 { animation-delay: .06s; } .g-juggle.go .j3 { animation-delay: .12s; }
+@keyframes jugfall { from { transform: translate(0, -10px) rotate(0); } to { transform: translate(var(--jx, 30px), 70px) rotate(200deg); opacity: 0; } }
+.g-juggle.go .j1 { --jx: -20px; } .g-juggle.go .j3 { --jx: 60px; }
+.g-juggle.go .pickr .p-head, .g-juggle.go .pickr .p-ant, .g-juggle.go .pickr .p-eyes { transform: translateY(1.5px); }
+.g-juggle.go .pickr .p-armL { transform: rotate(80deg); }
+.g-juggle.go .pickr .p-armR { transform: rotate(-80deg); }
+.g-juggle.go .pickr { animation: shake .5s; }
+
+/* 4 wave: the poem is on the floor beside Pickr, and Pickr waves hello */
+.pp-floor .paperbox { left: 84px; bottom: 0; transform-origin: 0 100%; }
+.stage.big.pp-floor .paperbox { left: 124px; }
+.g-wave.s1 .pickr .p-armR { animation: hello .28s ease-in-out infinite alternate; }
+@keyframes hello { from { transform: rotate(-100deg); } to { transform: rotate(-150deg); } }
+.g-wave.s1 .pickr .p-eyes { display: none; }
+.g-wave.s1 .pickr .p-happy { display: inline; }
+.g-wave.go .pickr .p-armR { transition-duration: .1s; transform: rotate(55deg) scale(1.3); }
+.g-wave.go .pickr { animation: swat .45s ease-out; }
+@keyframes swat { 0% { transform: rotate(0); } 30% { transform: rotate(8deg) translateX(3px); } 100% { transform: rotate(0); } }
+
+
+/* 5 stretch: the poem balanced on Pickr's head, then a big stretch */
+.pp-head .paperbox { left: 26px; bottom: 82px; }
+.stage.big.pp-head .paperbox { left: 38px; bottom: 114px; }
+.g-stretch.s1 .pickr { animation: sway .6s ease-in-out infinite; transform-origin: 50% 100%; }
+.g-stretch.s1 .paperbox { animation: sway .6s ease-in-out infinite; transform-origin: 50% 280%; }
+@keyframes sway { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+.g-stretch.s2 .pickr .p-armL { transform: rotate(150deg); }
+.g-stretch.s2 .pickr .p-armR { transform: rotate(-150deg); }
+.g-stretch.s2 .pickr .p-eyes { transform: translateY(1px) scaleY(.2); }
+.g-stretch.s2 .pickr { transform: translateY(-3px); transition: transform .4s; }
+.g-stretch.s2 .paperbox { transform: translateY(-6px); }
+.g-stretch.go .pickr .p-armL { transform: rotate(150deg); }
+.g-stretch.go .pickr .p-armR { transform: rotate(-150deg); }
+.g-stretch.go .pickr .p-eyes { transform: scaleY(1.2); }
+
+/* 6 slip: careful steps, a loose line on the floor, feet up */
+.g-slip.s1 .pickr { animation: tiptoe .35s ease-in-out infinite; }
+@keyframes tiptoe { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+.g-slip.s1 .bot, .g-slip.s1 .paperbox { transform: translateX(30px); transition: transform .7s linear; }
+.g-slip.go .bot, .g-slip.go .paperbox { transform: translateX(30px); }
+.g-slip.go .pickr { animation: slip .75s cubic-bezier(.3,.6,.4,1) forwards; transform-origin: 50% 100%; }
+@keyframes slip { 0% { transform: rotate(0); } 25% { transform: translate(-4px, -12px) rotate(-38deg); } 55% { transform: translate(-6px, 2px) rotate(-30deg); } 100% { transform: rotate(0); } }
+.g-slip.go .pickr .p-feet { transform: translateX(3px); }
+.g-slip.go .pickr .p-armL { transform: rotate(-90deg); }
+.g-slip.go .pickr .p-armR { transform: rotate(90deg); }
+.g-slip.go .pickr .p-eyes { transform: scaleY(1.3); }
+
+.loose { position: absolute; left: 74px; bottom: 0; width: 16px; height: 4px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.4); transform: skewX(-20deg); pointer-events: none; z-index: 2; }
+.stage.big .loose { left: 104px; }
+.g-slip.go .loose { animation: loose .4s ease-out forwards; }
+@keyframes loose { to { transform: translate(40px, -6px) rotate(25deg); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .paperbox, .loose { display: none; } }

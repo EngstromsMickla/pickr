@@ -251,7 +251,14 @@ window.PICKR = {
     mode: [ "Easy, Tricky or Challenging? I drop them all the same.", "Pick a level. I will try to drop them gently." ],
     library: [ "I read all of these. Then I dropped them.", "Books! The poems in their natural habitat." ],
     setup: [ "I promise to drop it gently this time.", "How much should I hold on to?", "Pick your help. I will try not to sneeze." ],
-    sneeze: { ah: "Ah...", ahah: "Ah... ah...", choo: "ACHOO!", after: [ "Bless me. Sorry about the poem.", "Robot hay fever. Very rare. Very messy.", "That one blew the lines right out of order.", "Excuse me. Dust in my circuits." ] },
+    gags: {
+      sneeze: { a: "Ah...", b: "Ah... ah...", c: "ACHOO!", after: [ "Bless me. Sorry about the poem.", "Robot hay fever. Very rare. Very messy.", "That one blew the lines right out of order.", "Excuse me. Dust in my circuits." ] },
+      trip: { a: "La la la, carrying a poem...", c: "Whoa!", after: [ "Who put a floor there?", "I tripped over my own feet. Both of them.", "The poem is fine. It is just in a different order now." ] },
+      juggle: { a: "Watch this! Poem juggling!", c: "Uh oh.", after: [ "I have been practising. Not enough.", "Three lines is my record. This poem has more.", "Juggling: still learning." ] },
+      wave: { a: "Hello there! Hello!", c: "Oops.", after: [ "I was waving at you and knocked it over.", "Never wave near a poem.", "Well. Hello anyway." ] },
+      stretch: { a: "Look, no hands!", b: "Mmm, big stretch...", c: "Oh no.", after: [ "I forgot it was on my head.", "Balancing poems is harder than it looks.", "Note to self: stretch first, poem later." ] },
+      slip: { a: "Careful now, careful...", c: "Wheee!", after: [ "I slipped on a loose line. Poems are slippery.", "Somebody left a stanza on the floor.", "That was not a dance move. Or was it?" ] }
+    },
     drop: [
       "Oops. I tripped.",
       "Whoops! I sneezed on the poem.",
