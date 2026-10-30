@@ -498,6 +498,7 @@
     G = { p: p, i: i, lines: flatLines(p), hints: 0, checks: 0, help: { first: first, marks: marks, others: others }, marks: marks, sel: null, checked: false, fixed: chooseLines(p, first, others) };
     G.order = shuffle(G.lines, G.fixed);
     renderPlay(false);
+    window.scrollTo(0, 0); /* the setup page is long on a phone: bring Pickr into view before the mishap */
     playGag(gagFor(id));
   }
   function cur() { return G.lines; }
